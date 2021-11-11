@@ -5,8 +5,7 @@
         class="foqusLogo"
         src="../assets/images/logo-foqus-werkt-466x320.jpg"
         role="figure"
-      />
-      Content
+      />      
       <h3 role="heading">Succesvol ondernemen is plezierig ondernemen.</h3>
     </header>
     <main>
@@ -22,10 +21,11 @@
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {
-      step: null,
+      step: 0,
     };
   },
 };
