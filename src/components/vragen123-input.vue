@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: "vraag123",
   data() {
     return {
       antwoordVraag1: this.$store.getters.getAntwoordVraag1,

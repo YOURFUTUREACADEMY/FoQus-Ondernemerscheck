@@ -10,7 +10,10 @@ const store = createStore({
         },
     },
     getters: {
-        getAntwoordVraag1: (state) => state.antwoordVraag1.waarde,
+        getAntwoordVraag1: (state) => {state.antwoordVraag1.waarde;
+        },
     },
 });
+
 export default store;
+

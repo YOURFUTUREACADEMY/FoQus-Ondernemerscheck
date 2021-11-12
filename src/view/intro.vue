@@ -13,8 +13,7 @@
         <h3 role="heading">
           {{ vragen[step] }}
         </h3>
-        <vraag123></vraag123>
-        <vraag1 v-if="step == 1"></vraag1>
+        <vraag123 v-if="step > 0 && step < 4"></vraag123>
         <p>{{ step }}/7</p>
         <button class="volgendeBtn" @click="volgendePagina(step)">
           volgende
@@ -27,6 +26,7 @@
 <script>
 import vraag123 from "../components/vragen123-input";
 export default {
+  name: "intro",
   data() {
     return {
       antwoord: [],
