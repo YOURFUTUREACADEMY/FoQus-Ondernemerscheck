@@ -12,10 +12,10 @@
       <section role="contentinfo">
         <h3 role="heading">Succesvol ondernemen is plezierig ondernemen.</h3>
         <h3>"Heb jij voldoende focus op succes? Test het zelf door 7 vragen te beantwoorden."</h3>
-        <p>{{ this.$store.state.vraag }}/7</p>
         <div>
-</div>
-
+          <progress id="progBarQ" :value="this.$store.state.vraag" max="7"></progress>
+          <label for="progBarQ"> {{ this.$store.state.vraag }}/7 </label>
+        </div>     
         <button class="volgendeBtn" @click="volgendePagina(0),$router.push('/vragen')">
           volgende
         </button>

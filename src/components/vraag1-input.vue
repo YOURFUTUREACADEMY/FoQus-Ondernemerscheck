@@ -1,12 +1,14 @@
 <template>
   <div>
     <h3 role="heading">"Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)"</h3>
-    <h3>Aantal mensen in dienst:</h3>
-    <input
-      type="number"
-      v-model="antwoordVraag1"
-      @change="opslag('setAntwoordVraag1',antwoordVraag1)"
-    />
+    <div>
+      <h3>Aantal mensen in dienst:</h3>
+      <input
+        type="number"
+        v-model="antwoordVraag1"
+        @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+      />
+    </div>
   </div>
 </template>
 

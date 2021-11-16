@@ -1,12 +1,14 @@
 <template>
   <div>
     <h3 role="heading">"Hoeveel uur besteed jij per week aan je bedrijf?"</h3>
-    <input
-      type="number"
-      v-model="antwoordVraag1"
-      @change="opslag('setAntwoordVraag1',antwoordVraag1)"
-    />
-    <h3>uur</h3>
+    <div>
+      <input
+        type="number"
+        v-model="antwoordVraag1"
+        @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+      />
+      <h3>uur</h3>
+    </div>  
   </div>
 </template>
 

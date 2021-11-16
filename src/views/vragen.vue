@@ -15,8 +15,11 @@
         <vraag4 v-if="this.$store.state.vraag == 4"></vraag4>
         <vraag5 v-if="this.$store.state.vraag == 5"></vraag5>
         <vraag6 v-if="this.$store.state.vraag == 6"></vraag6>
-        <vraag7 v-if="this.$store.state.vraag == 7"></vraag7>
-        <p>{{ this.$store.state.vraag }}/7</p>
+        <vraag7 v-if="this.$store.state.vraag == 7"></vraag7>   
+        <div>   
+          <progress id="progBarQ" :value="this.$store.state.vraag" max="7"></progress>
+          <label for="progBarQ"> {{ this.$store.state.vraag }}/7 </label>
+        </div>  
         <button class="volgendeBtn" @click="volgendePagina(this.$store.state.vraag)">
           volgende
         </button>
