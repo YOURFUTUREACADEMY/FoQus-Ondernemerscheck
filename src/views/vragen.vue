@@ -9,18 +9,18 @@
     </header>
     <main>
       <section role="contentinfo">
-        <vraag1 v-if="this.$store.state.vraag == 1"></vraag1>
-        <vraag2 v-if="this.$store.state.vraag == 2"></vraag2>
-        <vraag3 v-if="this.$store.state.vraag == 3"></vraag3>
-        <vraag4 v-if="this.$store.state.vraag == 4"></vraag4>
-        <vraag5 v-if="this.$store.state.vraag == 5"></vraag5>
-        <vraag6 v-if="this.$store.state.vraag == 6"></vraag6>
-        <vraag7 v-if="this.$store.state.vraag == 7"></vraag7>   
+        <vraag1 v-if="activeStep == 1"></vraag1>
+        <vraag2 v-if="activeStep == 2"></vraag2>
+        <vraag3 v-if="activeStep == 3"></vraag3>
+        <vraag4 v-if="activeStep == 4"></vraag4>
+        <vraag5 v-if="activeStep == 5"></vraag5>
+        <vraag6 v-if="activeStep == 6"></vraag6>
+        <vraag7 v-if="activeStep == 7"></vraag7>   
         <div>   
-          <progress id="progBarQ" :value="this.$store.state.vraag" max="7"></progress>
-          <label for="progBarQ"> {{ this.$store.state.vraag }}/7 </label>
+          <progress id="progBarQ" :value="activeStep" max="7"></progress>
+          <label for="progBarQ"> {{ activeStep }}/7 </label>
         </div>  
-        <button class="volgendeBtn" @click="volgendePagina(this.$store.state.vraag)">
+        <button class="volgendeBtn" @click="activeStep++">
           volgende
         </button>
       </section>
@@ -40,7 +40,9 @@ import vraag7 from "../components/vraag7-input";
 export default {
   name: "intro",
   data() {
-    return { };
+    return { 
+      activeStep: 1,
+    };
   },
   components: {
     vraag1,
@@ -51,14 +53,6 @@ export default {
     vraag6,
     vraag7,
   },
-  methods: {
-    volgendePagina(type) {
-      if (type < 7) {
-        this.$store.state.vraag++;
-      } else {
-        alert("dit is het einde van de lijst!");
-      }
-    },
-  },
+  
 };
 </script>
