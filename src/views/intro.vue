@@ -28,14 +28,6 @@
 
 export default {
   name: "intro",
-  methods: {
-    volgendePagina(type) {
-      if (type < 7) {
-        this.$store.state.vraag++;
-      } else {
-        alert("dit is het einde van de lijst!");
-      }
-    },
-  },
+  
 };
 </script>
