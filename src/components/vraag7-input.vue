@@ -7,7 +7,7 @@
       min=1
       max=10
       v-model="value"
-      @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+      @change="opslag('setAntwoordVraag7',value)"
     />
     <label>{{value}}</label>
     <i class="fa fa-smile-o" style="color:black" aria-hidden="true"></i>
@@ -20,15 +20,13 @@ export default {
   data() {
     return {
       value:1,
-      antwoordVraag1: this.$store.getters.getAntwoordVraag1,
+      antwoordVraag7: this.$store.getters.getAntwoordVraag7,
     };
   },
  
   methods: {
     opslag(value1, value2) {
-      this.$store.commit(value1, {
-        waarde: value2,
-      });
+      this.$store.commit(value1,value2);
     },
   },
 };

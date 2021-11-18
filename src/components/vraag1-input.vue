@@ -22,9 +22,9 @@ export default {
   },
   methods: {
     opslag(value1, value2) {
-      this.$store.commit(value1, {
-        waarde: value2,
-      });
+      this.$store.commit(value1, 
+        value2,
+      );
     },
   },
 };

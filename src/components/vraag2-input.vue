@@ -4,8 +4,8 @@
     <div>
       <input
         type="number"
-        v-model="antwoordVraag1"
-        @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+        v-model="antwoordVraag2"
+        @change="opslag('setAntwoordVraag2',antwoordVraag2)"
       />
       <h3>uur</h3>
     </div>  
@@ -17,14 +17,12 @@ export default {
   name: "vraag2",
   data() {
     return {
-      antwoordVraag1: this.$store.getters.getAntwoordVraag1,
+      antwoordVraag2: this.$store.getters.getAntwoordVraag2,
     };
   },
   methods: {
     opslag(value1, value2) {
-      this.$store.commit(value1, {
-        waarde: value2,
-      });
+      this.$store.commit(value1, value2);
     },
   },
 };

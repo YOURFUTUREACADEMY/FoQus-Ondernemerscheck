@@ -15,12 +15,12 @@
         <vraag4 v-if="activeStep == 4"></vraag4>
         <vraag5 v-if="activeStep == 5"></vraag5>
         <vraag6 v-if="activeStep == 6"></vraag6>
-        <vraag7 v-if="activeStep == 7"></vraag7>   
+        <vraag7 v-if="activeStep == 7"></vraag7>
         <div>   
           <progress id="progBarQ" :value="activeStep" max="7"></progress>
           <label for="progBarQ"> {{ activeStep }}/7 </label>
         </div>  
-        <button class="volgendeBtn" @click="activeStep++">
+        <button class="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
           volgende
         </button>
       </section>
@@ -38,10 +38,11 @@ import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
 
 export default {
-  name: "intro",
+  name: "vragen",
   data() {
     return { 
       activeStep: 1,
+      vragen: 7,
     };
   },
   components: {
@@ -53,6 +54,12 @@ export default {
     vraag6,
     vraag7,
   },
-  
+  methods:{
+    goToResult(value){
+      if(value > this.vragen){
+        this.$router.push('/resultaat');
+      }
+    }
+  }
 };
 </script>

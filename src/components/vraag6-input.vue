@@ -4,8 +4,8 @@
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag1"
-        @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+        v-model="antwoordVraag6"
+        @change="opslag('setAntwoordVraag6',antwoordVraag6)"
         id="vraag6a1"
         :value="vraag1"
       />
@@ -14,8 +14,8 @@
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag1"
-        @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+        v-model="antwoordVraag6"
+        @change="opslag('setAntwoordVraag6',antwoordVraag6)"
         id="vraag6a2"
         :value="vraag2"
       />
@@ -24,8 +24,8 @@
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag1"
-        @change="opslag('setAntwoordVraag1',antwoordVraag1)"
+        v-model="antwoordVraag6"
+        @change="opslag('setAntwoordVraag6',antwoordVraag6)"
         id="vraag6a3"
         :value="vraag3"
       />
@@ -43,14 +43,12 @@ export default {
       vraag1: "Stijgt",
       vraag2: "Blijft Gelijk",
       vraag3: "Daalt",
-      antwoordVraag1: this.$store.getters.getAntwoordVraag1,
+      antwoordVraag6: this.$store.getters.getAntwoordVraag6,
     };
   },
   methods: {
     opslag(value1, value2) {
-      this.$store.commit(value1, {
-        waarde: value2,
-      });
+      this.$store.commit(value1,value2);
     },
   },
   //props:["vraag1","vraag2","vraag3"],
