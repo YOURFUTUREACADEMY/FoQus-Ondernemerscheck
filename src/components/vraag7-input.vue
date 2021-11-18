@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 role="heading">"Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?"</h3>
-    <p>icon :(</p>
+    <i class="fa fa-frown-o" style="color:black" aria-hidden="true"></i>
     <input
       type="range"
       min=1
@@ -10,7 +10,7 @@
       @change="opslag('setAntwoordVraag1',antwoordVraag1)"
     />
     <label>{{value}}</label>
-    <p>icon :)</p>
+    <i class="fa fa-smile-o" style="color:black" aria-hidden="true"></i>
   </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
       antwoordVraag1: this.$store.getters.getAntwoordVraag1,
     };
   },
+ 
   methods: {
     opslag(value1, value2) {
       this.$store.commit(value1, {
