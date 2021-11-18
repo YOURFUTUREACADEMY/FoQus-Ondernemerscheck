@@ -1,7 +1,4 @@
 <template>
-  <!--<div id="nav">-->
-  <!--  <router-link to="/">Intro</router-link> |-->
-  <!--</div>-->
   <router-view/>
 </template>
 
