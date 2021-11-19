@@ -4,32 +4,32 @@
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag4"
-        @change="opslag('setAntwoordVraag4',antwoordVraag4)"
-        id="vraag4a1"
+        v-model="antwoord"
+        @change="opslag(antwoord)"
+        id="vraag1"
         :value="vraag1"
       />
-      <label for="vraag4a1">{{vraag1}}</label>
+      <label for="vraag1">{{vraag1}}</label>
     </div>
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag4"
-        @change="opslag('setAntwoordVraag4',antwoordVraag4)"
-        id="vraag4a2"
+        v-model="antwoord"
+        @change="opslag(antwoord)"
+        id="vraag2"
         :value="vraag2"
       />
-      <label for="vraag4a2">{{vraag2}}</label>
+      <label for="vraag2">{{vraag2}}</label>
     </div>
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag4"
-        @change="opslag('setAntwoordVraag4',antwoordVraag4)"
-        id="vraag4a3"
+        v-model="antwoord"
+        @change="opslag(antwoord)"
+        id="vraag3"
         :value="vraag3"
       />
-      <label for="vraag4a3">>{{vraag3}}</label>
+      <label for="vraag3">>{{vraag3}}</label>
     </div>
   </div>
 </template>
@@ -42,12 +42,11 @@ export default {
       vraag1: "<= 0,5 jaar",
       vraag2: "0,5-1,5 jaar",
       vraag3: "1,5 jaar",
-      antwoordVraag4: this.$store.getters.getAntwoordVraag4,
     };
   },
   methods: {
-    opslag(value1, value2) {
-      this.$store.commit(value1,value2);
+    opslag(value) {
+      this.$store.commit('setAntwoordVraag4',value);
     },
   },
 };

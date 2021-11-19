@@ -7,7 +7,7 @@
       max=100
       step=20
       v-model="value"
-      @change="opslag('setAntwoordVraag3',value)"
+      @change="opslag(value)"
     />
     <label>{{value }}%</label>
   </div>
@@ -19,12 +19,11 @@ export default {
   data() {
     return {
       value: 0,
-      antwoordVraag3: this.$store.getters.getAntwoordVraag3,
     };
   },
   methods: {
-    opslag(value1, value2) {
-      this.$store.commit(value1, value2);
+    opslag(value) {
+      this.$store.commit('setAntwoordVraag3', value);
     },
   },
 };

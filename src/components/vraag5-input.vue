@@ -4,32 +4,32 @@
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag5"
-        @change="opslag('setAntwoordVraag5',antwoordVraag5)"
-        id="vraag5a1"
+        v-model="antwoord"
+        @change="opslag(antwoord)"
+        id="vraag1"
         :value="vraag1"
       />
-      <label for="vraag5a1">{{vraag1}}</label>
+      <label for="vraag1">{{vraag1}}</label>
     </div>
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag5"
-        @change="opslag('setAntwoordVraag5',antwoordVraag5)"
-        id="vraag5a2"
+        v-model="antwoord"
+        @change="opslag(antwoord)"
+        id="vraag2"
         :value="vraag2"
       />
-      <label for="vraag5a2">{{vraag2}}</label>
+      <label for="vraag2">{{vraag2}}</label>
     </div>
     <div>
       <input
         type="radio"
-        v-model="antwoordVraag5"
-        @change="opslag('setAntwoordVraag5',antwoordVraag5)"
-        id="vraag5a3"
+        v-model="antwoord"
+        @change="opslag(antwoord)"
+        id="vraag3"
         :value="vraag3"
       />
-      <label for="vraag5a3">{{vraag3}}</label>
+      <label for="vraag3">{{vraag3}}</label>
     </div>
   </div>
 </template>
@@ -43,14 +43,13 @@ export default {
       vraag1: "Stijgt",
       vraag2: "Blijft Gelijk",
       vraag3: "Daalt",
-      antwoordVraag5: this.$store.getters.getAntwoordVraag5,
+      //antwoord: this.$store.getters.getAntwoordVraag5,
     };
   },
   methods: {
-    opslag(value1, value2) {
-      this.$store.commit(value1,value2);
+    opslag(value) {
+      this.$store.commit('setAntwoordVraag5',value);
     },
   },
-  //props:["vraag1","vraag2","vraag3"],
 };
 </script>
