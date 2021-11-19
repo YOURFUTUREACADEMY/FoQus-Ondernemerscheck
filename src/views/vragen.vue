@@ -57,7 +57,7 @@ export default {
   methods:{
     goToResult(value){
       if(value > this.vragen){
-        this.$router.push('/resultaat');
+        this.$router.push('/scorescherm');
       }
     }
   }
