@@ -6,49 +6,48 @@
         type="radio"
         v-model="antwoord"
         @change="opslag(antwoord)"
-        id="vraag1"
-        :value="vraag1.value"
+        id="optie1"
+        :value="optie1.value"
       />
-      <label for="vraag1">{{vraag1.label}}</label>
+      <label for="optie1">{{optie1.label}}</label>
     </div>
     <div>
       <input
         type="radio"
         v-model="antwoord"
         @change="opslag(antwoord)"
-        id="vraag2"
-        :value="vraag2.value"
+        id="optie2"
+        :value="optie2.value"
       />
-      <label for="vraag2">{{vraag2.label}}</label>
+      <label for="optie2">{{optie2.label}}</label>
     </div>
     <div>
       <input
         type="radio"
         v-model="antwoord"
         @change="opslag(antwoord)"
-        id="vraag3"
-        :value="vraag3.value"
+        id="optie3"
+        :value="optie3.value"
       />
-      <label for="vraag3">{{vraag3.label}}</label>
+      <label for="optie3">{{optie3.label}}</label>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "vraag5",
-  data() {
-    
+  data() {    
     return {
-      vraag1: {label:"Stijgt",value:1},
-      vraag2: {label:"Blijft Gelijk",value:2},
-      vraag3: {label:"Daalt",value:3},
-      antwoord: this.$store.getters.getAntwoordVraag5,
+      vraag: "vraag5",
+      optie1: {label:"Stijgt",value:1},
+      optie2: {label:"Blijft Gelijk",value:2},
+      optie3: {label:"Daalt",value:3},
+      antwoord: ``
     };
   },
   methods: {
     opslag(value) {
-      this.$store.commit('setAntwoordVraag5',value);
+      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
     },
   },
 };

@@ -14,15 +14,14 @@
 
 <script>
 export default {
-  name: "vraag2",
   data() {
     return {
-      antwoord: this.$store.getters.antwoordVraag2,
+      vraag: "vraag2",
     };
   },
   methods: {
     opslag(value) {
-      this.$store.commit('setAntwoordVraag2', value);
+      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
     },
   },
 };

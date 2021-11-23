@@ -9,21 +9,21 @@
       v-model="value"
       @change="opslag(value)"
     />
-    <label>{{value }}%</label>
+    <label>{{value}}%</label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "vraag3",
   data() {
     return {
+      vraag: "vraag3",
       value: 50,
     };
   },
   methods: {
     opslag(value) {
-      this.$store.commit('setAntwoordVraag3', value);
+      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
     },
   },
 };

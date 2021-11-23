@@ -16,16 +16,16 @@
 
 <script>
 export default {
-  name: "vraag7",
   data() {
     return {
+      vraag: "vraag7",
       value: 5,
     };
   },
  
   methods: {
     opslag(value) {
-      this.$store.commit('setAntwoordVraag7',value);
+      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
     },
   },
 };

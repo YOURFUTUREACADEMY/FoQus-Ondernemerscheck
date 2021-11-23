@@ -15,13 +15,15 @@
         </div>  
       </section>
       <section class="TO DO verwijderen">
-        <h3>Antwoord vraag 1: {{this.$store.state.antwoordVraag1.waarde}}</h3>
-        <h3>Antwoord vraag 2: {{this.$store.state.antwoordVraag2.waarde}}</h3>
-        <h3>Antwoord vraag 3: {{this.$store.state.antwoordVraag3.waarde}}</h3>
-        <h3>Antwoord vraag 4: {{this.$store.state.antwoordVraag4.waarde}}</h3>
-        <h3>Antwoord vraag 5: {{this.$store.state.antwoordVraag5.waarde}}</h3>
-        <h3>Antwoord vraag 6: {{this.$store.state.antwoordVraag6.waarde}}</h3>
-        <h3>Antwoord vraag 7: {{this.$store.state.antwoordVraag7.waarde}}</h3>
+        <h3>Getter Antwoord vraag 1: {{this.$store.getters.getAntwoord(`vraag1`)}}</h3>
+        <h3>Antwoord vraag 1: {{this.$store.state.antwoord.vraag1}}</h3>
+        <h3>Getter Antwoord vraag 2: {{this.$store.getters.getAntwoord(`vraag2`)}}</h3>
+        <h3>Antwoord vraag 2: {{this.$store.state.antwoord.vraag2}}</h3>
+        <h3>Antwoord vraag 3: {{this.$store.state.antwoord.vraag3}}</h3>
+        <h3>Antwoord vraag 4: {{this.$store.state.antwoord.vraag4}}</h3>
+        <h3>Antwoord vraag 5: {{this.$store.state.antwoord.vraag5}}</h3>
+        <h3>Antwoord vraag 6: {{this.$store.state.antwoord.vraag6}}</h3>
+        <h3>Antwoord vraag 7: {{this.$store.state.antwoord.vraag7}}</h3>
         <button class="backBtn" @click="$router.push('/')">
           terug naar begin
         </button>
