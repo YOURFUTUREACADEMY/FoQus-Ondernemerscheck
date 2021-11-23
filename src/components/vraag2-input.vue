@@ -17,6 +17,7 @@ export default {
   name: "vraag2",
   data() {
     return {
+      antwoord: this.$store.getters.antwoordVraag2,
     };
   },
   methods: {

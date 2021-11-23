@@ -19,7 +19,7 @@ export default {
   name: "vraag7",
   data() {
     return {
-      value:1,
+      value: 5,
     };
   },
  

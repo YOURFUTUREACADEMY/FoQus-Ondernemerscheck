@@ -3,7 +3,7 @@
     <header role="banner">
       <img
         class="foqusLogo"
-        src="../assets/images/FoQus-Werkt.jpg"
+        src="../assets/images/FoQus-Werkt.png"
         role="figure"
       />
     </header>
@@ -17,7 +17,7 @@
       <section class="TO DO verwijderen">
         <h3>Antwoord vraag 1: {{this.$store.state.antwoordVraag1.waarde}}</h3>
         <h3>Antwoord vraag 2: {{this.$store.state.antwoordVraag2.waarde}}</h3>
-        <h3>Antwoord vraag 3: {{this.$store.state.antwoordVraag3.waarde}}%</h3>
+        <h3>Antwoord vraag 3: {{this.$store.state.antwoordVraag3.waarde}}</h3>
         <h3>Antwoord vraag 4: {{this.$store.state.antwoordVraag4.waarde}}</h3>
         <h3>Antwoord vraag 5: {{this.$store.state.antwoordVraag5.waarde}}</h3>
         <h3>Antwoord vraag 6: {{this.$store.state.antwoordVraag6.waarde}}</h3>

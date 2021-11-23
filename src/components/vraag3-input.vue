@@ -18,7 +18,7 @@ export default {
   name: "vraag3",
   data() {
     return {
-      value: 0,
+      value: 50,
     };
   },
   methods: {

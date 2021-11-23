@@ -7,9 +7,9 @@
         v-model="antwoord"
         @change="opslag(antwoord)"
         id="vraag1"
-        :value="vraag1"
+        :value="vraag1.value"
       />
-      <label for="vraag1">{{vraag1}}</label>
+      <label for="vraag1">{{vraag1.label}}</label>
     </div>
     <div>
       <input
@@ -17,9 +17,9 @@
         v-model="antwoord"
         @change="opslag(antwoord)"
         id="vraag2"
-        :value="vraag2"
+        :value="vraag2.value"
       />
-      <label for="vraag2">{{vraag2}}</label>
+      <label for="vraag2">{{vraag2.label}}</label>
     </div>
     <div>
       <input
@@ -27,9 +27,9 @@
         v-model="antwoord"
         @change="opslag(antwoord)"
         id="vraag3"
-        :value="vraag3"
+        :value="vraag3.value"
       />
-      <label for="vraag3">>{{vraag3}}</label>
+      <label for="vraag3">>{{vraag3.label}}</label>
     </div>
   </div>
 </template>
@@ -39,9 +39,10 @@ export default {
   name: "vraag4",
   data() {
     return {
-      vraag1: "<= 0,5 jaar",
-      vraag2: "0,5-1,5 jaar",
-      vraag3: "1,5 jaar",
+      vraag1: {label:"<= 0,5 jaar",value:1},
+      vraag2: {label:"0,5-1,5 jaar",value:2},
+      vraag3: {label:"1,5 jaar",value:3},
+      antwoord: this.$store.getters.antwoordVraag4,
     };
   },
   methods: {

@@ -3,7 +3,7 @@
     <header role="banner">
       <img
         class="foqusLogo"
-        src="../assets/images/FoQus-Werkt.jpg"
+        src="../assets/images/FoQus-Werkt.png"
         role="figure"
       />
     </header>
