@@ -77,7 +77,7 @@ export default {
   computed:{
     switchLabelNxtBtn(){       
       let newLabel;
-      if(this.activeStep < this.questions){
+      if(this.activeStep < this.vragen){
         newLabel = this.page.nextBtn.label;        
       }
       else{ 
