@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 role="heading">"Hoe lang geleden heb je een nieuw product/model of nieuwe dienst gelanceerd"</h3>
+    <h3 role="heading">Hoe lang geleden heb je een nieuw product/model of nieuwe dienst gelanceerd</h3>
     <div>
       <input
         type="radio"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 role="heading">"Hoeveel uur besteed jij per week aan je bedrijf?"</h3>
+    <h3 role="heading">Hoeveel uur besteed jij per week aan je bedrijf?</h3>
     <div>
       <input
         type="number"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 role="heading">"Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?"</h3>
+    <h3 role="heading">Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?</h3>
     <i class="fa fa-frown-o" style="color:black" aria-hidden="true"></i>
     <input
       type="range"

@@ -21,8 +21,10 @@
           <label for="progBarQ"> {{ activeStep }}/7 </label>
         </div>  
         <button class="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
-          volgende
+          {{switchLabelNxtBtn}}
         </button>
+        <p>{{page.nextBtn.label}}</P>
+        <p>{{page.link.label}}</P>
       </section>
     </main>
   </div>
@@ -43,7 +45,17 @@ export default {
     return { 
       activeStep: 1,
       vragen: 7,
+      page:{
+        nextBtn:{
+          label:"volgende"
+        },
+        link:{
+          label:"score"
+        }
+      }
+    //end return
     };
+  //end data  
   },
   components: {
     vraag1,
@@ -60,6 +72,20 @@ export default {
         this.$router.push('/scorescherm');
       }
     }
+  },
+
+  computed:{
+    switchLabelNxtBtn(){       
+      let newLabel;
+      if(this.activeStep < this.questions){
+        newLabel = this.page.nextBtn.label;        
+      }
+      else{ 
+        newLabel = this.page.link.label;
+      }
+      return{newLabel}
+    } 
   }
+//end export
 };
 </script>
