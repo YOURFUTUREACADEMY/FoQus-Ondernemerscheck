@@ -7,7 +7,7 @@
       min=1
       max=10
       v-model="value"
-      @change="opslag(value)"
+      @change='opslag("",value)'
     />
     <label>{{value}}</label>
     <i class="fa fa-smile-o" style="color:black" aria-hidden="true"></i>
@@ -24,8 +24,12 @@ export default {
   },
  
   methods: {
-    opslag(value) {
-      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
+    opslag(label, waarde) {
+      this.$store.commit('setAntwoord',{
+        vraag:this.vraag,
+        label:label,
+        waarde:waarde
+      });
     },
   },
 };

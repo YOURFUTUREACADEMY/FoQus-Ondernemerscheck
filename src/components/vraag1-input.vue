@@ -6,7 +6,7 @@
       <input
         type="number"
         v-model="antwoord"
-        @change="opslag(antwoord)"
+        @change='opslag("", antwoord)'
       />
     </div>
   </div>
@@ -20,8 +20,12 @@ export default {
     };
   },
   methods: {
-    opslag(value) {
-      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
+    opslag(label, waarde) {
+      this.$store.commit('setAntwoord',{
+        vraag:this.vraag,
+        label:label,
+        waarde:waarde
+      });
     },
   },
 };

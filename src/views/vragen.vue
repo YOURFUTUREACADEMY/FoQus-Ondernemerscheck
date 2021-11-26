@@ -19,12 +19,20 @@
         <div>   
           <progress id="progBarQ" :value="activeStep" max="7"></progress>
           <label for="progBarQ"> {{ activeStep }}/7 </label>
-        </div>  
-        <button class="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
-          {{switchLabelNxtBtn}}
+        </div> 
+        <!-- TO DO terug knop verwijderen --> 
+        <button class="terugBtn" @click="activeStep--" v-show="activeStep > 0">
+          terug
         </button>
-        <p>{{page.nextBtn.label}}</P>
-        <p>{{page.link.label}}</P>
+        <button class="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
+          {{switchLabelNxtBtn.label}}
+        </button>
+        <!-- TO DO storetest knop verwijderen -->
+        <br>
+        <br>
+        <button class="volgendeBtn" @click="this.$router.push('/storetest');">
+          REMOVE: go to store test
+        </button>
       </section>
     </main>
   </div>
@@ -45,15 +53,7 @@ export default {
     return { 
       activeStep: 1,
       vragen: 7,
-      page:{
-        nextBtn:{
-          label:"volgende"
-        },
-        link:{
-          label:"score"
-        }
-      }
-    //end return
+     //end return
     };
   //end data  
   },
@@ -76,14 +76,14 @@ export default {
 
   computed:{
     switchLabelNxtBtn(){       
-      let newLabel;
+      let label;
       if(this.activeStep < this.vragen){
-        newLabel = this.page.nextBtn.label;        
+        label = "volgende";        
       }
       else{ 
-        newLabel = this.page.link.label;
+        label = "ga naar score";
       }
-      return{newLabel}
+      return{label}
     } 
   }
 //end export

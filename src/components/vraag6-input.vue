@@ -5,7 +5,7 @@
       <input
         type="radio"
         v-model="antwoord"
-        @change="opslag(antwoord)"
+        @change='opslag(optie1.label,antwoord)'
         id="optie1"
         :value="optie1.value" 
       />
@@ -15,7 +15,7 @@
       <input
         type="radio"
         v-model="antwoord"
-        @change="opslag(antwoord)"
+        @change='opslag(optie2.label,antwoord)'
         id="optie2"
         :value="optie2.value"
       />
@@ -25,7 +25,7 @@
       <input
         type="radio"
         v-model="antwoord"
-        @change="opslag(antwoord)"
+        @change='opslag(optie3.label,antwoord)'
         id="optie3"
         :value="optie3.value"
       />
@@ -48,8 +48,12 @@ export default {
     };
   },
   methods: {
-    opslag(value) {
-      this.$store.commit('setAntwoord',{vraag:this.vraag,payload:value});
+    opslag(label, waarde) {
+      this.$store.commit('setAntwoord',{
+        vraag:this.vraag,
+        label:label,
+        waarde:waarde
+      });
     },
   },
 };
