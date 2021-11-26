@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <h3 role="heading">Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)</h3>
-    <div>
-      <h3>Aantal mensen in dienst:</h3>
-      <input
-        type="number"
-        v-model="antwoord"
-        @change='opslag("", antwoord)'
-      />
-    </div>
+  <h3 class="header" role="heading">Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)</h3>
+  <div class="container-vragen">
+    <h3>Aantal mensen in dienst:</h3>
+    <input
+      type="number"
+      v-model="antwoord"
+      @change='opslag("", antwoord)'
+    />
   </div>
 </template>
 
@@ -16,7 +14,8 @@
 export default {
   data() {
     return {
-      vraag: "vraag1",
+      antwoord:"",
+      vraag: "vraag1",      
     };
   },
   methods: {

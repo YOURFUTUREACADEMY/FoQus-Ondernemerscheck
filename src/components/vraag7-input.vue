@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h3 role="heading">Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?</h3>
-    <i class="fa fa-frown-o" style="color:black" aria-hidden="true"></i>
+  <h3 class="header" role="heading">Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?</h3>
+  <div class="container-vragen">
+    <i class="fa fa-frown-o" aria-hidden="true"></i>
     <input
       type="range"
       min=1
@@ -10,7 +10,7 @@
       @change='opslag("",value)'
     />
     <label>{{value}}</label>
-    <i class="fa fa-smile-o" style="color:black" aria-hidden="true"></i>
+    <i class="fa fa-smile-o" aria-hidden="true"></i>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3 role="heading">Welk percentage van de omzet draai jij bij je 3 belangrijkste klanten?</h3>
+  <h3 class="header" role="heading">Welk percentage van de omzet draai jij bij je 3 belangrijkste klanten?</h3>
+  <div class="container-vragen">
     <input
       type="range"
       min=0

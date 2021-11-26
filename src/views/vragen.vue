@@ -2,13 +2,13 @@
   <div>
     <header role="banner">
       <img
-        class="foqusLogo"
+        class="foqusLogo img-fluid"
         src="../assets/images/FoQus-Werkt.png"
         role="figure"
       />
     </header>
     <main>
-      <section role="contentinfo">
+      <section class="container" role="contentinfo">
         <vraag1 v-if="activeStep == 1"></vraag1>
         <vraag2 v-if="activeStep == 2"></vraag2>
         <vraag3 v-if="activeStep == 3"></vraag3>
@@ -16,21 +16,27 @@
         <vraag5 v-if="activeStep == 5"></vraag5>
         <vraag6 v-if="activeStep == 6"></vraag6>
         <vraag7 v-if="activeStep == 7"></vraag7>
-        <div>   
-          <progress id="progBarQ" :value="activeStep" max="7"></progress>
-          <label for="progBarQ"> {{ activeStep }}/7 </label>
+        
+        <div class="container-progBarQ">   
+          <progress id="progBarQ" :value="activeStep" :max="vragen"></progress>
+          <label for="progBarQ"> {{activeStep}}/{{vragen}} </label>
         </div> 
-        <!-- TO DO terug knop verwijderen --> 
-        <button class="terugBtn" @click="activeStep--" v-show="activeStep > 0">
-          terug
-        </button>
-        <button class="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
-          {{switchLabelNxtBtn.label}}
-        </button>
+        
+        <!-- TO DO change showBackBtn to false // Use showBackBtn to add / remove the back button -->
+        <div class="container-btn">
+          <button v-if='showBackBtn===true' class="btn" @click="activeStep--" v-show="activeStep > 1">
+            terug
+          </button>
+              
+          <button class="btn" id="terugBtn" @click="activeStep++, goToResult(activeStep)">
+            {{switchLabelNxtBtn.label}}
+          </button>
+        </div>
+
         <!-- TO DO storetest knop verwijderen -->
         <br>
         <br>
-        <button class="volgendeBtn" @click="this.$router.push('/storetest');">
+        <button class="btn" id="volgendeBtn" @click="this.$router.push('/storetest');">
           REMOVE: go to store test
         </button>
       </section>
@@ -52,6 +58,7 @@ export default {
   data() {
     return { 
       activeStep: 1,
+      showBackBtn:true,
       vragen: 7,
      //end return
     };
@@ -66,6 +73,7 @@ export default {
     vraag6,
     vraag7,
   },
+  // ga naar score scherm
   methods:{
     goToResult(value){
       if(value > this.vragen){
@@ -73,7 +81,7 @@ export default {
       }
     }
   },
-
+  // wissel label op als het aantal vragen is bereikt
   computed:{
     switchLabelNxtBtn(){       
       let label;

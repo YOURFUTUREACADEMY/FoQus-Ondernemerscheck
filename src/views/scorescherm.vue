@@ -10,7 +10,7 @@
 
     <main>
       <hr>
-      <section class="contentinfo">
+      <section class="container" role="contentinfo">
       
         <div class="container">
           <h3>Jouw score is:{{score}}</h3>

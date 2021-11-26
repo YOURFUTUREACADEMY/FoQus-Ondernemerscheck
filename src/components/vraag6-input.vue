@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3 role="heading">Hoe gaat het met je resultaat?</h3>
+  <h3 class="header" role="heading">Hoe gaat het met je resultaat?</h3>
+  <div class="container-vragen">
     <div>
       <input
         type="radio"

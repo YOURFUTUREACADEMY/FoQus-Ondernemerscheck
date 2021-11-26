@@ -23,10 +23,10 @@
         <br>
         <h3>Vraag 7 Antwoord label: {{this.$store.getters.getAntwoord(`vraag7`).label}}</h3>
         <h3>Vraag 7 Antwoord waarde: {{this.$store.getters.getAntwoord(`vraag7`).waarde}}</h3>
-        <button class="backBtn" @click="$router.push('/')">
+        <button class="btn" @click="$router.push('/')">
           Naar begin
         </button>
-        <button class="backBtn" @click="$router.push('/scorescherm')">
+        <button class="btn" @click="$router.push('/scorescherm')">
           Naar score 
         </button>
       </section>
