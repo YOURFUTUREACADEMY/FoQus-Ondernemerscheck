@@ -5,7 +5,7 @@
         class="foqusLogo"
         src="../assets/images/FoQus-Werkt.png"
         role="figure"
-      />
+      >
     </header>
 
     <main>
@@ -15,8 +15,9 @@
         <div class="container">
           <h3>Jouw score is:{{score}}</h3>
           
-          <div class="Score-bubble">
-            <i :class="scoreCondition.visual.fa" :style="{ color:'scoreCondition.visual.color' }" aria-hidden="true"></i>
+          <div class="Score-bubble" :style="{ color:scoreCondition.visual.color }">
+            <img class="Score-bubble-image" :src="scoreCondition.visual.image" role="figure" >
+            <p>{{scoreCondition.visual.image}}</p>
           </div> 
           
           <div class="vl"></div>
@@ -29,7 +30,7 @@
           </blockquote> 
           
           <div class="Legenda">
-              <div class="Legenda-bubble" :style="{ color:'scoreCondition.visual.color' }"></div>      
+              <div class="Legenda-bubble" :style="{ color:scoreCondition.visual.color }"></div>      
               <p>{{scoreCondition.visual.label}}</p>
           </div> 
 
@@ -82,35 +83,35 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      score: 1,
+      score: 120,
       signalWaarde:"TO DO",
       naam:"TO DO",
       emailControle:"TO DO",
       // status state -> conditie -> score, kleur , label , font awesome class 
       statusState:{
-        slecht:{score:5, kleur:"rood",label:"Stop",fa:"far fa-hand-paper"},
-        gemiddeld:{score:10, kleur:"oranje",label:"Let op",fa:"fa fa-exclamation-triangle"},
-        goed:{score:15, kleur:"groen",label:"Ga zo door",fa:"far fa-thumbs-up"}},
+        slecht:{score:5, kleur:"rood",label:"Stop",image:"../assets/images/Bubble-rood.png"},
+        gemiddeld:{score:10, kleur:"oranje",label:"Let op",image:"../assets/images/Bubble-oranje.png"},
+        goed:{score:15, kleur:"groen",label:"Ga zo door",image:"../assets/images/Bubble-groen.png"}},
     }; //end return
   }, //end data
   computed:{
     scoreCondition(){
-      let visual = {fa:"",color:"",label:""}
+      let visual = {image:"",color:"",label:""}
       // zet conditie slecht
       if(this.score < this.statusState.slecht.score){
-          visual.fa = this.statusState.slecht.fa
+          visual.image = this.statusState.slecht.image
           visual.color = this.statusState.slecht.kleur
           visual.label = this.statusState.slecht.label
       }
       // zet conditie gemiddeld
       else if(this.score >= this.statusState.slecht.score && this.score < this.statusState.goed.score){
-          visual.fa = this.statusState.gemiddeld.fa
+          visual.image = this.statusState.gemiddeld.image
           visual.color = this.statusState.gemiddeld.kleur
           visual.label = this.statusState.gemiddeld.label
       }
             // zet conditie gemiddelde
       else if(this.score >= this.statusState.goed.score){
-          visual.fa = this.statusState.goed.fa
+          visual.image = this.statusState.goed.image
           visual.color = this.statusState.goed.kleur
           visual.label = this.statusState.goed.label
       }

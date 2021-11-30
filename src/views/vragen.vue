@@ -7,8 +7,8 @@
         role="figure"
       />
     </header>
-    <main>
-      <section class="container" role="contentinfo">
+    <main >
+      <section class="container container-fluid mx-0 px-0" role="contentinfo">
         <vraag1 v-if="activeStep == 1"></vraag1>
         <vraag2 v-if="activeStep == 2"></vraag2>
         <vraag3 v-if="activeStep == 3"></vraag3>
@@ -17,18 +17,19 @@
         <vraag6 v-if="activeStep == 6"></vraag6>
         <vraag7 v-if="activeStep == 7"></vraag7>
         
-        <div class="container-progBarQ">   
-          <progress id="progBarQ" :value="activeStep" :max="vragen"></progress>
-          <label for="progBarQ"> {{activeStep}}/{{vragen}} </label>
+        <div class="container-progBarQ progress rounded-0">           
+          <div class="progBarQ progress-bar" :style="{width:progBarwidth.width+'%'}" :aria-valuenow="progBarwidth.width" aria-valuemin="1" :aria-valuemax="vragen" >
+            <p class="me-5 mt-2">{{activeStep}}/{{vragen}}</p>
+          </div>
         </div> 
         
         <!-- TO DO change showBackBtn to false // Use showBackBtn to add / remove the back button -->
         <div class="container-btn">
-          <button v-if='showBackBtn===true' class="btn" @click="activeStep--" v-show="activeStep > 1">
+          <button v-if='showBackBtn===true' id="terugBtn" class="btn" @click="activeStep--" v-show="activeStep > 1">
             terug
           </button>
               
-          <button class="btn" id="terugBtn" @click="activeStep++, goToResult(activeStep)">
+          <button class="btn" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>
         </div>
@@ -36,7 +37,7 @@
         <!-- TO DO storetest knop verwijderen -->
         <br>
         <br>
-        <button class="btn" id="volgendeBtn" @click="this.$router.push('/storetest');">
+        <button @click="this.$router.push('/storetest');">
           REMOVE: go to store test
         </button>
       </section>
@@ -92,7 +93,12 @@ export default {
         label = "ga naar score";
       }
       return{label}
-    } 
+    },
+    progBarwidth(){
+      let width  = Math.round((this.activeStep/this.vragen)*100);
+      return{width}
+    }
+  //end computed   
   }
 //end export
 };
