@@ -47,7 +47,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   background-color: #1E8A8C;
-  height: 20em;
+  height: 20%;
   margin: 0%;
 }
 
