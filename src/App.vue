@@ -41,6 +41,7 @@ body {
   padding: 5% 0;
 }
 
+
 .container-progBarQ{
   background-color: var(--grijs);
 }
@@ -69,7 +70,18 @@ body {
  align-self: flex-start;
 }
 
+
 #volgendeBtn{
   align-self: flex-start;
 }
+
+.container-score {
+  background-color: var(--grijs);
+  height: 15em;
+}
+
+.header-score{
+   color: var(--oranje);
+}
+
 </style>

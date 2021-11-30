@@ -12,8 +12,8 @@
       <hr>
       <section class="container" role="contentinfo">
       
-        <div class="container">
-          <h3>Jouw score is:{{score}}</h3>
+        <div class="container-score ">
+          <h3 class="header-score">Jouw score is:{{score}}</h3>
           
           <div class="Score-bubble" :style="{ color:scoreCondition.visual.color }">
             <img class="Score-bubble-image" :src="scoreCondition.visual.image" role="figure" >

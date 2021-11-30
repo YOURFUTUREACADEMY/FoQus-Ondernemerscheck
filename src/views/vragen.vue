@@ -8,7 +8,7 @@
       />
     </header>
     <main >
-      <section class="container container-fluid mx-0 px-0" role="contentinfo">
+      <section class="container-vragen container-fluid mx-0 px-0" role="contentinfo">
         <vraag1 v-if="activeStep == 1"></vraag1>
         <vraag2 v-if="activeStep == 2"></vraag2>
         <vraag3 v-if="activeStep == 3"></vraag3>
@@ -25,11 +25,11 @@
         
         <!-- TO DO change showBackBtn to false // Use showBackBtn to add / remove the back button -->
         <div class="container-btn">
-          <button v-if='showBackBtn===true' id="terugBtn" class="btn" @click="activeStep--" v-show="activeStep > 1">
+          <button class="btn mt-2" id="terugBtn" v-if='showBackBtn===true' @click="activeStep--" v-show="activeStep > 1">
             terug
           </button>
               
-          <button class="btn" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
+          <button class="btn mt-2" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>
         </div>
