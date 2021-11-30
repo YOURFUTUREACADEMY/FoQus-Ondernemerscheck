@@ -10,8 +10,17 @@
   text-align: center;
 }
 
+:root {
+  --lichtBlauw: #D3F1F3;
+  --donkerBlauw: #08344D;
+  --lichtTurquoise: #1DBAC1;
+  --donkerTurquoise: #1E8A8C;
+  --oranje: #F6AF23;
+  --grijs: #E7E6E6;
+}
+
 body {
-  color:#D3F1F3;
+  color: var(--lichtBlauw);
   font-size: 13px;
   margin:0%;
 }
@@ -21,23 +30,23 @@ body {
 }
 
 .header {
-  background-color: #1E8A8C;
+  background-color: var(--donkerTurquoise);
   height: 5em;
   margin: 0%;
 }
 
 .container-vragen {
-  background-color: #1DBAC1;
-  height: 15em;
+  background-color: var(--lichtTurquoise);
   margin: 0%;
+  padding: 5% 0;
 }
 
 .container-progBarQ{
-  background-color: #E7E6E6;
+  background-color: var(--grijs);
 }
 
 .progBarQ{
-  background-color: #08344D;
+  background-color: var(--donkerBlauw);
   text-align: right;
   height: 25px;
 }
@@ -46,14 +55,14 @@ body {
   display:flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: #1E8A8C;
-  height: 20%;
+  background-color: var(--donkerTurquoise);
+  height: 20em;
   margin: 0%;
 }
 
 .btn{
-  background-color: #F6AF23;
-  color:#D3F1F3;
+  background-color: var(--oranje);
+  color: var(--lichtBlauw);
 }
 
 #terugBtn{
