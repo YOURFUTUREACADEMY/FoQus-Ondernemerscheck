@@ -27,17 +27,19 @@ body {
 }
 
 .foqusLogo{
-  height:10em;
+  height:100px;
 }
 
 .header {
   background-color: var(--donkerTurquoise);
+  height: 100px;
   padding: 2% 0;
   margin: 0%;
 }
 
 .container-vragen {
   background-color: var(--lichtTurquoise);
+  height: 300px;
   margin: 0%;
   padding: 5% 0;
 }
@@ -58,7 +60,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   background-color: var(--donkerTurquoise);
-  height: 20em;
+  height: 250px;
   margin: 0%;
 }
 
@@ -87,7 +89,7 @@ body {
 
 .container-score {
   background-color: var(--grijs);
-  height: 15em;
+  height: 300px;
 }
 
 .header-score{
