@@ -32,7 +32,7 @@ body {
 
 .header {
   background-color: var(--donkerTurquoise);
-  height: 5em;
+  padding: 2% 0;
   margin: 0%;
 }
 
