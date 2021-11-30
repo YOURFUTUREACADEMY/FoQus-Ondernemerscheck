@@ -17,6 +17,7 @@
   --donkerTurquoise: #1E8A8C;
   --oranje: #F6AF23;
   --grijs: #E7E6E6;
+  --zwart: #030303ec;
 }
 
 body {
@@ -75,13 +76,26 @@ body {
   align-self: flex-start;
 }
 
+/* CSS Score scherm */
+.hr{
+  background-color: var(--donkerTurquoise);
+}
+
+.section-score{
+  background-color: var(--lichtTurquoise);
+}
+
 .container-score {
   background-color: var(--grijs);
   height: 15em;
 }
 
 .header-score{
-   color: var(--oranje);
+  color: var(--oranje);
+}
+
+.text-score{
+  color: var(--zwart)
 }
 
 </style>

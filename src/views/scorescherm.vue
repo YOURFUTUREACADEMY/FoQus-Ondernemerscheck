@@ -9,9 +9,9 @@
     </header>
 
     <main>
-      <hr>
-      <section class="container" role="contentinfo">
       
+      <section class="section-score" role="contentinfo">
+        <hr class="hr">
         <div class="container-score ">
           <h3 class="header-score">Jouw score is:{{score}}</h3>
           
@@ -22,7 +22,7 @@
           
           <div class="vl"></div>
 
-          <blockquote>
+          <blockquote class="text-score">
             Je hebt 7 vragen beantwoord die iets zeggen over hoe je 
             ervoor staat als ondernemer. De antwoorden zijn niet goed 
             of fout In combinatie hebben ze een signaalfunctie. Voor 
@@ -31,12 +31,12 @@
           
           <div class="Legenda">
               <div class="Legenda-bubble" :style="{ color:scoreCondition.visual.color }"></div>      
-              <p>{{scoreCondition.visual.label}}</p>
+              <p class="text-score" >{{scoreCondition.visual.label}}</p>
           </div> 
 
-          <p>Ontvang direct het gehele reultaat als rapport in je mailbox.</p>
+          <p class="text-score" >Ontvang direct het gehele reultaat als rapport in je mailbox.</p>
 
-          <div class="input-naam">
+          <div class="input-naam text-score">
             <label for="naam" >Naam </label>
             <input 
               type="text"
@@ -45,7 +45,7 @@
             >
           </div>
 
-          <div class="input-email">
+          <div class="input-email text-score">
             <label for="emailControle" >Emailadres </label>
             <input 
               type="email"
