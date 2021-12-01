@@ -8,7 +8,7 @@
       />
     </header>
     <main >
-      <section class="container-vragen container-fluid mx-0 px-0" role="contentinfo">
+      <section class="container-fluid mx-0 px-0" role="contentinfo">
         <vraag1 v-if="activeStep == 1"></vraag1>
         <vraag2 v-if="activeStep == 2"></vraag2>
         <vraag3 v-if="activeStep == 3"></vraag3>
@@ -19,17 +19,17 @@
         
         <div class="container-progBarQ progress rounded-0">           
           <div class="progBarQ progress-bar" :style="{width:progBarwidth.width+'%'}" :aria-valuenow="progBarwidth.width" aria-valuemin="1" :aria-valuemax="vragen" >
-            <p class="me-5 mt-2">{{activeStep}}/{{vragen}}</p>
+            <p class="mx-auto mt-2">{{activeStep}}/{{vragen}}</p>
           </div>
         </div> 
         
         <!-- TO DO change showBackBtn to false // Use showBackBtn to add / remove the back button -->
         <div class="container-btn">
-          <button class="btn mt-2" id="terugBtn" v-if='showBackBtn===true' @click="activeStep--" v-show="activeStep > 1">
+          <button class="btn btn-sm mt-2" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
             terug
           </button>
               
-          <button class="btn mt-2" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
+          <button class="btn btn-sm mt-2" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>
         </div>

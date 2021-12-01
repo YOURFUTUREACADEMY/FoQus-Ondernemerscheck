@@ -20,7 +20,7 @@
           </div>
         </div>  
         <div class="container-btn">   
-          <button class="btn" id="volgendeBtn" @click="$router.push('/vragen')">
+          <button class="btn btn-sm mt-2" id="volgendeBtn" @click="$router.push('/vragen')">
             volgende
           </button>
         </div>  

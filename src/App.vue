@@ -17,6 +17,7 @@
   --donkerTurquoise: #1E8A8C;
   --oranje: #F6AF23;
   --grijs: #E7E6E6;
+  --donkerGrijs: #e7e6e69a;
   --zwart: #030303ec;
 }
 
@@ -79,21 +80,43 @@ body {
 }
 
 /* CSS Score scherm */
-.hr{
-  background-color: var(--donkerTurquoise);
+/* horizontale lijn tussen section en container */
+.hl{
+  background-color: var(--donkerBlauw);
+}
+
+/* verticale lijn tussen score bubble en block quote */
+.vl{
+  /* background-color: var(--donkerGrijs); */
+  background-color: rgb(161, 159, 159); /* <----- TO DO Variable zie regel 90 */
+  height: 90px;
+  width: 2px;
 }
 
 .section-score{
-  background-color: var(--lichtTurquoise);
+  background-color: var(--donkerTurquoise);
+  height: 525px;
 }
 
 .container-score {
   background-color: var(--grijs);
-  height: 300px;
+  height: 500px;
 }
 
 .header-score{
   color: var(--oranje);
+}
+
+.score-bubble{
+  border: 1px solid;
+  height: 100px;
+  width: 100px; 
+}
+
+.legenda-bubble{
+  border: 1px solid;
+  height: 25px;
+  width: 25px;
 }
 
 .text-score{
