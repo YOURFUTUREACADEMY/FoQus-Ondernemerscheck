@@ -1,23 +1,22 @@
 <template>
-  <h3 class="header" role="heading">Hoe lang geleden heb je een nieuw product/model of nieuwe dienst gelanceerd</h3>
-  
-  <div class="container-vragen d-flex flex-column d-flex justify-content-center" >
-   
-    <div class="me-2">
+  <h1 class="header text-center" role="heading">Hoe lang geleden heb je een nieuw product/model of nieuwe dienst gelanceerd</h1>
+ <div class="container-vragen d-flex justify-content-center align-items-center">
+ <div>
+    <div class="form-group">
       <input
-        class="radio-input form-check-input"
+        class="form-check-input"
         type="radio"
         v-model="antwoord"
         @change='opslag(optie1.label,antwoord)'
         id="optie1"
         :value="optie1.value"
       />
-      <label class="form-check-label label-radio ms-2" for="optie1">{{optie1.label}}</label>
+      <label class="form-check-label  ms-2" for="optie1">{{optie1.label}}</label>
     </div>
 
-    <div class="me-2">
+    <div class="form-group">
       <input
-        class="radio-input form-check-input"
+        class="form-check-input"
         type="radio"
         v-model="antwoord"
         @change='opslag(optie2.label,antwoord)'
@@ -27,9 +26,9 @@
       <label class="form-check-label label-radio ms-2" for="optie2">{{optie2.label}}</label>
     </div>
 
-    <div class="me-2">
+    <div class="form-group">
       <input
-        class="radio-input form-check-input"
+        class="form-check-input"
         type="radio"
         v-model="antwoord"
         @change='opslag(optie3.label,antwoord)'
@@ -38,7 +37,8 @@
       />
       <label class="form-check-label label-radio ms-2" for="optie3">{{optie3.label}}</label>
     </div>
-    
+  
+    </div>
   </div>
 </template>
 
@@ -64,3 +64,4 @@ export default {
   },
 };
 </script>
+

@@ -1,14 +1,18 @@
 <template>
-  <h3 class="header" role="heading">Hoeveel uur besteed jij per week aan je bedrijf?</h3>
-  <div class="container-vragen input-group d-flex flex-row d-flex justify-content-center d-flex align-items-center">
+  <h1 class="header text-center" role="heading">Hoeveel uur besteed jij per week aan je bedrijf?</h1>
+  <div class="container-vragen d-flex justify-content-center align-items-center">
+     <div class="row form-group">
+         <div class="col-auto">
     <input
-      class="number-input"
+      id="aantalUren"
+      class="form-control"
       type="number"
       v-model="antwoord"
       @change='opslag("",antwoord)'
-    />
-    <h3 class="mt-1 mx-3">uur</h3>
+    /></div>
+  <label class="col-auto col-form-label" for="aantalUren">Uur</label>
   </div>  
+  </div>
 </template>
 
 <script>

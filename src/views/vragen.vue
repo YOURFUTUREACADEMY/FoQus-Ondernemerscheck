@@ -1,14 +1,6 @@
 <template>
-  <div>
-    <header role="banner">
-      <img
-        class="foqusLogo img-fluid"
-        src="../assets/images/FoQus-Werkt.png"
-        role="figure"
-      />
-    </header>
+
     <main >
-      <section class="container-fluid mx-0 px-0" role="contentinfo">
         <vraag1 v-if="activeStep == 1"></vraag1>
         <vraag2 v-if="activeStep == 2"></vraag2>
         <vraag3 v-if="activeStep == 3"></vraag3>
@@ -24,12 +16,12 @@
         </div> 
         
         <!-- TO DO change showBackBtn to false // Use showBackBtn to add / remove the back button -->
-        <div class="container-btn">
-          <button class="btn btn-sm mt-2" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
+        <div class="container-btn pt-2">
+          <button class="btn btn-lg" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
             terug
           </button>
               
-          <button class="btn btn-sm mt-2" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
+          <button class="btn btn-lg" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>
         </div>
@@ -40,9 +32,9 @@
         <button @click="this.$router.push('/storetest');">
           REMOVE: go to store test
         </button> -->
-      </section>
+   
     </main>
-  </div>
+
 </template>
 
 <script>

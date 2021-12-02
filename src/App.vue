@@ -1,5 +1,15 @@
 <template>
+<div>
+  <header role="banner">
+      <img
+        class="foqusLogo img-fluid mx-auto d-block"
+        src="./assets/images/FoQus-Werkt.png"
+        role="figure"
+      />
+    </header>
   <router-view/>
+</div>
+
 </template>
 
 <style>
@@ -7,7 +17,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+
 }
 
 :root {
@@ -54,6 +64,10 @@ body {
   padding: 5% 0;
 }
 
+.progress{
+  height: 3rem;
+  font-size:1.5em;
+}
 
 .container-progBarQ{
   background-color: var(--grijs);
@@ -62,7 +76,7 @@ body {
 .progBarQ{
   background-color: var(--donkerBlauw);
   text-align: right;
-  height: 25px;
+
 }
 
 .container-btn{
@@ -96,14 +110,18 @@ body {
   width: 250px;
   border-color: var(--grijs);
 }
-
-.label-radio{
-  text-align: left;
-  width: 100px;
+.col-form-label, .form-control-range, .form-check-label{
+font-size: 1.5rem;
+padding-top: 0 !important;
+padding-bottom: 0 !important;
 }
 
+.form-check-input{
+  margin-top: 0 !important;
+  vertical-align: initial;}
+
 .range-input{
-  /*height: 25px;*/
+ width: 500px;
 }
 
 /* CSS Score scherm */
@@ -171,6 +189,7 @@ body {
 .text-score{
   color: var(--zwart);
   font-weight: 500;  
+      font-size: 1.1rem;
 }
 
 </style>

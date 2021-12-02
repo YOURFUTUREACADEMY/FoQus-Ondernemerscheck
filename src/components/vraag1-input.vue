@@ -1,13 +1,23 @@
 <template>
-  <h3 class="header" role="heading">Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)</h3>
-  <div class="container-vragen input-group d-flex flex-row d-flex justify-content-center d-flex align-items-center">
-    <h3 class="me-3 mt-2">Aantal mensen in dienst:</h3>
+
+  <h1 class="header text-center" role="heading">Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)</h1>
+  <div class="container-vragen d-flex justify-content-center align-items-center">
+  <div class="row form-group">
+    <label for="aantalMensen" class="col-auto col-form-label">Aantal mensen in dienst:</label>
+    <div class="col-auto">
     <input
-      class="number-input"
+      id="aantalMensen"
+      class="form-control"
       type="number"
       v-model="antwoord"
       @change='opslag("", antwoord)'
+    
     />
+    </div>
+  </div>
+
+ 
+    
   </div>
 </template>
 
@@ -21,6 +31,7 @@ export default {
   },
   methods: {
     opslag(label, waarde) {
+      
       this.$store.commit('setAntwoord',{
         vraag:this.vraag,
         label:label,
