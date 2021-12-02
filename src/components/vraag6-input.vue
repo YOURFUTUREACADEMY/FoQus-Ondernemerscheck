@@ -1,36 +1,44 @@
 <template>
   <h3 class="header" role="heading">Hoe gaat het met je resultaat?</h3>
-  <div class="container-vragen">
-    <div>
+  
+  <div class="container-vragen d-flex flex-column d-flex justify-content-center">
+    
+    <div class="me-2">
       <input
+        class="radio-input form-check-input"
         type="radio"
         v-model="antwoord"
         @change='opslag(optie1.label,antwoord)'
         id="optie1"
         :value="optie1.value" 
       />
-      <label for="optie1">{{optie1.label}}</label>
+      <label class="form-check-label label-radio ms-2" for="optie1">{{optie1.label}}</label>
     </div>
-    <div>
+    
+    <div class="me-2">
       <input
+        class="radio-input form-check-input"
         type="radio"
         v-model="antwoord"
         @change='opslag(optie2.label,antwoord)'
         id="optie2"
         :value="optie2.value"
       />
-      <label for="optie2">{{optie2.label}}</label>
+      <label class="form-check-label label-radio ms-2" for="optie2">{{optie2.label}}</label>
     </div>
-    <div>
+    
+    <div class="me-2">
       <input
+        class="radio-input form-check-input"
         type="radio"
         v-model="antwoord"
         @change='opslag(optie3.label,antwoord)'
         id="optie3"
         :value="optie3.value"
       />
-      <label for="optie3">{{optie3.label}}</label>
+      <label class="form-check-label label-radio ms-2" for="optie3">{{optie3.label}}</label>
     </div>
+  
   </div>
 </template>
 

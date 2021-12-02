@@ -1,0 +1,19 @@
+1 - Volgende knop intor pagina en vraag 1 ( als de terug knop niet getoond is verspringt de terug knop )
+2 - Kleur variable in CSS die niet goed worden over genomen (in style App.vue) -> Jesses
+    1 - .hl is een andere kleur 
+    2 - .vl kleur wordt helemaal niet over genomen.
+3 - Style Range input    
+4 - Style alle schermen afmaken
+    1 - intor
+    2 - Vraagen
+        1 - Vraag 1
+        2 - Vraag 2
+        3 - Vraag 3
+        4 - Vraag 4
+        5 - Vraag 5
+        6 - Vraag 6
+        7 - Vraag 7
+    3 - Scorescherm
+5 - Verwijderen test elementen ( Operkingen TO DO )( In laatste fasen uitvoeren) -> SB
+    1 - Naar storetest scherm en knoppen verwijderen. 
+6 - Score Berekeningen -> SB

@@ -19,6 +19,13 @@
   --grijs: #E7E6E6;
   --donkerGrijs: #e7e6e69a;
   --zwart: #030303ec;
+  /* kleuren score bubbles */
+  --scoreSlecht: #FF0000;
+  --borderSlecht: #9E0000;
+  --scoreMatig: #ED7D31;
+  --borderMatig: #AF5C23;
+  --scoreGoed: #00B050;
+  --borderGoed: #00843B;
 }
 
 body {
@@ -38,6 +45,8 @@ body {
   margin: 0%;
 }
 
+
+/* styling page vragen */
 .container-vragen {
   background-color: var(--lichtTurquoise);
   height: 300px;
@@ -79,6 +88,24 @@ body {
   align-self: flex-start;
 }
 
+
+/* styling components vragen */
+
+.number-input{
+  height:30px;
+  width: 250px;
+  border-color: var(--grijs);
+}
+
+.label-radio{
+  text-align: left;
+  width: 100px;
+}
+
+.range-input{
+  /*height: 25px;*/
+}
+
 /* CSS Score scherm */
 /* horizontale lijn tussen section en container */
 .hl{
@@ -88,7 +115,7 @@ body {
 /* verticale lijn tussen score bubble en block quote */
 .vl{
   /* background-color: var(--donkerGrijs); */
-  background-color: rgb(161, 159, 159); /* <----- TO DO Variable zie regel 90 */
+  background-color: rgb(161, 159, 159); /* <----- TO DO Variable zie regel hier boven */
   height: 90px;
   width: 2px;
 }
@@ -113,14 +140,37 @@ body {
   width: 100px; 
 }
 
+.score-slecht{
+  background-color: var(--scoreSlecht);
+  border-color: var(--borderSlecht);
+}
+
+.score-matig{
+  background-color: var(--scoreMatig);
+  border-color: var(--borderMatig);
+}
+  
+.score-goed{
+  background-color: var(--scoreGoed);
+  border-color: var(--borderGoed);
+}
+
 .legenda-bubble{
   border: 1px solid;
   height: 25px;
   width: 25px;
 }
 
+.label-naw{
+  margin-top:12px;
+  text-align: left;
+  
+  width:75px;
+}
+
 .text-score{
-  color: var(--zwart)
+  color: var(--zwart);
+  font-weight: 500;  
 }
 
 </style>

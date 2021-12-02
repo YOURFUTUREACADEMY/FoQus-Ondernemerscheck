@@ -1,8 +1,9 @@
 <template>
   <h3 class="header" role="heading">Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)</h3>
-  <div class="container-vragen">
-    <h3>Aantal mensen in dienst:</h3>
+  <div class="container-vragen input-group d-flex flex-row d-flex justify-content-center d-flex align-items-center">
+    <h3 class="me-3 mt-2">Aantal mensen in dienst:</h3>
     <input
+      class="number-input"
       type="number"
       v-model="antwoord"
       @change='opslag("", antwoord)'

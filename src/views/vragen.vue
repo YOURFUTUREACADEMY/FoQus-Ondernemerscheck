@@ -35,11 +35,11 @@
         </div>
 
         <!-- TO DO storetest knop verwijderen -->
-        <br>
+        <!-- <br>
         <br>
         <button @click="this.$router.push('/storetest');">
           REMOVE: go to store test
-        </button>
+        </button> -->
       </section>
     </main>
   </div>
