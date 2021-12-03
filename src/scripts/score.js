@@ -123,6 +123,9 @@ const resultaat = {
   vraag5 = {opmerking = "", berekening = "", totaal = "", score = ""},
   vraag6 = {opmerking = "", berekening = "", totaal = "", score = ""},
   vraag7 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  conclusieKleur = "",
+  conclusie1 = {opmerking = "", score = ""},
+  conclusie2 = {opmerking = "", score = ""},
 }
 
 function convertStrToNum(string){
@@ -302,12 +305,43 @@ else{
   resultaat.vraag7 = "FOUT: WAARDE VRAAG 7 BUITEN BEREIK";
 }
 
-// conclusie 1
+// conclusie
 // overal kleur
-const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score;
-// if(resultaat.vraag1.score === 1 && ){
+// bereken totaal score
+const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score + resultaat.vraag4.score + resultaat.vraag5.score + resultaat.vraag6.score;
 
-// }
+if(totaalScore <= 17){
+  resultaat.conclusieKleur = groen;
+}
+else if(totaalScore > 17 && totaalScore <= 85){
+  resultaat.conclusieKleur = oranje;
+}
+else if(totaalScore > 85){
+  resultaat.conclusieKleur = rood;
+}
+else{
+  resultaat.conclusieKleur = 0;
+}
+
+// conclusie 1: vraag 1,2,5 & 6
+if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
+  if(vraag5.waarde === 1 && vraag6.waarde === 1 || vraag6.waarde === 2){
+    resultaat.conclusie1.opmerking = opmerkingen.ConclusieV1[0];
+    resultaat.conclusie1.score = oranje;
+  }
+  else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 2 || vraag6.waarde === 3){
+    resultaat.conclusie1.opmerking = opmerkingen.ConclusieV1[1];
+    resultaat.conclusie1.score = rood;
+  }
+  else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 1 ){
+    resultaat.conclusie1.opmerking = opmerkingen.ConclusieV1[2];
+    resultaat.conclusie1.score = oranje;
+  }
+}
+
+// conclusie 2: vraag 4 & 6
+
+
 
 // end function score
 }
