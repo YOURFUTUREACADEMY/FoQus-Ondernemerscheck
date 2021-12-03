@@ -15,7 +15,7 @@
           </div>
         </div> 
         
-        <!-- TO DO change showBackBtn to false // Use showBackBtn to add / remove the back button -->
+        <!-- Use showBackBtn to add / remove the back button -->
         <div class="container-btn pt-2">
           <button class="btn btn-lg" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
             terug
@@ -25,7 +25,6 @@
             {{switchLabelNxtBtn.label}}
           </button>
         </div>
-
         <!-- TO DO storetest knop verwijderen -->
         <!-- <br>
         <br>

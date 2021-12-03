@@ -81,3 +81,233 @@ export default {
       }; //end return
     }, //end data
   }; // end export
+  
+
+function resultaatScore(opmerkingen){
+
+// haal store op
+const vraag1 = {
+    label = this.$store.getters.getAntwoord(`vraag1`).label,
+    waarde = this.$store.getters.getAntwoord(`vraag1`).waarde}
+
+const vraag2 = {
+  label = this.$store.getters.getAntwoord(`vraag2`).label,
+  waarde = this.$store.getters.getAntwoord(`vraag2`).waarde}
+
+const vraag3 = {
+  label = this.$store.getters.getAntwoord(`vraag3`).label,
+  waarde = this.$store.getters.getAntwoord(`vraag3`).waarde}
+
+const vraag4 = {
+  label = this.$store.getters.getAntwoord(`vraag4`).label,
+  waarde = this.$store.getters.getAntwoord(`vraag4`).waarde}
+    
+const vraag5 = {
+  label = this.$store.getters.getAntwoord(`vraag5`).label,
+  waarde = this.$store.getters.getAntwoord(`vraag5`).waarde}
+
+const vraag6 = {
+  label = this.$store.getters.getAntwoord(`vraag6`).label,
+  waarde = this.$store.getters.getAntwoord(`vraag6`).waarde}
+
+const vraag7 = {
+  label = this.$store.getters.getAntwoord(`vraag7`).label,
+  waarde = this.$store.getters.getAntwoord(`vraag7`).waarde}    
+
+// variable resultaat opbouw
+const resultaat = {
+  vraag1 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  vraag2 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  vraag3 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  vraag4 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  vraag5 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  vraag6 = {opmerking = "", berekening = "", totaal = "", score = ""},
+  vraag7 = {opmerking = "", berekening = "", totaal = "", score = ""},
+}
+
+function convertStrToNum(string){
+  let value = Number(string.replace(".",""));
+  return value;
+}
+
+// score waardes
+const groen = 1;
+const oranje = 5;
+const rood = 20;
+
+// statement vraag 1
+
+// bereken totaal
+const totaal = convertStrToNum(valueV1[0]) + convertStrToNum(valueV1[1]) + convertStrToNum(valueV1[2]) + convertStrToNum(valueV1[3]) + convertStrToNum(valueV1[4]);
+resultaat.vraag1.totaal = totaal;
+
+if( vraag1.waarde <2 ){
+  resultaat.vraag1.opmerking = opmerkingen.OpmerkingenV1[0].valueV1[0];
+  resultaat.vraag1.berekening = (convertStrToNum(valueV1[0]) / totaal) * 100;
+}
+else if(vraag1.waarde >=2 && vraag1.waarde < 10 ){
+  resultaat.vraag1.opmerking = opmerkingen.OpmerkingenV1[1].valueV1[1];
+  resultaat.vraag1.berekening = (convertStrToNum(valueV1[1]) / totaal) * 100;
+}
+else if(vraag1.waarde >=10 && vraag1.waarde < 50 ){
+  resultaat.vraag1.opmerking = opmerkingen.OpmerkingenV1[1].valueV1[2];
+  resultaat.vraag1.berekening = (convertStrToNum(valueV1[2]) / totaal) * 100;
+}
+else if(vraag1.waarde >=50 && vraag1.waarde < 100 ){
+  resultaat.vraag1.opmerking = opmerkingen.OpmerkingenV1[1].valueV1[3];
+  resultaat.vraag1.berekening = (convertStrToNum(valueV1[3]) / totaal) * 100;
+}
+else if(vraag1.waarde >=100 && vraag1.waarde < 250 ){
+  resultaat.vraag1.opmerking = opmerkingen.OpmerkingenV1[1].valueV1[4];
+  resultaat.vraag1.berekening = (convertStrToNum(valueV1[4]) / totaal) * 100;
+}
+else if(vraag1.waarde >=250){
+  resultaat.vraag1.opmerking = opmerkingen.OpmerkingenV1[2];
+}
+else{
+  resultaat.vraag1.opmerking = "FOUT: WAARDE VRAAG 1 BUITEN BEREIK";
+  resultaat.vraag1.totaal = 0;
+}
+
+
+// statement vraag 2
+
+const scaleMax = 65;
+const scaleMaxGraden = 180;
+resultaat.vraag2.berekening = (scaleMaxGraden/scaleMax) * vraag2.waarde;
+
+if( vraag2.waarde < 55 ){
+  resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[0]; 
+  resultaat.vraag2.score = groen;
+}
+else if(vraag2.waarde >= 55 && vraag2.waarde < 65 ){
+  resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[1];
+  resultaat.vraag2.score = oranje;
+}
+else if(vraag2.waarde > 65){
+  resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[2];
+  resultaat.vraag2.score = rood;
+}
+else{
+  resultaat.vraag2.opmerking = "FOUT: WAARDE VRAAG 2 BUITEN BEREIK";
+  resultaat.vraag2.berekening = 0;
+}
+
+
+// statement vraag 3
+resultaat.vraag3.totaal = 100;
+resultaat.vraag3.berekening = (vraag3.waarde/resultaat.vraag3.totaal) * 100;
+
+if( vraag3.waarde < 45 ){
+  resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[0];
+  resultaat.vraag3.score = groen; 
+}
+else if(vraag3.waarde >= 45 && vraag3.waarde < 60 ){
+  resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[1];
+  resultaat.vraag2.score = oranje;
+}
+else if(vraag3.waarde > 60){
+  resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[2];
+  resultaat.vraag2.score = rood;
+}
+else{
+  resultaat.vraag3.opmerking = "FOUT: WAARDE VRAAG 3 BUITEN BEREIK";
+  resultaat.vraag3.berekening = 0;
+}
+
+
+// statement vraag 4
+if( vraag4.waarde === 1 ){
+  resultaat.vraag4.opmerking = opmerkingen.OpmerkingenV4[0];
+  resultaat.vraag4.score = groen; 
+}
+else if(vraag4.waarde === 2 ){
+  resultaat.vraag4.opmerking = opmerkingen.OpmerkingenV4[1];
+  resultaat.vraag4.score = oranje; 
+}
+else if(vraag4.waarde === 3 ){
+  resultaat.vraag4.opmerking = opmerkingen.OpmerkingenV4[2];
+  resultaat.vraag4.score = rood; 
+}
+else{
+  resultaat.vraag4 = "FOUT: WAARDE VRAAG 4 BUITEN BEREIK";
+}
+
+// statement vraag 5 & 6
+// 5 = 1 en 6 - 1 tot 3
+if( vraag5.waarde === 1 && vraag6.waarde === 1 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[0];
+  resultaat.vraag6.score = groen; 
+}
+else if( vraag5.waarde === 1 && vraag6.waarde === 2 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[1];
+  resultaat.vraag6.score = oranje; 
+}
+else if( vraag5.waarde === 1 && vraag6.waarde === 3 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[2];
+  resultaat.vraag6.score = rood; 
+}
+// 5 = 2 en 6 - 1 tot 3
+else if( vraag5.waarde === 2 && vraag6.waarde === 1 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[4];
+  resultaat.vraag6.score = groen; 
+}
+else if( vraag5.waarde === 2 && vraag6.waarde === 2 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[5];
+  resultaat.vraag6.score = oranje; 
+}
+else if( vraag5.waarde === 2 && vraag6.waarde === 3 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[6];
+  resultaat.vraag6.score = rood; 
+}
+// 5 = 3 en 6 - 1 tot 3
+else if( vraag5.waarde === 3 && vraag6.waarde === 1 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[7];
+  resultaat.vraag6.score = oranje; 
+}
+else if( vraag5.waarde === 3 && vraag6.waarde === 2 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[8];
+  resultaat.vraag6.score = oranje; 
+}
+else if( vraag5.waarde === 3 && vraag6.waarde === 3 ){
+  resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[9];
+  resultaat.vraag6.score = rood; 
+}
+// fout vraag 5 of 6
+else{
+  if(vraag5.waarde > 3){
+    resultaat.vraag5.opmerking = "FOUT: WAARDE VRAAG 5 BUITEN BEREIK";
+  }
+  else{
+    resultaat.vraag6.opmerking = "FOUT: WAARDE VRAAG 6 BUITEN BEREIK";
+  }
+  resultaat.vraag5.score = 0;
+}
+
+
+// statement vraag 7
+if( vraag7.waarde >= 8 ){
+  resultaat.vraag7.opmerking = opmerkingen.OpmerkingenV7[0];
+  resultaat.vraag7.score = groen; 
+}
+else if(vraag7.waarde >= 6 && vraag7.waarde < 8 ){
+  resultaat.vraag7.opmerking = opmerkingen.OpmerkingenV7[1];
+  resultaat.vraag7.score = oranje; 
+}
+else if(vraag7.waarde < 6 ){
+  resultaat.vraag7.opmerking = opmerkingen.OpmerkingenV7[2];
+  resultaat.vraag7.score = rood; 
+}
+else{
+  resultaat.vraag7 = "FOUT: WAARDE VRAAG 7 BUITEN BEREIK";
+}
+
+// conclusie 1
+// overal kleur
+const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score;
+// if(resultaat.vraag1.score === 1 && ){
+
+// }
+
+// end function score
+}
