@@ -84,16 +84,16 @@
     </div>
 
     <!-- TO DO Sectie hier onder verwijderen !! -->
-    <section class="TO DO verwijderen">
+    <!-- <section class="TO DO verwijderen"> -->
     <!-- TO DO storetest knop verwijderen -->
-    <button class="backBtn" @click="$router.push('/')">
+    <!-- <button class="backBtn" @click="$router.push('/')">
           terug naar begin
-        </button>
+        </button> -->
     <!-- TO DO storetest knop verwijderen -->
-    <button class="volgendeBtn" @click="this.$router.push('/storetest');">
+    <!-- <button class="volgendeBtn" @click="this.$router.push('/storetest');">
           REMOVE: go to store test
-        </button>
-    </section>
+        </button> -->
+    <!-- </section> -->
   </main>
 </template>
 
