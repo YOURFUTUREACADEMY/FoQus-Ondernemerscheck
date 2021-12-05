@@ -26,6 +26,9 @@
         <button class="btn" @click="$router.push('/')">
           Naar begin
         </button>
+        <button class="btn" @click="$router.push('/metertest')">
+          Naar meter
+        </button>
         <button class="btn" @click="$router.push('/scorescherm')">
           Naar score 
         </button>

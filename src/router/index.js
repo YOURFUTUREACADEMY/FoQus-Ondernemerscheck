@@ -4,6 +4,7 @@ import vragen from '../views/vragen.vue'
 import scorescherm from '../views/scorescherm.vue'
 //TO DO Remove score test
 import storetest from '../views/storetest.vue'
+import metertest from '../views/metertest.vue'
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path:"/storetest",
     name: "storetest",
     component: storetest,
+  },
+  {
+    path:"/metertest",
+    name: "metertest",
+    component: metertest,
   }
 ]
 

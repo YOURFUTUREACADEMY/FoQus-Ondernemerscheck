@@ -1,3 +1,5 @@
+import { AnalogMeter } from "./functions";
+
 export default {
     data() {
       var valueV1= ["878.850","354.082","58.876","8.890","3.420"]
@@ -174,10 +176,7 @@ else{
 
 
 // statement vraag 2
-
-const scaleMax = 65;
-const scaleMaxGraden = 180;
-resultaat.vraag2.berekening = (scaleMaxGraden/scaleMax) * vraag2.waarde;
+AnalogMeter(vraag2.waarde, 65, 50)
 
 if( vraag2.waarde < 55 ){
   resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[0]; 
