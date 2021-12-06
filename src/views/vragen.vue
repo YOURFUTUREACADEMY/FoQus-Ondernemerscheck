@@ -11,7 +11,7 @@
         
         <div class="container-progBarQ progress rounded-0">           
           <div class="progBarQ progress-bar" :style="{width:progBarwidth.width+'%'}" :aria-valuenow="progBarwidth.width" aria-valuemin="1" :aria-valuemax="vragen" >
-            <p class="mx-auto mt-2">{{activeStep}}/{{vragen}}</p>
+            <p class="mx-auto mt-3">{{activeStep}}/{{vragen}}</p>
           </div>
         </div> 
         

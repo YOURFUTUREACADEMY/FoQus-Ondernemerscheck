@@ -3,10 +3,10 @@
     <h1 class="header text-center" role="heading">
       Succesvol ondernemen is plezierig ondernemen.
     </h1>
-    <h2 class="container-vragen d-flex justify-content-center align-items-center">
+    <p class="introTekst container-vragen d-flex justify-content-center align-items-center">
       "Heb jij voldoende focus op succes? Test het zelf door 7 vragen te
       beantwoorden."
-    </h2>
+    </p>
     <div class="container-progBarQ progress rounded-0">
       <div
         class="progBarQ progress-bar"
@@ -15,12 +15,12 @@
         aria-valuemin="0"
         aria-valuemax="7"
       >
-        <p class="me-5 mt-2">0/7</p>
+        <p class="mx-auto mt-3">0/7</p>
       </div>
     </div>
     <div class="container-btn">
       <button
-        class="btn btn-sm mt-2"
+        class="btn btn-lg mt-2"
         id="volgendeBtn"
         @click="$router.push('/vragen')"
       >

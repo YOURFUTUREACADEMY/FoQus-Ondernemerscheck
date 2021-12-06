@@ -17,10 +17,10 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 :root {
+  --wit: #FFFFFF;
   --lichtBlauw: #D3F1F3;
   --donkerBlauw: #08344D;
   --lichtTurquoise: #1DBAC1;
@@ -42,7 +42,14 @@ body {
   color: var(--lichtBlauw);
   font-size: 13px;
   margin:0%;
+  display:flex;
+  justify-content: center;
 }
+
+main {
+  max-width: 1320px;
+}
+
 
 .foqusLogo{
   height:100px;
@@ -53,19 +60,22 @@ body {
   height: 100px;
   padding: 2% 0;
   margin: 0%;
+  font-size: 2rem;
 }
 
 
 /* styling page vragen */
 .container-vragen {
-  background-color: var(--lichtTurquoise);
+  background-color: var(--wit);
+  color: var(--donkerBlauw);
   height: 300px;
   margin: 0%;
   padding: 5% 0;
+  font-size: 1.5rem;
 }
 
 .progress{
-  height: 3rem;
+  height: 2rem;
   font-size:1.5em;
 }
 
@@ -83,7 +93,7 @@ body {
   display:flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: var(--donkerTurquoise);
+  background-color: var(--wit);
   height: 250px;
   margin: 0%;
 }
@@ -91,6 +101,10 @@ body {
 .btn{
   background-color: var(--oranje);
   color: var(--lichtBlauw);
+}
+
+.btn:focus {
+    box-shadow: none;
 }
 
 #terugBtn{
