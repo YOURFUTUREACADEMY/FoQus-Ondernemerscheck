@@ -175,7 +175,7 @@ svg {
               <g
                   id="arrow"
                   v-bind:style="{
-                      transform: `rotate(${meter-90}deg)`
+                      transform: `rotate(${meter.pointerDeg}deg)`
                   }"
               >
                   <path
@@ -227,33 +227,42 @@ export default {
   props:[`value`,"settings"],
   data() {
     return {
-      auto: "", 
+      meter: "no value", 
     //end return
     };
   // end data
   },
+  mounted(){
+      this.runMeter() 
+  },
   watch: {
       value: function(){
           let oldValue;
-          if(this.value != oldValue){
-              this.auto = AnalogMeter(this.value,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
-              //this.$emit('pointer'); 
-              oldValue = this.value; 
+          if(this.value != oldValue && this.settings.manMode === false || this.settings.manValue != oldValue && this.settings.manMode === true){
+              if(this.settings.manMode === true){
+                this.runMeter(); 
+                oldValue = this.settings.manValue;
+              }
+              else{
+                this.runMeter();    
+                oldValue = this.value; 
+              }
           }
+      // end watch function
       }
   },
   methods: {
+    runMeter(){
+        if(this.settings.manMode === true){
+            this.meter = AnalogMeter(this.settings.manValue,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
+        }
+        else{
+            this.meter = AnalogMeter(this.value,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
+        }
+        this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;            
+        this.$emit('meter', this.meter);   
+      }
   },
-  computed:{
-    meter(){
-      let pointer;
-      pointer = 0;
-      if(this.settings.manMode === true) pointer = this.settings.manValue;
-      else pointer = this.auto.pointerDeg;
-      return pointer;
-    } 
-  },
-  
 // end export  
 };
 </script>

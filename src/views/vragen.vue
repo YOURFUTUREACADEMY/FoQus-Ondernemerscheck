@@ -24,14 +24,7 @@
           <button class="btn btn-lg" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>
-        </div>
-        <!-- TO DO storetest knop verwijderen -->
-        <!-- <br>
-        <br>
-        <button @click="this.$router.push('/storetest');">
-          REMOVE: go to store test
-        </button> -->
-   
+        </div> 
     </main>
 
 </template>
