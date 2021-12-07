@@ -5,10 +5,10 @@
       <div class="container-score w-75 mx-auto mb-0">
         <h3 class="header text-center-score">Jouw score is</h3>
 
-        <div class="d-flex flex-row mx-5">
+        <div class="d-sm-flex flex-row mx-2 mx-sm-5 mt-2 justify-content-center">
           <div
             :class="
-              scoreCondition.visual.class + ' score-bubble rounded-circle'
+              scoreCondition.visual.class + ' score-bubble rounded-circle d-flex justify-content-center floatL'
             "
           >
             <img
@@ -20,8 +20,8 @@
             />
           </div>
 
-          <div class="vl mx-3 mt-1"></div>
-          <blockquote class="text-score text-start w-50 mt-2 mx-2">
+          <div class="vl mx-3 mt-1 floatL"></div>
+          <blockquote class="text-score text-start mx-2">
             Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat
             als ondernemer. De antwoorden zijn niet goed of fout In combinatie
             hebben ze een signaalfunctie. Voor jou is dat signaal
@@ -39,8 +39,8 @@
         </div>
 
 
-        <div class="d-flex justify-content-end w-75">
-          <div>
+        <div class="d-flex justify-content-end row mx-2">
+          <div class="col-sm-9">
         <p class="text-score">
           Ontvang direct het gehele resultaat als rapport in je mailbox.
         </p>

@@ -157,12 +157,12 @@ padding-bottom: 0 !important;
 
 .section-score{
   background-color: var(--donkerTurquoise);
-  height: 525px;
+  height: 575px;
 }
 
 .container-score {
   background-color: var(--grijs);
-  height: 500px;
+  height: 550px;
 }
 
 .header-score{
@@ -202,6 +202,9 @@ padding-bottom: 0 !important;
   
   width:75px;
 }
+.text-start {
+  width:50%;
+}
 
 .text-score{
   color: var(--zwart);
@@ -226,10 +229,27 @@ padding-bottom: 0 !important;
   .slider {
     width:80%;
   }
-}
+
   .foqusRaport {
     display: none;
   }
+
+  .section-score{
+  height: 775px;
+}
+
+.container-score {
+  height: 750px;
+}
+
+  .floatL {
+    float: left;
+  }
+  .text-start {
+    width: 100%!important;
+  }
+}
+  
 
 
 
