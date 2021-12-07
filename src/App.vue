@@ -101,6 +101,7 @@ main {
 .btn{
   background-color: var(--oranje);
   color: var(--lichtBlauw);
+  width: 175px;
 }
 
 .btn:focus {
