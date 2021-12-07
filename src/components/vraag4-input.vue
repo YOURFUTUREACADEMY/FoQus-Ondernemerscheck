@@ -1,5 +1,5 @@
 <template>
-  <h1 class="header text-center" role="heading">Hoe lang geleden heb je een nieuw product/model of nieuwe dienst gelanceerd</h1>
+  <h1 class="header text-center" role="heading">Hoe lang geleden heb je een nieuw product/model of nieuwe dienst gelanceerd?</h1>
  <div class="container-vragen d-flex justify-content-center align-items-center">
  <div>
     <div class="form-group">
@@ -48,7 +48,7 @@ export default {
     return {
       vraag: "vraag4",
       optie1: {label:"<= 0,5 jaar",value:1},
-      optie2: {label:"0,5-1,5 jaar",value:2},
+      optie2: {label:"0,5 - 1,5 jaar",value:2},
       optie3: {label:"1,5 jaar",value:3},
       antwoord:''
     };

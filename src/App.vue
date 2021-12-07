@@ -58,7 +58,9 @@ main {
 .header {
   background-color: var(--donkerTurquoise);
   height: 100px;
-  padding: 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0%;
   font-size: 2rem;
 }

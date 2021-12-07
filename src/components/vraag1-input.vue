@@ -1,6 +1,6 @@
 <template>
 
-  <h1 class="header text-center" role="heading">Hoeveel mensen heeft je bedrijf in dienst? (Jijzelf telt ook)</h1>
+  <h1 class="header text-center" role="heading">Hoeveel mensen heeft je bedrijf in dienst? <br> (Jijzelf telt ook mee)</h1>
   <div class="container-vragen d-flex justify-content-center align-items-center">
   <div class="row form-group">
     <label for="aantalMensen" class="col-auto col-form-label">Aantal mensen in dienst:</label>

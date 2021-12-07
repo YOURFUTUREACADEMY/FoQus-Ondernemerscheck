@@ -24,7 +24,7 @@
         id="volgendeBtn"
         @click="$router.push('/vragen')"
       >
-        volgende
+        Test het zelf
       </button>
     </div>
   </main>
