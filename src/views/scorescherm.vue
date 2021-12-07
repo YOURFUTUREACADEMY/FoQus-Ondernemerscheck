@@ -3,7 +3,7 @@
     <hr class="hl py-2 mb-0" />
     <div class="d-flex flex-row">
       <div class="container-score w-75 mx-auto mb-0">
-        <h3 class="header text-center-score">Jouw score is:{{ score }}</h3>
+        <h3 class="header text-center-score">Jouw score is</h3>
 
         <div class="d-flex flex-row mx-5">
           <div
@@ -25,7 +25,7 @@
             Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat
             als ondernemer. De antwoorden zijn niet goed of fout In combinatie
             hebben ze een signaalfunctie. Voor jou is dat signaal
-            {{ scoreCondition.visual.label }}.<!--{{signalWaarde TO DO}}-->
+            {{ scoreCondition.visual.signaal }}.
           </blockquote>
         </div>
 
@@ -85,26 +85,30 @@
 
     <!-- TO DO Sectie hier onder verwijderen !! -->
     <section v-if='testMode' class="TO DO verwijderen">
+    <br>
     <!-- TO DO storetest knop verwijderen -->
     <button  class="backBtn" @click="$router.push('/')">
           terug naar begin
         </button>
     <!-- TO DO storetest knop verwijderen -->
-    <button class="volgendeBtn" @click="this.$router.push('/storetest');">
-          REMOVE: go to store test
+    <button class="volgendeBtn" @click="this.$router.push('/testMenu');">
+          REMOVE: go to test menu
         </button> -->
     </section>
   </main>
 </template>
 
 <script>
+// import opmerkigen from "../scripts/tempOpmerkingen.js"
+// import berekening from "../scripts/score.js"
+
 export default {
   name: "scorescherm",
   data() {
     return {
+      tempResultaat: "",
       testMode: false,
       score: 5,
-      signalWaarde: "", //"TO DO"
       naam: "", //"TO DO"
       emailControle: "", //"TO DO"
       // status state -> conditie -> score, class, label, image
@@ -113,30 +117,35 @@ export default {
           score: 5,
           class: "score-slecht",
           label: "Stop",
+          signaal: "TO DO BLOKQUOTE SIGNAAL WAARDE SLECHT",
           image: "Bubble-rood.png",
         },
         gemiddeld: {
           score: 10,
           class: "score-matig",
           label: "Let op",
+          signaal: "Probeer te verbeteren!",
           image: "Bubble-oranje.png",
         },
         goed: {
           score: 15,
           class: "score-goed",
           label: "Ga zo door",
+          signaal: "TO DO BLOKQUOTE SIGNAAL WAARDE GROEN",
           image: "Bubble-groen.png",
         },
       },
     }; //end return
   }, //end data
+  // mounted(){
+  //     this.tempResultaat = berekening(opmerkigen, this.$store.state.ANTWOORD);
+  // },
   computed: {
     scoreCondition() {
       let visual = {
         image: "",
         class: "",
-        borderColor: "",
-        color: "",
+        signaal: "",
         label: "",
       };
       // zet conditie slecht
@@ -144,6 +153,7 @@ export default {
         visual.image = this.statusState.slecht.image;
         visual.class = this.statusState.slecht.class;
         visual.label = this.statusState.slecht.label;
+        visual.signaal = this.statusState.slecht.signaal;
       }
       // zet conditie gemiddeld
       else if (
@@ -153,12 +163,14 @@ export default {
         visual.image = this.statusState.gemiddeld.image;
         visual.class = this.statusState.gemiddeld.class;
         visual.label = this.statusState.gemiddeld.label;
+        visual.signaal = this.statusState.gemiddeld.signaal;
       }
       // zet conditie gemiddelde
       else if (this.score >= this.statusState.goed.score) {
         visual.image = this.statusState.goed.image;
         visual.class = this.statusState.goed.class;
         visual.label = this.statusState.goed.label;
+        visual.signaal = this.statusState.goed.signaal;
       }
       return { visual };
     },

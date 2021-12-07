@@ -3,9 +3,10 @@ import intro from '../views/intro.vue'
 import vragen from '../views/vragen.vue'
 import scorescherm from '../views/scorescherm.vue'
 //TO DO Remove score test
+import testMenu from '../views/testMenu.vue'
 import storetest from '../views/storetest.vue'
 import metertest from '../views/metertest.vue'
-
+import berekeningTest from '../views/berekeningTest.vue'
 const routes = [
   {
     path: "/",
@@ -23,6 +24,16 @@ const routes = [
     component: scorescherm,
   },
   //TO DO remove score test
+  {
+    path:"/testMenu",
+    name: "testMenu",
+    component: testMenu,
+  },
+  {
+    path:"/berekeningTest",
+    name: "berekeningTest",
+    component: berekeningTest,
+  },
   {
     path:"/storetest",
     name: "storetest",

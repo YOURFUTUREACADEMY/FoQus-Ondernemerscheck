@@ -3,6 +3,7 @@
   <div>
     <main>
       <section class="TO DO verwijderen">
+        <p>{{this.$store.state.ANTWOORD}}</p>
         <h3>Vraag 1 Antwoord label: {{this.$store.getters.getAntwoord(`vraag1`).label}}</h3>
         <h3>Vraag 1 Antwoord waarde: {{this.$store.getters.getAntwoord(`vraag1`).waarde}}</h3>
         <br>
@@ -23,14 +24,8 @@
         <br>
         <h3>Vraag 7 Antwoord label: {{this.$store.getters.getAntwoord(`vraag7`).label}}</h3>
         <h3>Vraag 7 Antwoord waarde: {{this.$store.getters.getAntwoord(`vraag7`).waarde}}</h3>
-        <button class="btn" @click="$router.push('/')">
-          Naar begin
-        </button>
-        <button class="btn" @click="$router.push('/metertest')">
-          Naar meter
-        </button>
-        <button class="btn" @click="$router.push('/scorescherm')">
-          Naar score 
+        <button class="btn" @click="$router.push('/testMenu')">
+          Naar test menu 
         </button>
       </section>
     </main>
