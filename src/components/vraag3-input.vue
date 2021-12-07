@@ -1,7 +1,7 @@
 <template>
   <h1 class="header text-center" role="heading">Welk percentage van de omzet draai jij bij je 3 belangrijkste klanten?</h1>
 <div class="container-vragen d-flex justify-content-center align-items-center">
-     <div class="form-group">
+     <div class="form-group slider">
       <input
         class="range-input form-control-range" type="range"
         min=0
