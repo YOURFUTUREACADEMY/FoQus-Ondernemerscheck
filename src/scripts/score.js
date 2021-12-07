@@ -107,13 +107,24 @@ const $groen = 1;
 const $oranje = 5;
 const $rood = 20;
 
+// function test(vragen){
+  
+//   const vraag1 = {
+//       label : vragen.vraag1.label,
+//       waarde : vragen.vraag1.waarde
+//     }
+
+//   return(vraag1);
+// }
+
 
 function resultaatScore(opmerkingen, vragen){
 
   // haal store op
   const vraag1 = {
       label : vragen.vraag1.label,
-      waarde : vragen.vraag1.waarde}
+      waarde : vragen.vraag1.waarde
+   }
 
   const vraag2 = {
     label : vragen.vraag2.label,
@@ -137,11 +148,9 @@ function resultaatScore(opmerkingen, vragen){
 
   const vraag7 = {
     label : vragen.vraag7.label,
-    waarde : vragen.vraag7.waarde}    
+    waarde : vragen.vraag7.waarde}
+    
 
-    // const vraag7 = {
-    //   label : this.$store.getters.getAntwoord(`vraag7`).label,
-    //   waarde : this.$store.getters.getAntwoord(`vraag7`).waarde}    
 
   // variable resultaat opbouw
   const resultaat = {
@@ -329,73 +338,81 @@ function resultaatScore(opmerkingen, vragen){
     resultaat.vraag7 = "FOUT: WAARDE VRAAG 7 BUITEN BEREIK";
   }
 
-  // conclusie
-  // overal kleur
-  // bereken totaal score
+  // // conclusie
+  // // overal kleur
+  // // bereken totaal score
 
 
-  //const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score + resultaat.vraag4.score + resultaat.vraag5.score + resultaat.vraag6.score;
-  let statusConclusie = 0;
+  // //const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score + resultaat.vraag4.score + resultaat.vraag5.score + resultaat.vraag6.score;
+  // let statusConclusie = 0;
 
-  if(resultaat.score <= 17){
-    resultaat.resultaat.score = $groen;
-    statusConclusie = 1;
-  }
-  else if(resultaat.score > 17 && resultaat.score <= 85){
-    resultaat.conclusieKleur = $oranje;
-    statusConclusie = 2;
-  }
-  else if(resultaat.score > 85){
-    resultaat.conclusieKleur = $rood;
-    statusConclusie = 3;
-  }
-  else{
-    resultaat.conclusieKleur = 0;
-  }
+  // if(resultaat.score <= 17){
+  //   resultaat.resultaat.score = $groen;
+  //   statusConclusie = 1;
+  // }
+  // else if(resultaat.score > 17 && resultaat.score <= 85){
+  //   resultaat.conclusieKleur = $oranje;
+  //   statusConclusie = 2;
+  // }
+  // else if(resultaat.score > 85){
+  //   resultaat.conclusieKleur = $rood;
+  //   statusConclusie = 3;
+  // }
+  // else{
+  //   resultaat.conclusieKleur = 0;
+  // }
 
-  // conclusie 1: vraag 1,2,5 & 6
-  if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
-    if(vraag5.waarde === 1 && vraag6.waarde === 1 || vraag6.waarde === 2){
-      resultaat.conclusie1.opmerking = opmerkingen.Conclusie1[0];
-      resultaat.conclusie1.score = $oranje;
-      statusConclusie = 4;
-    }
-    else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 2 || vraag6.waarde === 3){
-      resultaat.conclusie1.opmerking = opmerkingen.Conclusie1[1];
-      resultaat.conclusie1.score = $rood;
-      statusConclusie = 5;
-    }
-    else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 1 ){
-      resultaat.conclusie1.opmerking = opmerkingen.Conclusie1[2];
-      resultaat.conclusie1.score = $oranje;
-      statusConclusie = 6;
-    }
-  }
+  // // conclusie 1: vraag 1,2,5 & 6
+  // if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
+  //   if(vraag5.waarde === 1 && vraag6.waarde === 1 || vraag6.waarde === 2){
+  //     resultaat.conclusie1.opmerking = opmerkingen.Conclusie1[0];
+  //     resultaat.conclusie1.score = $oranje;
+  //     statusConclusie = 4;
+  //   }
+  //   else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 2 || vraag6.waarde === 3){
+  //     resultaat.conclusie1.opmerking = opmerkingen.Conclusie1[1];
+  //     resultaat.conclusie1.score = $rood;
+  //     statusConclusie = 5;
+  //   }
+  //   else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 1 ){
+  //     resultaat.conclusie1.opmerking = opmerkingen.Conclusie1[2];
+  //     resultaat.conclusie1.score = $oranje;
+  //     statusConclusie = 6;
+  //   }
+  // }
 
-  // conclusie 2: vraag 4 & 6
-  if(vraag4.waarde === 1){
-    if(vraag5.waarde === 1 && vraag6.waarde !== 1){
-      resultaat.conclusie2.opmerking = opmerkingen.Conclusie2[0];
-      resultaat.conclusie2.score = $oranje;
-      statusConclusie = 7;
-    }
-    if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
-      resultaat.conclusie2.opmerking = opmerkingen.Conclusie2[1];
-      resultaat.conclusie2.score = $oranje;
-      statusConclusie = 8;
-    }
-  }
+  // // conclusie 2: vraag 4 & 6
+  // if(vraag4.waarde === 1){
+  //   if(vraag5.waarde === 1 && vraag6.waarde !== 1){
+  //     resultaat.conclusie2.opmerking = opmerkingen.Conclusie2[0];
+  //     resultaat.conclusie2.score = $oranje;
+  //     statusConclusie = 7;
+  //   }
+  //   if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
+  //     resultaat.conclusie2.opmerking = opmerkingen.Conclusie2[1];
+  //     resultaat.conclusie2.score = $oranje;
+  //     statusConclusie = 8;
+  //   }
+  // }
 
-  // conclusie 3: totaal | conclusie 1 en 2 zijn groen
-  if(statusConclusie === 0){
-    resultaat.conclusie3.opmerking = opmerkingen.Conclusie3[0];
-  }
+  // // conclusie 3: totaal | conclusie 1 en 2 zijn groen
+  // if(statusConclusie === 0){
+  //   resultaat.conclusie3.opmerking = opmerkingen.Conclusie3[0];
+  // }
 
-  // conclusie 4 | vraag 1 > 2
-  if(vraag1.waarde > 2){
-    resultaat.conclusie4.opmerking = opmerkingen.Conclusie4[0];
-  }
+  // // conclusie 4 | vraag 1 > 2
+  // if(vraag1.waarde > 2){
+  //   resultaat.conclusie4.opmerking = opmerkingen.Conclusie4[0];
+  // }
+
+  // return resultaat;
+  const test = [vraag1, vraag2, vraag3, vraag4,vraag5, vraag6, vraag7];
+  return test;
+    
+
 // end function score
 }
 
-export default resultaatScore();
+
+export default resultaatScore;
+//export default test;

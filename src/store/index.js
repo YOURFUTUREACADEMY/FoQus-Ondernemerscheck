@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 const store = createStore({
     state: {
         ANTWOORD: {
-            vraag1:{label:'',waarde:''},
+            vraag1:{label:'test',waarde:'123'},
             vraag2:{label:'',waarde:''},
             vraag3:{label:'',waarde:''},
             vraag4:{label:'',waarde:''},
