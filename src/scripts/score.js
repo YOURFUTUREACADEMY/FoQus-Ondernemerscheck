@@ -132,8 +132,9 @@ const resultaat = {
   vraag6 = {opmerking = "", berekening = "", totaal = "", score = ""},
   vraag7 = {opmerking = "", berekening = "", totaal = "", score = ""},
   conclusieKleur = "",
+  score = 0,
   conclusie1 = {opmerking = "", score = ""},
-  conclusie2 = {opmerking = "", score = ""},
+  conclusie2 = {opmerking = "", score = ""}, 
 }
 
 
@@ -143,31 +144,6 @@ function convertStrToNum(string){
   let value = Number(string.replace(".",""));
   return value;
 }
-
-// functie die de uikomst van 3 mogelijkheden behandelt  
-function Berekening3M(vraag, opmerkingen, onderLimiet, bovenLimiet,nr){
-    
-  if( vraag.waarde < onderLimiet ){
-    resultaat.vraag.opmerking = opmerkingen[0]; 
-    resultaat.vraag.score = $groen;
-  }
-  else if(vraag.waarde >= onderLimiet && vraag.waarde < bovenLimiet ){
-    resultaat.vraag.opmerking = opmerkingen[1];
-    resultaat.vraag.score = $oranje;
-  }
-  else if(vraag.waarde > bovenLimiet){
-    resultaat.vraag.opmerking = opmerkingen[2];
-    resultaat.vraag.score = $rood;
-  }
-  else{
-    if(nr != "") resultaat.vraag.opmerking = `FOUT: WAARDE VRAAG ${nr} BUITEN BEREIK`;
-    else resultaat.vraag.opmerking = `FOUT: WAARDE VRAAG BUITEN ${vraag.label} BEREIK`;
-    resultaat.vraag.berekening = 0;
-  }
-  return vraag; 
-}  
-
-
 
 // statement vraag 1
 
@@ -205,60 +181,58 @@ else{
 
 
 // statement vraag 2
-Berekening3M(vraag2, opmerkingen.OpmerkingenV2 ,55, 65, 2);
-// if( vraag2.waarde < 55 ){
-//   resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[0]; 
-//   resultaat.vraag2.score = $groen;
-// }
-// else if(vraag2.waarde >= 55 && vraag2.waarde < 65 ){
-//   resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[1];
-//   resultaat.vraag2.score = $oranje;
-// }
-// else if(vraag2.waarde > 65){
-//   resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[2];
-//   resultaat.vraag2.score = $rood;
-// }
-// else{
-//   resultaat.vraag2.opmerking = "FOUT: WAARDE VRAAG 2 BUITEN BEREIK";
-//   resultaat.vraag2.berekening = 0;
-// }
+if( vraag2.waarde < 55 ){
+  resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[0]; 
+  resultaat.score = resultaat.score + $groen;
+}
+else if(vraag2.waarde >= 55 && vraag2.waarde < 65 ){
+  resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[1];
+  resultaat.score = resultaat.score + $oranje;
+}
+else if(vraag2.waarde > 65){
+  resultaat.vraag2.opmerking = opmerkingen.OpmerkingenV2[2];
+  resultaat.score = resultaat.score + $rood;
+}
+else{
+  resultaat.vraag2.opmerking = "FOUT: WAARDE VRAAG 2 BUITEN BEREIK";
+  resultaat.vraag2.berekening = 0;
+}
 
 
 // statement vraag 3
 resultaat.vraag3.totaal = 100;
 resultaat.vraag3.berekening = (vraag3.waarde/resultaat.vraag3.totaal) * 100;
 
-Berekening3M(vraag3, opmerkingen.OpmerkingenV3 ,45, 60, 3);
-// if( vraag3.waarde < 45 ){
-//   resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[0];
-//   resultaat.vraag3.score = $groen; 
-// }
-// else if(vraag3.waarde >= 45 && vraag3.waarde < 60 ){
-//   resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[1];
-//   resultaat.vraag2.score = $oranje;
-// }
-// else if(vraag3.waarde > 60){
-//   resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[2];
-//   resultaat.vraag2.score = $rood;
-// }
-// else{
-//   resultaat.vraag3.opmerking = "FOUT: WAARDE VRAAG 3 BUITEN BEREIK";
-//   resultaat.vraag3.berekening = 0;
-// }
+if( vraag3.waarde < 45 ){
+  resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[0];
+  resultaat.score = resultaat.score + $groen; 
+}
+else if(vraag3.waarde >= 45 && vraag3.waarde < 60 ){
+  resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[1];
+  resultaat.score = resultaat.score + $oranje;
+}
+else if(vraag3.waarde > 60){
+  resultaat.vraag3.opmerking = opmerkingen.OpmerkingenV3[2];
+  resultaat.score = resultaat.score + $rood;
+}
+else{
+  resultaat.vraag3.opmerking = "FOUT: WAARDE VRAAG 3 BUITEN BEREIK";
+  resultaat.vraag3.berekening = 0;
+}
 
 
 // statement vraag 4
 if( vraag4.waarde === 1 ){
   resultaat.vraag4.opmerking = opmerkingen.OpmerkingenV4[0];
-  resultaat.vraag4.score = $groen; 
+  resultaat.score = resultaat.score + $groen; 
 }
 else if(vraag4.waarde === 2 ){
   resultaat.vraag4.opmerking = opmerkingen.OpmerkingenV4[1];
-  resultaat.vraag4.score = $oranje; 
+  resultaat.score = resultaat.score + $oranje; 
 }
 else if(vraag4.waarde === 3 ){
   resultaat.vraag4.opmerking = opmerkingen.OpmerkingenV4[2];
-  resultaat.vraag4.score = $rood; 
+  resultaat.score = resultaat.score + $rood; 
 }
 else{
   resultaat.vraag4 = "FOUT: WAARDE VRAAG 4 BUITEN BEREIK";
@@ -268,41 +242,41 @@ else{
 // 5 = 1 en 6 - 1 tot 3
 if( vraag5.waarde === 1 && vraag6.waarde === 1 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[0];
-  resultaat.vraag6.score = $groen; 
+  resultaat.score = resultaat.score + $groen; 
 }
 else if( vraag5.waarde === 1 && vraag6.waarde === 2 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[1];
-  resultaat.vraag6.score = $oranje; 
+  resultaat.score = resultaat.score + $oranje; 
 }
 else if( vraag5.waarde === 1 && vraag6.waarde === 3 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[2];
-  resultaat.vraag6.score = $rood; 
+  resultaat.score = resultaat.score + $rood; 
 }
 // 5 = 2 en 6 - 1 tot 3
 else if( vraag5.waarde === 2 && vraag6.waarde === 1 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[4];
-  resultaat.vraag6.score = $groen; 
+  resultaat.score = resultaat.score + $groen; 
 }
 else if( vraag5.waarde === 2 && vraag6.waarde === 2 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[5];
-  resultaat.vraag6.score = $oranje; 
+  resultaat.score = resultaat.score + $oranje; 
 }
 else if( vraag5.waarde === 2 && vraag6.waarde === 3 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[6];
-  resultaat.vraag6.score = $rood; 
+  resultaat.score = resultaat.score + $rood; 
 }
 // 5 = 3 en 6 - 1 tot 3
 else if( vraag5.waarde === 3 && vraag6.waarde === 1 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[7];
-  resultaat.vraag6.score = $oranje; 
+  resultaat.score = resultaat.score + $oranje; 
 }
 else if( vraag5.waarde === 3 && vraag6.waarde === 2 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[8];
-  resultaat.vraag6.score = $oranje; 
+  resultaat.score = resultaat.score + $oranje; 
 }
 else if( vraag5.waarde === 3 && vraag6.waarde === 3 ){
   resultaat.vraag6.opmerking = opmerkingen.OpmerkingenV6[9];
-  resultaat.vraag6.score = $rood; 
+  resultaat.score = resultaat.score + $rood; 
 }
 // fout vraag 5 of 6
 else{
@@ -312,22 +286,21 @@ else{
   else{
     resultaat.vraag6.opmerking = "FOUT: WAARDE VRAAG 6 BUITEN BEREIK";
   }
-  resultaat.vraag5.score = 0;
 }
 
 
 // statement vraag 7
 if( vraag7.waarde >= 8 ){
   resultaat.vraag7.opmerking = opmerkingen.OpmerkingenV7[0];
-  resultaat.vraag7.score = $groen; 
+  resultaat.score = resultaat.score + $groen; 
 }
 else if(vraag7.waarde >= 6 && vraag7.waarde < 8 ){
   resultaat.vraag7.opmerking = opmerkingen.OpmerkingenV7[1];
-  resultaat.vraag7.score = $oranje; 
+  resultaat.score = resultaat.score + $oranje; 
 }
 else if(vraag7.waarde < 6 ){
   resultaat.vraag7.opmerking = opmerkingen.OpmerkingenV7[2];
-  resultaat.vraag7.score = $rood; 
+  resultaat.score = resultaat.score + $rood; 
 }
 else{
   resultaat.vraag7 = "FOUT: WAARDE VRAAG 7 BUITEN BEREIK";
@@ -336,16 +309,22 @@ else{
 // conclusie
 // overal kleur
 // bereken totaal score
-const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score + resultaat.vraag4.score + resultaat.vraag5.score + resultaat.vraag6.score;
 
-if(totaalScore <= 17){
-  resultaat.conclusieKleur = $groen;
+
+//const totaalScore = resultaat.vraag1.score + resultaat.vraag2.score + resultaat.vraag3.score + resultaat.vraag4.score + resultaat.vraag5.score + resultaat.vraag6.score;
+let statusConclusie = 0;
+
+if(resultaat.score <= 17){
+  resultaat.resultaat.score = $groen;
+  statusConclusie = 1;
 }
-else if(totaalScore > 17 && totaalScore <= 85){
+else if(resultaat.score > 17 && totaalScore <= 85){
   resultaat.conclusieKleur = $oranje;
+  statusConclusie = 2;
 }
-else if(totaalScore > 85){
+else if(resultaat.score > 85){
   resultaat.conclusieKleur = $rood;
+  statusConclusie = 3;
 }
 else{
   resultaat.conclusieKleur = 0;
@@ -356,21 +335,39 @@ if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
   if(vraag5.waarde === 1 && vraag6.waarde === 1 || vraag6.waarde === 2){
     resultaat.conclusie1.opmerking = opmerkingen.ConclusieV1[0];
     resultaat.conclusie1.score = $oranje;
+    statusConclusie = 4;
   }
   else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 2 || vraag6.waarde === 3){
     resultaat.conclusie1.opmerking = opmerkingen.ConclusieV1[1];
     resultaat.conclusie1.score = $rood;
+    statusConclusie = 5;
   }
   else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 1 ){
     resultaat.conclusie1.opmerking = opmerkingen.ConclusieV1[2];
     resultaat.conclusie1.score = $oranje;
+    statusConclusie = 6;
   }
 }
 
 // conclusie 2: vraag 4 & 6
-if(vraag4.waarde > 1){
+if(vraag4.waarde === 1){
+  if(vraag5.waarde === 1 && vraag6.waarde !== 1){
+    resultaat.conclusie2.opmerking = opmerkingen.ConclusieV2[0];
+    resultaat.conclusie2.score = $oranje;
+    statusConclusie = 7;
+  }
+  if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
+    resultaat.conclusie2.opmerking = opmerkingen.ConclusieV2[1];
+    resultaat.conclusie2.score = $oranje;
+    statusConclusie = 8;
+  }
+}
+
+if(statusConclusie === 0){
   
 }
+
+
 
 
 // end function score

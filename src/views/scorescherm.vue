@@ -42,7 +42,7 @@
         <div class="d-flex justify-content-end w-75">
           <div>
         <p class="text-score">
-          Ontvang direct het gehele reultaat als rapport in je mailbox.
+          Ontvang direct het gehele resultaat als rapport in je mailbox.
         </p>
           <div class="form-group row mb-2">
             <label class=" col-4 col-form-label text-score" for="naam"
