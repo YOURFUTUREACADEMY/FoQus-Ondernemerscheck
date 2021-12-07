@@ -27,7 +27,7 @@
   --donkerTurquoise: #1E8A8C;
   --oranje: #F6AF23;
   --grijs: #E7E6E6;
-  --donkerGrijs: #e7e6e69a;
+  --donkerGrijs: #cfcfcf;
   --zwart: #030303ec;
   /* kleuren score bubbles */
   --scoreSlecht: #FF0000;
@@ -142,12 +142,12 @@ padding-bottom: 0 !important;
 /* horizontale lijn tussen section en container */
 .hl{
   background-color: var(--donkerBlauw);
+  opacity: 1;
 }
 
 /* verticale lijn tussen score bubble en block quote */
 .vl{
-  /* background-color: var(--donkerGrijs); */
-  background-color: rgb(161, 159, 159); /* <----- TO DO Variable zie regel hier boven */
+  background-color: var(--donkerGrijs);
   height: 90px;
   width: 2px;
 }
