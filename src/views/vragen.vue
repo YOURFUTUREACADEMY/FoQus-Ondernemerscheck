@@ -17,10 +17,12 @@
         
         <!-- Use showBackBtn to add / remove the back button -->
         <div class="container-btn pt-2">
-          <button class="btn btn-lg" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
-            terug
-          </button>
-              
+          <div>
+            <button class="btn btn-lg" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
+              terug
+            </button>
+          </div>   
+
           <button class="btn btn-lg" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>

@@ -6,7 +6,7 @@
         class="range-input form-control-range" type="range"
         min=0
         max=100
-        step=20
+        step=5
         v-model="value"
         id="rangeInput"
         @change='opslag("",value)'
