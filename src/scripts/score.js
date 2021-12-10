@@ -74,6 +74,12 @@ function berekenUitslag(vragen){
     return value;
   }
 
+  // functie die numeral string invoegt in opmerking string
+  function maakOpmerking(inputString, replaceString, newString){
+    let opmerking = inputString.replace(replaceString, newString);
+    return opmerking;
+  }
+
   // statement vraag 1
 
   // bereken totaal
@@ -81,23 +87,24 @@ function berekenUitslag(vragen){
   resultaat.vraag1.totaal = totaal;
 
   if( vraag1.waarde <2  && vraag1.waarde !== ""){
-    resultaat.vraag1.opmerking = opmerking.vraag1.groot; // TO DO groot > zelftandig
+    
+    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.zelfstandig,"!WAARDE!",opmerking.vraag1.waarden[0]);
     resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[0]) / totaal) * 100;
   }
   else if(vraag1.waarde >=2 && vraag1.waarde < 10 ){
-    resultaat.vraag1.opmerking = opmerking.vraag1.groot; // TO DO groot > omvang 
+    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[1]); 
     resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[1]) / totaal) * 100;
   }
   else if(vraag1.waarde >=10 && vraag1.waarde < 50 ){
-    resultaat.vraag1.opmerking = opmerking.vraag1.groot; // TO DO groot > omvang 
+    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[2]); 
     resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[2]) / totaal) * 100;
   }
   else if(vraag1.waarde >=50 && vraag1.waarde < 100 ){
-    resultaat.vraag1.opmerking = opmerking.vraag1.groot; // TO DO groot > omvang 
+    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[3])
     resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[3]) / totaal) * 100;
   }
   else if(vraag1.waarde >=100 && vraag1.waarde < 250 ){
-    resultaat.vraag1.opmerking = opmerking.vraag1.groot; // TO DO groot > omvang 
+    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[4]) 
     resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[4]) / totaal) * 100;
   }
   else if(vraag1.waarde >=250){

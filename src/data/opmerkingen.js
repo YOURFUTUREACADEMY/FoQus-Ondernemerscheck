@@ -5,11 +5,11 @@ const opmerkingen = {
   vragen:{
     vraag1:{
       // Waarden die gebruikt worden voor de berekeningen en in de opmerkingen worden geplaatst
-      waarden:["878.850","354.082","58.876","8.890","3.420"],
+      waarden:["878.850","354.082","58.876","5.890","3.420"],
       // Opmerking resultaat vraag 1.1 | <2
-   //   zelfstandig: `Jij valt onder de zelfstandigen, samen met ${opmerkingen.vragen.vraag1.waarden[0]} anderen bedrijven in Nederland.`,
+      zelfstandig: `Jij valt onder de zelfstandigen, samen met !WAARDE! anderen bedrijven in Nederland.`,
       // Opmerking resultaat vraag 1.2 tot 1.5 | >=2 tot <250 
-  //   omvang:`Jouw bedrijf heeft dezelfde omvang als ${opmerkingen.vragen.vraag1.waarden[4]} anderen bedrijven in Nederland.`,
+      omvang:`Jouw bedrijf heeft dezelfde omvang als !WAARDE! anderen bedrijven in Nederland.`,
       // Opmerking resultaat vraag 1.6 | >= 250
       groot:`Jouw bedrijf is zo groot, dat we het statistisch niet eens meer weten. Goed bezig, denken we.`
     },
