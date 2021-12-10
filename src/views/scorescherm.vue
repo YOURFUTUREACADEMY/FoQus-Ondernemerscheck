@@ -2,23 +2,12 @@
   <main class="section-score">
     <hr class="hl py-2 mb-0" />
     <div class="d-flex flex-row">
-      <div class="container-score w-75 mx-auto mb-0">
+      <div class="container-score w-100 mx-auto mb-0">
         <h3 class="header text-center-score">Jouw score is</h3>
 
         <div class="d-sm-flex flex-row mx-2 mx-sm-5 mt-2 justify-content-center">
-          <div
-            :class="
-              scoreCondition.visual.class + ' score-bubble rounded-circle d-flex justify-content-center floatL'
-            "
-          >
-            <img
-              class="score-bubble-image mt-1"
-              :src="require('../assets/images/' + scoreCondition.visual.image)"
-              role="figure"
-              width="75"
-              height="75"
-            />
-          </div>
+
+          <AnalogVolMeter class="" :value='score' :settings='meterSettings'></AnalogVolMeter>
 
           <div class="vl mx-3 mt-1 floatL"></div>
           <blockquote class="text-score text-start mx-2">
@@ -82,7 +71,7 @@
         width="500"
       />
     </div>
-
+    <p>{{score}}</p>
     <!-- TO DO Sectie hier onder verwijderen !! -->
     <section v-if='testMode' class="TO DO verwijderen">
     <br>
@@ -99,6 +88,8 @@
 </template>
 
 <script>
+// TO DO veranderen naar analog-VOL-meter
+import AnalogVolMeter from "../components/analog-balance-meter";
 
 export default {
   name: "scorescherm",
@@ -106,6 +97,16 @@ export default {
     return {
       testMode: false,
       kleurCode: this.$store.getters.getResultaat('kleur'),
+      score:this.$store.getters.getResultaat('score'),
+      meterSettings: {
+        adjustDeg: 0,
+        manMode: false,
+        manValue: 50,
+        maxValue: 125,
+        minValue: 5,
+        maxDeg: 180,
+        minDeg: 0,
+      },
       naam: "", //"TO DO"
       emailControle: "", //"TO DO"
       // status state -> conditie -> kleurCode, class, label, image
@@ -134,6 +135,9 @@ export default {
       },
     }; //end return
   }, //end data
+  components: {
+    AnalogVolMeter,
+  },
   created(){
     if(this.kleurCode === undefined){
       this.$router.push('/')

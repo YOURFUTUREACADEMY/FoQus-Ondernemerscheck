@@ -6,9 +6,9 @@ const opmerkingen = {
     vraag1:{
       // Waarden die gebruikt worden voor de berekeningen en in de opmerkingen worden geplaatst
       waarden:["878.850","354.082","58.876","5.890","3.420"],
-      // Opmerking resultaat vraag 1.1 | <2
+      // Opmerking resultaat vraag 1.1 | <2 | !WAARDE! wordt vervangen met een waarden
       zelfstandig: `Jij valt onder de zelfstandigen, samen met !WAARDE! anderen bedrijven in Nederland.`,
-      // Opmerking resultaat vraag 1.2 tot 1.5 | >=2 tot <250 
+      // Opmerking resultaat vraag 1.2 tot 1.5 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
       omvang:`Jouw bedrijf heeft dezelfde omvang als !WAARDE! anderen bedrijven in Nederland.`,
       // Opmerking resultaat vraag 1.6 | >= 250
       groot:`Jouw bedrijf is zo groot, dat we het statistisch niet eens meer weten. Goed bezig, denken we.`

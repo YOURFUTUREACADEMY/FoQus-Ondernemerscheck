@@ -151,17 +151,17 @@ padding-bottom: 0 !important;
 /* verticale lijn tussen score bubble en block quote */
 .vl{
   background-color: var(--donkerGrijs);
-  height: 90px;
+  height: 200px;
   width: 2px;
 }
 
 .section-score{
-  background-color: var(--donkerTurquoise);
+  background-color: var(--wit);
   height: 575px;
 }
 
 .container-score {
-  background-color: var(--grijs);
+  /* background-color: var(--grijs); */
   height: 550px;
 }
 
@@ -228,6 +228,10 @@ padding-bottom: 0 !important;
 
   .slider {
     width:80%;
+  }
+
+  .vl{
+    display: none;
   }
 
   .foqusRaport {

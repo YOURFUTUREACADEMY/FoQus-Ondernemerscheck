@@ -1,6 +1,6 @@
 <style>
 svg {
-    width: 30%;
+    width: 100%;
 }
 #arrow {
     transition: 5s ease-out;
@@ -54,8 +54,8 @@ svg {
 <template>
     <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" -->
   <svg
-    width="50%"
-    height="50%"
+    width="75%"
+    height="75%"
     viewBox="0 0 18092 9342"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +259,7 @@ export default {
         else{
             this.meter = AnalogMeter(this.value,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
         }
-        this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;            
+        this.meter.pointerDeg = this.meter.pointerDeg + this.settings.adjustDeg;            
         this.$emit('meter', this.meter);   
       }
   },
