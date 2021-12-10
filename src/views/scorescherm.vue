@@ -99,36 +99,33 @@
 </template>
 
 <script>
-// import opmerkigen from "../scripts/tempOpmerkingen.js"
-// import berekening from "../scripts/score.js"
 
 export default {
   name: "scorescherm",
   data() {
     return {
-      tempResultaat: "",
       testMode: false,
-      score: 5,
+      kleurCode: this.$store.getters.getResultaat('kleur'),
       naam: "", //"TO DO"
       emailControle: "", //"TO DO"
-      // status state -> conditie -> score, class, label, image
-      statusState: {
+      // status state -> conditie -> kleurCode, class, label, image
+      status: {
         slecht: {
-          score: 5,
+          kleurCode: 25,
           class: "score-slecht",
           label: "Stop",
           signaal: "TO DO BLOKQUOTE SIGNAAL WAARDE SLECHT",
           image: "Bubble-rood.png",
         },
         gemiddeld: {
-          score: 10,
+          kleurCode: 5,
           class: "score-matig",
           label: "Let op",
           signaal: "Probeer te verbeteren!",
           image: "Bubble-oranje.png",
         },
         goed: {
-          score: 15,
+          kleurCode: 1,
           class: "score-goed",
           label: "Ga zo door",
           signaal: "TO DO BLOKQUOTE SIGNAAL WAARDE GROEN",
@@ -137,9 +134,11 @@ export default {
       },
     }; //end return
   }, //end data
-  // mounted(){
-  //     this.tempResultaat = berekening(opmerkigen, this.$store.state.ANTWOORD);
-  // },
+  created(){
+    if(this.kleurCode === undefined){
+      this.$router.push('/')
+    }
+  },
   computed: {
     scoreCondition() {
       let visual = {
@@ -149,28 +148,28 @@ export default {
         label: "",
       };
       // zet conditie slecht
-      if (this.score < this.statusState.slecht.score) {
-        visual.image = this.statusState.slecht.image;
-        visual.class = this.statusState.slecht.class;
-        visual.label = this.statusState.slecht.label;
-        visual.signaal = this.statusState.slecht.signaal;
+      if( this.kleurCode === this.status.slecht.kleurCode ){
+        visual.image = this.status.slecht.image;
+        visual.class = this.status.slecht.class;
+        visual.label = this.status.slecht.label;
+        visual.signaal = this.status.slecht.signaal;
       }
       // zet conditie gemiddeld
-      else if (
-        this.score >= this.statusState.slecht.score &&
-        this.score < this.statusState.goed.score
-      ) {
-        visual.image = this.statusState.gemiddeld.image;
-        visual.class = this.statusState.gemiddeld.class;
-        visual.label = this.statusState.gemiddeld.label;
-        visual.signaal = this.statusState.gemiddeld.signaal;
+      else if( this.kleurCode === this.status.gemiddeld.kleurCode ){
+        visual.image = this.status.gemiddeld.image;
+        visual.class = this.status.gemiddeld.class;
+        visual.label = this.status.gemiddeld.label;
+        visual.signaal = this.status.gemiddeld.signaal;
       }
       // zet conditie gemiddelde
-      else if (this.score >= this.statusState.goed.score) {
-        visual.image = this.statusState.goed.image;
-        visual.class = this.statusState.goed.class;
-        visual.label = this.statusState.goed.label;
-        visual.signaal = this.statusState.goed.signaal;
+      else if( this.kleurCode === this.status.goed.kleurCode ) {
+        visual.image = this.status.goed.image;
+        visual.class = this.status.goed.class;
+        visual.label = this.status.goed.label;
+        visual.signaal = this.status.goed.signaal;
+      }
+      else{
+        visual.image = this.status.slecht.image;
       }
       return { visual };
     },

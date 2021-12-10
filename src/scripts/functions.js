@@ -1,12 +1,12 @@
 
 
-  // function opslag(label, waarde) {
-  //     this.$store.commit('setAntwoord',{
-  //       vraag:this.vraag,
-  //       label:label,
-  //       waarde:waarde
-  //     })
-  // } 
+// export function opslag(label, waarde) {
+//       this.$store.commit('setAntwoord',{
+//         vraag:this.vraag,
+//         label:label,
+//         waarde:waarde
+//       })
+//   } 
     
 
   // function save(storeAdress, name, label, value){
@@ -41,10 +41,10 @@
 
     // status messages
     if( scaleMinValue >= scaleMaxValue){
-      meterOutput.status = "AnalogMeter: parameter fault - scaleMinValue is greater that or equal to scaleMaxValue";
+      meterOutput.status = "AnalogMeter: parameter fault - scaleMinValue is greater than or equal to scaleMaxValue";
     }
     else if( scaleMinDeg >= scaleMaxDeg){
-      meterOutput.status = "AnalogMeter: parameter fault - scaleMinDeg is greater that or equal to scaleMaxDeg";
+      meterOutput.status = "AnalogMeter: parameter fault - scaleMinDeg is greater than or equal to scaleMaxDeg";
     }
     else{
     

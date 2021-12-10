@@ -39,6 +39,7 @@ import vraag4 from "../components/vraag4-input";
 import vraag5 from "../components/vraag5-input";
 import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
+import berekenUitslag from "../scripts/score.js"
 
 export default {
   name: "vragen",
@@ -63,10 +64,12 @@ export default {
   // ga naar score scherm
   methods:{
     goToResult(value){
-      if(value > this.vragen){
+      if(value > this.vragen){ 
+        let uitslag = berekenUitslag(this.$store.state.ANTWOORD);  
+        this.$store.commit('setResultaat',uitslag);          
         this.$router.push('/scorescherm');
       }
-    }
+    }  
   },
   // wissel label op als het aantal vragen is bereikt
   computed:{
@@ -87,5 +90,5 @@ export default {
   //end computed   
   }
 //end export
-};
+}
 </script>
