@@ -89,7 +89,7 @@
 
 <script>
 // TO DO veranderen naar analog-VOL-meter
-import AnalogVolMeter from "../components/analog-balance-meter";
+import AnalogVolMeter from "../components/analog-vol-meter";
 
 export default {
   name: "scorescherm",

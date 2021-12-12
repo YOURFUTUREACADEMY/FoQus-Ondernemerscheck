@@ -51,12 +51,15 @@
       //calculate Dial parameters 
       const fsc_scaleDialValue = scaleMaxValue - scaleMinValue;
       const fsc_scaleDialDeg = scaleMaxDeg - scaleMinDeg;
+      const fsc_DegToValue = fsc_scaleDialDeg / fsc_scaleDialValue;
+      const fsc_MinValueCorrection = fsc_DegToValue * scaleMinValue;
+      
       let fsl_pointerDeg = scaleMinDeg;
 
       meterOutput.pointerValue = scaleInputValue;
       
       // pointer controle
-      fsl_pointerDeg = (fsc_scaleDialDeg/fsc_scaleDialValue ) * scaleInputValue;
+      fsl_pointerDeg = fsc_DegToValue * scaleInputValue - fsc_MinValueCorrection;
       if( fsl_pointerDeg > scaleMaxDeg){
         meterOutput.pointerDeg = scaleMaxDeg;
         meterOutput.status = `AnalogMeter: warning - pointer exceeding maximum degree limit pointerDeg=${fsl_pointerDeg}, scaleMaxDeg=${scaleMaxDeg}`;

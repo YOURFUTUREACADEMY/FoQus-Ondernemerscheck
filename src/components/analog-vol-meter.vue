@@ -259,7 +259,7 @@ export default {
         else{
             this.meter = AnalogMeter(this.value,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
         }
-        this.meter.pointerDeg = this.meter.pointerDeg + this.settings.adjustDeg;            
+        this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;            
         this.$emit('meter', this.meter);   
       }
   },

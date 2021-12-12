@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import AnalogMeter from "../components/analog-balance-meter";
+import AnalogMeter from "../components/analog-vol-meter";
 
 export default {
   data() {
@@ -50,8 +50,8 @@ export default {
         adjustDeg: 0,
         manMode: false,
         manValue: 50,
-        maxValue: 100,
-        minValue: 0,
+        maxValue: 125,
+        minValue: 25,
         maxDeg: 180,
         minDeg: 0,
       },
