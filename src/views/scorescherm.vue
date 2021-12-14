@@ -88,7 +88,6 @@
 </template>
 
 <script>
-// TO DO veranderen naar analog-VOL-meter
 import AnalogVolMeter from "../components/analog-vol-meter";
 
 export default {
@@ -99,13 +98,14 @@ export default {
       kleurCode: this.$store.getters.getResultaat('kleur'),
       score:this.$store.getters.getResultaat('score'),
       meterSettings: {
-        adjustDeg: 0,
+        adjustDeg: -22,
         manMode: false,
         manValue: 50,
         maxValue: 125,
         minValue: 5,
         maxDeg: 180,
         minDeg: 0,
+        reverseDirection: true,
       },
       naam: "", //"TO DO"
       emailControle: "", //"TO DO"

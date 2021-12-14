@@ -227,7 +227,14 @@ export default {
   props:[`value`,"settings"],
   data() {
     return {
-      meter: "no value", 
+			meter: "no value", 
+			meterSettings: {
+        valueMax:this.settings.maxValue,
+        valueMin:this.settings.minValue,
+        degMax:this.settings.maxDeg,
+        degMin:this.settings.minDeg,
+        reverseDirection:this.settings.reverseDirection,
+			},
     //end return
     };
   // end data
@@ -254,12 +261,13 @@ export default {
   methods: {
     runMeter(){
         if(this.settings.manMode === true){
-            this.meter = AnalogMeter(this.settings.manValue,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
+            this.meter = AnalogMeter(this.settings.manValue,this.meterSettings);
         }
         else{
-            this.meter = AnalogMeter(this.value,this.settings.maxValue,this.settings.minValue,this.settings.maxDeg,this.settings.minDeg);
+            this.meter = AnalogMeter(this.value,this.meterSettings);
         }
-        this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;            
+        if(this.settings.reverseDirection)this.meter.pointerDeg = (this.meter.pointerDeg - ((this.settings.maxDeg / 2)) * -1) + this.settings.adjustDeg;  
+        else this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;           
         this.$emit('meter', this.meter);   
       }
   },
