@@ -128,9 +128,9 @@ main {
   border-color: var(--grijs);
 }
 .col-form-label, .form-control-range, .form-check-label{
-font-size: 1.5rem;
-padding-top: 0 !important;
-padding-bottom: 0 !important;
+  font-size: 1.5rem;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .form-check-input{
@@ -139,6 +139,74 @@ padding-bottom: 0 !important;
 
 .range-input{
  width: 500px;
+}
+
+/* style range slider */
+.rs-line{
+  width: 500px;
+  height: 1.8rem;
+  overflow:hidden;
+  cursor:pointer;
+  -webkit-appearance: none;
+}
+
+::-webkit-slider-runnable-track{
+  background-color: var(--grijs);
+}
+
+::-webkit-slider-thumb{
+  box-shadow: -55vw 0 0 55vw  var(--donkerBlauw);
+  height: 0px;
+  width: 0px;
+  -webkit-appearance: none;
+  margin-top: 50px;
+}
+
+::-moz-range-track{
+  background-color: var(--grijs);
+}
+
+::-moz-range-thumb{
+  box-shadow: -55vw 0 0 55vw  var(--donkerBlauw);
+  height: 0px;
+  width: 0px;
+  -webkit-appearance: none;
+  margin-top: 50px;
+}
+
+.rs-bullet {
+  position: relative;
+  transform-origin: center center;
+  display: block;
+  width: 0px;
+  height: 0px;
+  box-sizing: border-box;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--donkerBlauw);
+  top: -48px;
+  margin-left: -26px;
+}
+
+.rs-label {
+  position: relative;
+  transform-origin: center center;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  font-size:1em;
+  align-self: center;
+  user-select: none;
+  text-align: center;
+  box-sizing: border-box;
+  top: -41px;
+  margin-left: -22px;
+  color: var(--donkerBlauw);
+}
+
+.smilies{
+  margin-top:-50px;
 }
 
 /* CSS Score scherm */
