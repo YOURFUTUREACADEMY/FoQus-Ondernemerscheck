@@ -71,7 +71,6 @@
         width="500"
       />
     </div>
-    <p>{{score}}</p>
     <!-- TO DO Sectie hier onder verwijderen !! -->
     <section v-if='testMode' class="TO DO verwijderen">
     <br>
@@ -82,7 +81,7 @@
     <!-- TO DO storetest knop verwijderen -->
     <button class="volgendeBtn" @click="this.$router.push('/testMenu');">
           REMOVE: go to test menu
-        </button> -->
+        </button> 
     </section>
   </main>
 </template>
@@ -94,7 +93,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: false,
+      testMode: true,
       kleurCode: this.$store.getters.getResultaat('kleur'),
       score:this.$store.getters.getResultaat('score'),
       meterSettings: {
@@ -138,6 +137,9 @@ export default {
   components: {
     AnalogVolMeter,
   },
+  // update(){
+  //   this.score=this.$store.getters.getResultaat('score');
+  // },
   created(){
     if(this.kleurCode === undefined){
       this.$router.push('/')

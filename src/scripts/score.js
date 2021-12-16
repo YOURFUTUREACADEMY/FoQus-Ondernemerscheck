@@ -293,6 +293,7 @@ function berekenUitslag(vragen){
   }
   else{
     resultaat.kleur = rood;
+    resultaat.score = 125;
   }
 
   // conclusie 1: vraag 1,2,5 & 6
