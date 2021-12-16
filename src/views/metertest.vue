@@ -71,14 +71,14 @@ export default {
       antwoord:50,
       vraag: "vraag2",
       meterSettings: {
-        adjustDeg: 0,
         manMode: false,
         manValue: 50,
-        maxValue: 100,
-        minValue: 0,
-        maxDeg: 180,
-        minDeg: 0,
-        reverseDirection: true,
+        valueMax: 100,
+        valueMin: 0,
+        degMax: 180,
+        degMin: 0,
+        degAdjust: 0,
+        reverseDirection: false,
       },
     // einde return    
     };

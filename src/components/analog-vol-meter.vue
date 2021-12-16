@@ -112,20 +112,13 @@
 
 <script>
 // imports
-import { AnalogMeter } from "../scripts/functions.js"
+import { midPointerMeter } from "../scripts/meter.js"
 
 export default {
   props:[`value`,"settings"],
   data() {
     return {
-      meter: "no value", 
-      meterSettings: {
-        valueMax:this.settings.maxValue,
-        valueMin:this.settings.minValue,
-        degMax:this.settings.maxDeg,
-        degMin:this.settings.minDeg,
-        reverseDirection:this.settings.reverseDirection,
-      },
+			meter: "no value", 
     //end return
     };
   // end data
@@ -151,14 +144,7 @@ export default {
   },
   methods: {
     runMeter(){
-        if(this.settings.manMode === true){
-            this.meter = AnalogMeter(this.settings.manValue,this.meterSettings);
-        }
-        else{
-            this.meter = AnalogMeter(this.value,this.meterSettings);
-        }
-        if(this.settings.reverseDirection)this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2) * -1) + this.settings.adjustDeg;  
-        else this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;            
+        this.meter = midPointerMeter(this.value,this.settings)       
         this.$emit('meter', this.meter);   
       }
   },

@@ -18,77 +18,85 @@
 
   // }
 
-  // function that controles a analoge meter
-  //
-  // input
-  //
-  // scaleInput value - the value that the pointer will point to
-  // valueMin - the minimum value of the meterdial
-  // valueMax - the maximum value of the meterdial
-  // degMax - the minimum amount of degrees the meter will have
-  // degMix - the maximum value of degrees the meter will have
-  // reverseDirection - invert degree output
-  //
-  // output
-  //
-  // meterOutput.pointerValue - the value the pointer will indicate
-  // meterOutput.pointerDeg - the pointer position on the meter in degrees  
-  // meterOutput.valueMin - the minimum value of the meterdial
-  // meterOutput.valueMax - the maximum value of the meterdial
-  // meterOutput.status - display status messages about the AnalogeMeter
-  export function AnalogMeter(scaleInputValue, settings={valueMax : "", valueMin : 0, degMax : 180, degMin : 0, reverseDirection : false}){
 
-    // output
-    const meterOutput = {pointerValue:settings.valueMin, pointerDeg:settings.degMin, valueMin:settings.valueMin, valueMax:settings.valueMax,maxDeg:settings.degMax,degMax:settings.degMin ,status:""}    
-
-    // check input
-    if(settings.reverseDirection !== true && settings.reverseDirection !== false){
-      settings.reverseDirection = false;
-    }
-
-    // status messages
-    if( settings.valueMax === "" || settings.valueMax === undefined){
-      meterOutput.status = "AnalogMeter: parameter fault - valueMax is undefined";
-    }
-    else if( settings.valueMin >= settings.valueMax){
-      meterOutput.status = "AnalogMeter: parameter fault - valueMin is greater than or equal to valueMax";
-    }
-    else if( settings.degMin >= settings.degMax){
-      meterOutput.status = "AnalogMeter: parameter fault - degMin is greater than or equal to degMax";
-    }
-    else{
-    
-      //calculate Dial parameters 
-      const fsc_scaleDialValue = settings.valueMax - settings.valueMin;
-      const fsc_scaleDialDeg = settings.degMax - settings.degMin;
-      const fsc_DegToValue = fsc_scaleDialDeg / fsc_scaleDialValue;
-      const fsc_valueMinCorrection = fsc_DegToValue * settings.valueMin;
-      
-      let fsl_pointerDeg = settings.degMin;
+// var window_width = 0;
+// var window_height = 0;
 
 
-      meterOutput.pointerValue = scaleInputValue
-      
-      // pointer controle
-      fsl_pointerDeg = fsc_DegToValue * scaleInputValue - fsc_valueMinCorrection;
-      if( fsl_pointerDeg > settings.degMax){
-        meterOutput.pointerDeg = settings.degMax;
-        meterOutput.status = `AnalogMeter: warning - pointer exceeding maximum degree limit pointerDeg=${fsl_pointerDeg}, degMax=${settings.degMax}`;
-      }  
-      else if( fsl_pointerDeg < settings.degMin){
-        meterOutput.pointerDeg = settings.degMin;
-        meterOutput.status = `AnalogMeter: warning - pointer exceeding minimum degree limit pointerDeg=${fsl_pointerDeg}, degMin=${settings.degMin}`;
-      }  
-      else {
-      // pointer direction;
-        if(settings.reverseDirection) meterOutput.pointerDeg = (fsl_pointerDeg * -1);       
-        else meterOutput.pointerDeg = fsl_pointerDeg;
-      }
-      // meter status oke
-      meterOutput.status = `AnalogMeter: pointerDeg=${fsl_pointerDeg}, pointerValue=${scaleInputValue}`;
-    
-    }
-    return meterOutput;
-  }
 
-  // export default AnalogMeter;
+// function getSize(){
+// 		window_width = window.innerWidth;
+// 		window_height = window.innerHeight;
+// }
+
+
+// /* Calculate and set size */
+// function SetSize(IDtag = "Element ID", DB_size_json ="") {
+
+// /*function variables */
+// 		/* Varibles JSON */
+// 		var size_data = DB_size_json[IDtag];
+				
+// 		/* varibles */
+// 		var settings = size_data.settings[0],
+// 			offset = size_data.offset[0],
+// 			margin = size_data.margin[0];
+			
+			
+// 			/* offset */
+// 		var	Offset_width = offset.Offset_width,
+// 			Offset_height = offset.Offset_height,
+// 			Offset_left = offset.Offset_left,
+			
+// 			/* margin */ 
+// 			margin_top =  margin.margin_top,
+// 			margin_right =  margin.margin_right,
+// 			margin_bottom =  margin.margin_bottom,
+// 			margin_left =  margin.margin_left;
+			
+			
+// 		getSize();
+
+
+// 		var project_screensize = 300, /* to do input for this value */
+// 			project_offset = project_screensize / window_width,
+// 			width_modifier = Offset_width - project_offset;
+
+// 		/* Iframe width */
+// 		if (typeof (Offset_width) === "number"){
+// 		var Iframe_width =  ((window_width / 100)* width_modifier) ;
+// 		document.getElementById(IDtag).style.width = Iframe_width + "px";
+// 		};
+		
+// 		/* Iframe margin left */
+// 		var Iframe_marginLeft = 0;
+		
+		
+// 		if (margin_left == "auto"){
+// 			Iframe_marginLeft = ((window_width - Iframe_width) + Offset_left)*0.5; 
+// 				if (Iframe_marginLeft < 0){
+// 					Iframe_marginLeft = 0;
+// 				}
+// 			//document.getElementById(IDtag).style.marginLeft = Iframe_marginLeft + "px";	
+// 			SetMargin(IDtag, "left", Iframe_marginLeft, "px")
+// 			}
+// 		else{
+// 			SetMargin(IDtag, "left", margin_left, "%")
+// 		};
+		
+	
+// 		/* Iframe height */	
+// 		if (Offset_height != "auto" & Offset_height != null || typeof (Offset_height) === "number"){
+// 		var Iframe_height = ((window_height / 100)* Offset_height);
+// 		document.getElementById(IDtag).style.height = Iframe_height + "px";
+// 		};
+	
+// /* Object margin */
+// SetMargin(IDtag, "top", margin_top, "%");
+// SetMargin(IDtag, "right", margin_right, "%");	
+// SetMargin(IDtag, "bottom", margin_bottom, "%");		
+
+/* End Size function */		
+// }
+
+// export default AnalogMeter;
