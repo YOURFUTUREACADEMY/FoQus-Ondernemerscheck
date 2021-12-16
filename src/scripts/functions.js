@@ -36,7 +36,7 @@
   // meterOutput.valueMin - the minimum value of the meterdial
   // meterOutput.valueMax - the maximum value of the meterdial
   // meterOutput.status - display status messages about the AnalogeMeter
-  function AnalogMeter(scaleInputValue, settings={valueMax : "", valueMin : 0, degMax : 180, degMin : 0, reverseDirection : false}){
+  export function AnalogMeter(scaleInputValue, settings={valueMax : "", valueMin : 0, degMax : 180, degMin : 0, reverseDirection : false}){
 
     // output
     const meterOutput = {pointerValue:settings.valueMin, pointerDeg:settings.degMin, valueMin:settings.valueMin, valueMax:settings.valueMax,maxDeg:settings.degMax,degMax:settings.degMin ,status:""}    
@@ -91,4 +91,4 @@
     return meterOutput;
   }
 
-  export default AnalogMeter;
+  // export default AnalogMeter;

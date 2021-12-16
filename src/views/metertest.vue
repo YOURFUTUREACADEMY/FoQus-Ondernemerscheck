@@ -22,6 +22,7 @@
      
       <p class="text-score mx-3">Meter Function:</P>
         <div class="mx-3">
+          <p>Status: {{meter.status}}</p>
           <p>Input value: {{meter.pointerValue}}</p>
           <p>Input lower value:{{meter.valueMin}}</p>
           <p>Input upper value:{{meter.valueMax}}</p>

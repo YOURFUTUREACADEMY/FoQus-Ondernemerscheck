@@ -221,7 +221,7 @@ svg {
 
 <script>
 // imports
-import AnalogMeter from "../scripts/functions.js"
+import { AnalogMeter } from "../scripts/functions.js"
 
 export default {
   props:[`value`,"settings"],
@@ -266,7 +266,7 @@ export default {
         else{
             this.meter = AnalogMeter(this.value,this.meterSettings);
         }
-        if(this.settings.reverseDirection)this.meter.pointerDeg = (this.meter.pointerDeg - ((this.settings.maxDeg / 2)) * -1) + this.settings.adjustDeg;  
+        if(this.settings.reverseDirection)this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2) * -1) + this.settings.adjustDeg;  
         else this.meter.pointerDeg = (this.meter.pointerDeg - (this.settings.maxDeg / 2)) + this.settings.adjustDeg;           
         this.$emit('meter', this.meter);   
       }
