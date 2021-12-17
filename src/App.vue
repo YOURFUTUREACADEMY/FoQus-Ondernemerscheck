@@ -267,8 +267,8 @@ main {
 .meter{
   background: transparent;
   margin-top: -25px;
-  height: 40%;
-  width: 40%;
+  height: 35%;
+  width: 35%;
 }
 
 .label-naw{

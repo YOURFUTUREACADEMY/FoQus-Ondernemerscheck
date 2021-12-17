@@ -16,14 +16,44 @@
             hebben ze een signaalfunctie. Voor jou is dat signaal
             {{ scoreCondition.visual.signaal }}.
           </blockquote>
+            <tabel class="text-score mt-3">
+              <tr>
+                <td>Vraag1:</td> 
+                <td>{{this.$store.getters.getAntwoord(`vraag1`).waarde}}</td>  
+              </tr>
+              <tr>
+                <td>Vraag2:</td>
+                <td>{{this.$store.getters.getAntwoord(`vraag2`).waarde}}</td> 
+              </tr>
+              <tr>
+                <td>Vraag3:</td> 
+                <td>{{this.$store.getters.getAntwoord(`vraag3`).waarde}}</td> 
+              </tr> 
+              <tr>
+                <td>Vraag4:</td>
+                <td>{{this.$store.getters.getAntwoord(`vraag4`).label}}</td> 
+              </tr> 
+              <tr>
+                <td>Vraag5:</td> 
+                <td>{{this.$store.getters.getAntwoord(`vraag5`).label}}</td> 
+              </tr> 
+              <tr>
+                <td>Vraag6:</td>
+                <td>{{this.$store.getters.getAntwoord(`vraag6`).label}}</td>
+              </tr> 
+              <tr>
+                <td>Vraag7:</td>
+                <td>{{this.$store.getters.getAntwoord(`vraag7`).waarde}}</td>
+              </tr> 
+            </tabel>
         </div>
 
         <div class="legenda d-flex justify-content-center mt-3 mb-5">
-          <div
+          <!-- <div
             :class="
               scoreCondition.visual.class + ' legenda-bubble rounded-circle'
             "
-          ></div>
+          ></div> -->
           <p class="text-score ms-2">{{ scoreCondition.visual.label }}</p>
         </div>
 
@@ -114,8 +144,8 @@ export default {
       meterSettings: {
         degAdjust: -23,
         manMode: false,
-        manValue: 50,
-        valueMax: 125,
+        manValue: 0,
+        valueMax: 100,
         valueMin: 5,
         degMax: 186,
         degMin: 0,
@@ -155,9 +185,9 @@ export default {
   // update(){
   //   this.score=this.$store.getters.getResultaat('score');
   // },
-  mounted(){
-      this.vr = document.getElementById("vr");
-  },
+  // mounted(){
+  //     this.vr = document.getElementById("vr");
+  // },
   created(){
     if(this.kleurCode === undefined){
       this.$router.push('/')

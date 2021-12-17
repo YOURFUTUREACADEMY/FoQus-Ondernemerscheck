@@ -3,9 +3,9 @@ import opmerkingenData from "../data/opmerkingen.js"
 const $opmerkingen = opmerkingenData;
 
 // score waardes
-const $groen = 1;
-const $oranje = 5;
-const $rood = 25;
+const $groen = 1; // 1
+const $oranje = 5; // 5
+const $rood = 20; // 25
 
 
 function berekenUitslag(vragen){
@@ -278,22 +278,26 @@ function berekenUitslag(vragen){
   // als statusConclusie === 0 dan: toon conclusie3 
   let statusConclusie = 0;
 
-  // overal kleur
-  if(resultaat.score > 0 && resultaat.score <= 17){
+  // overal kleur 
+  // orgineel 0 & 17
+  if(resultaat.score > 0 && resultaat.score <= 7){
     resultaat.kleur = groen;
     statusConclusie = 1;
   }
-  else if(resultaat.score > 17 && resultaat.score <= 85){
+  // orgineel 17 & 85 
+  else if(resultaat.score > 17 && resultaat.score <= 70){
     resultaat.kleur = oranje;
     statusConclusie = 2;
   }
-  else if(resultaat.score > 85){
+  // orgineel 85
+  else if(resultaat.score > 70){
     resultaat.kleur = rood;
     statusConclusie = 3;
   }
   else{
+    // orgineel 125
     resultaat.kleur = rood;
-    resultaat.score = 125;
+    resultaat.score = 100;
   }
 
   // conclusie 1: vraag 1,2,5 & 6
