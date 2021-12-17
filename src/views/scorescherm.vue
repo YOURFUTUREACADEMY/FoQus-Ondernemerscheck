@@ -7,10 +7,10 @@
 
         <div class="d-sm-flex flex-row mx-2 mx-sm-5 mt-2 justify-content-center">
 
-          <AnalogVolMeter class="" :value='score' :settings='meterSettings'></AnalogVolMeter>
+          <AnalogVolMeter class="meter" :value='score' :settings='meterSettings' v-on:meter="meterData"></AnalogVolMeter>
 
-          <div class="vl mx-3 mt-1 floatL"></div>
-          <blockquote class="text-score text-start mx-2">
+          <div class="vl mx-3 mt-3 floatL"></div>
+          <blockquote class="text-score text-start mx-2 mt-3">
             Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat
             als ondernemer. De antwoorden zijn niet goed of fout In combinatie
             hebben ze een signaalfunctie. Voor jou is dat signaal
@@ -24,7 +24,7 @@
               scoreCondition.visual.class + ' legenda-bubble rounded-circle'
             "
           ></div>
-          <p class="text-score mt-2 ms-2">{{ scoreCondition.visual.label }}</p>
+          <p class="text-score ms-2">{{ scoreCondition.visual.label }}</p>
         </div>
 
 
@@ -73,37 +73,52 @@
     </div>
     <!-- TO DO Sectie hier onder verwijderen !! -->
     <section v-if='testMode' class="TO DO verwijderen">
-    <br>
-    <!-- TO DO storetest knop verwijderen -->
-    <button  class="backBtn" @click="$router.push('/')">
+      <br>
+      <!-- TO DO storetest knop verwijderen -->
+      <button  class="backBtn" @click="$router.push('/')">
           terug naar begin
-        </button>
-    <!-- TO DO storetest knop verwijderen -->
-    <button class="volgendeBtn" @click="this.$router.push('/testMenu');">
+      </button>
+      <!-- TO DO storetest knop verwijderen -->
+      <button class="volgendeBtn" @click="this.$router.push('/testMenu');">
           REMOVE: go to test menu
-        </button> 
+      </button>
+      <p class="text-score">{{score}}</p>
+      <p class="text-score">Status: {{meter.status}}</p> 
     </section>
   </main>
 </template>
 
 <script>
 import AnalogVolMeter from "../components/analog-vol-meter";
+// import { getWindowSize} from "../scripts/functions.js";
+
+
+// let windowSize;
+
+// function onResize(){
+//   windowSize = getWindowSize();
+// }
+
+// window.addEventListener("resize",onResize);
+
+
 
 export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: true,
+      testMode: false,
       kleurCode: this.$store.getters.getResultaat('kleur'),
       score:this.$store.getters.getResultaat('score'),
+      meter:"",
       meterSettings: {
-        adjustDeg: -22,
+        degAdjust: -23,
         manMode: false,
         manValue: 50,
-        maxValue: 125,
-        minValue: 5,
-        maxDeg: 180,
-        minDeg: 0,
+        valueMax: 125,
+        valueMin: 5,
+        degMax: 186,
+        degMin: 0,
         reverseDirection: true,
       },
       naam: "", //"TO DO"
@@ -140,6 +155,9 @@ export default {
   // update(){
   //   this.score=this.$store.getters.getResultaat('score');
   // },
+  mounted(){
+      this.vr = document.getElementById("vr");
+  },
   created(){
     if(this.kleurCode === undefined){
       this.$router.push('/')
@@ -179,6 +197,12 @@ export default {
       }
       return { visual };
     },
+  // end computed
   },
+  methods:{
+    meterData(meter){
+      this.meter = meter
+    }
+  }
 }; // end export
 </script>

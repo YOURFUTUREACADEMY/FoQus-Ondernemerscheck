@@ -18,16 +18,57 @@
 
   // }
 
+  
+// function to get browser window inner size
+export function getWindowSize(){
+  // variable
+  const windowSize={height:0, width:0}
+  // get size
+  windowSize.height = window.innerHeight;
+  windowSize.width = window.innerWidth;
+  return windowSize;
+}
 
-// var window_width = 0;
-// var window_height = 0;
+// function to element size
+export function getElementSize(elementID){
+  // variable
+  const element = document.getElementById(elementID);
+  const elementSize ={height:0, width:0}  
+  //get size
+  elementSize.width = element.offsetWidth;
+  elementSize.height = element.offsetHeight;
+  return elementSize;
+}
+
+// function to set element position
+export function setElementPosition(elementID, top, left, unit){
+  const element = document.getElementById(elementID);
+  if(unit === undefined || unit === ""){
+    element.top = top + "px";
+    element.left = left + "px";
+  }
+  else
+  {
+    element.top = top + unit;
+    element.left = left + unit;  
+  }
+}
+
+// function to set element size
+export function setElementSize(elementID, height, width, unit){
+  const element = document.getElementById(elementID);
+  if(unit === undefined || unit === ""){
+    element.height = height + "px";
+    element.width = width + "px";
+  }
+  else
+  {
+    element.height = height + unit;
+    element.width = width + unit;  
+  }
+}
 
 
-
-// function getSize(){
-// 		window_width = window.innerWidth;
-// 		window_height = window.innerHeight;
-// }
 
 
 // /* Calculate and set size */

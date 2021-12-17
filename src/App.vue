@@ -219,7 +219,8 @@ main {
 /* verticale lijn tussen score bubble en block quote */
 .vl{
   background-color: var(--donkerGrijs);
-  height: 200px;
+  height: 250px;
+  /* height: 100%; */
   width: 2px;
 }
 
@@ -229,7 +230,6 @@ main {
 }
 
 .container-score {
-  /* background-color: var(--grijs); */
   height: 550px;
 }
 
@@ -264,6 +264,13 @@ main {
   width: 25px;
 }
 
+.meter{
+  background: transparent;
+  margin-top: -25px;
+  height: 40%;
+  width: 40%;
+}
+
 .label-naw{
   margin-top:12px;
   text-align: left;
@@ -280,6 +287,16 @@ main {
       font-size: 1.1rem;
 }
 
+/* TODO tijdelijk toegevoegd verwijderen in volgende versie  */
+.foqusRaport {
+    display: none;
+  }
+
+.vl{
+    display: none;
+  }
+
+/* screen size 600px */
 @media only screen and (max-width: 600px) {
   .header {
     font-size: 1.5rem;
@@ -300,6 +317,13 @@ main {
 
   .vl{
     display: none;
+  }
+
+  .meter{
+    background: transparent;
+    margin: 0 7.5%;
+    height: 85%;
+    width: 85%;
   }
 
   .foqusRaport {

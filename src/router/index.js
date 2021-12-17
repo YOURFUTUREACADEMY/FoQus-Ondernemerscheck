@@ -7,6 +7,7 @@ import testMenu from '../views/testMenu.vue'
 import storetest from '../views/storetest.vue'
 import metertest from '../views/metertest.vue'
 import berekeningTest from '../views/berekeningTest.vue'
+import zaptest from '../views/zaptest.vue'
 const routes = [
   {
     path: "/",
@@ -43,6 +44,11 @@ const routes = [
     path:"/metertest",
     name: "metertest",
     component: metertest,
+  },
+  {
+    path:"/zaptest",
+    name: "zaptest",
+    component: zaptest,
   }
 ]
 

@@ -16,14 +16,14 @@
         </div> 
         
         <!-- Use showBackBtn to add / remove the back button -->
-        <div class="container-btn pt-2">
-          <div>
+        <div class="container-btn d-flex justify-content-end bd-highlight">
+          <div class="mt-2 me-auto ms-2 bd-highlight">
             <button class="btn btn-lg" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
               terug
             </button>
           </div>   
 
-          <button class="btn btn-lg" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
+          <button class="btn btn-lg mt-2 me-2 ms-auto bd-highlight" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
             {{switchLabelNxtBtn.label}}
           </button>
         </div> 

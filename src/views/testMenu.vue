@@ -19,6 +19,9 @@
         <button class="btn" @click="$router.push('/berekeningTest')">
           Naar berekening 
         </button>
+        <button class="btn" @click="$router.push('/zaptest')">
+          Naar zappier
+        </button>
       </section>
     </main>
   </div>
