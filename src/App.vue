@@ -27,7 +27,7 @@
   --donkerTurquoise: #1e8a8c;
   --oranje: #f6af23;
   --grijs: #e7e6e6;
-  --donkerGrijs: #cfcfcf;
+  --donkerGrijs: #A6A6A6;
   --zwart: #030303ec;
   /* kleuren score bubbles */
   --scoreSlecht: #ff0000;
@@ -85,14 +85,12 @@ main {
 }
 
 .progBarQ {
-  background-color: var(--donkerBlauw);
+  background-color: var(--donkerGrijs);
   text-align: right;
 }
 
 .container-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+ /* padding-bottom: 0.25rem; */
 }
 
 .btn {
@@ -208,11 +206,11 @@ main {
   width: 0px;
   height: 0px;
   box-sizing: border-box;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid var(--donkerBlauw);
-  top: -48px;
-  margin-left: -26px;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-bottom: 15px solid var(--donkerBlauw);
+    top: -48px;
+    margin-left: -7.5px;
 }
 
 .rs-label {

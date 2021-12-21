@@ -18,9 +18,9 @@
         <p class="mx-auto mt-3">0/7</p>
       </div>
     </div>
-    <div class="container-btn d-flex justify-content-end">
+    <div class="container-btn d-flex justify-content-end py-3">
       <button
-        class="btn btn-lg mt-2 me-2"
+        class="btn btn-lg "
         id="volgendeBtn"
         @click="$router.push('/vragen')"
       >

@@ -24,10 +24,10 @@
    
     </main>
    <!-- Use showBackBtn to add / remove the back button -->
-    <div class="container-btn d-flex justify-content-end bd-highlight">
-      <div class="mt-2 me-auto ms-2 bd-highlight">
+    <div class="container-btn d-flex justify-content-between bd-highlight py-3">
+      <div class="bd-highlight">
         <button
-          class="btn btn-lg"
+          class="btn  btn-lg"
           id="terugBtn"
           @click="activeStep--"
           v-show="activeStep > 1 && showBackBtn === true"
@@ -37,7 +37,7 @@
       </div>
 
       <button
-        class="btn btn-lg mt-2 me-2 ms-auto bd-highlight"
+        class="btn btn-lg  ms-auto bd-highlight"
         id="volgendeBtn"
         @click="activeStep++, goToResult(activeStep)"
       >
