@@ -144,7 +144,7 @@ export default {
       meterSettings: {
         degAdjust: -23,
         manMode: false,
-        manValue: 0,
+        manValue: 21,
         valueMax: 100,
         valueMin: 5,
         degMax: 186,

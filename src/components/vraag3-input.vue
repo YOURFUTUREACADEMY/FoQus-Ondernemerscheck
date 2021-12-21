@@ -14,7 +14,17 @@
         @change='opslag("",value)'
       />
       <p id="rs-label" class="rs-label" draggable="false" :style="labelPos">{{value}}%</p> 
-      <span id="rs-bullet" class="rs-bullet" :style="{left:sliderPos}"></span>         
+            <!-- <input
+        class="rs-bullet" 
+        type="range"
+        :min='rangeMin'
+        :max='rangeMax'
+        step=5
+        v-model="value"
+        id="rs-bullet"
+        @change='opslag("",value)'
+      /> -->
+      <span id="rs-bullet" class="rs-bullet" :style="{left:sliderPos}" @mousedown='bulletPos()' ></span>         
     </div>
 
 </div>
@@ -23,6 +33,10 @@
 </template>
 
 <script>
+
+
+// @mouseup='test()'
+
 
 export default {
   data() {
@@ -61,7 +75,129 @@ export default {
         waarde:waarde
       });
     },
+
+    test(){
+
+      const bullet = document.getElementById("rs-bullet");
+
+      let mouseX = 0;
+      let mouseY = 0;
+
+      function trackmouse(event){     
+        mouseX = event.offsetX;
+        mouseY = event.offsetY;
+        console.log("x:" + mouseX)
+        console.log("y:" + mouseY)
+        
+      }
+
+      function getMousePos(){
+        bullet.addEventListener('mousemove', trackmouse) 
+      }
+
+      function stopMousePos(){
+        bullet.removeEventListener('mousemove', trackmouse) 
+      }
+
+
+    bullet.addEventListener('mousedown', getMousePos);
+
+    window.addEventListener('mouseup', stopMousePos);
+
+    },
+
+    bulletPos(value){
+
+      // this.value = value;
+      let temp = value;
+      
+      const bullet = document.getElementById("rs-bullet");
+      const line = document.getElementById("rs-line");
+      const bulletStyle = window.getComputedStyle(bullet)
+
+      console.log(bullet.offsetLeft+" bullet-left");
+      console.log(bulletStyle.getPropertyValue('margin-left').match(/.*\d+/g)+" bullet-margin-left");
+      console.log(bullet.offsetWidth)+" bullet-width";
+      console.log(Number(bullet.offsetLeft) + Number(bulletStyle.getPropertyValue('margin-left').match(/.*\d+/g))+ Number(bullet.offsetWidth)+ "sum");
+      console.log(line.offsetLeft+" line-left");
+
+      
+      function moveBullet(mouse){
+        
+        const bullet = document.getElementById("rs-bullet");  
+        const bulletStyle = window.getComputedStyle(bullet);
+        let bulletLeftPos = Number(bullet.offsetLeft);
+        let bulletMarginLeft = Number(bulletStyle.getPropertyValue('margin-left').match(/.*\d+/g));
+        let bulletWidth = Number(bullet.offsetWidth);
+        let bulletCurrenPos = bulletLeftPos + bulletMarginLeft + bulletWidth;
+        let bulletNewPos = mouse.x + bulletCurrenPos
+
+        console.log("x:" + mouse.x)
+        console.log("y:" + mouse.y)
+        console.log("new pos:" + bulletNewPos)
+      
+        // bullet.style.left = bulletNewPos + "px";
+      
+      
+      }
+      
+
+      function trackmouse(event){     
+        
+        const mouse = {x:0,y:0};
+        
+        mouse.x = event.offsetX;
+        mouse.y = event.offsetY;
+        
+        moveBullet(mouse);
+
+
+        return mouse;
+        
+      }
+
+
+
+
+
+      function getMousePos(){
+        bullet.addEventListener('mousemove', trackmouse)
+      }
+
+      function stopMousePos(){
+        bullet.removeEventListener('mousemove', trackmouse) 
+      }
+
+
+    bullet.addEventListener('mousedown',getMousePos);
+    
+    // bullet.addEventListener('mousedown',function(){
+    //   bullet.addEventListener('mousemove',function(event){
+        
+    //     let mouse = {x:0,y:0}
+
+    //     mouse = trackmouse(event)
+    //     console.log("x:" + mouse.x)
+    //     console.log("y:" + mouse.y)
+        
+    //     })
+
+
+    // });
+
+    window.addEventListener('mouseup', stopMousePos);
+
+
+
+    
+
+    return temp;
+    }
   },
+
+
+
+
   computed:{
     // controle slider bullet postion
     sliderPos(){
@@ -108,7 +244,7 @@ export default {
       style.left = newPos + "px"
      
       return style;     
-    }
+    },
   }
 };
 </script>
