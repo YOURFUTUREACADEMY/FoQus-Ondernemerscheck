@@ -1,15 +1,14 @@
 <template>
-<div>
-  <header role="banner">
+  <div class="shadow p-5">
+    <header role="banner">
       <img
         class="foqusLogo img-fluid mx-auto d-block"
-        src="./assets/images/FoQus-Werkt.png"
+        src="./assets/images/logo_ondernemerscheck.jpg"
         role="figure"
       />
     </header>
-  <router-view/>
-</div>
-
+    <router-view />
+  </div>
 </template>
 
 <style>
@@ -17,42 +16,43 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 75%;
 }
 
 :root {
-  --wit: #FFFFFF;
-  --lichtBlauw: #D3F1F3;
-  --donkerBlauw: #08344D;
-  --lichtTurquoise: #1DBAC1;
-  --donkerTurquoise: #1E8A8C;
-  --oranje: #F6AF23;
-  --grijs: #E7E6E6;
+  --wit: #ffffff;
+  --lichtBlauw: #d3f1f3;
+  --donkerBlauw: #08344d;
+  --lichtTurquoise: #1dbac1;
+  --donkerTurquoise: #1e8a8c;
+  --oranje: #f6af23;
+  --grijs: #e7e6e6;
   --donkerGrijs: #cfcfcf;
   --zwart: #030303ec;
   /* kleuren score bubbles */
-  --scoreSlecht: #FF0000;
-  --borderSlecht: #9E0000;
-  --scoreMatig: #ED7D31;
-  --borderMatig: #AF5C23;
-  --scoreGoed: #00B050;
-  --borderGoed: #00843B;
+  --scoreSlecht: #ff0000;
+  --borderSlecht: #9e0000;
+  --scoreMatig: #ed7d31;
+  --borderMatig: #af5c23;
+  --scoreGoed: #00b050;
+  --borderGoed: #00843b;
 }
 
 body {
   color: var(--lichtBlauw);
   font-size: 13px;
-  margin:0%;
-  display:flex;
+  display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 800px;
 }
-
 main {
   max-width: 1320px;
 }
 
-
-.foqusLogo{
-  height:100px;
+.foqusLogo {
+  height: 100px;
 }
 
 .header {
@@ -65,114 +65,110 @@ main {
   font-size: 2rem;
 }
 
-
 /* styling page vragen */
 .container-vragen {
   background-color: var(--wit);
   color: var(--donkerBlauw);
   height: 300px;
   margin: 0%;
-  padding: 5% 0;
+  /* padding: 5% 0; */
   font-size: 1.5rem;
 }
 
-.progress{
+.progress {
   height: 2rem;
-  font-size:1.5em;
+  font-size: 1.5em;
 }
 
-.container-progBarQ{
+.container-progBarQ {
   background-color: var(--grijs);
 }
 
-.progBarQ{
+.progBarQ {
   background-color: var(--donkerBlauw);
   text-align: right;
-
 }
 
-.container-btn{
-  display:flex;
+.container-btn {
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: var(--wit);
-  height: 250px;
-  margin: 0%;
 }
 
-.btn{
+.btn {
   background-color: var(--oranje);
   color: var(--lichtBlauw);
   width: 175px;
 }
 
 .btn:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
-#terugBtn{
- align-self: flex-start;
-}
-
-
-#volgendeBtn{
+#terugBtn {
   align-self: flex-start;
 }
 
+#volgendeBtn {
+  align-self: flex-start;
+}
 
 /* styling components vragen */
 
-.number-input{
-  height:30px;
+.number-input {
+  height: 30px;
   width: 250px;
   border-color: var(--grijs);
 }
-.col-form-label, .form-control-range, .form-check-label{
+.col-form-label,
+.form-control-range,
+.form-check-label {
   font-size: 1.5rem;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
-.form-check-input{
+.form-check-input {
   margin-top: 0 !important;
-  vertical-align: initial;}
+  vertical-align: initial;
+}
 
 /* .range-input{
  width: 500px;
 } */
 
 /* range track/line */
-.rs-line{
+.rs-line {
   width: 500px;
   height: 1.8rem;
-  overflow:hidden;
-  cursor:pointer;
+  overflow: hidden;
+  cursor: pointer;
   -webkit-appearance: none;
 }
 
-  .rs-line::-webkit-slider-runnable-track{
-    background-color: var(--grijs);
-  }
+.rs-line::-webkit-slider-runnable-track {
+  background-color: var(--grijs);
+}
 
-  .rs-line::-webkit-slider-thumb{
-    box-shadow: -55vw 0 0 55vw  var(--donkerBlauw);
-    height: 0px;
-    width: 0px;
-    -webkit-appearance: none;
-    margin-top: 50px;
-  }
+.rs-line::-webkit-slider-thumb {
+  box-shadow: -55vw 0 0 55vw var(--donkerBlauw);
+  height: 0px;
+  width: 0px;
+  -webkit-appearance: none;
+  margin-top: 50px;
+}
 
-  .rs-line::-moz-range-track{
-    background-color: var(--grijs);
-  }
+.rs-line::-moz-range-track {
+  background-color: var(--grijs);
+}
 
-  .rs-line::-moz-range-thumb{
-    box-shadow: -55vw 0 0 55vw  var(--donkerBlauw);
-    height: 0px;
-    width: 0px;
-    -webkit-appearance: none;
-    margin-top: 50px;
-  }
+.rs-line::-moz-range-thumb {
+  box-shadow: -55vw 0 0 55vw var(--donkerBlauw);
+  height: 0px;
+  width: 0px;
+  -webkit-appearance: none;
+  margin-top: 50px;
+}
 
 /* slider bullet/thumb */
 /* .rs-bullet{
@@ -226,7 +222,7 @@ main {
   width: 20px;
   height: 20px;
   background: transparent;
-  font-size:1em;
+  font-size: 1em;
   align-self: center;
   user-select: none;
   text-align: center;
@@ -236,26 +232,26 @@ main {
   color: var(--donkerBlauw);
 }
 
-.smilies{
-  margin-top:-50px;
+.smilies {
+  margin-top: -50px;
 }
 
 /* CSS Score scherm */
 /* horizontale lijn tussen section en container */
-.hl{
+.hl {
   background-color: var(--donkerBlauw);
   opacity: 1;
 }
 
 /* verticale lijn tussen score bubble en block quote */
-.vl{
+.vl {
   background-color: var(--donkerGrijs);
   height: 250px;
   /* height: 100%; */
   width: 2px;
 }
 
-.section-score{
+.section-score {
   background-color: var(--wit);
   height: 575px;
 }
@@ -264,93 +260,95 @@ main {
   height: 550px;
 }
 
-.header-score{
+.header-score {
   color: var(--oranje);
 }
 
-.score-bubble{
+.score-bubble {
   border: 1px solid;
   height: 100px;
-  width: 100px; 
+  width: 100px;
 }
 
-.score-slecht{
+.score-slecht {
   background-color: var(--scoreSlecht);
   border-color: var(--borderSlecht);
 }
 
-.score-matig{
+.score-matig {
   background-color: var(--scoreMatig);
   border-color: var(--borderMatig);
 }
-  
-.score-goed{
+
+.score-goed {
   background-color: var(--scoreGoed);
   border-color: var(--borderGoed);
 }
 
-.legenda-bubble{
+.legenda-bubble {
   border: 1px solid;
   height: 25px;
   width: 25px;
 }
 
-.meter{
+.meter {
   background: transparent;
   margin-top: -25px;
   height: 35%;
   width: 35%;
 }
 
-.label-naw{
-  margin-top:12px;
+.label-naw {
+  margin-top: 12px;
   text-align: left;
-  
-  width:75px;
+
+  width: 75px;
 }
 .text-start {
-  width:50%;
+  width: 50%;
 }
 
-.text-score{
+.text-score {
   color: var(--zwart);
-  font-weight: 500;  
-      font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
 /* TODO tijdelijk toegevoegd verwijderen in volgende versie  */
 .foqusRaport {
-    display: none;
-  }
+  display: none;
+}
 
-.vl{
-    display: none;
-  }
+.vl {
+  display: none;
+}
 
 /* screen size 600px */
 @media only screen and (max-width: 600px) {
   .header {
     font-size: 1.5rem;
-    padding: 0 5%; 
+    padding: 0 5%;
   }
 
-  .col-form-label, .form-control-range, .form-check-label {
-  font-size: 1.25rem;
- }
+  .col-form-label,
+  .form-control-range,
+  .form-check-label {
+    font-size: 1.25rem;
+  }
 
   .range-input {
     width: 100%;
   }
 
   .slider {
-    width:80%;
+    width: 80%;
   }
 
-  .vl{
+  .vl {
     display: none;
   }
 
-  .meter{
+  .meter {
     background: transparent;
     margin: 0 7.5%;
     height: 85%;
@@ -361,23 +359,19 @@ main {
     display: none;
   }
 
-  .section-score{
-  height: 775px;
-}
+  .section-score {
+    height: 775px;
+  }
 
-.container-score {
-  height: 750px;
-}
+  .container-score {
+    height: 750px;
+  }
 
   .floatL {
     float: left;
   }
   .text-start {
-    width: 100%!important;
+    width: 100% !important;
   }
 }
-  
-
-
-
 </style>

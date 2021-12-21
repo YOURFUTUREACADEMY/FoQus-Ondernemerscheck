@@ -1,34 +1,50 @@
 <template>
+  <div>
+    <main>
+      <vraag1 v-if="activeStep == 1"></vraag1>
+      <vraag2 v-if="activeStep == 2"></vraag2>
+      <vraag3 v-if="activeStep == 3"></vraag3>
+      <vraag4 v-if="activeStep == 4"></vraag4>
+      <vraag5 v-if="activeStep == 5"></vraag5>
+      <vraag6 v-if="activeStep == 6"></vraag6>
+      <vraag7 v-if="activeStep == 7"></vraag7>
 
-    <main >
-        <vraag1 v-if="activeStep == 1"></vraag1>
-        <vraag2 v-if="activeStep == 2"></vraag2>
-        <vraag3 v-if="activeStep == 3"></vraag3>
-        <vraag4 v-if="activeStep == 4"></vraag4>
-        <vraag5 v-if="activeStep == 5"></vraag5>
-        <vraag6 v-if="activeStep == 6"></vraag6>
-        <vraag7 v-if="activeStep == 7"></vraag7>
-        
-        <div class="container-progBarQ progress rounded-0">           
-          <div class="progBarQ progress-bar" :style="{width:progBarwidth.width+'%'}" :aria-valuenow="progBarwidth.width" aria-valuemin="1" :aria-valuemax="vragen" >
-            <p class="mx-auto mt-3">{{activeStep}}/{{vragen}}</p>
-          </div>
-        </div> 
-        
-        <!-- Use showBackBtn to add / remove the back button -->
-        <div class="container-btn d-flex justify-content-end bd-highlight">
-          <div class="mt-2 me-auto ms-2 bd-highlight">
-            <button class="btn btn-lg" id="terugBtn" @click="activeStep--" v-show="activeStep > 1 && showBackBtn===true">
-              terug
-            </button>
-          </div>   
+      <div class="container-progBarQ progress rounded-0">
+        <div
+          class="progBarQ progress-bar"
+          :style="{ width: progBarwidth.width + '%' }"
+          :aria-valuenow="progBarwidth.width"
+          aria-valuemin="1"
+          :aria-valuemax="vragen"
+        >
+          <p class="mx-auto mt-3">{{ activeStep }}/{{ vragen }}</p>
+        </div>
+      </div>
 
-          <button class="btn btn-lg mt-2 me-2 ms-auto bd-highlight" id="volgendeBtn" @click="activeStep++, goToResult(activeStep)">
-            {{switchLabelNxtBtn.label}}
-          </button>
-        </div> 
+   
     </main>
+   <!-- Use showBackBtn to add / remove the back button -->
+    <div class="container-btn d-flex justify-content-end bd-highlight">
+      <div class="mt-2 me-auto ms-2 bd-highlight">
+        <button
+          class="btn btn-lg"
+          id="terugBtn"
+          @click="activeStep--"
+          v-show="activeStep > 1 && showBackBtn === true"
+        >
+          terug
+        </button>
+      </div>
 
+      <button
+        class="btn btn-lg mt-2 me-2 ms-auto bd-highlight"
+        id="volgendeBtn"
+        @click="activeStep++, goToResult(activeStep)"
+      >
+        {{ switchLabelNxtBtn.label }}
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -39,18 +55,18 @@ import vraag4 from "../components/vraag4-input";
 import vraag5 from "../components/vraag5-input";
 import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
-import berekenUitslag from "../scripts/score.js"
+import berekenUitslag from "../scripts/score.js";
 
 export default {
   name: "vragen",
   data() {
-    return { 
+    return {
       activeStep: 1,
-      showBackBtn:true,
+      showBackBtn: true,
       vragen: 7,
-     //end return
+      //end return
     };
-  //end data  
+    //end data
   },
   components: {
     vraag1,
@@ -62,33 +78,32 @@ export default {
     vraag7,
   },
   // ga naar score scherm
-  methods:{
-    goToResult(value){
-      if(value > this.vragen){ 
-        let uitslag = berekenUitslag(this.$store.state.ANTWOORD);  
-        this.$store.commit('setResultaat',uitslag);          
-        this.$router.push('/scorescherm');
+  methods: {
+    goToResult(value) {
+      if (value > this.vragen) {
+        let uitslag = berekenUitslag(this.$store.state.ANTWOORD);
+        this.$store.commit("setResultaat", uitslag);
+        this.$router.push("/scorescherm");
       }
-    }  
+    },
   },
   // wissel label op als het aantal vragen is bereikt
-  computed:{
-    switchLabelNxtBtn(){       
+  computed: {
+    switchLabelNxtBtn() {
       let label;
-      if(this.activeStep < this.vragen){
-        label = "volgende";        
-      }
-      else{ 
+      if (this.activeStep < this.vragen) {
+        label = "volgende";
+      } else {
         label = "ga naar score";
       }
-      return{label}
+      return { label };
     },
-    progBarwidth(){
-      let width  = Math.round((this.activeStep/this.vragen)*100);
-      return{width}
-    }
-  //end computed   
-  }
-//end export
-}
+    progBarwidth() {
+      let width = Math.round((this.activeStep / this.vragen) * 100);
+      return { width };
+    },
+    //end computed
+  },
+  //end export
+};
 </script>
