@@ -76,8 +76,8 @@ main {
 }
 
 .progress {
-  height: 2rem;
-  font-size: 1.5em;
+  height: 1.3rem;
+  font-size: 1.15em;
 }
 
 .container-progBarQ {
