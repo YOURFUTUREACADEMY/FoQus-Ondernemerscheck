@@ -8,7 +8,7 @@
         type="range"
         :min='rangeMin'
         :max='rangeMax'
-        step=5
+        :step='step'
         v-model="value"
         id="rs-line"
         @change='opslag("",value)'
@@ -35,15 +35,13 @@
 <script>
 
 
-// @mouseup='test()'
-
-
 export default {
   data() {
     return {
       vraag: "vraag3",
       rangeMin:0,
       rangeMax: 100,
+      step: 5,
       value: 50,
       rsLine: "",
       rsBullet:"",
@@ -106,11 +104,12 @@ export default {
 
     },
 
-    bulletPos(value){
+    bulletPos(){
 
       // this.value = value;
-      let temp = value;
-      
+      // let temp = value;
+      console.log(this.value)
+
       const bullet = document.getElementById("rs-bullet");
       const line = document.getElementById("rs-line");
       const bulletStyle = window.getComputedStyle(bullet)
@@ -124,18 +123,26 @@ export default {
       
       function moveBullet(mouse){
         
-        const bullet = document.getElementById("rs-bullet");  
-        const bulletStyle = window.getComputedStyle(bullet);
-        let bulletLeftPos = Number(bullet.offsetLeft);
-        let bulletMarginLeft = Number(bulletStyle.getPropertyValue('margin-left').match(/.*\d+/g));
-        let bulletWidth = Number(bullet.offsetWidth);
-        let bulletCurrenPos = bulletLeftPos + bulletMarginLeft + bulletWidth;
-        let bulletNewPos = mouse.x + bulletCurrenPos
+        
+        // const bullet = document.getElementById("rs-bullet");  
+        // const bulletStyle = window.getComputedStyle(bullet);
+        // let bulletLeftPos = Number(bullet.offsetLeft);
+        // let bulletMarginLeft = Number(bulletStyle.getPropertyValue('margin-left').match(/.*\d+/g));
+        // let bulletWidth = Number(bullet.offsetWidth);
+        // let bulletCurrenPos = bulletLeftPos + bulletMarginLeft + bulletWidth;
+        // let bulletNewPos = 0;
+        // let bulletNewPos = bulletCurrenPos + mouse.x;
 
         console.log("x:" + mouse.x)
         console.log("y:" + mouse.y)
-        console.log("new pos:" + bulletNewPos)
+        
       
+        if (mouse.x < 0 ) {
+          // this.value = this.value - this.step;
+        }
+
+        
+
         // bullet.style.left = bulletNewPos + "px";
       
       
@@ -151,6 +158,7 @@ export default {
         
         moveBullet(mouse);
 
+        
 
         return mouse;
         
@@ -191,7 +199,7 @@ export default {
 
     
 
-    return temp;
+    // return temp;
     }
   },
 
