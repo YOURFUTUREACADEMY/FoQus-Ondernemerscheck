@@ -3,10 +3,16 @@
   <div>
     <main>
       <section class='text-score'>
+
+        
         <label for="data">Data to send </label>
         <input type="text" id="data" v-model='inputText'>
         <p>{{inputText}}</p>
          <!-- zie ..store/index.js voor opbouw RESULTAAT -->
+        <p>Rapportdata</p>
+        <p>JSON:{{dataToSend}}</p>
+        <p>string:{{excel}}</p>
+        
         <button class="btn" @click="send()">
           Stuur naar Zapier
         </button>
@@ -20,6 +26,8 @@
 
 <script>
 import { sendToZap } from "../scripts/functions.js"
+import { composeRapport } from "../scripts/score.js";
+import { composeExcel } from "../scripts/score.js";
 export default {
   
   name: "scorescherm",
@@ -30,9 +38,19 @@ export default {
       url: "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh",
       inputText: "",
       data: "rapport=", 
-      resultaat:this.$store.getters.getFullResultaat(),
+      resultaat:this.$store.getters.getFullResultaat,
     }; //end return
   }, //end data
+  computed:{
+    dataToSend(){
+        let data = composeRapport(this.resultaat);
+      return data;
+    },
+    excel(){
+      let data = composeExcel(this.resultaat);
+      return data;
+    }
+  },
   methods:{
 
     send(){

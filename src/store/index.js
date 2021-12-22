@@ -45,8 +45,9 @@ const store = createStore({
     },
     getters: {
         getAntwoord: (state) => (vraag) => {return state.ANTWOORD[vraag];},
+        getFullAntwoord: (state) => {return state.ANTWOORD},
         getResultaat: state => (slot) => {return state.RESULTAAT[slot];},
-        getFullResultaat: state => () => {return state.RESULTAAT}
+        getFullResultaat: (state) => {return state.RESULTAAT}
     },
 });
 

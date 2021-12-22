@@ -149,4 +149,22 @@ export function sendToZap(url, data, options={methode:"POST"}){
 
 }
 
-//
+
+export function getObjectData(object, property){
+
+  const objectPropertie = object[property];
+
+  const key = [];
+  const value = [];
+  let number = 0;
+
+  for(property in objectPropertie){
+    key[number] = property;
+    value[number] = objectPropertie[property].score;
+    number++;
+  }
+  
+  return{ key, value}
+// end getObjectData
+}
+
