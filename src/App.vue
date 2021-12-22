@@ -231,7 +231,7 @@ main {
 }
 
 .smilies {
-  margin-top: -50px;
+font-size:30px;
 }
 
 /* CSS Score scherm */
@@ -314,7 +314,7 @@ main {
 
 /* TODO tijdelijk toegevoegd verwijderen in volgende versie  */
 .foqusRaport {
-  display: none;
+  display: block;
 }
 
 .vl {

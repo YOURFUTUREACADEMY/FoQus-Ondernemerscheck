@@ -3,13 +3,13 @@ import { createStore } from "vuex";
 const store = createStore({
     state: {
         ANTWOORD: {
-            vraag1:{label:'',waarde:'75'},
-            vraag2:{label:'',waarde:''},
-            vraag3:{label:'',waarde:''},
-            vraag4:{label:'',waarde:''},
-            vraag5:{label:'',waarde:''},
-            vraag6:{label:'',waarde:''},
-            vraag7:{label:'',waarde:''},
+            vraag1:{label:'',waarde:'1'},
+            vraag2:{label:'',waarde:'40'},
+            vraag3:{label:'',waarde:'50'},
+            vraag4:{label:'0,5 - 1,5 jaar',waarde:'2'},
+            vraag5:{label:'Blijft Gelijk',waarde:'2'},
+            vraag6:{label:'Blijft Gelijk',waarde:'2'},
+            vraag7:{label:'',waarde:'6'},
         },
 
         //============================================================================================
