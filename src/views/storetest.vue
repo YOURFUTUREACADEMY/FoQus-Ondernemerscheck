@@ -52,7 +52,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      resultaat:this.$store.getters.getFullResultaat(),
+      resultaat:this.$store.getters.getFullResultaat,
     }; //end return
   }, //end data
 }; // end export

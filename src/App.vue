@@ -334,8 +334,8 @@ font-size:30px;
     font-size: 1.25rem;
   }
 
-  .range-input {
-    width: 100%;
+ .rs-line {
+    width: 125%;
   }
 
   .slider {

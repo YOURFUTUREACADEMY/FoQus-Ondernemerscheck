@@ -57,6 +57,8 @@ import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
 import berekenUitslag from "../scripts/score.js";
 
+import composeResult from "../scripts/score.js";
+
 export default {
   name: "vragen",
   data() {
@@ -81,7 +83,9 @@ export default {
   methods: {
     goToResult(value) {
       if (value > this.vragen) {
-        let uitslag = berekenUitslag(this.$store.state.ANTWOORD);
+        let uitslag = berekenUitslag(this.$store.getters.getFullAntwoord);
+        let data = composeResult(uitslag);
+        console.log(data);
         this.$store.commit("setResultaat", uitslag);
         this.$router.push("/scorescherm");
       }

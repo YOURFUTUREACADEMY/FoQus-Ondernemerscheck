@@ -1,4 +1,5 @@
 import opmerkingenData from "../data/opmerkingen.js"
+// import { getObjectData } from "./functions.js";
   
 const $opmerkingen = opmerkingenData;
 
@@ -57,10 +58,10 @@ function berekenUitslag(vragen){
     vraag7 : {opmerking : "", berekening : "", totaal : "", score : ""},
     kleur : "",
     score : 0,
-    conclusie1 : {opmerking : "", kleur:"", score : ""},
-    conclusie2 : {opmerking : "", kleur:"", score : ""}, 
-    conclusie3 : {opmerking : "", kleur:"", score : ""}, 
-    conclusie4 : {opmerking : "", kleur:"", score : ""}, 
+    conclusie1 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"},
+    conclusie2 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"}, 
+    conclusie3 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"}, 
+    conclusie4 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"}, 
   }
 
   // score waardes
@@ -84,7 +85,9 @@ function berekenUitslag(vragen){
 
   // bereken totaal
   const totaal = convertStrToNum(opmerking.vraag1.waarden[0]) + convertStrToNum(opmerking.vraag1.waarden[1]) + convertStrToNum(opmerking.vraag1.waarden[2]) + convertStrToNum(opmerking.vraag1.waarden[3]) + convertStrToNum(opmerking.vraag1.waarden[4]);
-  resultaat.vraag1.totaal = totaal;
+  
+  if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
+    resultaat.vraag1.score = vraag1.waarde}
 
   if( vraag1.waarde <2  && vraag1.waarde !== ""){
     
@@ -306,18 +309,21 @@ function berekenUitslag(vragen){
       resultaat.conclusie1.opmerking = conclusies.conclusie1.oranje.Vstijgt;
       resultaat.conclusie1.score = oranje;
       resultaat.conclusie1.kleur = oranje;
+      resultaat.conclusie1.nr = 1;
       statusConclusie = 4;
     }
     else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 2 || vraag6.waarde === 3){
       resultaat.conclusie1.opmerking = conclusies.conclusie1.rood;
       resultaat.conclusie1.score = rood;
       resultaat.conclusie1.kleur = rood;
+      resultaat.conclusie1.nr = 2;
       statusConclusie = 5;
     }
     else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 1 ){
       resultaat.conclusie1.opmerking = conclusies.conclusie1.oranje.Vgelijk;
       resultaat.conclusie1.score = oranje;
       resultaat.conclusie1.kleur = oranje;
+      resultaat.conclusie1.nr = 3;
       statusConclusie = 6;
     }
   }
@@ -328,12 +334,14 @@ function berekenUitslag(vragen){
       resultaat.conclusie2.opmerking = conclusies.conclusie2.VI;
       resultaat.conclusie2.score = oranje;
       resultaat.conclusie2.kleur = oranje;
+      resultaat.conclusie2.nr = 1;
       statusConclusie = 7;
     }
     if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
       resultaat.conclusie2.opmerking = conclusies.conclusie2.VofVI;
       resultaat.conclusie2.score = oranje;
       resultaat.conclusie2.kleur = oranje;
+      resultaat.conclusie2.nr = 2;
       statusConclusie = 8;
     }
   }
@@ -341,11 +349,13 @@ function berekenUitslag(vragen){
   // conclusie 3: totaal | conclusie 1 en 2 zijn groen
   if(statusConclusie === 0){
     resultaat.conclusie3.opmerking = conclusies.conclusie3;
+    resultaat.conclusie3.nr = 1;
   }
 
   // conclusie 4 | vraag 1 > 2
   if(vraag1.waarde > 2){
     resultaat.conclusie4.opmerking = conclusies.conclusie4;
+    resultaat.conclusie4.nr = 1;
   }
 
   return resultaat;
@@ -354,4 +364,57 @@ function berekenUitslag(vragen){
 }
 
 export default berekenUitslag;
-//export default test;
+
+// functie die resultaat data omzet naar JSON string t.b.v Zapier & PDF Monkey
+export function composeRapport(resultData){
+
+  let rapportData = "";
+  const kleurWaarde = {Groen:$groen,Oranje:$oranje,Rood:$rood} 
+  rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score};
+ 
+  let key = ["vraag","conclusie"]
+  let number = 1;  
+  
+  // haal vraag data
+  for(let property in resultData){
+    
+    if(property === key[0]+number){
+      rapportData[key[0]+number] = resultData[property].score;
+    number++; 
+    }
+  }
+
+  number=1;
+  // haal conclusie data
+  for(let property in resultData){
+    if(property === key[1]+number){
+      rapportData[key[1]+number] = resultData[property].nr;
+      number++;  
+    }     
+  }
+  return JSON.stringify(rapportData);
+// end function composeRapport  
+}
+
+
+// functie die resultaat data omzet naar URL string t.b.v Zapier & Excel
+export function composeExcel(resultData){
+
+  let excelData = "";
+  const scoreBasisWaarde = `groen=${$groen}&oranje=${$oranje}&rood=${$rood}` 
+  excelData = scoreBasisWaarde+`&kleurcode=${resultData.kleur}&score=${resultData.score}`;
+ 
+  let key = ["vraag","conclusie"]
+  let number = 1;  
+  
+  // haal & bouw vraag data
+  for(let property in resultData){
+    
+    if(property === key[0]+number){
+      excelData += `&${key[0]+number}=${resultData[property].score}`
+    number++; 
+    }
+  }
+  return excelData; 
+// end function composeRapport  
+}

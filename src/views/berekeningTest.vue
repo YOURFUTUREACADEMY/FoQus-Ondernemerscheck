@@ -107,10 +107,6 @@
           <p>Kleur: {{berekening.conclusie4.kleur}}</p>
           <p>Score: {{berekening.conclusie4.score}}</p>
         </div>
-
-
-
-        <!--<p>{{berekening}}</p>--> 
       </section>
       <button class="btn" @click="$router.push('/testMenu')">
           Naar test menu 
@@ -121,20 +117,19 @@
 </template>
 
 <script>
-import berekenUitslag from "../scripts/score.js"
 
 export default {
   name: "scorescherm",
   data() {
     return {
-      //storeDataVragen: this.$store.state.ANTWOORD,
+      
 
       
     }; //end return
   }, //end data
   computed:{
     berekening(){
-      let uitslag = berekenUitslag(this.$store.state.ANTWOORD);
+        let uitslag = this.$store.getters.getFullResultaat;
       return uitslag;
     }
   },
