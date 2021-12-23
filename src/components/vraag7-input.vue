@@ -2,8 +2,8 @@
   <h1 class="header text-center" role="heading">Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?</h1>
  <div class="container-vragen d-flex justify-content-center align-items-center">
    <div class="d-flex justify-content-center">          
-     <i class="fa fa-frown-o smilies" aria-hidden="true"></i>
-      <div class="range-slider ">  
+     <i class="fa fa-frown-o mx-2 smilies" aria-hidden="true"></i>
+      <div class="range-slider mt-2">  
         <input
           class="rs-line"
           type="range"
@@ -16,7 +16,8 @@
         <p id="rs-label" class="rs-label" draggable="false" :style="labelPos">{{(COM_valueLabel)}}</p> 
         <span id="rs-bullet" class="rs-bullet" :style="{left:sliderPos}"></span>     
       </div>
-      <i class="fa fa-smile-o smilies " aria-hidden="true"></i>  </div>
+      <i class="fa fa-smile-o mx-2 smilies " aria-hidden="true"></i> 
+       </div>
 
   </div>
 </template>
