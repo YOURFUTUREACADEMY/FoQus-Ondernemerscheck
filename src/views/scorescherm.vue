@@ -1,13 +1,13 @@
 <template>
   <main class="section-score">
     <hr class="hl py-2 mb-0" />
-    <div class="d-flex flex-row">
+    <div class="d-flex ">
       <div class="container-score w-100 mx-auto mb-0">
         <h3 class="header text-center-score">Jouw score</h3>
 
         <section
           id="uitslag"
-          class="d-sm-flex flex-row mx-2 mx-sm-5 mt-2 justify-content-center"
+          class="d-flex  mt-2 justify-content-center"
         >
           <AnalogVolMeter
             class="meter"
@@ -23,36 +23,6 @@
             hebben ze een signaalfunctie. Voor jou is dat signaal
             {{ scoreCondition.visual.signaal }}.
           </blockquote>
-          <!-- <tabel class="text-score mt-3">
-            <tr>
-              <td>Vraag1:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag1`).waarde }}</td>
-            </tr>
-            <tr>
-              <td>Vraag2:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag2`).waarde }}</td>
-            </tr>
-            <tr>
-              <td>Vraag3:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag3`).waarde }}</td>
-            </tr>
-            <tr>
-              <td>Vraag4:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag4`).label }}</td>
-            </tr>
-            <tr>
-              <td>Vraag5:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag5`).label }}</td>
-            </tr>
-            <tr>
-              <td>Vraag6:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag6`).label }}</td>
-            </tr>
-            <tr>
-              <td>Vraag7:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag7`).waarde }}</td>
-            </tr>
-          </tabel> -->
         </section>
 
         <section id="emailForm" class="row" >
@@ -97,53 +67,10 @@
           </form>
 
         </section>
-
-        <!-- <div class="d-flex justify-content-end row mx-2">
-          <div class="col-sm-9">
-            <p class="text-score">
-              Ontvang direct het gehele resultaat als rapport in je mailbox.
-            </p>
-            <div class="form-group row mb-2">
-              <label class="col-4 col-form-label text-score" for="naam"
-                >Naam:</label
-              >
-              <div class="col-auto">
-                <input
-                  class="form-control"
-                  type="text"
-                  id="naam"
-                  v:model="naam"
-                />
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-4 col-form-label text-score" for="emailControle"
-                >Emailadres:</label
-              >
-              <div class="col-6">
-                <input
-                  class="form-control"
-                  type="email"
-                  name="emailControle"
-                  id="emailControle"
-                  v-model="emailControle"
-                />
-              </div>
-              <div class="col-2">
-     
-              <img
-                class="foqusRaport col-6"
-                src="../assets/images/FoQus-Raport.png"
-                role="figure"
-              />
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
     <!-- TO DO Sectie hier onder verwijderen !! -->
-    <section v-if="testMode" class="TO DO verwijderen">
+    <section v-if="testMode" class="TO DO verwijderen mt-5">
       <br />
       <!-- TO DO storetest knop verwijderen -->
       <button class="backBtn" @click="$router.push('/')">
@@ -155,7 +82,40 @@
       </button>
       <p class="text-score">{{ score }}</p>
       <p class="text-score">Status: {{ meter.status }}</p>
+
+                  <tabel class="text-score mt-3">
+            <tr>
+              <td>Vraag1:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag1`).waarde }}</td>
+            </tr>
+            <tr>
+              <td>Vraag2:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag2`).waarde }}</td>
+            </tr>
+            <tr>
+              <td>Vraag3:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag3`).waarde }}</td>
+            </tr>
+            <tr>
+              <td>Vraag4:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag4`).label }}</td>
+            </tr>
+            <tr>
+              <td>Vraag5:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag5`).label }}</td>
+            </tr>
+            <tr>
+              <td>Vraag6:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag6`).label }}</td>
+            </tr>
+            <tr>
+              <td>Vraag7:</td>
+              <td>{{ this.$store.getters.getAntwoord(`vraag7`).waarde }}</td>
+            </tr>
+          </tabel>
     </section>
+
+
   </main>
 </template>
 
