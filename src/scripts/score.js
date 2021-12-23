@@ -197,20 +197,20 @@ function berekenUitslag(vragen){
   }
   else if( vraag5.waarde == 1 && vraag6.waarde == 2 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VstijgtVIgelijk;
-    resultaat.vraag5.score = oranje;
+    resultaat.vraag5.score = groen;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
   else if( vraag5.waarde == 1 && vraag6.waarde == 3 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.rood.VstijgtVIdaalt;
-    resultaat.vraag5.score = rood;
+    resultaat.vraag5.score = groen;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
   // 5 = 2 en 6 - 1 tot 3
   else if( vraag5.waarde == 2 && vraag6.waarde == 1 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.groen.VgelijkVIstijgt;
-    resultaat.vraag5.score = groen;
+    resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
@@ -222,20 +222,20 @@ function berekenUitslag(vragen){
   }
   else if( vraag5.waarde == 2 && vraag6.waarde == 3 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.rood.VgelijkVIdaalt;
-    resultaat.vraag5.score = rood;
+    resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
   // 5 = 3 en 6 - 1 tot 3
   else if( vraag5.waarde == 3 && vraag6.waarde == 1 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VdaaltVIstijgt;
-    resultaat.vraag5.score = oranje;
+    resultaat.vraag5.score = rood;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
   else if( vraag5.waarde == 3 && vraag6.waarde == 2 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VdaaltVIgelijk;
-    resultaat.vraag5.score = oranje;
+    resultaat.vraag5.score = rood;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
@@ -366,10 +366,10 @@ function berekenUitslag(vragen){
 export default berekenUitslag;
 
 // functie die resultaat data omzet naar JSON string t.b.v Zapier & PDF Monkey
-export function composeRapport(resultData){
+export function composeRapport(resultData, querystring){
 
   let rapportData = "";
-  const kleurWaarde = {Groen:$groen,Oranje:$oranje,Rood:$rood} 
+  const kleurWaarde = {groen:$groen,oranje:$oranje,rood:$rood} 
   rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score};
  
   let key = ["vraag","conclusie"]
@@ -392,13 +392,13 @@ export function composeRapport(resultData){
       number++;  
     }     
   }
-  return JSON.stringify(rapportData);
+  return querystring+"="+JSON.stringify(rapportData);
 // end function composeRapport  
 }
 
 
 // functie die resultaat data omzet naar URL string t.b.v Zapier & Excel
-export function composeExcel(resultData){
+export function composeExcel(resultData, querystring){
 
   let excelData = "";
   const scoreBasisWaarde = `groen=${$groen}&oranje=${$oranje}&rood=${$rood}` 
@@ -415,6 +415,6 @@ export function composeExcel(resultData){
     number++; 
     }
   }
-  return excelData; 
+  return querystring+"="+excelData; 
 // end function composeRapport  
 }
