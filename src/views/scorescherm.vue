@@ -1,72 +1,77 @@
 <template>
   <main class="section-score">
     <hr class="hl py-2 mb-0" />
-    <div class="d-flex ">
-      <div class="container-score w-100 mx-auto mb-0">
+    <div class="d-flex">
+      <div class="container-score ">
         <h3 class="header text-center-score">Jouw score</h3>
-
-        <section
-          id="uitslag"
-          class="d-flex  mt-2 justify-content-center"
-        >
-          <AnalogVolMeter
-            class="meter"
-            :value="score"
-            :settings="meterSettings"
-            v-on:meter="meterData"
-          ></AnalogVolMeter>
-
-          <div class="vl mx-3 mt-3 floatL"></div>
-          <blockquote class="text-score text-start mx-2 mt-3">
-            Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat
-            als ondernemer. De antwoorden zijn niet goed of fout In combinatie
-            hebben ze een signaalfunctie. Voor jou is dat signaal
-            {{ scoreCondition.visual.signaal }}.
-          </blockquote>
-        </section>
-
-        <section id="emailForm" class="row" >
-          <form class="col-6">
-            <div class="row mb-3">
-              <label class="col-sm-3 col-form-label text-score" for="naam"
-                >Naam:</label
-              >
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  type="text"
-                  id="naam"
-                  v:model="naam"
-                />
+        <div class="row mt-4 ">
+          <div class="col-sm-8 ">
+            <section id="uitslag" class="row align-items-center ">
+              <div class="col-6">
+                <AnalogVolMeter
+                  class=""
+                  :value="score"
+                  :settings="meterSettings"
+                  v-on:meter="meterData"
+                ></AnalogVolMeter>
               </div>
-            </div>
-            <div class="row mb-3">
-              <label
-                class="col-sm-3 col-form-label text-score"
-                for="emailControle"
-                >Emailadres:</label
-              >
-              <div class="col-sm-9">
-                <input
-                  class="form-control"
-                  type="email"
-                  name="emailControle"
-                  id="emailControle"
-                  v-model="emailControle"
-                />
+              <div class="col-6">
+                <p class="text-score ">
+                  Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor
+                  staat als ondernemer. De antwoorden zijn niet goed of fout In
+                  combinatie hebben ze een signaalfunctie. Voor jou is dat
+                  signaal
+                  {{ scoreCondition.visual.signaal }}.
+                </p>
               </div>
-            </div>
-            <div class="d-flex flex-column align-items-md-end">
-              <button type="submit" class="btn btn-primary w-75">
-                Ik ontvang graag een persoonlijk advies
-              </button>
-              <small class="text-danger"
-                >Ik ga akkoord met de ... voorwaarden</small
-              >
-            </div>
-          </form>
+            </section>
 
-        </section>
+            <section id="emailForm" class="d-flex flex-column">
+              <form class="">
+                <div class="row mb-3">
+                  <label class="col-sm-3 col-form-label text-score" for="naam"
+                    >Naam:</label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="naam"
+                      v:model="naam"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label
+                    class="col-sm-3 col-form-label text-score"
+                    for="emailControle"
+                    >Emailadres:</label
+                  >
+                  <div class="col-sm-9">
+                    <input
+                      class="form-control"
+                      type="email"
+                      name="emailControle"
+                      id="emailControle"
+                      v-model="emailControle"
+                    />
+                  </div>
+                </div>
+                <div class="d-flex flex-column align-items-md-end">
+                  <button type="submit" class="btn btn-primary w-75">
+                    Ik ontvang graag een persoonlijk advies
+                  </button>
+                  <small class="text-danger"
+                    >Ik ga akkoord met de ... voorwaarden</small
+                  >
+                </div>
+              </form>
+            </section>
+          </div>
+          <div class="col-sm-4 align-self-center">
+            <img src="../assets/images/FoQus-Raport.png" class="img-fluid">
+          </div>
+        </div>
       </div>
     </div>
     <!-- TO DO Sectie hier onder verwijderen !! -->
@@ -83,39 +88,37 @@
       <p class="text-score">{{ score }}</p>
       <p class="text-score">Status: {{ meter.status }}</p>
 
-                  <tabel class="text-score mt-3">
-            <tr>
-              <td>Vraag1:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag1`).waarde }}</td>
-            </tr>
-            <tr>
-              <td>Vraag2:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag2`).waarde }}</td>
-            </tr>
-            <tr>
-              <td>Vraag3:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag3`).waarde }}</td>
-            </tr>
-            <tr>
-              <td>Vraag4:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag4`).label }}</td>
-            </tr>
-            <tr>
-              <td>Vraag5:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag5`).label }}</td>
-            </tr>
-            <tr>
-              <td>Vraag6:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag6`).label }}</td>
-            </tr>
-            <tr>
-              <td>Vraag7:</td>
-              <td>{{ this.$store.getters.getAntwoord(`vraag7`).waarde }}</td>
-            </tr>
-          </tabel>
+      <tabel class="text-score mt-3">
+        <tr>
+          <td>Vraag1:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag1`).waarde }}</td>
+        </tr>
+        <tr>
+          <td>Vraag2:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag2`).waarde }}</td>
+        </tr>
+        <tr>
+          <td>Vraag3:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag3`).waarde }}</td>
+        </tr>
+        <tr>
+          <td>Vraag4:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag4`).label }}</td>
+        </tr>
+        <tr>
+          <td>Vraag5:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag5`).label }}</td>
+        </tr>
+        <tr>
+          <td>Vraag6:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag6`).label }}</td>
+        </tr>
+        <tr>
+          <td>Vraag7:</td>
+          <td>{{ this.$store.getters.getAntwoord(`vraag7`).waarde }}</td>
+        </tr>
+      </tabel>
     </section>
-
-
   </main>
 </template>
 
