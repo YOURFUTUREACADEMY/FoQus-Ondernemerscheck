@@ -40,7 +40,7 @@ export default {
       // offsetPos: switch position between min and normal
       rsLabelOffsetPos : 0,
       // offsetLabelMin: offset label from the left on minimum
-      rsOffsetLabelMin : 5,
+      rsOffsetLabelMin : 0,
       // offsetLabel: offset label form the left normaly
       rsOffsetLabel : 0,
       // offsetLabelMax: offset label from the left on maximum

@@ -51,7 +51,7 @@ export default {
       optie1: {label:"Stijgt",value:1},
       optie2: {label:"Blijft Gelijk",value:2},
       optie3: {label:"Daalt",value:3},
-      antwoord: ``
+      antwoord: "2" 
     };
   },
   methods: {
