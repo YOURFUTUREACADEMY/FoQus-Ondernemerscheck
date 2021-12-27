@@ -1,4 +1,4 @@
-<style type="text/css">
+<style scoped type="text/css">
     svg{
         height: 100%;
         width: 100%;

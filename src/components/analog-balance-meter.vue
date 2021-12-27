@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 svg {
     /* width: 30%; */
 }

@@ -9,7 +9,7 @@
             <section id="uitslag" class="row align-items-center ">
               <div class="col-6">
                 <AnalogVolMeter
-                  class=""
+                  class="meter"
                   :value="score"
                   :settings="meterSettings"
                   v-on:meter="meterData"
@@ -143,7 +143,7 @@ export default {
       score: this.$store.getters.getResultaat("score"),
       meter: "",
       meterSettings: {
-        degAdjust: -23,
+        degAdjust: 0,
         manMode: false,
         manValue: 21,
         valueMax: 100,
