@@ -1,6 +1,6 @@
 <style>
 svg {
-    width: 30%;
+    /* width: 30%; */
 }
 #arrow {
     transition: 5s ease-out;
@@ -47,15 +47,14 @@ svg {
 }
 @-moz-document url-prefix() {
     svg {
-        width: 50%;
+        /* width: 50%; */
     }
 }
 </style>
 <template>
     <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" -->
   <svg
-    width="50%"
-    height="50%"
+  
     viewBox="0 0 18092 9342"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,7 @@
 <style type="text/css">
     svg{
-        height: 10%;
-        width: 10%;
+        height: 100%;
+        width: 100%;
     }
 	.st0{fill:#05A039;stroke:#020203;stroke-width:1.0203;stroke-miterlimit:10;}
 	.st1{fill:#E52426;stroke:#020203;stroke-width:1.0653;stroke-miterlimit:10;}
