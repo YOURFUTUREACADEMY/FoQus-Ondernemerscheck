@@ -87,7 +87,7 @@ function berekenUitslag(vragen){
   const totaal = convertStrToNum(opmerking.vraag1.waarden[0]) + convertStrToNum(opmerking.vraag1.waarden[1]) + convertStrToNum(opmerking.vraag1.waarden[2]) + convertStrToNum(opmerking.vraag1.waarden[3]) + convertStrToNum(opmerking.vraag1.waarden[4]);
   
   if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
-    resultaat.vraag1.score = vraag1.waarde}
+    resultaat.vraag1.score = Number(vraag1.waarde)}
 
   if( vraag1.waarde <2  && vraag1.waarde !== ""){
     
@@ -285,23 +285,25 @@ function berekenUitslag(vragen){
   // orgineel 0 & 17
   if(resultaat.score > 0 && resultaat.score <= 7){
     resultaat.kleur = groen;
-    statusConclusie = 1;
+    // statusConclusie = 1;
   }
   // orgineel 17 & 85 
   else if(resultaat.score > 17 && resultaat.score <= 70){
     resultaat.kleur = oranje;
-    statusConclusie = 2;
+    // statusConclusie = 2;
   }
   // orgineel 85
   else if(resultaat.score > 70){
     resultaat.kleur = rood;
-    statusConclusie = 3;
+    // statusConclusie = 3;
   }
   else{
     // orgineel 125
     resultaat.kleur = rood;
     resultaat.score = 100;
   }
+
+  console.log(vraag1.waarde +"/"+ vraag2.waarde +"/"+ vraag3.waarde +"/"+ vraag4.waarde +"/"+ vraag5.waarde +"/"+ vraag6.waarde +"/"+ vraag7.waarde)
 
   // conclusie 1: vraag 1,2,5 & 6
   if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
@@ -337,6 +339,8 @@ function berekenUitslag(vragen){
       resultaat.conclusie2.nr = 1;
       statusConclusie = 7;
     }
+  }  
+  else{  
     if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
       resultaat.conclusie2.opmerking = conclusies.conclusie2.VofVI;
       resultaat.conclusie2.score = oranje;

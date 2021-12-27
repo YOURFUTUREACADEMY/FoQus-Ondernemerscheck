@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      antwoord:"40",
+      antwoord:40,
       vraag: "vraag2",
     };
   },
