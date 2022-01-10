@@ -50,7 +50,7 @@ export default {
       optie1: {label:"<= 0,5 jaar",value:1},
       optie2: {label:"0,5 - 1,5 jaar",value:2},
       optie3: {label:"1,5 jaar",value:3},
-      antwoord:'2'
+      antwoord:2
     };
   },
   methods: {

@@ -37,17 +37,17 @@ export default {
       // URL OUTLOOK TO GMAIL https://hooks.zapier.com/hooks/catch/5974604/b1b8nyb
       url: "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh",
       inputText: "",
-      data: "rapport=", 
+      data: "", 
       resultaat:this.$store.getters.getFullResultaat,
     }; //end return
   }, //end data
   computed:{
     dataToSend(){
-        let data = composeRapport(this.resultaat);
+        let data = composeRapport(this.resultaat, 'rapport');
       return data;
     },
     excel(){
-      let data = composeExcel(this.resultaat);
+      let data = composeExcel(this.resultaat, 'excel');
       return data;
     }
   },
@@ -55,12 +55,12 @@ export default {
 
     send(){
 
-      const test = {waarde:"test1",waarde2:"test2"}
+      this.data = composeRapport(this.resultaat, 'rapport');
 
-      sendToZap(this.url, this.data + test);
+      sendToZap(this.url, this.data);
       // sendToZap(this.url, this.data + this.inputText);
-      console.log(`send:${this.data + this.inputText} to ${this.url}`)
-      console.log(`send:${this.data + test} to ${this.url}`)
+      // console.log(`send:${this.data + this.inputText} to ${this.url}`)
+      console.log(`send:${this.data} to ${this.url}`)
     }
 
   }

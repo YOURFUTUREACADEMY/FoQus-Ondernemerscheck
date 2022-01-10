@@ -2,7 +2,7 @@
 <template>
   <div>
     <main>
-      <section class='text-score'>
+      <div class='text-score'>
         <p>{{this.$store.state.ANTWOORD}}</p>
         <h3>Vraag 1 Antwoord label: {{this.$store.getters.getAntwoord(`vraag1`).label}}</h3>
         <h3>Vraag 1 Antwoord waarde: {{this.$store.getters.getAntwoord(`vraag1`).waarde}}</h3>
@@ -42,7 +42,7 @@
         <button class="btn" @click="$router.push('/testMenu')">
           Naar test menu 
         </button>
-      </section>
+      </div>
     </main>
   </div>
 </template>

@@ -87,7 +87,7 @@ function berekenUitslag(vragen){
   const totaal = convertStrToNum(opmerking.vraag1.waarden[0]) + convertStrToNum(opmerking.vraag1.waarden[1]) + convertStrToNum(opmerking.vraag1.waarden[2]) + convertStrToNum(opmerking.vraag1.waarden[3]) + convertStrToNum(opmerking.vraag1.waarden[4]);
   
   if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
-    resultaat.vraag1.score = vraag1.waarde}
+    resultaat.vraag1.score = Number(vraag1.waarde)}
 
   if( vraag1.waarde <2  && vraag1.waarde !== ""){
     
@@ -197,20 +197,20 @@ function berekenUitslag(vragen){
   }
   else if( vraag5.waarde == 1 && vraag6.waarde == 2 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VstijgtVIgelijk;
-    resultaat.vraag5.score = oranje;
+    resultaat.vraag5.score = groen;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
   else if( vraag5.waarde == 1 && vraag6.waarde == 3 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.rood.VstijgtVIdaalt;
-    resultaat.vraag5.score = rood;
+    resultaat.vraag5.score = groen;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
   // 5 = 2 en 6 - 1 tot 3
   else if( vraag5.waarde == 2 && vraag6.waarde == 1 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.groen.VgelijkVIstijgt;
-    resultaat.vraag5.score = groen;
+    resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
@@ -222,20 +222,20 @@ function berekenUitslag(vragen){
   }
   else if( vraag5.waarde == 2 && vraag6.waarde == 3 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.rood.VgelijkVIdaalt;
-    resultaat.vraag5.score = rood;
+    resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
   // 5 = 3 en 6 - 1 tot 3
   else if( vraag5.waarde == 3 && vraag6.waarde == 1 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VdaaltVIstijgt;
-    resultaat.vraag5.score = oranje;
+    resultaat.vraag5.score = rood;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
   else if( vraag5.waarde == 3 && vraag6.waarde == 2 ){
     resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VdaaltVIgelijk;
-    resultaat.vraag5.score = oranje;
+    resultaat.vraag5.score = rood;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
@@ -285,23 +285,25 @@ function berekenUitslag(vragen){
   // orgineel 0 & 17
   if(resultaat.score > 0 && resultaat.score <= 7){
     resultaat.kleur = groen;
-    statusConclusie = 1;
+    // statusConclusie = 1;
   }
   // orgineel 17 & 85 
   else if(resultaat.score > 17 && resultaat.score <= 70){
     resultaat.kleur = oranje;
-    statusConclusie = 2;
+    // statusConclusie = 2;
   }
   // orgineel 85
   else if(resultaat.score > 70){
     resultaat.kleur = rood;
-    statusConclusie = 3;
+    // statusConclusie = 3;
   }
   else{
     // orgineel 125
     resultaat.kleur = rood;
     resultaat.score = 100;
   }
+
+  console.log(vraag1.waarde +"/"+ vraag2.waarde +"/"+ vraag3.waarde +"/"+ vraag4.waarde +"/"+ vraag5.waarde +"/"+ vraag6.waarde +"/"+ vraag7.waarde)
 
   // conclusie 1: vraag 1,2,5 & 6
   if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
@@ -337,6 +339,8 @@ function berekenUitslag(vragen){
       resultaat.conclusie2.nr = 1;
       statusConclusie = 7;
     }
+  }  
+  else{  
     if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
       resultaat.conclusie2.opmerking = conclusies.conclusie2.VofVI;
       resultaat.conclusie2.score = oranje;
@@ -366,10 +370,10 @@ function berekenUitslag(vragen){
 export default berekenUitslag;
 
 // functie die resultaat data omzet naar JSON string t.b.v Zapier & PDF Monkey
-export function composeRapport(resultData){
+export function composeRapport(resultData, querystring){
 
   let rapportData = "";
-  const kleurWaarde = {Groen:$groen,Oranje:$oranje,Rood:$rood} 
+  const kleurWaarde = {groen:$groen,oranje:$oranje,rood:$rood} 
   rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score};
  
   let key = ["vraag","conclusie"]
@@ -392,13 +396,13 @@ export function composeRapport(resultData){
       number++;  
     }     
   }
-  return JSON.stringify(rapportData);
+  return querystring+"="+JSON.stringify(rapportData);
 // end function composeRapport  
 }
 
 
 // functie die resultaat data omzet naar URL string t.b.v Zapier & Excel
-export function composeExcel(resultData){
+export function composeExcel(resultData, querystring){
 
   let excelData = "";
   const scoreBasisWaarde = `groen=${$groen}&oranje=${$oranje}&rood=${$rood}` 
@@ -415,6 +419,6 @@ export function composeExcel(resultData){
     number++; 
     }
   }
-  return excelData; 
+  return querystring+"="+excelData; 
 // end function composeRapport  
 }

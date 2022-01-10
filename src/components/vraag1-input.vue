@@ -27,7 +27,7 @@
 export default {
   data() {
     return {
-      antwoord: "1",
+      antwoord: 1,
       vraag: "vraag1",
     };
   },

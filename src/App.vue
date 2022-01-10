@@ -312,7 +312,6 @@ font-size:30px;
   font-size: 1.1rem;
 }
 
-/* TODO tijdelijk toegevoegd verwijderen in volgende versie  */
 .foqusRaport {
   display: block;
 }
