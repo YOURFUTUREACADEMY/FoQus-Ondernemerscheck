@@ -324,14 +324,14 @@ font-size:30px;
 /* screen size 600px */
 @media only screen and (max-width: 600px) {
   .header {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0 5%;
   }
 
   .col-form-label,
   .form-control-range,
   .form-check-label {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
  .rs-line {
