@@ -1,0 +1,109 @@
+
+<script>
+document.getElementsByTagName(document.getElementsByTagName("head"))
+document.write(`Querystring:${kleurWaarde.groen}`);
+</script>
+
+<!-- sample test -->
+<p>sample test: {{sampleConclusie4.nr1}}</p>
+
+
+<!-- pagina 1 -->
+<h1>FoQus Ondernemerscheck
+Rapportage</h1>
+<h2>Succesvol ondernemen = plezierig ondernemen. 
+Heb jij voldoende focus op succesvol ondernemen?</h2>
+<p>TO DO INSERT SVG METER</p>
+<h2>Bekijk je resultaten</h2>
+<h3>Hoe sta je ervoor? Heb je voldoende focus in je bedrijf en waar liggen je 
+verbeterpunten? Je hebt 7 vragen beantwoord die iets zeggen over hoe je 
+ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In 
+combinatie hebben ze een signaalfunctie.</h3>
+
+<!-- TO DO FOOTER IMAGE -->
+
+
+
+<!-- pagina 2 -->
+
+<!-- TO DO IMAGE FOCUS -->
+
+<!-- Conclusie -->
+<section>
+  <h2><b>Conclusie</b></h2>
+  <!-- conclusie 1 -->
+  {%if conclusie1 == "1"%}
+    <p>{{sampleConclusie1.nr1}} </p>
+  {%elsif conclusie1 == "2"%}
+    <p>{{sampleConclusie1.nr2}}</p>
+  {%elsif conclusie1 == "3"%}
+    <p>{{sampleConclusie1.nr3}}</p>
+  {%endif%}
+  <!-- conclusie 2 -->
+  {%if conclusie2 == 1%}
+    <p>{{sampleConclusie2.nr1}} </p>
+  {%elsif conclusie2 == 2%}
+    <p>{{sampleConclusie2.nr2}}</p>
+  {%endif%}
+  <!-- conclusie 3 -->
+  {%if conclusie3 == 1%}
+    <p>{{sampleConclusie3.nr1}} </p>
+  {%endif%}
+  <!-- conclusie 4 -->
+  {%if conclusie4 == 1%}
+    <p>{{sampleConclusie4.nr1}} klopt de logica ?</p>
+  {%endif%}
+  
+  <!-- sample test -->
+  <p>sample test: {{sampleConclusie4.nr1}}</p>
+  
+</section>
+
+<!-- Vraag 1 -->
+<section>
+  <h2>Omvang</h2>
+    {%if vraag1 < 2%}
+      <p>{{sampleVraag1.opmerking.res1}}</p>
+    {%elsif vraag1 >= 2 && vraag1 > 10%}
+      <p>{{sampleVraag1.opmerking.res2}}</p>
+    {%elsif vraag1 >= 10 && vraag1 > 50%}
+      <p>{{sampleVraag1.opmerking.res3}}</p>
+    {%elsif vraag1 >= 50 && vraag1 > 100%}
+      <p>{{sampleVraag1.opmerking.res4}}</p>
+    {%elsif vraag1 >= 100 && vraag1 > 250%}
+      <p>{{sampleVraag1.opmerking.res5}}</p> 
+    {%elsif vraag1 >= 250%}
+      <p>{{sampleVraag1.opmerking.res6}}</p>  
+    {%endif%}
+</section>
+  <!-- Vraag 1 -->
+{%if vraag2 == kleurWaarde.groen%}
+  <p>{{sampleVraag2.opmerking.groen}}</p>
+{%endif%}
+
+<p>groen:{{kleurWaarde.groen}}</p>
+<p>oranje:{{kleurWaarde.oranje}}</p>
+<p>rood:{{kleurWaarde.rood}}</p>
+<p>kleur:{{kleurCode}}</p>
+<p>score:{{score}}</p>
+<p>v1:{{vraag1}}</p>
+<p>v2:{{vraag2}}</p>
+<p>v3:{{vraag3}}</p>
+<p>v4:{{vraag4}}</p>
+<p>v5:{{vraag5}}</p>
+<p>v6:{{vraag6}}</p>
+<p>v7:{{vraag7}}</p>
+<p>c1:{{conclusie1}}</p>
+<p>c2:{{conclusie2}}</p>
+<p>c3:{{conclusie3}}</p>
+<p>c4:{{conclusie4}}</p>
+
+<!-- disclamer -->
+<p>De FoQus scan is gebaseerd op 30 jaar ervaring en openbare onderzoeken, waarin we zien 
+dat succesvolle ondernemingen deze aspecten op orde hebben. We zien helaas vaak dat 
+wanneer er enkele van de gemeten aspecten oranje of rood kleuren dit op termijn ten koste 
+gaat van het succes. Met deze scan proberen we tijdig te signaleren. Wij kijken graag met 
+je mee, stellen lastige vragen en maken zaken inzichtelijk, zodat je de juiste besluiten kan 
+nemen om succesvol te blijven ondernemen. Neem contact met ons op.</p>
+
+<!-- footer pagina 3 -->

@@ -1,0 +1,240 @@
+<script>
+    const opmerkingen = {
+    //resultaat vragen
+    vragen:{
+      vraag1:{
+        // Waarden die gebruikt worden voor de berekeningen en in de opmerkingen worden geplaatst
+        waarden:["878.850","354.082","58.876","5.890","3.420"],
+        // Opmerking resultaat vraag 1.1 | <2 | !WAARDE! wordt vervangen met een waarden
+        zelfstandig: `Jij valt onder de zelfstandigen, samen met !WAARDE! anderen bedrijven in Nederland.`,
+        // Opmerking resultaat vraag 1.2 tot 1.5 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
+        omvang:`Jouw bedrijf heeft dezelfde omvang als !WAARDE! anderen bedrijven in Nederland.`,
+        // Opmerking resultaat vraag 1.6 | >= 250
+        groot:`Jouw bedrijf is zo groot, dat we het statistisch niet eens meer weten. Goed bezig, denken we.`
+      },
+      vraag2:{
+        // Opmerking resultaat vraag 2.1 | <=55 | groen 
+        groen:`Prima! Zeker als je bedenkt dat een ondernemer gemiddled 55 uur werkt.`,
+        // Opmerking resultaat vraag 2.2 | 55-65 | oranje
+        oranje:`Je werkt meer uren dan de gemiddlde ondernemer, die werkt 55 uur. Let op dat het niet structureel wordt!`,
+        // Opmerking resultaat vraag 2.3 | >65 | rood
+        rood:`Je werkt (te) veel! Iets om bij stil te staan. Een ondernemer werkt gemiddeld 55 uur. Structueel teveel uren werken is een risico.`
+      },
+      vraag3:{
+        // Opmerking resultaat vraag 3.1 | <=45 | groen
+        groen:`Je hebt je omzet goed verspreid over meerdere klanten. Dat beperkt je risico wanneer er een klant wegvalt.`,
+        // Opmerking resultaat vraag 3.2 | 45-60 | oranje
+        oranje:`Je bent qua omzet afhankelijk van je 3 belangrijkste klanten. Realiseer jij je dat ?`,
+        // Opmerking resultaat vraag 3.3 | >65 | rood
+        rood:`Je bent behoorlijk kwetsbaar. Je bent qua omzet sterk afhankelijk van 3 klanten. Wanneer er een wegvalt heeft dat grote impact!`
+      },
+      vraag4:{
+        // Opmerking resultaat vraag 4.1 | <= 0,5 jaar | groen
+        groen:`Als je in de markt wilt blijven meedoen bij de besten, moet je innoveren. Dat doe je goed!`,
+        // Opmerking resultaat vraag 4.2 | 0,5 - 1,5 jaar | oranje
+        oranje:`ls je in de markt wilt blijven meedoen moet je innoveren. Ook in jouw markt! Kun je frequenter innoveren?`,
+        // Opmerking resultaat vraag 4.3 | >1,5 jaar | rood
+        rood:`Wil je mee blijven doen in de markt, dan wordt het wellicht tijd voor iets nieuws?! Dat doen andere succesvolle bedrijven ook.`
+      },
+      // Het resultaat van vraag 5 wordt verwerkt in vraag 6
+      vraag5:{
+        groen:"n.v.t", 
+        oranje:"n.v.t",
+        rood:"n.v.t"
+      },
+      // Het resultaat van vraag 5 wordt verwerkt in vraag 6
+      vraag6:{
+        groen:{
+          // Opmerking resultaat vraag 6.1 | 5 stijgt AND 6 stijgt | groen
+          VenIVstijgen:"Je realiseert winstgevende groei. Dat is de ware kunst. Compliment!",
+          // Opmerking resultaat vraag 6.4 | 5 blijft gelijk AND 6 stijgt | groen
+          VgelijkVIstijgt:"Je omzet blijft gelijk terwijl je resultaat stijgt. Dat lijkt gunstig. Weet je waarom?"
+        },
+        oranje:{       
+          // Opmerking resultaat vraag 6.2 | 5 stijgt AND 6 blijft gelijk | oranje
+          VstijgtVIgelijk:"Je omzet stijgt terwijl je resultaat gelijk blijft. Weet je waarom? Dit is een belangrijk signaal.",
+          // Opmerking resultaat vraag 6.5 | 5 blijft gelijk AND 6 blijft gelijk | oranje
+          VenVIgelijk:"Je omzet blijft gelijk, je resultaat ook. Het lijkt alsof je stil staat, weet je de reden?",
+          // Opmerking resultaat vraag 6.7 | 5 daalt AND 6 stijgt | oranje
+          VdaaltVIstijgt:"Je omzet daalt terwijl je resultaat stijgt. Is dit een bewuste keuze?",
+          // Opmerking resultaat vraag 6.8 | 5 daalt AND 6 blijft gelijk | oranje
+          VdaaltVIgelijk:"Je omzet daalt terwijl je resutaat gelijk blijft. Hoe zit het met je continuiteit, en je marktaandeel?"
+        },
+        rood:{
+          // Opmerking resultaat vraag 6.3 | 5 stijgt AND 6 daalt | rood
+          VstijgtVIdaalt:"Je omzet stijgt terwijl je resultaat daalt. Je loopt daarmee risico dat het probleem steeds groter wordt.",
+          // Opmerking resultaat vraag 6.6 | 5 blijft gelijk AND 6 daalt | rood
+          VgelijkVIdaalt:"Je omzet blijft gelijk terwijl je resultaat daalt. Dit houd je vaak niet lang vol en bijsturen is nodig.",
+          // Opmerking resultaat vraag 6.9 | 5 daalt AND 6 daalt | rood
+          VenVIdalen:"Je omzet daalt en je resultaat daalt. Wat is er aan de hand? Dit vraagt om directe actie om je continuiteit te waarborgen!"
+        } 
+      },
+      // Het resultaat van vraag 5 wordt verwerkt in vraag 6
+      vraag7:{
+        // Opmerking resultaat vraag 7.1 | >=8 | groen
+        groen:`Je vindt je werk erg leuk, en dat is fijn! Plezier vergroot vaak succes, en omgekeerd.`, 
+        // Opmerking resultaat vraag 7.2 | >=6 and <8 | oranje
+        oranje:`Je vindt je werk niet erg leuk. Wordt het tijd voor iets anders, of je werk anders doen?`,
+        // Opmerking resultaat vraag 7.3 | <6 | rood
+        rood:`Je hebt niet al te veel plezier in je werk. Is het tijd om wat veranderingen aan te brengen? Weinig plezier helpt niet bij succes.`
+      },
+    // einde vragen
+    },
+    conclusies:{
+      //Conclusie vragen 1,2,5 & 6
+      conclusie1:{
+        groen:"nvt",
+        oranje:{
+          // Conclusie 1.0 | 1=2-50, 2 >65, 5 stijgt, 6 stijgt of gelijk | oranje
+          Vstijgt:`Het lijkt heel goed te gaan met je onderneming; kwetsbaar lijkt de afhankelijkheid van jou. Tijdelijk kan dit prima maar het moet niet te lang duren. Advies is om het werk anders proberen te organiseren en je organisatie verder te professionaliseren.`,
+          // Conclusie 1.1 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 stijgt | oranje
+          Vgelijk:`Je maakt scherpe keuzes die zorgen voor winstgevendheid. In de basis doe je dit goed. De vraag is of dit ook kan door minder hard of slimmer te werken, door zaken bijv. anders te organiseren. Langdurig teveel werken leidt tot risico's voor jezelf en je onderneming.`
+        },
+         // Conclusie 1.1 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 dalend of gelijk | rood
+        rood:`Je werkt zo hard dat dit risico's met zich meebrengt op vele vlakken. Dit is niet houdbaar voor langere tijd. Het is noodzaak om snel bij te sturen. Probeer met iemand die meer afstand van je bedrijf heeft kritisch naar je bedrijf te kijken om noodzakelijke keuzes goed te kunnen maken, en stuur dan bij!`
+      },
+      //Conclusie vragen 4 & 6
+      conclusie2:{
+        // Conclusie 2.0 | 4 >0,5 AND 6 daalt of gelijk | oranje
+        VI:`Het lijkt dat je te weinig aan innovatie en verbetering doet. Kijk eens kritisch naar interne processen en marktontwikkelingen, en probeer je producten/diensten en interne processen aan te passen aan de snel veranderende marktomstandigheden en de technologische vooruitgang.`,
+        // Conclusie 2.1 | 4 <0,5 AND 6 daalt of gelijk OF 5 daalt of gelijk | oranje
+        VofVI:`Je doet aan innovatie en vernieuwing, maar dit lijkt nog onvoldoende effect te hebben op je omzet en resultaat. Stel jezelf daarom de vraag of je wel het juiste hebt ontwikkeld. Laat eens iemand op meer afstand van je organisatie meekijken, om op dit aspect conclusies te kunnen trekken en vervolgens scherpe keuzes te maken.`
+      },
+      //Conclusie Totaal
+      conclusie3:
+        // Als conclusie 3.0 | conclusie 1 & 2 groen zijn  
+        "Ook wanneer er niet direct een probleem is, is het goed om regelmatig en blijvend kritisch te kijken naar je organisatie. Om de juiste richting voor de toekomst te kiezen of om de gekozen richting te checken en waar nodig bij te sturen. Vernieuw sowieso je middellange termijnplanning om de 2-3 jaren. Dat houd je alert en fris. En spar met anderen (vooral ook buiten de branche, of een goede mentor) om scherp te blijven. De snelheid waarmee bijv. de Coronacrisis recent de wereld veranderde is daar een goed voorbeeld van."
+      ,
+      conclusie4:
+        // Conclusie 4.0 | als vraag 1 > 2 
+        "Als je hulp nodig hebt om betrokken kritisch en ook objectief met je mee te kijken, zodat je de juiste beslissingen kan nemen om succesvol te blijven ondernemen, zijn wij er voor je. Dat is ons vak, en we zijn er goed in. Neem daarom contact op voor een -online- kennismakingsgesprek en deel je ideëen eens met ons."
+      ,
+    // einde conlusies  
+    }
+  // einde opmerkingen  
+  }
+  
+  </script>
+  
+  
+  <!-- sample test -->
+  <p>sample test: {{sampleConclusie4.nr1}}</p>
+  <div id="test"></div>
+  
+  
+  <!-- pagina 1 -->
+  <h1>FoQus Ondernemerscheck
+  Rapportage</h1>
+  <h2>Succesvol ondernemen = plezierig ondernemen. 
+  Heb jij voldoende focus op succesvol ondernemen?</h2>
+  <p>TO DO INSERT SVG METER</p>
+  <h2>Bekijk je resultaten</h2>
+  <h3>Hoe sta je ervoor? Heb je voldoende focus in je bedrijf en waar liggen je 
+  verbeterpunten? Je hebt 7 vragen beantwoord die iets zeggen over hoe je 
+  ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In 
+  combinatie hebben ze een signaalfunctie.</h3>
+  
+  <!-- TO DO FOOTER IMAGE -->
+  
+  
+  
+  <!-- pagina 2 -->
+  
+  <!-- TO DO IMAGE FOCUS -->
+  
+  <!-- Conclusie -->
+  <section>
+    <h2><b>Conclusie</b></h2>
+    <!-- conclusie 1 -->
+    
+    <div id="conclusie-1"></div>
+    <div id="divA">This is <span>some</span> text!</div>
+    
+    {%if conclusie1 == "1"%}
+      <p>{{sampleConclusie1.nr1}} </p>
+    {%elsif conclusie1 == "2"%}
+      <p>{{sampleConclusie1.nr2}}</p>
+    {%elsif conclusie1 == "3"%}
+      <p>{{sampleConclusie1.nr3}}</p>
+    {%endif%}
+    <!-- conclusie 2 -->
+    {%if conclusie2 == 1%}
+      <p>{{sampleConclusie2.nr1}} </p>
+    {%elsif conclusie2 == 2%}
+      <p>{{sampleConclusie2.nr2}}</p>
+    {%endif%}
+    <!-- conclusie 3 -->
+    {%if conclusie3 == 1%}
+      <p>{{sampleConclusie3.nr1}} </p>
+    {%endif%}
+    <!-- conclusie 4 -->
+    {%if conclusie4 == 1%}
+      <p>{{sampleConclusie4.nr1}} klopt de logica ?</p>
+    {%endif%}
+    
+  
+  </section>
+  
+  <!-- Vraag 1 -->
+  <section>
+    <h2>Omvang</h2>
+      {%if vraag1 < 2%}
+        <p>{{sampleVraag1.opmerking.res1}}</p>
+      {%elsif vraag1 >= 2 && vraag1 > 10%}
+        <p>{{sampleVraag1.opmerking.res2}}</p>
+      {%elsif vraag1 >= 10 && vraag1 > 50%}
+        <p>{{sampleVraag1.opmerking.res3}}</p>
+      {%elsif vraag1 >= 50 && vraag1 > 100%}
+        <p>{{sampleVraag1.opmerking.res4}}</p>
+      {%elsif vraag1 >= 100 && vraag1 > 250%}
+        <p>{{sampleVraag1.opmerking.res5}}</p> 
+      {%elsif vraag1 >= 250%}
+        <p>{{sampleVraag1.opmerking.res6}}</p>  
+      {%endif%}
+  </section>
+    <!-- Vraag 1 -->
+  {%if vraag2 == kleurWaarde.groen%}
+    <p>{{sampleVraag2.opmerking.groen}}</p>
+  {%endif%}
+  
+  <p>groen:{{kleurWaarde.groen}}</p>
+  <p>oranje:{{kleurWaarde.oranje}}</p>
+  <p>rood:{{kleurWaarde.rood}}</p>
+  <p>kleur:{{kleurCode}}</p>
+  <p>score:{{score}}</p>
+  <p>v1:{{vraag1}}</p>
+  <p>v2:{{vraag2}}</p>
+  <p>v3:{{vraag3}}</p>
+  <p>v4:{{vraag4}}</p>
+  <p>v5:{{vraag5}}</p>
+  <p>v6:{{vraag6}}</p>
+  <p>v7:{{vraag7}}</p>
+  <p>c1:{{conclusie1}}</p>
+  <p>c2:{{conclusie2}}</p>
+  <p>c3:{{conclusie3}}</p>
+  <p>c4:{{conclusie4}}</p>
+  
+  <!-- disclamer -->
+  <p>De FoQus scan is gebaseerd op 30 jaar ervaring en openbare onderzoeken, waarin we zien 
+  dat succesvolle ondernemingen deze aspecten op orde hebben. We zien helaas vaak dat 
+  wanneer er enkele van de gemeten aspecten oranje of rood kleuren dit op termijn ten koste 
+  gaat van het succes. Met deze scan proberen we tijdig te signaleren. Wij kijken graag met 
+  je mee, stellen lastige vragen en maken zaken inzichtelijk, zodat je de juiste besluiten kan 
+  nemen om succesvol te blijven ondernemen. Neem contact met ons op.</p>
+  
+  <!-- footer pagina 3 -->
+  
+  <script>
+    const queryString = $docPayload;
+   //document.write('Hello World!');
+   //document.write(opmerkingen.conclusies.conclusie3);
+   //document.write(queryString.kleurWaarde.groen);
+   // test 
+  
+    document.getElementById('conclusie-1').textContent = opmerkingen.conclusies.conclusie3;
+    document.getElementById('divA').textContent = 'This text is different!';
+  
+  
+   
+   
+  </script>
