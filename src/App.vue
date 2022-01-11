@@ -404,4 +404,77 @@ font-size:30px;
     width: 100% !important;
   }
 }
+
+/* screen size 1150px */
+@media only screen and (max-width: 1150px) {
+
+  .introTekst, .text-score {
+  font-size: 1.2rem;
+  width: 95%;
+  }
+
+  .header {
+    font-size: 1.4rem;
+    padding: 0 5%;
+  }
+
+  .col-form-label,
+  .form-control-range,
+  .form-check-label {
+    font-size: 1.2rem;
+  }
+ 
+  .btn {
+    font-size: 1.1rem;
+    width:120px;
+    padding: 8px 0px;
+  }
+
+  .rs-line {
+    width: 100%
+  }
+
+  .range-slider {
+    width: 85%;
+  }
+
+  .rs-label {
+    font-size: 1.1rem;
+    top: -38px;
+    margin-left: -9px;
+  }
+
+  .container-slider {
+    width: 100%;
+  }
+
+  .vl {
+    display: none;
+  }
+
+  .meter {
+    background: transparent;
+    height: 85%;
+    width: 85%;
+  }
+
+  .foqusRaport {
+    display: none;
+  }
+
+  .section-score {
+    height: 775px;
+  }
+
+  .container-score {
+    height: 750px;
+  }
+
+  .floatL {
+    float: left;
+  }
+  .text-start {
+    width: 100% !important;
+  }
+}
 </style>
