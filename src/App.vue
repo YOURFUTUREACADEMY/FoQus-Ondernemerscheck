@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow p-5">
+  <div class="shadow p-md-5 p-2">
     <header role="banner">
       <img
         class="foqusLogo img-fluid mx-auto d-block"
@@ -322,23 +322,57 @@ font-size:30px;
 
 /* screen size 600px */
 @media only screen and (max-width: 600px) {
+
+  body {
+    height: auto;
+    margin-top:5%;
+  }
+
+  #app {
+    width: 90%;
+  }
+
+  .introTekst, .text-score {
+
+  font-size: 1rem;
+  width: 95%;
+  }
+
   .header {
     font-size: 1rem;
     padding: 0 5%;
   }
+
 
   .col-form-label,
   .form-control-range,
   .form-check-label {
     font-size: 1rem;
   }
-
- .rs-line {
-    width: 125%;
+ 
+  .btn {
+    font-size: 1rem;
+    width:120px;
+    padding: 8px 0px;
   }
 
-  .slider {
-    width: 80%;
+  .rs-line {
+    width: 100%
+  }
+
+  .range-slider {
+    width: 85%;
+  }
+
+  .rs-label {
+    font-size: 1rem;
+    width: 20px;
+    top: -37px;
+    margin-left: -6px;
+  }
+
+  .container-slider {
+    width: 100%;
   }
 
   .vl {
@@ -347,7 +381,6 @@ font-size:30px;
 
   .meter {
     background: transparent;
-    margin: 0 7.5%;
     height: 85%;
     width: 85%;
   }

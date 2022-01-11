@@ -5,7 +5,7 @@
   <div
     class="container-vragen d-flex justify-content-center align-items-center"
   >
-    <div class="row form-group ">
+    <div class="row form-group align-items-center">
       <div class="col-auto  ">
         <input
           id="aantalUren"

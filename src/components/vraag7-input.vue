@@ -1,7 +1,7 @@
 <template>
   <h1 class="header text-center" role="heading">Hoeveel plezier heb je in je werk op een schaal van 1 tot 10?</h1>
  <div class="container-vragen d-flex justify-content-center align-items-center">
-   <div class="d-flex justify-content-center">          
+   <div class="d-flex justify-content-center container-slider">          
      <i class="fa fa-frown-o smilies" aria-hidden="true"></i>
       <div class="range-slider">  
         <input

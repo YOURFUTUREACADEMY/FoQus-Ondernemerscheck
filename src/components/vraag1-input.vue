@@ -6,7 +6,7 @@
   <div
     class="container-vragen d-flex justify-content-center align-items-center"
   >
-    <div class="row form-group justify-content-center">
+    <div class="row form-group justify-content-center align-items-center">
       <label for="aantalMensen" class="col-auto col-form-label"
         >Aantal mensen in dienst:</label
       >

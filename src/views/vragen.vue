@@ -21,29 +21,29 @@
         </div>
       </div>
 
-   
-    </main>
-   <!-- Use showBackBtn to add / remove the back button -->
-    <div class="container-btn d-flex justify-content-between bd-highlight py-3">
-      <div class="bd-highlight">
+    <!-- Use showBackBtn to add / remove the back button -->
+      <div class="container-btn d-flex justify-content-between bd-highlight py-3">
+        <div class="bd-highlight">
+          <button
+            class="btn  btn-lg"
+            id="terugBtn"
+            @click="activeStep--"
+            v-show="activeStep > 1 && showBackBtn === true"
+          >
+            terug
+          </button>
+        </div>
+
         <button
-          class="btn  btn-lg"
-          id="terugBtn"
-          @click="activeStep--"
-          v-show="activeStep > 1 && showBackBtn === true"
+          class="btn btn-lg  ms-auto bd-highlight"
+          id="volgendeBtn"
+          @click="activeStep++, goToResult(activeStep)"
         >
-          terug
+          {{ switchLabelNxtBtn.label }}
         </button>
       </div>
-
-      <button
-        class="btn btn-lg  ms-auto bd-highlight"
-        id="volgendeBtn"
-        @click="activeStep++, goToResult(activeStep)"
-      >
-        {{ switchLabelNxtBtn.label }}
-      </button>
-    </div>
+    </main>
+   
   </div>
 </template>
 

@@ -3,10 +3,15 @@
     <h1 class="header text-center" role="heading">
       Succesvol ondernemen is plezierig ondernemen.
     </h1>
-    <p class="introTekst container-vragen d-flex justify-content-center align-items-center">
-      "Heb jij voldoende focus op succes? Test het zelf door 7 vragen te
+    <div class="container-vragen d-flex justify-content-center align-items-center">
+     
+      <p class="introTekst">
+       "Heb jij voldoende focus op succes? Test het zelf door 7 vragen te
       beantwoorden."
-    </p>
+      </p>
+    
+    </div>
+    
     <div class="container-progBarQ progress rounded-0">
       <div
         class="progBarQ progress-bar"
