@@ -1,0 +1,126 @@
+:root {
+    --wit: #ffffff;
+    --lichtBlauw: #d3f1f3;
+    --donkerBlauw: #08344d;
+    --lichtTurquoise: #1dbac1;
+    --donkerTurquoise: #1e8a8c;
+    --oranje: #f6af23;
+    --grijs: #e7e6e6;
+    --donkerGrijs: #A6A6A6;
+    --zwart: #030303ec;
+    /* kleuren score bubbles */
+    --scoreSlecht: #ff0000;
+    --borderSlecht: #9e0000;
+    --scoreMatig: #ed7d31;
+    --borderMatig: #af5c23;
+    --scoreGoed: #00b050;
+    --borderGoed: #00843b;
+    
+    /* margins */
+    --marginLeftText: 5%;
+
+    /* sizes */
+    --width: 85%;
+    --pageHeight: 950px;
+}
+
+
+.onload{
+    display: none;
+}
+
+.text{
+    color: var(--zwart);
+}
+
+.main-container{
+    color: var(--donkerTurquoise);
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    max-width: 1320px;
+    margin: 0 auto;
+    text-align: start;
+}
+
+.sec-intro{
+    background-color: var(--grijs);
+    border: 6px solid var(--grijs);
+    color: var(--donkerTurquoise);
+    margin: auto;
+    height: var(--pageHeight);
+    text-align: center;
+    width: var(--width);
+}
+
+.sec-intro h1{
+    color: var(--donkerBlauw);
+    font-size: 2.25rem;
+    font-weight: 950;
+}
+
+.p-intro{
+    text-align: start;
+    margin: 10% auto;
+    width: 90%;
+}
+
+.bekijk-resultaat{
+    color: var(--wit);
+    background-color: var(--lichtTurquoise);
+    border: 1px solid var(--donkerTurquoise);
+    border-radius: 15% / 100%;
+    margin: auto;
+    height: 30px;
+    width: 200px;
+    text-align: center;
+}
+
+.sec-conlusie{
+    background-color: var(--grijs);
+    border: 6px solid var(--grijs);
+    height: var(--pageHeight);
+    margin: auto auto 20px;
+    width: var(--width);
+}
+
+.sec-vragen{
+    background-color: var(--grijs);
+    color: var(--donkerTurquoise);
+    margin: 0 auto 20px;
+    height: 175px;
+    width: var(--width);
+}
+
+.sec-vragen h2{
+    font-size: 1.25rem;
+    margin-left: var(--marginLeftText);
+}
+
+.sec-vragen p{
+    margin-left: var(--marginLeftText);
+}
+
+.disclamer{
+    margin: auto;
+    margin-top: 40px;
+    width: var(--width); 
+}
+
+/* Vragen score kleur */
+.vraag-groen{
+    border: 6px solid var(--scoreGoed);
+}
+
+.vraag-oranje{
+    border: 6px solid var(--scoreMatig);
+}
+
+.vraag-rood{
+    border: 6px solid var(--scoreSlecht);
+}
+
+/* TO REMOVE */
+.to-do{
+    color:red;
+}
