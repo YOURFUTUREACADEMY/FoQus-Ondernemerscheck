@@ -5,21 +5,15 @@ const opmerkingen = {
   vragen:{
     vraag1:{
       // Waarden die gebruikt worden voor de berekeningen en in de opmerkingen worden geplaatst
-      waarden:[878850,354082,58876,5890,3420],
+      waarden:["878.850","354.082","58.876","5.890","3.420"],
       opmerkingen:[
       // [0]: Placeholder voor logica
       'vraag 1 waarde is 0',
       // [1]: Opmerking resultaat vraag 1.0 | <2 | !WAARDE! wordt vervangen met een waarden
-      `Jij valt onder de zelfstandigen, samen met 878.850 anderen bedrijven in Nederland.`,
-      // [2]: Opmerking resultaat vraag 1.1 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
-      `Jouw bedrijf heeft dezelfde omvang als 354.082 anderen bedrijven in Nederland.`,
-      // [3]: Opmerking resultaat vraag 1.2 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
-      `Jouw bedrijf heeft dezelfde omvang als 58.876 anderen bedrijven in Nederland.`,
-      // [4]: Opmerking resultaat vraag 1.3 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
-      `Jouw bedrijf heeft dezelfde omvang als 5.890 anderen bedrijven in Nederland.`,
-      // [5]: Opmerking resultaat vraag 1.4 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
-      `Jouw bedrijf heeft dezelfde omvang als 3.420 anderen bedrijven in Nederland.`,
-      // [6]: Opmerking resultaat vraag 1.5 | >= 250
+      `Jij valt onder de zelfstandigen, samen met !WAARDE! anderen bedrijven in Nederland.`,
+      // [2]: Opmerking resultaat vraag 1.1 tot 1.4 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
+      `Jouw bedrijf heeft dezelfde omvang als !WAARDE! anderen bedrijven in Nederland.`,
+      // [3]: Opmerking resultaat vraag 1.5 | >= 250
       `Jouw bedrijf is zo groot, dat we het statistisch niet eens meer weten. Goed bezig, denken we.`
       ]
     },
@@ -65,36 +59,47 @@ const opmerkingen = {
       "n.v.t"
     ],
     // Het resultaat van vraag 5 wordt verwerkt in vraag 6
-    vraag6:[
-      // [0]: Placeholder voor logica
-      'vraag 6 groen waarde is 0',
-      // [1]: Opmerking resultaat vraag 6.0 | 5 stijgt AND 6 stijgt | groen
-      "Je realiseert winstgevende groei. Dat is de ware kunst. Compliment!",
-      // [2]: Opmerking resultaat vraag 6.1 | 5 stijgt AND 6 blijft gelijk | oranje
-      "Je omzet stijgt terwijl je resultaat gelijk blijft. Weet je waarom? Dit is een belangrijk signaal.",
-      // [3]: Opmerking resultaat vraag 6.2 | 5 stijgt AND 6 daalt | rood
-      "Je omzet stijgt terwijl je resultaat daalt. Je loopt daarmee risico dat het probleem steeds groter wordt.",
-      // [4]: Opmerking resultaat vraag 6.3 | 5 blijft gelijk AND 6 stijgt | groen
-      "Je omzet blijft gelijk terwijl je resultaat stijgt. Dat lijkt gunstig. Weet je waarom?",
-      // [5]: Opmerking resultaat vraag 6.4 | 5 blijft gelijk AND 6 blijft gelijk | oranje
-      "Je omzet blijft gelijk, je resultaat ook. Het lijkt alsof je stil staat, weet je de reden?",
-      // [6]: Opmerking resultaat vraag 6.5 | 5 blijft gelijk AND 6 daalt | rood
-      "Je omzet blijft gelijk terwijl je resultaat daalt. Dit houd je vaak niet lang vol en bijsturen is nodig.",
-      // [7]: Opmerking resultaat vraag 6.6 | 5 daalt AND 6 stijgt | oranje
-      "Je omzet daalt terwijl je resultaat stijgt. Is dit een bewuste keuze?",
-      // [8]: Opmerking resultaat vraag 6.7 | 5 daalt AND 6 blijft gelijk | oranje
-      "Je omzet daalt terwijl je resutaat gelijk blijft. Hoe zit het met je continuiteit, en je marktaandeel?",
-      // [9]: Opmerking resultaat vraag 6.8 | 5 daalt AND 6 daalt | rood
-      "Je omzet daalt en je resultaat daalt. Wat is er aan de hand? Dit vraagt om directe actie om je continuiteit te waarborgen!"
-    ],
+    vraag6:{
+      groen:[
+        // [0]: Placeholder voor logica
+        'vraag 6 groen waarde is 0',
+        // [1]: Opmerking resultaat vraag 6.0 | 5 stijgt AND 6 stijgt | groen
+        "Je realiseert winstgevende groei. Dat is de ware kunst. Compliment!",
+        // [2]: Opmerking resultaat vraag 6.3 | 5 blijft gelijk AND 6 stijgt | groen
+        "Je omzet blijft gelijk terwijl je resultaat stijgt. Dat lijkt gunstig. Weet je waarom?"
+      ],
+      oranje:[    
+        // [0]: Placeholder voor logica
+        'vraag 6 oranje waarde is 0',   
+        // [0]: Opmerking resultaat vraag 6.1 | 5 stijgt AND 6 blijft gelijk | oranje
+        "Je omzet stijgt terwijl je resultaat gelijk blijft. Weet je waarom? Dit is een belangrijk signaal.",
+        // [0]: Opmerking resultaat vraag 6.4 | 5 blijft gelijk AND 6 blijft gelijk | oranje
+        "Je omzet blijft gelijk, je resultaat ook. Het lijkt alsof je stil staat, weet je de reden?",
+        // [0]: Opmerking resultaat vraag 6.6 | 5 daalt AND 6 stijgt | oranje
+        "Je omzet daalt terwijl je resultaat stijgt. Is dit een bewuste keuze?",
+        // [0]: Opmerking resultaat vraag 6.7 | 5 daalt AND 6 blijft gelijk | oranje
+        "Je omzet daalt terwijl je resutaat gelijk blijft. Hoe zit het met je continuiteit, en je marktaandeel?"
+      ],
+      rood:[
+        // Placeholder voor logica
+        'vraag 6 rood waarde is 0',
+        // Opmerking resultaat vraag 6.2 | 5 stijgt AND 6 daalt | rood
+        "Je omzet stijgt terwijl je resultaat daalt. Je loopt daarmee risico dat het probleem steeds groter wordt.",
+        // Opmerking resultaat vraag 6.5 | 5 blijft gelijk AND 6 daalt | rood
+        "Je omzet blijft gelijk terwijl je resultaat daalt. Dit houd je vaak niet lang vol en bijsturen is nodig.",
+        // Opmerking resultaat vraag 6.8 | 5 daalt AND 6 daalt | rood
+        "Je omzet daalt en je resultaat daalt. Wat is er aan de hand? Dit vraagt om directe actie om je continuiteit te waarborgen!"
+      ] 
+    },
+    // Het resultaat van vraag 5 wordt verwerkt in vraag 6
     vraag7:[
       // Placeholder voor logica
       'vraag 7 waarde is 0',
-      // [0]: Opmerking resultaat vraag 7.1 | >=8 | groen
+      // Opmerking resultaat vraag 7.1 | >=8 | groen
       `Je vindt je werk erg leuk, en dat is fijn! Plezier vergroot vaak succes, en omgekeerd.`, 
-      // [1]: Opmerking resultaat vraag 7.2 | >=6 and <8 | oranje
+      // Opmerking resultaat vraag 7.2 | >=6 and <8 | oranje
       `Je vindt je werk niet erg leuk. Wordt het tijd voor iets anders, of je werk anders doen?`,
-      // [2]: Opmerking resultaat vraag 7.3 | <6 | rood
+      // Opmerking resultaat vraag 7.3 | <6 | rood
       `Je hebt niet al te veel plezier in je werk. Is het tijd om wat veranderingen aan te brengen? Weinig plezier helpt niet bij succes.`
     ],
   // einde vragen
@@ -102,35 +107,35 @@ const opmerkingen = {
   conclusies:{
     //Conclusie vragen 1,2,5 & 6
     conclusie1:[
-      // [0]: Placeholder voor logica
+      // Placeholder voor logica
       'conclusie 1 waarde is 0',
-      // [1]: Conclusie 1.0 | 1=2-50, 2 >65, 5 stijgt, 6 stijgt of gelijk | oranje
+      // Conclusie 1.0 | 1=2-50, 2 >65, 5 stijgt, 6 stijgt of gelijk | oranje
       `Het lijkt heel goed te gaan met je onderneming; kwetsbaar lijkt de afhankelijkheid van jou. Tijdelijk kan dit prima maar het moet niet te lang duren. Advies is om het werk anders proberen te organiseren en je organisatie verder te professionaliseren.`,
-      // [2]: Conclusie 1.1 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 stijgt | oranje
-      `Je maakt scherpe keuzes die zorgen voor winstgevendheid. In de basis doe je dit goed. De vraag is of dit ook kan door minder hard of slimmer te werken, door zaken bijv. anders te organiseren. Langdurig teveel werken leidt tot risico's voor jezelf en je onderneming.`,
-      // [3]: Conclusie 1.2 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 dalend of gelijk | rood
+      // Conclusie 1.1 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 stijgt | oranje
+      `Je maakt scherpe keuzes die zorgen voor winstgevendheid. In de basis doe je dit goed. De vraag is of dit ook kan door minder hard of slimmer te werken, door zaken bijv. anders te organiseren. Langdurig teveel werken leidt tot risico's voor jezelf en je onderneming.`
+      // Conclusie 1.2 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 dalend of gelijk | rood
       `Je werkt zo hard dat dit risico's met zich meebrengt op vele vlakken. Dit is niet houdbaar voor langere tijd. Het is noodzaak om snel bij te sturen. Probeer met iemand die meer afstand van je bedrijf heeft kritisch naar je bedrijf te kijken om noodzakelijke keuzes goed te kunnen maken, en stuur dan bij!`
     ],
     //Conclusie vragen 4 & 6
     conclusie2:[
-      // [0]: Placeholder voor logica
+      // Placeholder voor logica
       'conclusie 2 waarde is 0',
-      // [1]: Conclusie 2.0 | 4 >0,5 AND 6 daalt of gelijk | oranje
+      // Conclusie 2.0 | 4 >0,5 AND 6 daalt of gelijk | oranje
       `Het lijkt dat je te weinig aan innovatie en verbetering doet. Kijk eens kritisch naar interne processen en marktontwikkelingen, en probeer je producten/diensten en interne processen aan te passen aan de snel veranderende marktomstandigheden en de technologische vooruitgang.`,
-      // [2]: Conclusie 2.1 | 4 <0,5 AND 6 daalt of gelijk OF 5 daalt of gelijk | oranje
+      // Conclusie 2.1 | 4 <0,5 AND 6 daalt of gelijk OF 5 daalt of gelijk | oranje
       `Je doet aan innovatie en vernieuwing, maar dit lijkt nog onvoldoende effect te hebben op je omzet en resultaat. Stel jezelf daarom de vraag of je wel het juiste hebt ontwikkeld. Laat eens iemand op meer afstand van je organisatie meekijken, om op dit aspect conclusies te kunnen trekken en vervolgens scherpe keuzes te maken.`
     ],
     //Conclusie Totaal
     conclusie3:[
-      // [0]: Placeholder voor logica
+      // Placeholder voor logica
       'conclusie 3 waarde is 0',
-      // [1]: Als conclusie 3.0 | conclusie 1 & 2 groen zijn  
+      // Als conclusie 3.0 | conclusie 1 & 2 groen zijn  
       "Ook wanneer er niet direct een probleem is, is het goed om regelmatig en blijvend kritisch te kijken naar je organisatie. Om de juiste richting voor de toekomst te kiezen of om de gekozen richting te checken en waar nodig bij te sturen. Vernieuw sowieso je middellange termijnplanning om de 2-3 jaren. Dat houd je alert en fris. En spar met anderen (vooral ook buiten de branche, of een goede mentor) om scherp te blijven. De snelheid waarmee bijv. de Coronacrisis recent de wereld veranderde is daar een goed voorbeeld van."
     ],
     conclusie4:[
-      // [0]: Placeholder voor logica
+      // Placeholder voor logica
       'conclusie 4 waarde is 0',
-      // [1]: Conclusie 4.0 | als vraag 1 > 2 
+      // Conclusie 4.0 | als vraag 1 > 2 
       "Als je hulp nodig hebt om betrokken kritisch en ook objectief met je mee te kijken, zodat je de juiste beslissingen kan nemen om succesvol te blijven ondernemen, zijn wij er voor je. Dat is ons vak, en we zijn er goed in. Neem daarom contact op voor een -online- kennismakingsgesprek en deel je ideëen eens met ons."
     ],
   // einde conlusies  

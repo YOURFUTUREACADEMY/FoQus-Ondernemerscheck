@@ -50,7 +50,7 @@
       <AnalogBalanceMeter :value='antwoord' :settings='meterSettings' v-on:meter="meterData"></AnalogBalanceMeter>
     </template>
     <template v-if='meterSelector'>
-      <AnalogVolMeter class="test-meter" :value='antwoord' :settings='meterSettings' v-on:meter="meterData"></AnalogVolMeter>
+      <AnalogVolMeter :value='antwoord' :settings='meterSettings' v-on:meter="meterData"></AnalogVolMeter>
     </template>
 
     <button class="btn" @click="$router.push('/testMenu')">
@@ -61,7 +61,7 @@
 
 <script>
 import AnalogBalanceMeter from "../components/analog-balance-meter";
-import AnalogVolMeter from "../components/analog-vol-meter-nieuw";
+import AnalogVolMeter from "../components/analog-vol-meter";
 
 export default {
   data() {
@@ -75,9 +75,9 @@ export default {
         manValue: 50,
         valueMax: 100,
         valueMin: 0,
-        degMax: 172,
+        degMax: 173,
         degMin: 0,
-        degAdjust: -5,
+        degAdjust: 1,
         reverseDirection: false,
       },
     // einde return    
@@ -109,11 +109,6 @@ export default {
 };
 </script>
 <style scoped>
-  .test-meter{
-    background-color: red;
-  }
-
-
   .rotated {
     width: 80px;
     height: 80px;

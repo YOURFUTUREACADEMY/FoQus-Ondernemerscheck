@@ -44,24 +44,25 @@ function berekenUitslag(vragen){
   // haal opmerkingen vragen
   const opmerking = $opmerkingen.vragen;
   
+
   // haal opmerkingen conclusies
-  const conclusies = $opmerkingen.conclusies;
+  // const conclusies = $opmerkingen.conclusies;
 
   // variable resultaat opbouw
   const resultaat = {
-    vraag1 : {opmerking : "", berekening : "", totaal : "", score : ""},
-    vraag2 : {opmerking : "", berekening : "", totaal : "", score : ""},
-    vraag3 : {opmerking : "", berekening : "", totaal : "", score : ""},
-    vraag4 : {opmerking : "", berekening : "", totaal : "", score : ""},
-    vraag5 : {opmerking : "", berekening : "", totaal : "", score : ""},
-    vraag6 : {opmerking : "", berekening : "", totaal : "", score : ""},
-    vraag7 : {opmerking : "", berekening : "", totaal : "", score : ""},
+    vraag1 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag2 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag3 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag4 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag5 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag6 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag7 : {opmerking : 0, berekening : "", totaal : "", score : ""},
     kleur : "",
     score : 0,
-    conclusie1 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"},
-    conclusie2 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"}, 
-    conclusie3 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"}, 
-    conclusie4 : {opmerking : "", kleur:"", score : "", nr: "n.v.t"}, 
+    conclusie1 : {opmerking : 0, kleur:"", score : "", nr: "n.v.t"},
+    conclusie2 : {opmerking : 0, kleur:"", score : "", nr: "n.v.t"}, 
+    conclusie3 : {opmerking : 0, kleur:"", score : "", nr: "n.v.t"}, 
+    conclusie4 : {opmerking : 0, kleur:"", score : "", nr: "n.v.t"}, 
   }
 
   // score waardes
@@ -69,49 +70,56 @@ function berekenUitslag(vragen){
   const oranje = $oranje;
   const rood = $rood;
 
-  // functie die numeral string converteerd naar een number
-  function convertStrToNum(string){
-    let value = Number(string.replace(".",""));
-    return value;
-  }
+  // TO DO remove funtion it has moved ouside main function
+  // // functie die numeral string converteerd naar een number
+  // function convertStrToNum(string){
+  //   let value = Number(string.replace(".",""));
+  //   return value;
+  // }
 
-  // functie die numeral string invoegt in opmerking string
-  function maakOpmerking(inputString, replaceString, newString){
-    let opmerking = inputString.replace(replaceString, newString);
-    return opmerking;
-  }
+
+  // TO DO remove funtion it has moved ouside main function
+  // // functie die numeral string invoegt in opmerking string
+  // function maakOpmerking(inputString, replaceString, newString){
+  //   let opmerking = inputString.replace(replaceString, newString);
+  //   return opmerking;
+  // }
 
   // statement vraag 1
 
   // bereken totaal
-  const totaal = convertStrToNum(opmerking.vraag1.waarden[0]) + convertStrToNum(opmerking.vraag1.waarden[1]) + convertStrToNum(opmerking.vraag1.waarden[2]) + convertStrToNum(opmerking.vraag1.waarden[3]) + convertStrToNum(opmerking.vraag1.waarden[4]);
+  const totaal = opmerking.vraag1.waarden[0] + opmerking.vraag1.waarden[1] + opmerking.vraag1.waarden[2] + opmerking.vraag1.waarden[3] + opmerking.vraag1.waarden[4];
   
   if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
     resultaat.vraag1.score = Number(vraag1.waarde)}
-
-  if( vraag1.waarde <2  && vraag1.waarde !== ""){
-    
-    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.zelfstandig,"!WAARDE!",opmerking.vraag1.waarden[0]);
-    resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[0]) / totaal) * 100;
+  // vraag 1.1  
+  if( vraag1.waarde <2  && vraag1.waarde !== ""){   
+    resultaat.vraag1.opmerking = 1;
+    resultaat.vraag1.berekening = (opmerking.vraag1.waarden[0] / totaal) * 100;
   }
+  // vraag 1.2
   else if(vraag1.waarde >=2 && vraag1.waarde < 10 ){
-    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[1]); 
-    resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[1]) / totaal) * 100;
+    resultaat.vraag1.opmerking = 2; 
+    resultaat.vraag1.berekening = (opmerking.vraag1.waarden[1] / totaal) * 100;
   }
+  // vraag 1.3
   else if(vraag1.waarde >=10 && vraag1.waarde < 50 ){
-    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[2]); 
-    resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[2]) / totaal) * 100;
+    resultaat.vraag1.opmerking = 3; 
+    resultaat.vraag1.berekening = (opmerking.vraag1.waarden[2] / totaal) * 100;
   }
+  // vraag 1.4
   else if(vraag1.waarde >=50 && vraag1.waarde < 100 ){
-    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[3])
-    resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[3]) / totaal) * 100;
+    resultaat.vraag1.opmerking = 4
+    resultaat.vraag1.berekening = (opmerking.vraag1.waarden[3] / totaal) * 100;
   }
+  // vraag 1.5
   else if(vraag1.waarde >=100 && vraag1.waarde < 250 ){
-    resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[4]) 
-    resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[4]) / totaal) * 100;
+    resultaat.vraag1.opmerking = 5 
+    resultaat.vraag1.berekening = (opmerking.vraag1.waarden[4] / totaal) * 100;
   }
+  // vraag 1.6
   else if(vraag1.waarde >=250){
-    resultaat.vraag1.opmerking = opmerking.vraag1.groot;
+    resultaat.vraag1.opmerking = 6;
   }
   else{
     resultaat.vraag1.opmerking = "FOUT: WAARDE VRAAG 1 BUITEN BEREIK";
@@ -120,19 +128,22 @@ function berekenUitslag(vragen){
 
  
   // statement vraag 2
+  // vraag 2.1
   if( vraag2.waarde < 55 && vraag2.waarde !== ""){
-    resultaat.vraag2.opmerking = opmerking.vraag2.groen; 
+    resultaat.vraag2.opmerking = 1; 
     resultaat.vraag2.score = groen;
     resultaat.score = resultaat.score + groen; 
     
   }
+  // vraag 2.2
   else if(vraag2.waarde >= 55 && vraag2.waarde <= 65 ){
-    resultaat.vraag2.opmerking = opmerking.vraag2.oranje;
+    resultaat.vraag2.opmerking = 2;
     resultaat.vraag2.score = oranje;
     resultaat.score = resultaat.score + oranje;
   }
+  // vraag 2.3
   else if(vraag2.waarde > 65){
-    resultaat.vraag2.opmerking = opmerking.vraag2.rood;
+    resultaat.vraag2.opmerking = 3;
     resultaat.vraag2.score = rood;
     resultaat.score = resultaat.score + rood;
   }
@@ -143,21 +154,24 @@ function berekenUitslag(vragen){
 
 
   // statement vraag 3
+  
   resultaat.vraag3.totaal = 100;
   resultaat.vraag3.berekening = (vraag3.waarde/resultaat.vraag3.totaal) * 100;
-
+  // vraag 3.1
   if( vraag3.waarde < 45 && vraag3.waarde !== ""){
-    resultaat.vraag3.opmerking = opmerking.vraag3.groen;
+    resultaat.vraag3.opmerking = 1;
     resultaat.vraag3.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
+  // vraag 3.2
   else if(vraag3.waarde >= 45 && vraag3.waarde <= 60 ){
-    resultaat.vraag3.opmerking = opmerking.vraag3.oranje;
+    resultaat.vraag3.opmerking = 2;
     resultaat.vraag3.score = oranje;
     resultaat.score = resultaat.score + oranje;
   }
+  // vraag 3.3
   else if(vraag3.waarde > 60){
-    resultaat.vraag3.opmerking = opmerking.vraag3.rood;
+    resultaat.vraag3.opmerking = 3;
     resultaat.vraag3.score = rood;
     resultaat.score = resultaat.score + rood;
   }
@@ -168,18 +182,21 @@ function berekenUitslag(vragen){
 
 
   // statement vraag 4
+  // vraag 4.1
   if( vraag4.waarde == 1 && vraag4.waarde !== ""){
-    resultaat.vraag4.opmerking = opmerking.vraag4.groen;
+    resultaat.vraag4.opmerking = 1;
     resultaat.vraag4.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
+  // vraag 4.2
   else if(vraag4.waarde == 2 ){
-    resultaat.vraag4.opmerking = opmerking.vraag4.oranje;
+    resultaat.vraag4.opmerking = 2;
     resultaat.vraag4.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
+  // vraag 4.3
   else if(vraag4.waarde == 3 ){
-    resultaat.vraag4.opmerking = opmerking.vraag4.rood;
+    resultaat.vraag4.opmerking = 3;
     resultaat.vraag4.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
@@ -189,58 +206,65 @@ function berekenUitslag(vragen){
 
   // statement vraag 5 & 6
   // 5 = 1 en 6 - 1 tot 3
+  // vraag 6.1 | 5 stijgt AND 6 stijgt | groenvraag 6.1
   if( vraag5.waarde == 1 && vraag6.waarde == 1 && vraag5.waarde != "" && vraag6.waarde != ""){
-    resultaat.vraag6.opmerking = opmerking.vraag6.groen.VenIVstijgen;
+    resultaat.vraag6.opmerking = 1;
     resultaat.vraag5.score = groen;
     resultaat.vraag6.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
+  // vraag 6.2 | 5 stijgt AND 6 blijft gelijk | oranje
   else if( vraag5.waarde == 1 && vraag6.waarde == 2 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VstijgtVIgelijk;
+    resultaat.vraag6.opmerking = 2;
     resultaat.vraag5.score = groen;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
+  // vraag 6.3 | 5 stijgt AND 6 daalt | rood
   else if( vraag5.waarde == 1 && vraag6.waarde == 3 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.rood.VstijgtVIdaalt;
+    resultaat.vraag6.opmerking = 3;
     resultaat.vraag5.score = groen;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
-  // 5 = 2 en 6 - 1 tot 3
+  // vraag 6.4 | 5 blijft gelijk AND 6 stijgt | groen
   else if( vraag5.waarde == 2 && vraag6.waarde == 1 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.groen.VgelijkVIstijgt;
+    resultaat.vraag6.opmerking = 4;
     resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
+  // vraag 6.5 | 5 blijft gelijk AND 6 blijft gelijk | oranje
   else if( vraag5.waarde == 2 && vraag6.waarde == 2 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VenVIgelijk;
+    resultaat.vraag6.opmerking = 5;
     resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
+  // vraag 6.6 | 5 blijft gelijk AND 6 daalt | rood
   else if( vraag5.waarde == 2 && vraag6.waarde == 3 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.rood.VgelijkVIdaalt;
+    resultaat.vraag6.opmerking = 6;
     resultaat.vraag5.score = oranje;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
-  // 5 = 3 en 6 - 1 tot 3
+  // vraag 6.7 | 5 daalt AND 6 stijgt | oranje
   else if( vraag5.waarde == 3 && vraag6.waarde == 1 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VdaaltVIstijgt;
+    resultaat.vraag6.opmerking = 7;
     resultaat.vraag5.score = rood;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
+  // vraag 6.8 | 5 daalt AND 6 blijft gelijk | oranje
   else if( vraag5.waarde == 3 && vraag6.waarde == 2 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.oranje.VdaaltVIgelijk;
+    resultaat.vraag6.opmerking = 8;
     resultaat.vraag5.score = rood;
     resultaat.vraag6.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
+  // vraag 6.9 | 5 daalt AND 6 daalt | rood
   else if( vraag5.waarde == 3 && vraag6.waarde == 3 ){
-    resultaat.vraag6.opmerking = opmerking.vraag6.rood.VenVIdalen;
+    resultaat.vraag6.opmerking = 9;
     resultaat.vraag5.score = rood;
     resultaat.vraag6.score = rood;
     resultaat.score = resultaat.score + rood; 
@@ -257,18 +281,21 @@ function berekenUitslag(vragen){
 
 
   // statement vraag 7
+  // vraag 7.1
   if( vraag7.waarde >= 8 && vraag7.waarde !== ""){
-    resultaat.vraag7.opmerking = opmerking.vraag7.groen;
+    resultaat.vraag7.opmerking = 1;
     resultaat.vraag7.score = groen;
     resultaat.score = resultaat.score + groen; 
   }
+  // vraag 7.2
   else if(vraag7.waarde >= 6 && vraag7.waarde < 8 ){
-    resultaat.vraag7.opmerking = opmerking.vraag7.oranje;
+    resultaat.vraag7.opmerking = 2;
     resultaat.vraag7.score = oranje;
     resultaat.score = resultaat.score + oranje; 
   }
+  // vraag 7.3
   else if(vraag7.waarde < 6 && vraag7.waarde > 0){
-    resultaat.vraag7.opmerking = opmerking.vraag7.rood;
+    resultaat.vraag7.opmerking = 3;
     resultaat.vraag7.score = rood;
     resultaat.score = resultaat.score + rood; 
   }
@@ -307,22 +334,25 @@ function berekenUitslag(vragen){
 
   // conclusie 1: vraag 1,2,5 & 6
   if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
+    // Conclusie 1.1 | 1=2-50, 2 >65, 5 stijgt, 6 stijgt of gelijk | oranje
     if(vraag5.waarde === 1 && vraag6.waarde === 1 || vraag6.waarde === 2){
-      resultaat.conclusie1.opmerking = conclusies.conclusie1.oranje.Vstijgt;
+      resultaat.conclusie1.opmerking = 1;
       resultaat.conclusie1.score = oranje;
       resultaat.conclusie1.kleur = oranje;
       resultaat.conclusie1.nr = 1;
       statusConclusie = 4;
     }
+    // Conclusie 1.2 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 stijgt | oranje
     else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 2 || vraag6.waarde === 3){
-      resultaat.conclusie1.opmerking = conclusies.conclusie1.rood;
+      resultaat.conclusie1.opmerking = 2;
       resultaat.conclusie1.score = rood;
       resultaat.conclusie1.kleur = rood;
       resultaat.conclusie1.nr = 2;
       statusConclusie = 5;
     }
+    // Conclusie 1.3 | 1= 2-50, 2 >65, 5 gelijk of dalend, 6 dalend of gelijk | rood
     else if(vraag5.waarde === 2 || vraag5.waarde === 3 && vraag6.waarde === 1 ){
-      resultaat.conclusie1.opmerking = conclusies.conclusie1.oranje.Vgelijk;
+      resultaat.conclusie1.opmerking = 3;
       resultaat.conclusie1.score = oranje;
       resultaat.conclusie1.kleur = oranje;
       resultaat.conclusie1.nr = 3;
@@ -332,33 +362,33 @@ function berekenUitslag(vragen){
 
   // conclusie 2: vraag 4 & 6
   if(vraag4.waarde === 1){
+    // Conclusie 2.1 | 4 >0,5 AND 6 daalt of gelijk | oranje
     if(vraag5.waarde === 1 && vraag6.waarde !== 1){
-      resultaat.conclusie2.opmerking = conclusies.conclusie2.VI;
+      resultaat.conclusie2.opmerking = 1;
       resultaat.conclusie2.score = oranje;
       resultaat.conclusie2.kleur = oranje;
       resultaat.conclusie2.nr = 1;
       statusConclusie = 7;
     }
   }  
-  else{  
-    if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
-      resultaat.conclusie2.opmerking = conclusies.conclusie2.VofVI;
+  // Conclusie 2.2 | 4 <0,5 AND 6 daalt of gelijk OF 5 daalt of gelijk | oranje
+  else if(vraag5.waarde !== 1 || vraag6.waarde !== 1){
+      resultaat.conclusie2.opmerking = 2;
       resultaat.conclusie2.score = oranje;
       resultaat.conclusie2.kleur = oranje;
       resultaat.conclusie2.nr = 2;
-      statusConclusie = 8;
-    }
+      statusConclusie = 8; 
   }
 
-  // conclusie 3: totaal | conclusie 1 en 2 zijn groen
+  // conclusie 3.1: totaal | conclusie 1 en 2 zijn groen
   if(statusConclusie === 0){
-    resultaat.conclusie3.opmerking = conclusies.conclusie3;
+    resultaat.conclusie3.opmerking = 1;
     resultaat.conclusie3.nr = 1;
   }
 
-  // conclusie 4 | vraag 1 > 2
+  // conclusie 4.1 | vraag 1 > 2
   if(vraag1.waarde > 2){
-    resultaat.conclusie4.opmerking = conclusies.conclusie4;
+    resultaat.conclusie4.opmerking = 1;
     resultaat.conclusie4.nr = 1;
   }
 
@@ -374,16 +404,24 @@ export function composeRapport(resultData, querystring){
 
   let rapportData = "";
   const kleurWaarde = {groen:$groen,oranje:$oranje,rood:$rood} 
-  rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score};
+  // rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score};
+
+  rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score,vragen:{},conclusie:{}};
  
   let key = ["vraag","conclusie"]
-  let number = 1;  
-  
+   
+  let formatedBerekening = 0;
+  let number = 1; 
+
   // haal vraag data
   for(let property in resultData){
-    
     if(property === key[0]+number){
-      rapportData[key[0]+number] = resultData[property].score;
+      rapportData.vragen["vr"+number+"Opm"] = resultData[property].opmerking;
+      rapportData.vragen["vr"+number+"Sco"] = resultData[property].score;
+      if(resultData[property].berekening !== ""){
+        formatedBerekening = resultData[property].berekening;
+        rapportData.vragen["vr"+number+"Ber"] = formatedBerekening.toFixed(2);
+      }
     number++; 
     }
   }
@@ -392,7 +430,7 @@ export function composeRapport(resultData, querystring){
   // haal conclusie data
   for(let property in resultData){
     if(property === key[1]+number){
-      rapportData[key[1]+number] = resultData[property].nr;
+      rapportData.conclusie["Con"+number] = resultData[property].opmerking;
       number++;  
     }     
   }
@@ -422,3 +460,40 @@ export function composeExcel(resultData, querystring){
   return querystring+"="+excelData; 
 // end function composeRapport  
 }
+
+
+//functie opbouwen opmerking vraag #1 & numeral string invoegt in opmerking string
+// function maakOpmerking(inputString, replaceString, newString){
+//   let opmerking = inputString.replace(replaceString, newString);
+//   return opmerking;
+// }
+
+// voorbeeld vraag 1 uit funtie
+  // // statement vraag 1
+
+  // // bereken totaal
+  // const totaal = convertStrToNum(opmerking.vraag1.waarden[0]) + convertStrToNum(opmerking.vraag1.waarden[1]) + convertStrToNum(opmerking.vraag1.waarden[2]) + convertStrToNum(opmerking.vraag1.waarden[3]) + convertStrToNum(opmerking.vraag1.waarden[4]);
+  
+  // if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
+  //   resultaat.vraag1.score = Number(vraag1.waarde)}
+
+  // if( vraag1.waarde <2  && vraag1.waarde !== ""){
+    
+  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.zelfstandig,"!WAARDE!",opmerking.vraag1.waarden[0]);
+  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[0]) / totaal) * 100;
+  // }
+  // else if(vraag1.waarde >=2 && vraag1.waarde < 10 ){
+  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[1]); 
+  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[1]) / totaal) * 100;
+  // }
+  // else if(vraag1.waarde >=10 && vraag1.waarde < 50 ){
+  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[2]); 
+  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[2]) / totaal) * 100;
+  // }
+  // else if(vraag1.waarde >=50 && vraag1.waarde < 100 ){
+  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[3])
+  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[3]) / totaal) * 100;
+  // }
+  // else if(vraag1.waarde >=100 && vraag1.waarde < 250 ){
+  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[4]) 
+  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[4]) / totaal) * 100;
