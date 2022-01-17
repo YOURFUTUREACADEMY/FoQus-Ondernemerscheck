@@ -3,7 +3,7 @@
   
   <div class="container-vragen d-flex justify-content-center align-items-center">
     <div>
-    <div class="form-group">
+    <div class="form-group mb-4">
       <input
         class=" form-check-input"
         type="radio"
@@ -15,7 +15,7 @@
       <label class="form-check-label  ms-2" for="optie1">{{optie1.label}}</label>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-4">
       <input
         class=" form-check-input"
         type="radio"
@@ -27,7 +27,7 @@
       <label class="form-check-label  ms-2" for="optie2">{{optie2.label}}</label>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-4">
       <input
         class=" form-check-input"
         type="radio"
