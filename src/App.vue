@@ -393,6 +393,7 @@ font-size:30px;
     background: transparent;
     height: 85%;
     width: 85%;
+    margin: -15% 0% -20% ;
   }
 
   .foqusRaport {
@@ -400,11 +401,11 @@ font-size:30px;
   }
 
   .section-score {
-    height: 1050px;
+    height: 870px;
   }
 
   .container-score {
-    height: 1100px;
+    height: 950px;
   }
 
   .floatL {
@@ -461,11 +462,11 @@ font-size:30px;
   }
 
   .section-score {
-    height: 750px;
+    height: 680px;
   }
 
    .container-score {
-    height: 800px;
+    height: 700px;
   }
 
   .d-flex {
