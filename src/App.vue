@@ -417,6 +417,10 @@ font-size:30px;
    .adviesBtn {
     width: 100%;
   }
+
+  small {
+    font-size: 0.9rem;
+  }
 }
 
 /* screen size 600px */
