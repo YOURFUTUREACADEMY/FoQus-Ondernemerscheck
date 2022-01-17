@@ -131,6 +131,10 @@ main {
   vertical-align: initial;
 }
 
+.form-group {
+  display: flex;
+  align-items: center;
+}
 /* .range-input{
  width: 500px;
 } */
@@ -320,93 +324,26 @@ font-size:30px;
   display: none;
 }
 
-/* screen size 600px */
-@media only screen and (max-width: 600px) {
+.adviesBtn {
+  width: 74%;
+}
 
+
+
+/* screen size 1200px */
+@media only screen and (max-width: 1200px) {
   body {
     height: auto;
     margin-top:5%;
   }
 
-  #app {
+   #app {
     width: 90%;
   }
 
-  .introTekst, .text-score {
-
-  font-size: 1rem;
-  width: 95%;
+  .shadow {
+    height: auto;
   }
-
-  .header {
-    font-size: 1rem;
-    padding: 0 5%;
-  }
-
-
-  .col-form-label,
-  .form-control-range,
-  .form-check-label {
-    font-size: 1rem;
-  }
- 
-  .btn {
-    font-size: 1rem;
-    width:120px;
-    padding: 8px 0px;
-  }
-
-  .rs-line {
-    width: 100%
-  }
-
-  .range-slider {
-    width: 85%;
-  }
-
-  .rs-label {
-    font-size: 1rem;
-    width: 20px;
-    top: -37px;
-    margin-left: -6px;
-  }
-
-  .container-slider {
-    width: 100%;
-  }
-
-  .vl {
-    display: none;
-  }
-
-  .meter {
-    background: transparent;
-    height: 85%;
-    width: 85%;
-  }
-
-  .foqusRaport {
-    display: none;
-  }
-
-  .section-score {
-    height: 775px;
-  }
-
-  .container-score {
-    height: 750px;
-  }
-
-  .floatL {
-    float: left;
-  }
-  .text-start {
-    width: 100% !important;
-  }
-}
-
-/* screen size 1150px */
-@media only screen and (max-width: 1150px) {
 
   .introTekst, .text-score {
   font-size: 1.2rem;
@@ -463,11 +400,11 @@ font-size:30px;
   }
 
   .section-score {
-    height: 775px;
+    height: 1050px;
   }
 
   .container-score {
-    height: 750px;
+    height: 1100px;
   }
 
   .floatL {
@@ -475,6 +412,60 @@ font-size:30px;
   }
   .text-start {
     width: 100% !important;
+  }
+
+   .adviesBtn {
+    width: 100%;
+  }
+}
+
+/* screen size 600px */
+@media only screen and (max-width: 600px) {
+
+  body {
+    margin-top:5%;
+  }
+
+  #app {
+    width: 90%;
+  }
+
+  .introTekst, .text-score {
+  font-size: 1rem;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+
+  .col-form-label,
+  .form-control-range,
+  .form-check-label {
+    font-size: 1rem;
+  }
+ 
+  .btn {
+    font-size: 1rem;
+  }
+
+  .rs-label {
+    font-size: 1rem;
+    width: 20px;
+    top: -37px;
+    margin-left: -6px;
+  }
+
+  .section-score {
+    height: 750px;
+  }
+
+   .container-score {
+    height: 800px;
+  }
+
+  .d-flex {
+    align-items: center;
   }
 }
 </style>

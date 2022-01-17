@@ -27,45 +27,47 @@
             </section>
 
             <section id="emailForm" class="d-flex flex-column">
-              <form class="">
-                <div class="row mb-3">
-                  <label class="col-sm-3 col-form-label text-score" for="naam"
-                    >Naam:</label
-                  >
-                  <div class="col-sm-9">
-                    <input
-                      class="form-control"
-                      type="text"
-                      id="naam"
-                      v:model="naam"
-                    />
+              <div class="scoreFlex">
+                <form class="">
+                  <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label text-score" for="naam"
+                      >Naam:</label
+                    >
+                    <div class="col-xl-9">
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="naam"
+                        v:model="naam"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="row mb-3">
-                  <label
-                    class="col-sm-3 col-form-label text-score"
-                    for="emailControle"
-                    >Emailadres:</label
-                  >
-                  <div class="col-sm-9">
-                    <input
-                      class="form-control"
-                      type="email"
-                      name="emailControle"
-                      id="emailControle"
-                      v-model="emailControle"
-                    />
+                  <div class="row mb-3">
+                    <label
+                      class="col-sm-3 col-form-label text-score"
+                      for="emailControle"
+                      >Emailadres:</label
+                    >
+                    <div class="col-xl-9">
+                      <input
+                        class="form-control"
+                        type="email"
+                        name="emailControle"
+                        id="emailControle"
+                        v-model="emailControle"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="d-flex flex-column align-items-md-end">
-                  <button type="submit" class="btn btn-primary w-75">
-                    Ik ontvang graag een persoonlijk advies
-                  </button>
-                  <small class="text-danger"
-                    >Ik ga akkoord met de ... voorwaarden</small
-                  >
-                </div>
-              </form>
+                  <div class="d-flex flex-column align-items-xl-end">
+                    <button type="submit" class="btn btn-primary adviesBtn">
+                      Ik ontvang graag een persoonlijk advies
+                    </button>
+                    <small class="text-danger"
+                      >Ik ga akkoord met de ... voorwaarden</small
+                    >
+                  </div>
+                </form>
+              </div>
             </section>
           </div>
           <div class="col-sm-4 align-self-center">
