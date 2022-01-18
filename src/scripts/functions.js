@@ -76,9 +76,25 @@ export function sendToZap(url, data, options={methode:"POST"}){
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
   
-  fetch(url + "/?" + data,{options})
+  fetch('/' ,{
+    methode:options.methode,
+    headers:url, 
+    body:data
+  })
 
 }
+
+//TO DO REMOVE
+
+// export function sendToZapold(url, data, options={methode:"POST"}){
+
+//   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+//   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
+  
+//   fetch(url + "/?" + data,{options})
+
+// }
+
 
 
 export function getObjectData(object, property){

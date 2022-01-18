@@ -16,9 +16,6 @@
         <button class="btn" @click="send()">
           Stuur naar Zapier
         </button>
-        <button class="btn" @click="send2()">
-          Send from Home
-        </button>
         <button class="btn" @click="$router.push('/testMenu')">
           Naar test menu 
         </button>
@@ -38,9 +35,8 @@ export default {
     return {
       // URL TO PDF MONKEY https://hooks.zapier.com/hooks/catch/5974604/b1bqszh
       // URL OUTLOOK TO GMAIL https://hooks.zapier.com/hooks/catch/5974604/b1b8nyb
-      // URL TEMP TO TEST https://hooks.zapier.com/hooks/catch/5974604/b9ie9xh
+      test:"sean@yourfutureacademy.nl",
       url: "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh",
-      url2: "https://hooks.zapier.com/hooks/catch/5974604/b9ie9xh",
       inputText: "",
       data: "", 
       resultaat:this.$store.getters.getFullResultaat,
@@ -57,26 +53,14 @@ export default {
     }
   },
   methods:{
-
     send(){
-
-      this.data = composeRapport(this.resultaat, 'rapport');
-
+      this.data = composeRapport(this.resultaat,'?rapport');
+      let recipient = "sean";
+      let email = this.test;
+      this.data = this.data+"&recipient="+recipient+"&email="+email;
       sendToZap(this.url, this.data);
-      // sendToZap(this.url, this.data + this.inputText);
-      // console.log(`send:${this.data + this.inputText} to ${this.url}`)
       console.log(`send:${this.data} to ${this.url}`)
-    },
-    send2(){
-
-      this.data = composeRapport(this.resultaat, 'rapport');
-
-      sendToZap(this.url2, this.data);
-      // sendToZap(this.url, this.data + this.inputText);
-      // console.log(`send:${this.data + this.inputText} to ${this.url}`)
-      console.log(`send:${this.data} to ${this.url2}`)
     }
-
   }
 }; // end export
 </script>

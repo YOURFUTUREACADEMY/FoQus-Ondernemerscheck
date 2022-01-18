@@ -1,23 +1,6 @@
 // === !! DONT copy import to PDFmonkey.io template !! ===
 import opmerkingen from "../js/opmerking.js"
 
-
-//======================== This data can be found in <script> below the HTML in PDFmonkey.io Template XXXXX ========================================
-function displaySubject(targetElementID, insertedText){
-    document.getElementById(targetElementID).innerText = insertedText;
-    if(document.querySelector("#sec-"+targetElementID) !== null){
-      document.getElementById("sec-"+targetElementID).style.display = "block";
-      document.getElementById(targetElementID).style.display = "block";
-    }
-}
-
-function addClass(targetElementID, insertedClass){
-  document.getElementById(targetElementID).className += insertedClass;
-}
-
-// === !! Switch queryString to $docPayload in PDFmonkey.io ( uncomment line below and remove queryString object *line 46 to 74)!! ===
-// const queryString = $docPayload;
-
 /* example queryString: {
     "kleurWaarde":{"groen":1,"oranje":5,"rood":20},
     "kleurCode":5,
@@ -50,39 +33,56 @@ function addClass(targetElementID, insertedClass){
 */
 
 const queryString= {
-    "kleurWaarde":{"groen":1,"oranje":5,"rood":20},
-    "kleurCode":5,
-    "score":21,
-    "vragen":{
-        "vr1Opm":1,
-        "vr1Sco":1,
-        "vr1Ber":"67.55",
-        "vr2Opm":1,
-        "vr2Sco":1,
-        "vr3Opm":2,
-        "vr3Sco":5,
-        "vr3Ber":"50.00",
-        "vr4Opm":2,
-        "vr4Sco":5,
-        "vr5Opm":0,
-        "vr5Sco":5,
-        "vr6Opm":5,
-        "vr6Sco":5,
-        "vr7Opm":2,
-        "vr7Sco":5
-        },
-    "conclusie":{
-        "Con1":0,
-        "Con2":2,
-        "Con3":0,
-        "Con4":0
-        }
-    }
+  "kleurWaarde":{"groen":1,"oranje":5,"rood":20},
+  "kleurCode":5,
+  "score":21,
+  "vragen":{
+      "vr1Opm":1,
+      "vr1Sco":1,
+      "vr1Ber":"67.55",
+      "vr2Opm":1,
+      "vr2Sco":1,
+      "vr3Opm":2,
+      "vr3Sco":5,
+      "vr3Ber":"50.00",
+      "vr4Opm":2,
+      "vr4Sco":5,
+      "vr5Opm":0,
+      "vr5Sco":5,
+      "vr6Opm":5,
+      "vr6Sco":5,
+      "vr7Opm":2,
+      "vr7Sco":5
+      },
+  "conclusie":{
+      "Con1":0,
+      "Con2":2,
+      "Con3":0,
+      "Con4":0
+      }
+  }
 
+//======================== This data can be found in <script> below the HTML in PDFmonkey.io Template XXXXX ========================================
+function displaySubject(targetElementID, insertedText){
+    document.getElementById(targetElementID).innerText = insertedText;
+    if(document.querySelector("#sec-"+targetElementID) !== null){
+      document.getElementById("sec-"+targetElementID).style.display = "block";
+      document.getElementById(targetElementID).style.display = "block";
+    }
+}
+
+function addClass(targetElementID, insertedClass){
+  document.getElementById(targetElementID).className += insertedClass;
+}
+
+// === !! Switch queryString to $docPayload in PDFmonkey.io !! ===
+// const queryString = $docPayload;
 
 // calculate score limits
 const upperLimitGroen = (queryString.kleurWaarde.groen * 2) + (queryString.kleurWaarde.oranje * 2);
 const upperLimitOranje = (queryString.kleurWaarde.oranje * 2) + (queryString.kleurWaarde.rood * 3);
+
+
 
 document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Status:Score ULG:${upperLimitGroen}, ULO:${upperLimitOranje}.`;
 

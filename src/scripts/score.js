@@ -330,8 +330,6 @@ function berekenUitslag(vragen){
     resultaat.score = 100;
   }
 
-  console.log(vraag1.waarde +"/"+ vraag2.waarde +"/"+ vraag3.waarde +"/"+ vraag4.waarde +"/"+ vraag5.waarde +"/"+ vraag6.waarde +"/"+ vraag7.waarde)
-
   // conclusie 1: vraag 1,2,5 & 6
   if(vraag1.waarde  > 1 && vraag1.waarde <= 50 && vraag2.waarde  > 65){
     // Conclusie 1.1 | 1=2-50, 2 >65, 5 stijgt, 6 stijgt of gelijk | oranje
