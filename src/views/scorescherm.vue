@@ -7,7 +7,7 @@
         <div class="row mt-4 ">
           <div class="col-xl-8 ">
             <section id="uitslag" class="row align-items-center ">
-              <div class="col-xl-6">
+              <div class="col-sm-6">
                 <AnalogVolMeter
                   class="meter"
                   :value="score"
@@ -15,7 +15,7 @@
                   v-on:meter="meterData"
                 ></AnalogVolMeter>
               </div>
-              <div class="col-xl-6 d-flex justify-content-center">
+              <div class="col-sm-6 d-flex justify-content-center">
                 <p class="text-score ">
                   Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor
                   staat als ondernemer. De antwoorden zijn niet goed of fout In

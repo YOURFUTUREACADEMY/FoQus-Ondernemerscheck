@@ -5,8 +5,8 @@
   <div
     class="container-vragen d-flex justify-content-center align-items-center"
   >
-    <div class="row form-group align-items-center">
-      <div class="col-auto  ">
+    <div class="row form-group justify-content-center">
+      <div class="col-4">
         <input
           id="aantalUren"
           class="form-control text-center "

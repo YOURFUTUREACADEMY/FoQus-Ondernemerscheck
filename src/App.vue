@@ -93,6 +93,10 @@ main {
  /* padding-bottom: 0.25rem; */
 }
 
+.container-slider {
+  height: 30px;
+}
+
 .btn {
   background-color: var(--oranje);
   color: var(--lichtBlauw);
@@ -119,11 +123,16 @@ main {
   border-color: var(--grijs);
 }
 .col-form-label,
+.form-control,
 .form-control-range,
 .form-check-label {
   font-size: 1.5rem;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+.form-control {
+  font-size: 1.5rem;
 }
 
 .form-check-input {
@@ -135,6 +144,7 @@ main {
   display: flex;
   align-items: center;
 }
+
 /* .range-input{
  width: 500px;
 } */
@@ -236,6 +246,7 @@ main {
 
 .smilies {
 font-size:30px;
+margin: 0px 5px;
 }
 
 /* CSS Score scherm */
@@ -303,9 +314,9 @@ font-size:30px;
 .label-naw {
   margin-top: 12px;
   text-align: left;
-
   width: 75px;
 }
+
 .text-start {
   width: 50%;
 }
@@ -327,8 +338,6 @@ font-size:30px;
 .adviesBtn {
   width: 74%;
 }
-
-
 
 /* screen size 1200px */
 @media only screen and (max-width: 1200px) {
@@ -356,8 +365,9 @@ font-size:30px;
   }
 
   .col-form-label,
+  .form-control,
   .form-control-range,
-  .form-check-label {
+  .form-check-label  {
     font-size: 1.2rem;
   }
  
@@ -401,11 +411,11 @@ font-size:30px;
   }
 
   .section-score {
-    height: 870px;
+    height: 600px;
   }
 
   .container-score {
-    height: 950px;
+    height: 700px;
   }
 
   .floatL {
@@ -421,6 +431,8 @@ font-size:30px;
 
   small {
     font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -443,10 +455,10 @@ font-size:30px;
     font-size: 1rem;
   }
 
-
   .col-form-label,
+  .form-control,
   .form-control-range,
-  .form-check-label {
+  .form-check-label  {
     font-size: 1rem;
   }
  
@@ -462,15 +474,11 @@ font-size:30px;
   }
 
   .section-score {
-    height: 680px;
+    height: 650px;
   }
 
    .container-score {
-    height: 700px;
-  }
-
-  .d-flex {
-    align-items: center;
+    height: 675px;
   }
 }
 </style>
