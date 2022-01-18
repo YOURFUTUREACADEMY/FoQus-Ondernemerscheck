@@ -70,30 +70,48 @@ export function setElementSize(elementID, height, width, unit){
 
 
 
+//TO DO REMOVE
+
+// export function sendToZap(
+//   url, 
+//   data, 
+//   options={
+//     headers: {
+//       'Content-Type': 'application/json' // 'Content-Type': 'application/x-www-form-urlencoded',
+//     }
+//   }
+//   ){
+
+//   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+//   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
+
+//   fetch(url, {
+//     method: 'POST', // or 'PUT'
+//     // headers: {
+//     //   'Content-Type': 'text/plain',
+//     // },
+//     body: data,
+//   })
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log('Success:', data);
+//   })
+//   .catch((error) => {
+//     console.error('Error:', error);
+//   });
+
+
+// // end endToZap function
+// }
 
 export function sendToZap(url, data, options={methode:"POST"}){
 
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
   
-  fetch('/' ,{
-    methode:options.methode,
-    headers:url, 
-    body:data
-  })
+  fetch(url + "/?" + data,{options})
 
 }
-
-//TO DO REMOVE
-
-// export function sendToZapold(url, data, options={methode:"POST"}){
-
-//   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-//   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
-  
-//   fetch(url + "/?" + data,{options})
-
-// }
 
 
 

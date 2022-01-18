@@ -398,15 +398,22 @@ function berekenUitslag(vragen){
 export default berekenUitslag;
 
 // functie die resultaat data omzet naar JSON string t.b.v Zapier & PDF Monkey
-export function composeRapport(resultData, querystring){
+export function composeRapport(resultData, /*querystring*/){
 
   let rapportData = "";
-  const kleurWaarde = {groen:$groen,oranje:$oranje,rood:$rood} 
-  // rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score};
-
-  rapportData = {kleurWaarde:kleurWaarde,kleurCode:resultData.kleur,score:resultData.score,vragen:{},conclusie:{}};
+  const kleurWaarde = {groen:$groen,oranje:$oranje,rood:$rood};
  
-  let key = ["vraag","conclusie"]
+  rapportData = {
+    kleurWaarde:kleurWaarde,
+    kleurCode:resultData.kleur,
+    score:{
+      waarde:resultData.score,
+      visual:0},
+    vragen:{},
+    conclusie:{}
+  };
+ 
+  let key = ["vraag","conclusie"];
    
   let formatedBerekening = 0;
   let number = 1; 
@@ -432,13 +439,14 @@ export function composeRapport(resultData, querystring){
       number++;  
     }     
   }
-  return querystring+"="+JSON.stringify(rapportData);
+
+  return rapportData;
 // end function composeRapport  
 }
 
 
 // functie die resultaat data omzet naar URL string t.b.v Zapier & Excel
-export function composeExcel(resultData, querystring){
+export function composeExcel(resultData){
 
   let excelData = "";
   const scoreBasisWaarde = `groen=${$groen}&oranje=${$oranje}&rood=${$rood}` 
@@ -455,7 +463,7 @@ export function composeExcel(resultData, querystring){
     number++; 
     }
   }
-  return querystring+"="+excelData; 
+  return excelData; 
 // end function composeRapport  
 }
 

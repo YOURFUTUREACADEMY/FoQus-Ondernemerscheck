@@ -56,7 +56,7 @@ const queryString= {
       },
   "conclusie":{
       "Con1":1,
-      "Con2":2,
+      "Con2":1,
       "Con3":1,
       "Con4":1
       }
@@ -119,13 +119,19 @@ let conclusie = "";
 number = 1;
 for(let property in queryString.conclusie){
   if(property === "Con"+number){
-      if(queryString.conclusie[property] > 0){
-          conclusie += " "+ opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]];
-      }
+    if(number == 3){
+      // displaySubject('conclusie-altijd',opmerkingen.conclusies.conclusieAltijd);
+      conclusie += " "+ opmerkingen.conclusies.conclusieAltijd + "\n";
+    }
+    if(queryString.conclusie[property] > 0){
+      conclusie += " " + opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]] + " \n \n";         
+    }
   number++;    
   }  
 // end for loop conclusie   
 }
+
+conclusie += opmerkingen.conclusies.conclusieEinde;
 
 // conclusie closure
 if(queryString.score > upperLimitGroen){

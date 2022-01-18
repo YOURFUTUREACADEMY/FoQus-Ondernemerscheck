@@ -38,7 +38,7 @@
                         class="form-control"
                         type="text"
                         id="naam"
-                        v:model="naam"
+                        v-model="naam"
                       />
                     </div>
                   </div>
@@ -59,9 +59,10 @@
                     </div>
                   </div>
                   <div class="d-flex flex-column align-items-xl-end">
-                    <button type="submit" class="btn btn-primary adviesBtn">
+                    <button type="submit" class="btn btn-primary adviesBtn" onSubmit="return false;" @click="sendEmail()" v-if="rapportVerzonden == false">
                       Ik ontvang graag een persoonlijk advies
                     </button>
+                    <p class="text-score" v-if="rapportVerzonden == true">Uw persoonlijk advies is verzonden</p>
                     <small class="text-danger"
                       >Ik ga akkoord met de ... voorwaarden</small
                     >
@@ -87,60 +88,21 @@
       <button class="volgendeBtn" @click="this.$router.push('/testMenu')">
         REMOVE: go to test menu
       </button>
-      <p class="text-score">{{ score }}</p>
-      <p class="text-score">Status: {{ meter.status }}</p>
-
-      <tabel class="text-score mt-3">
-        <tr>
-          <td>Vraag1:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag1`).waarde }}</td>
-        </tr>
-        <tr>
-          <td>Vraag2:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag2`).waarde }}</td>
-        </tr>
-        <tr>
-          <td>Vraag3:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag3`).waarde }}</td>
-        </tr>
-        <tr>
-          <td>Vraag4:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag4`).label }}</td>
-        </tr>
-        <tr>
-          <td>Vraag5:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag5`).label }}</td>
-        </tr>
-        <tr>
-          <td>Vraag6:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag6`).label }}</td>
-        </tr>
-        <tr>
-          <td>Vraag7:</td>
-          <td>{{ this.$store.getters.getAntwoord(`vraag7`).waarde }}</td>
-        </tr>
-      </tabel>
     </section>
   </main>
 </template>
 
 <script>
 import AnalogVolMeter from "../components/analog-vol-meter";
-// import { getWindowSize} from "../scripts/functions.js";
-
-// let windowSize;
-
-// function onResize(){
-//   windowSize = getWindowSize();
-// }
-
-// window.addEventListener("resize",onResize);
+import { composeRapport } from "../scripts/score.js";
+import { sendToZap } from "../scripts/functions.js";
 
 export default {
   name: "scorescherm",
   data() {
     return {
       testMode: false,
+      rapportVerzonden: false,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
       meter: "",
@@ -154,8 +116,8 @@ export default {
         degMin: 0,
         reverseDirection: true,
       },
-      naam: "", //"TO DO"
-      emailControle: "", //"TO DO"
+      naam: "", 
+      emailControle: "", 
       // status state -> conditie -> kleurCode, class, label, image
       status: {
         slecht: {
@@ -192,7 +154,7 @@ export default {
   //     this.vr = document.getElementById("vr");
   // },
   created() {
-    if (this.kleurCode === undefined) {
+    if (this.score === undefined) {
       this.$router.push("/");
     }
   },
@@ -235,6 +197,27 @@ export default {
     meterData(meter) {
       this.meter = meter;
     },
+    sendEmail(){
+      // event.preventDefault();
+      let data = composeRapport(this.$store.getters.getFullResultaat/*,"rapport"*/);
+      // waarde voor object in pdf
+      data.score.visual = this.meter.pointerDeg.toFixed(2);
+
+      // maak JSON van data
+      data = JSON.stringify(data);
+      const url = "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh"
+      // maak diversen Querie strings met NAW gegevens
+      data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
+      // verstuur data
+      sendToZap(url, data);
+      console.log(`send:${data}`)
+      this.rapportVerzonden = true;
+      this.naam = "";
+      this.emailControle = "";
+    }
+
+  // end methods
   },
+
 }; // end export
 </script>

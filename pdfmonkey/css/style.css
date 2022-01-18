@@ -31,6 +31,7 @@
 
 .text{
     color: var(--zwart);
+    
 }
 
 .page1 {
@@ -112,6 +113,7 @@
     height: 450px;
     margin: auto auto 20px;
     width: var(--width);
+   
 }
 
 .vraag-container {

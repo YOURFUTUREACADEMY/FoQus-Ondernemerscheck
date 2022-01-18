@@ -10,7 +10,7 @@
         <p>{{inputText}}</p>
          <!-- zie ..store/index.js voor opbouw RESULTAAT -->
         <p>Rapportdata</p>
-        <p>JSON:{{dataToSend}}</p>
+        <p>JSON:{{test}}</p>
         <p>string:{{excel}}</p>
         
         <button class="btn" @click="send()">
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { sendToZap } from "../scripts/functions.js"
+import { sendToZap } from "../scripts/functions.js";
 import { composeRapport } from "../scripts/score.js";
 import { composeExcel } from "../scripts/score.js";
 export default {
@@ -35,7 +35,7 @@ export default {
     return {
       // URL TO PDF MONKEY https://hooks.zapier.com/hooks/catch/5974604/b1bqszh
       // URL OUTLOOK TO GMAIL https://hooks.zapier.com/hooks/catch/5974604/b1b8nyb
-      test:"sean@yourfutureacademy.nl",
+      testEmail:"sean@yourfutureacademy.nl",
       url: "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh",
       inputText: "",
       data: "", 
@@ -44,20 +44,26 @@ export default {
   }, //end data
   computed:{
     dataToSend(){
-        let data = composeRapport(this.resultaat, 'rapport');
+        let data = composeRapport(this.resultaat);
       return data;
     },
     excel(){
       let data = composeExcel(this.resultaat, 'excel');
       return data;
+    },
+    test(){
+      let object = composeRapport(this.resultaat, "rapport");
+      // object = JSON.stringify(object);
+
+      return object;
     }
   },
   methods:{
     send(){
-      this.data = composeRapport(this.resultaat,'?rapport');
+      this.data = composeRapport(this.resultaat, "rapport");
       let recipient = "sean";
-      let email = this.test;
-      this.data = this.data+"&recipient="+recipient+"&email="+email;
+      let email = this.testEmail;
+      this.data = '?'+this.data+"&recipient="+recipient+"&email="+email;
       sendToZap(this.url, this.data);
       console.log(`send:${this.data} to ${this.url}`)
     }

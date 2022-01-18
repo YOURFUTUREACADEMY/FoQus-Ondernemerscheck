@@ -146,6 +146,20 @@ const opmerkingen = {
       // [1]: Conclusie 4.0 | als vraag 1 > 2 
       "Als je hulp nodig hebt om betrokken kritisch en ook objectief met je mee te kijken, zodat je de juiste beslissingen kan nemen om succesvol te blijven ondernemen, zijn wij er voor je. Dat is ons vak, en we zijn er goed in. Neem daarom contact op voor een -online- kennismakingsgesprek en deel je ideëen eens met ons."
     ],
+    conclusieAltijd:
+      `Tegenwoordig hebben we allemaal de neiging om altijd ‘aan’ te staan. Altijd maar doorgaan en liefst op 110% lijkt voor velen de weg naar succes. 
+      Zeker ondernemers hebben hier een handje van en werken gemiddeld 55 (!) uur per week in hun bedrijf, waar in loondienst 36 uur de norm voor voltijds werken is. Ondernemers raken ook niet direct gestrest van hard werken. 
+      Maar als het dan even wat minder gaat zijn ondernemers veelal geneigd juist nog meer uren te maken, vaak ten koste van plezier en daarmee succes. 
+      
+      De meest succesvolle ondernemers werken echter niet harder, maar slimmer. Ze maken bijv. scherpe keuzes om werkzaamheden niet (meer) of niet (meer) zelf te doen. 
+      Ze kiezen ervoor om naast hard te werken ook net zo hard te ontspannen (work hard, play hard) om de batterij weer op te laden. Om die balans te bereiken moet je die keuzes wel maken. Maak jij hierin al de juiste keuzes? Of kun je hier nog meer uithalen om meer succes en plezier te behalen? 
+      
+      Kijk maar eens hoe bijvoorbeeld topsporters dat doen. 
+      Jouw werk is toch ook topsport?!
+      Topsporters doen het ook niet alleen en verzamelen een team van begeleiders, coaches en specialisten om zich heen om succesvol te worden, en dat te blijven.
+      Een valkuil voor veel ondernemers is dat ze alles vaak zelf willen oplossen, of zelf doen. Dat lukt tot op zekere hoogte wel maar staat een echte topprestatie meestal in de weg, of je brandt halverwege af door gebrek aan plezier en succes. 
+      Een goed team om je heen en begeleiding vragen, of eens sparren is daarom geen zwakte maar juist een kracht!`,
+    conclusieEinde:'Op naar meer plezier en succes, en meer topprestaties. Wat zou jij graag realiseren?'  
   // einde conlusies  
   }
 // einde opmerkingen  
