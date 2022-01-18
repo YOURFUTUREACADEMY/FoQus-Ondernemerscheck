@@ -55,10 +55,10 @@ const queryString= {
       "vr7Sco":5
       },
   "conclusie":{
-      "Con1":0,
+      "Con1":1,
       "Con2":2,
-      "Con3":0,
-      "Con4":0
+      "Con3":1,
+      "Con4":1
       }
   }
 
