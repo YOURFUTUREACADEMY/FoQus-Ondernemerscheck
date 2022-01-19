@@ -59,7 +59,14 @@
                     </div>
                   </div>
                   <div class="d-flex flex-column align-items-xl-end">
-                    <button type="submit" class="btn btn-primary adviesBtn" onSubmit="return false;" @click="sendEmail()" v-if="rapportVerzonden == false">
+                    <button 
+                      type="submit" 
+                      class="btn btn-primary adviesBtn" 
+                      onSubmit="return false;" 
+                      @click="sendEmail()" 
+                      v-if="rapportVerzonden == false"
+                      :style="{background:sendButton}"
+                    >
                       Ik ontvang graag een persoonlijk advies
                     </button>
                     <p class="text-score" v-if="rapportVerzonden == true">Uw persoonlijk advies is verzonden</p>
@@ -191,6 +198,25 @@ export default {
       }
       return { visual };
     },
+    // controle send button
+    sendButton(){
+      let buttonColor = '#A6A6A6';
+      // check invoer naam
+      let naamOke = false;
+      if(this.naam !== "" && this.naam !== undefined){
+        naamOke = true;
+      }
+      // check invoer email
+      let emailOke = false;
+      if(this.emailControle !== "" && this.emailControle !== undefined){
+        emailOke = true;
+      }
+      if(naamOke && emailOke){
+        buttonColor = '#f6af23';
+      }
+      return buttonColor;
+      // end send color button
+    }
     // end computed
   },
   methods: {
@@ -198,22 +224,41 @@ export default {
       this.meter = meter;
     },
     sendEmail(){
-      // event.preventDefault();
-      let data = composeRapport(this.$store.getters.getFullResultaat/*,"rapport"*/);
-      // waarde voor object in pdf
-      data.score.visual = this.meter.pointerDeg.toFixed(2);
+      // check invoer naam
+      let fetchStatus = "";
+      let naamOke = false;
+      if(this.naam !== "" && this.naam !== undefined){
+        naamOke = true;
+      }
+      else{
+        this.naam = "vul a.u.b uw naam in";
+      }
+      // check invoer email
+      let emailOke = false;
+      if(this.emailControle !== "" && this.emailControle !== undefined){
+        emailOke = true;
+      }
+      else{
+        this.emailControle = "vul a.u.b uw email adres in";
+      }
+      if(naamOke && emailOke){
+        let data = composeRapport(this.$store.getters.getFullResultaat/*,"rapport"*/);
+        
+        // waarde voor objecten in pdf
+        data.score.visual = this.meter.pointerDeg.toFixed(2);
 
-      // maak JSON van data
-      data = JSON.stringify(data);
-      const url = "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh"
-      // maak diversen Querie strings met NAW gegevens
-      data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
-      // verstuur data
-      sendToZap(url, data);
-      console.log(`send:${data}`)
-      this.rapportVerzonden = true;
-      this.naam = "";
-      this.emailControle = "";
+        // maak JSON van data
+        data = JSON.stringify(data);
+        const url = "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh"
+        // maak diversen Querie strings met NAW gegevens
+        data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
+        // verstuur data
+        fetchStatus = sendToZap(url, data);
+        // TO DO CATCH PROMISE AND CHECK FOR SUCCES
+          this.rapportVerzonden = true;
+          this.naam = "";
+          this.emailControle = "";
+      }
     }
 
   // end methods
