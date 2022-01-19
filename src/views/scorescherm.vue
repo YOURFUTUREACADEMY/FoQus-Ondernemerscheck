@@ -224,8 +224,8 @@ export default {
       this.meter = meter;
     },
     sendEmail(){
+      // let fetchStatus = "";
       // check invoer naam
-      let fetchStatus = "";
       let naamOke = false;
       if(this.naam !== "" && this.naam !== undefined){
         naamOke = true;
@@ -253,8 +253,10 @@ export default {
         // maak diversen Querie strings met NAW gegevens
         data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
         // verstuur data
-        fetchStatus = sendToZap(url, data);
+        
+        sendToZap(url, data);
         // TO DO CATCH PROMISE AND CHECK FOR SUCCES
+        // fetchStatus = sendToZap(url, data);
           this.rapportVerzonden = true;
           this.naam = "";
           this.emailControle = "";
