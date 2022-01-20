@@ -67,7 +67,7 @@
                       v-if="rapportVerzonden == false"
                       :style="{background:sendButton}"
                     >
-                      Ik ontvang graag een persoonlijk advies
+                      Ik ontvang graag het volledige rapport per mail
                     </button>
                     <p class="text-score" v-if="rapportVerzonden == true">Uw persoonlijk advies is verzonden</p>
                     <small class="text-danger"
@@ -131,21 +131,31 @@ export default {
           kleurCode: 25,
           class: "score-slecht",
           label: "Stop",
-          signaal: "TO DO BLOKQUOTE SIGNAAL WAARDE SLECHT",
+          signaal: `
+          HET LIJKT HELAAS NIET ZO GOED TE GAAN \n
+          Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In combinatie hebben ze wel een signaalfunctie. 
+          Voor jou is dat signaal dat het noodzakelijk is om bij te sturen en gericht te verbeteren. En vooral heldere keuzes te maken om weer met plezier en succesvol te gaan ondernemen. 
+          Op deze manier doorgaan lijkt riskant.`,
           image: "Bubble-rood.png",
         },
         gemiddeld: {
           kleurCode: 5,
           class: "score-matig",
           label: "Let op",
-          signaal: "Probeer te verbeteren!",
+          signaal: `
+          ER IS AANDACHT NODIG \n 
+          Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout In combinatie hebben ze een signaalfunctie. 
+          Voor jou is dat signaal dat er aandacht nodig is.`,
           image: "Bubble-oranje.png",
         },
         goed: {
           kleurCode: 1,
           class: "score-goed",
           label: "Ga zo door",
-          signaal: "TO DO BLOKQUOTE SIGNAAL WAARDE GROEN",
+          signaal: `
+          DAT ZIET ER GOED UIT \n 
+          Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In combinatie hebben ze wel een signaalfunctie. \n 
+          Bij jou ziet het er ogenschijnlijk goed uit. Door te blijven focussen op de zaken die je succes en plezier brengen blijft het ondernemen leuk. Voorkom dat je verblind raakt door succes en blijf regelmatig kritisch kijken naar jezelf en je onderneming. Laat bijv. anderen eens meekijken om je te inspireren, zij zien vaak andere aspecten van je bedrijf.`,
           image: "Bubble-groen.png",
         },
       },
