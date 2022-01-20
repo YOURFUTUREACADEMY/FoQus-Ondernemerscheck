@@ -34,6 +34,16 @@
     
 }
 
+.main-container{
+    color: var(--donkerTurquoise);
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: start;
+}
+
 .page1 {
     background-color: var(--wit);
     height: var(--pageHeight);
@@ -56,16 +66,6 @@
     padding: 3% 0%;
     height: var(--pageHeight);
     margin: 5%;
-}
-
-.main-container{
-    color: var(--donkerTurquoise);
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: start;
 }
 
 .sec-intro{
