@@ -3,7 +3,7 @@
     <header role="banner">
       <img
         class="foqusLogo img-fluid mx-auto d-block"
-        src="./assets/images/logo_ondernemerscheck.jpg"
+        src="@/assets/images/logo_ondernemerscheck.jpg"
         role="figure"
       />
     </header>
