@@ -1,2 +1,2 @@
-/images/email/*.jpg filter=lfs diff=lfs merge=lfs -text
+src/assets/images/email/*.jpg filter=lfs diff=lfs merge=lfs -text
 
