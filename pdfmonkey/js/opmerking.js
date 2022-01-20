@@ -159,7 +159,7 @@ const opmerkingen = {
       Topsporters doen het ook niet alleen en verzamelen een team van begeleiders, coaches en specialisten om zich heen om succesvol te worden, en dat te blijven.
       Een valkuil voor veel ondernemers is dat ze alles vaak zelf willen oplossen, of zelf doen. Dat lukt tot op zekere hoogte wel maar staat een echte topprestatie meestal in de weg, of je brandt halverwege af door gebrek aan plezier en succes. 
       Een goed team om je heen en begeleiding vragen, of eens sparren is daarom geen zwakte maar juist een kracht!`,
-    conclusieEinde:'Op naar meer plezier en succes, en meer topprestaties. Wat zou jij graag realiseren?'  
+    conclusieOutro:'Op naar meer plezier en succes, en meer topprestaties. Wat zou jij graag realiseren?'  
   // einde conlusies  
   }
 // einde opmerkingen  

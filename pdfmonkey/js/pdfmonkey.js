@@ -131,7 +131,7 @@ for(let property in queryString.conclusie){
 // end for loop conclusie   
 }
 
-conclusie += opmerkingen.conclusies.conclusieEinde;
+conclusie += opmerkingen.conclusies.conclusieOutro;
 
 // conclusie closure
 if(queryString.score > upperLimitGroen){
