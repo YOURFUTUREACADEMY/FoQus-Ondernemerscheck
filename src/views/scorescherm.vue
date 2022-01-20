@@ -17,12 +17,6 @@
               </div>
               <div class="col-sm-6 d-flex row justify-content-center">
                 <p class="text-score ">
-                  Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor
-                  staat als ondernemer. De antwoorden zijn niet goed of fout In
-                  combinatie hebben ze een signaalfunctie. Voor jou is dat
-                  signaal
-                </p>
-                <p class="text-score ">
                   {{ scoreCondition.visual.signaal }}.
                 </p> 
               </div>
@@ -134,7 +128,7 @@ export default {
           class: "score-slecht",
           label: "Stop",
           signaal: `
-          HET LIJKT HELAAS NIET ZO GOED TE GAAN \n
+          HET LIJKT HELAAS NIET ZO GOED TE GAAN \n \n
           Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In combinatie hebben ze wel een signaalfunctie. 
           Voor jou is dat signaal dat het noodzakelijk is om bij te sturen en gericht te verbeteren. En vooral heldere keuzes te maken om weer met plezier en succesvol te gaan ondernemen. 
           Op deze manier doorgaan lijkt riskant.`,
@@ -145,7 +139,7 @@ export default {
           class: "score-matig",
           label: "Let op",
           signaal: `
-          ER IS AANDACHT NODIG \n 
+          ER IS AANDACHT NODIG \n \n
           Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout In combinatie hebben ze een signaalfunctie. 
           Voor jou is dat signaal dat er aandacht nodig is.`,
           image: "Bubble-oranje.png",
@@ -155,7 +149,7 @@ export default {
           class: "score-goed",
           label: "Ga zo door",
           signaal: `
-          DAT ZIET ER GOED UIT \n 
+          DAT ZIET ER GOED UIT \n \n
           Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In combinatie hebben ze wel een signaalfunctie. \n 
           Bij jou ziet het er ogenschijnlijk goed uit. Door te blijven focussen op de zaken die je succes en plezier brengen blijft het ondernemen leuk. Voorkom dat je verblind raakt door succes en blijf regelmatig kritisch kijken naar jezelf en je onderneming. Laat bijv. anderen eens meekijken om je te inspireren, zij zien vaak andere aspecten van je bedrijf.`,
           image: "Bubble-groen.png",
