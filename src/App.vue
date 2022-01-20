@@ -262,7 +262,7 @@ margin: 0px 5px;
 
 .section-score {
   background-color: var(--wit);
-  height: 575px;
+  height: 675px;
 }
 
 .container-score {
