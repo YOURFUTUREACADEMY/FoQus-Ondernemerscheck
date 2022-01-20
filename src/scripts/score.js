@@ -8,6 +8,13 @@ const $groen = 1; // 1
 const $oranje = 5; // 5
 const $rood = 20; // 25
 
+export const scoreWaardes = {
+  groen:$groen,
+  oranje:$oranje,
+  rood:$rood
+}
+
+
 
 function berekenUitslag(vragen){
 

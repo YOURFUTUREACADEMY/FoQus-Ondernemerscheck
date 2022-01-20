@@ -67,7 +67,7 @@
                     </button>
                     <p class="text-score" v-if="rapportVerzonden == true">Uw persoonlijk advies is verzonden</p>
                     <small class="text-danger"
-                      >Ik ga akkoord met de ... voorwaarden</small
+                      >Ik ga akkoord met de ... voorwaarden {{kleurCode}}</small
                     >
                   </div>
                 </form>
@@ -99,6 +99,7 @@
 import AnalogVolMeter from "../components/analog-vol-meter";
 import { composeRapport } from "../scripts/score.js";
 import { sendToZap } from "../scripts/functions.js";
+import { scoreWaardes } from "../scripts/score.js";
 
 export default {
   name: "scorescherm",
@@ -110,13 +111,13 @@ export default {
       score: this.$store.getters.getResultaat("score"),
       meter: "",
       meterSettings: {
-        degAdjust: 1,
         manMode: false,
-        manValue: 21,
+        manValue: 50,
         valueMax: 100,
         valueMin: 5,
         degMax: 173,
         degMin: 0,
+        degAdjust: 1,
         reverseDirection: true,
       },
       naam: "", 
@@ -124,7 +125,7 @@ export default {
       // status state -> conditie -> kleurCode, class, label, image
       status: {
         slecht: {
-          kleurCode: 25,
+          kleurCode: scoreWaardes.rood,
           class: "score-slecht",
           label: "Stop",
           signaal: `
@@ -135,7 +136,7 @@ export default {
           image: "Bubble-rood.png",
         },
         gemiddeld: {
-          kleurCode: 5,
+          kleurCode: scoreWaardes.oranje,
           class: "score-matig",
           label: "Let op",
           signaal: `
@@ -145,7 +146,7 @@ export default {
           image: "Bubble-oranje.png",
         },
         goed: {
-          kleurCode: 1,
+          kleurCode: scoreWaardes.groen,
           class: "score-goed",
           label: "Ga zo door",
           signaal: `

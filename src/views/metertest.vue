@@ -74,11 +74,11 @@ export default {
         manMode: false,
         manValue: 50,
         valueMax: 100,
-        valueMin: 0,
+        valueMin: 5,
         degMax: 173,
         degMin: 0,
         degAdjust: 1,
-        reverseDirection: false,
+        reverseDirection: true,
       },
     // einde return    
     };
