@@ -359,9 +359,9 @@ function berekenUitslag(vragen){
   }
 
   // conclusie 2: vraag 4 & 6
-  if(vraag4.waarde === 1){
+  if(vraag4.waarde > 1){
     // Conclusie 2.1 | 4 >0,5 AND 6 daalt of gelijk | oranje
-    if(vraag5.waarde === 1 && vraag6.waarde !== 1){
+    if(vraag6.waarde > 1){
       resultaat.conclusie2.opmerking = 1;
       resultaat.conclusie2.score = oranje;
       resultaat.conclusie2.kleur = oranje;
