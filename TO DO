@@ -1,3 +1,4 @@
+LIVE:https://thirsty-goldberg-0a3958.netlify.app/
 1 - Volgende knop intro pagina en vraag 1 ( als de terug knop niet getoond is verspringt de terug knop )
 2 - Kleur variable in CSS die niet goed worden over genomen (in style App.vue) -> Jesses // done
     1 - .hl is een andere kleur // done

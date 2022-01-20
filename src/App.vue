@@ -89,10 +89,6 @@ main {
   text-align: right;
 }
 
-.container-btn {
- /* padding-bottom: 0.25rem; */
-}
-
 .container-slider {
   height: 30px;
 }
