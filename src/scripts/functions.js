@@ -127,6 +127,21 @@ export function sendToZap(url, data, options={methode:"POST"}){
 }
 
 
+export function validateInput(input, msg){
+
+  let inputOke = false;
+
+  if(msg === undefined || msg === ""){
+    msg = "please enter value";
+  }
+
+  if(input !== undefined && input !== "" && input !==  msg){
+    inputOke = true
+  }
+
+  return inputOke;
+}
+
 
 export function getObjectData(object, property){
 

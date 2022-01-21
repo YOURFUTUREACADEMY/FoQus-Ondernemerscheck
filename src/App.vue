@@ -29,6 +29,7 @@
   --grijs: #e7e6e6;
   --donkerGrijs: #A6A6A6;
   --zwart: #030303ec;
+  --blauw: #0B5ED7;
   /* kleuren score bubbles */
   --scoreSlecht: #ff0000;
   --borderSlecht: #9e0000;
@@ -101,6 +102,11 @@ main {
 
 .btn:focus {
   box-shadow: none;
+}
+
+.btn:hover{
+  background-color: var(--blauw);
+  color: var(--zwart)
 }
 
 #terugBtn {
@@ -262,7 +268,7 @@ margin: 0px 5px;
 
 .section-score {
   background-color: var(--wit);
-  height: 675px;
+  height: 500px;
 }
 
 .container-score {
@@ -333,6 +339,18 @@ margin: 0px 5px;
 
 .adviesBtn {
   width: 74%;
+  border-color: transparent;
+}
+
+.btnFormFault{
+  background-color: var(--grijs);
+  color: var(--zwart)
+}
+
+.btnFormFault:hover{
+  background-color: var(--borderSlecht);
+  border-color: var(--zwart);
+  color: var(--zwart);
 }
 
 /* screen size 1200px */
@@ -407,7 +425,7 @@ margin: 0px 5px;
   }
 
   .section-score {
-    height: 600px;
+    height: 650px;
   }
 
   .container-score {

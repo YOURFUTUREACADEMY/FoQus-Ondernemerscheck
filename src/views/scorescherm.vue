@@ -58,16 +58,17 @@
                     <button 
                       type="submit" 
                       class="btn btn-primary adviesBtn" 
+                      :class="sendButton"
                       onSubmit="return false;" 
                       @click="sendEmail()" 
                       v-if="rapportVerzonden == false"
-                      :style="{background:sendButton}"
+                      
                     >
                       Ik ontvang graag het volledige rapport per mail
                     </button>
                     <p class="text-score" v-if="rapportVerzonden == true">Uw persoonlijk advies is verzonden</p>
                     <small class="text-danger"
-                      >Ik ga akkoord met de ... voorwaarden {{kleurCode}}</small
+                      >Ik ga akkoord met de ... voorwaarden</small
                     >
                   </div>
                 </form>
@@ -100,6 +101,7 @@ import AnalogVolMeter from "../components/analog-vol-meter";
 import { composeRapport } from "../scripts/score.js";
 import { sendToZap } from "../scripts/functions.js";
 import { scoreWaardes } from "../scripts/score.js";
+import { validateInput } from "../scripts/functions.js";
 
 export default {
   name: "scorescherm",
@@ -121,7 +123,11 @@ export default {
         reverseDirection: true,
       },
       naam: "", 
+      naamMissingMSG: "vul a.u.b uw naam in",
+      naamOke: "",
       emailControle: "", 
+      emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijnmail.nl",
+      emailOke:"",
       // status state -> conditie -> kleurCode, class, label, image
       status: {
         slecht: {
@@ -207,21 +213,26 @@ export default {
     },
     // controle send button
     sendButton(){
-      let buttonColor = '#A6A6A6';
-      // check invoer naam
-      let naamOke = false;
-      if(this.naam !== "" && this.naam !== undefined){
-        naamOke = true;
+      let className = 'btnFormFault';
+
+      // // check invoer naam
+      // let naamOke = false;
+      // if(this.naam !== "" && this.naam !== undefined){
+      //   naamOke = true;
+      // }
+
+      // // check invoer email
+      // let emailOke = false;
+      // if(this.emailControle !== "" && this.emailControle !== undefined){
+      //   emailOke = true;
+      // }
+
+      // check if form is oke
+      if(this.naamOke && this.emailOke){
+        className = '';
       }
-      // check invoer email
-      let emailOke = false;
-      if(this.emailControle !== "" && this.emailControle !== undefined){
-        emailOke = true;
-      }
-      if(naamOke && emailOke){
-        buttonColor = '#f6af23';
-      }
-      return buttonColor;
+      
+      return className;
       // end send color button
     }
     // end computed
@@ -233,22 +244,14 @@ export default {
     sendEmail(){
       // let fetchStatus = "";
       // check invoer naam
-      let naamOke = false;
-      if(this.naam !== "" && this.naam !== undefined){
-        naamOke = true;
-      }
-      else{
-        this.naam = "vul a.u.b uw naam in";
+      if(this.naamOke == false){
+        this.naam = this.naamMissingMSG;
       }
       // check invoer email
-      let emailOke = false;
-      if(this.emailControle !== "" && this.emailControle !== undefined){
-        emailOke = true;
+      if(this.emailOke == false){
+        this.emailControle = this.emailMissingMSG;
       }
-      else{
-        this.emailControle = "vul a.u.b uw email adres in";
-      }
-      if(naamOke && emailOke){
+      if(this.naamOke && this.emailOke){
         let data = composeRapport(this.$store.getters.getFullResultaat/*,"rapport"*/);
         
         // waarde voor objecten in pdf
@@ -272,6 +275,22 @@ export default {
 
   // end methods
   },
-
+  watch:{
+    naam: function(){
+      this.naamOke = validateInput(this.naam, this.naamMissingMSG)
+    },
+    emailControle: function(){
+      let valueInEmail = validateInput(this.emailControle, this.emailMissingMSG);
+      let emailAdres = this.emailControle.split("@");
+      if(valueInEmail){
+        if(emailAdres.length == 2){
+          this.emailOke = true;
+        }
+      }
+      else{
+        this.emailOke = false;
+      }
+    },
+  }
 }; // end export
 </script>
