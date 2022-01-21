@@ -42,7 +42,7 @@ export default {
       rangeMin:0,
       rangeMax: 100,
       step: 5,
-      value: 50,
+      value: 0,
       rsLine: "",
       rsBullet:"",
       rsLabel:"",
@@ -253,6 +253,7 @@ export default {
      
       return style;     
     },
-  }
+  // end computed
+  },
 };
 </script>

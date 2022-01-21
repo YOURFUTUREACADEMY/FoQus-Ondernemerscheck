@@ -63,20 +63,23 @@ const queryString= {
   }
 
 //======================== This data can be found in <script> below the HTML in PDFmonkey.io Template XXXXX ========================================
+
+// === !! Switch queryString to $docPayload in PDFmonkey.io !! ===
+// const queryString = $docPayload;
+
 function displaySubject(targetElementID, insertedText){
-    document.getElementById(targetElementID).innerText = insertedText;
+    // check for section and display section
     if(document.querySelector("#sec-"+targetElementID) !== null){
       document.getElementById("sec-"+targetElementID).style.display = "block";
-      document.getElementById(targetElementID).style.display = "block";
     }
+    // diplay element and add text
+    document.getElementById(targetElementID).innerText = insertedText;
+    document.getElementById(targetElementID).style.display = "block";
 }
 
 function addClass(targetElementID, insertedClass){
   document.getElementById(targetElementID).className += insertedClass;
 }
-
-// === !! Switch queryString to $docPayload in PDFmonkey.io !! ===
-// const queryString = $docPayload;
 
 // calculate score limits
 const upperLimitGroen = (queryString.kleurWaarde.groen * 2) + (queryString.kleurWaarde.oranje * 2);
@@ -84,7 +87,7 @@ const upperLimitOranje = (queryString.kleurWaarde.oranje * 2) + (queryString.kle
 
 
 
-document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Status:Score ULG:${upperLimitGroen}, ULO:${upperLimitOranje}.`;
+document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Status:Score:${queryString.score}, Score ULG:${upperLimitGroen}, ULO:${upperLimitOranje}.`;
 
 // loop that gets the data from the query string and inserts the text from opmerking into vraag-n elements
 let number = 1;
@@ -103,10 +106,19 @@ for(let property in queryString.vragen){
         // if all exist insert text and display = block
         else{
           displaySubject('vraag-'+number, opmerkingen.vragen['vraag'+number].opmerkingen[queryString.vragen[property]]);
-          // section colors
-          if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.rood )addClass('sec-vraag-'+number, " vraag-rood");
-          else if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.oranje )addClass('sec-vraag-'+number, " vraag-oranje");
-          else addClass('sec-vraag-'+number, " vraag-groen");
+          // score - section colors & images
+          if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.rood ){
+            addClass('sec-vraag-'+number, " vraag-rood");
+            document.getElementById(`vraag-${number}-svg-rd`).style.display = "block";
+          }
+          else if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.oranje ){
+            addClass('sec-vraag-'+number, " vraag-oranje");
+            document.getElementById(`vraag-${number}-svg-or`).style.display = "block";
+          }
+          else {
+            addClass('sec-vraag-'+number, " vraag-groen");
+            document.getElementById(`vraag-${number}-svg-gr`).style.display = "block";
+          }
         }  
       }     
     number++;     
@@ -132,6 +144,22 @@ for(let property in queryString.conclusie){
 }
 
 conclusie += opmerkingen.conclusies.conclusieOutro;
+
+//image conclusie groen
+if(queryString.score < upperLimitGroen){
+  document.getElementById(`conclusie-svg-gr`).style.display = "block";
+}
+
+//image conclusie oranje
+if(queryString.score >= upperLimitGroen && queryString.score < upperLimitOranje){
+  document.getElementById(`conclusie-svg-or`).style.display = "block";
+}
+
+//image conclusie rood
+if(queryString.score >= upperLimitOranje){
+  document.getElementById(`conclusie-svg-rd`).style.display = "block";
+}
+
 
 // conclusie closure
 if(queryString.score > upperLimitGroen){

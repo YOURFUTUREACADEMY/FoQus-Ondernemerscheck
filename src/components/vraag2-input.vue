@@ -28,6 +28,13 @@ export default {
       vraag: "vraag2",
     };
   },
+  watch:{
+    antwoord: function(){
+      if(this.antwoord < 1){
+        this.antwoord = 1;
+      }
+    }
+  },
   methods: {
     opslag(label, waarde) {
       this.$store.commit("setAntwoord", {

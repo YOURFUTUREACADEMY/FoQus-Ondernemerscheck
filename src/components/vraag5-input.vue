@@ -48,10 +48,10 @@ export default {
   data() {    
     return {
       vraag: "vraag5",
-      optie1: {label:"Stijgt",value:1},
-      optie2: {label:"Blijft Gelijk",value:2},
-      optie3: {label:"Daalt",value:3},
-      antwoord: 2
+      optie1: {label:"Omzet stijgt",value:1},
+      optie2: {label:"Omzet blijft gelijk",value:2},
+      optie3: {label:"Omzet daalt",value:3},
+      antwoord: ""
     };
   },
   methods: {

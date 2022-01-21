@@ -107,7 +107,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: false,
+      testMode: true,
       rapportVerzonden: false,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
@@ -252,7 +252,7 @@ export default {
         this.emailControle = this.emailMissingMSG;
       }
       if(this.naamOke && this.emailOke){
-        let data = composeRapport(this.$store.getters.getFullResultaat/*,"rapport"*/);
+        let data = composeRapport(this.$store.getters.getFullResultaat);
         
         // waarde voor objecten in pdf
         data.score.visual = this.meter.pointerDeg.toFixed(2);

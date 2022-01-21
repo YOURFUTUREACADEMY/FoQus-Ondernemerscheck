@@ -110,19 +110,18 @@ export function sendToZap(url, data, options={methode:"POST"}){
   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
    "";
   //  var status = "";
-
-   var status = fetch(url + "/?" + data,{options})
+  var status = fetch(url + "/?" + data,{options})
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
-      return status = "Success";
+      return data;
     })
     .catch((error) => {
       console.error('Error:', error);
-      return status = "Error";
+      return data;
   });
   
-  
+  console.log(status);
   return status;
 }
 

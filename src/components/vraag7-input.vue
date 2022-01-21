@@ -29,7 +29,7 @@ export default {
       vraag: "vraag7",
       rangeMin: 0,
       rangeMax: 9,
-      value: 5,
+      value: 0,
       rsLine: "",
       rsBullet:"",
       rsLabel:"",

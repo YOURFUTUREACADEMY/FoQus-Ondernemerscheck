@@ -21,7 +21,9 @@
 
     /* sizes */
     --width: 90%;
-    --pageHeight: 950px;
+    --pageHeight: 265mm;
+    --headerHeight: 10%;
+    --footerHeight: 2000px;
 }
 
 
@@ -31,68 +33,68 @@
 
 .text{
     color: var(--zwart);
-    
 }
 
 .main-container{
     color: var(--donkerTurquoise);
+    display:block;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: 500;
-    max-width: 800px;
     margin: 0 auto;
     text-align: start;
 }
 
-.page1 {
+.page {
+    display: flex;
+    flex-direction:column;
     background-color: var(--wit);
     height: var(--pageHeight);
-    padding: 3% 0%;
-    height: var(--pageHeight);
-    margin: 5%;
+    padding: 0%;
+    margin: 0%;
 }
 
-.page2 {
+.header{
+    align-self: flex-start;
     background-color: var(--wit);
-    height: var(--pageHeight);
-    padding: 3% 0%;
-    height: var(--pageHeight);
-    margin: 5%;
+    margin: 0% 5%;
+    padding: 0%;
+    height: var(--headerHeight);
 }
 
-.page3 {
+.footer{
+    align-self: flex-end;
     background-color: var(--wit);
-    height: var(--pageHeight);
-    padding: 3% 0%;
-    height: var(--pageHeight);
-    margin: 5%;
+    /* height: var(--footerHeight); */
+    margin: 0%;
+    padding: 0%;
 }
 
 .sec-intro{
+    align-self: center;
     background-color: var(--grijs);
-    border: 6px solid var(--grijs);
     color: var(--donkerTurquoise);
-    margin: 0 auto;
-    padding: 3% 0%;
+    margin: 0%;
+    padding: 0%;
     text-align: center;
     width: var(--width);
-    height: 900px;
+    height: 75%;
 }
 
 .sec-intro h1{
     color: var(--donkerBlauw);
     font-size: 2.25rem;
     font-weight: 950;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 .sec-intro h2 {
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 .p-intro{
     text-align: start;
-    margin: 10% auto;
+    margin: 5% auto;
     width: 90%;
 }
 
@@ -102,18 +104,16 @@
     border: 1px solid var(--donkerTurquoise);
     border-radius: 15% / 100%;
     margin: auto;
-    height: 30px;
+    height: 25px;
     width: 200px;
+    padding-top: 10px;
     text-align: center;
 }
 
 .sec-conlusie{
+    align-self: center;
     background-color: var(--grijs);
-    border: 6px solid var(--grijs);
-    height: 450px;
-    margin: auto auto 20px;
     width: var(--width);
-   
 }
 
 .vraag-container {
@@ -174,10 +174,4 @@
     background-color:aliceblue;
 }
 
-.to-do-meter {
-    color:red;
-    width: 300px;
-    height: 200px;
-    margin: 100px auto;
-    background-color:aliceblue;
-}
+

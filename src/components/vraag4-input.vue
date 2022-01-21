@@ -47,10 +47,10 @@ export default {
   data() {
     return {
       vraag: "vraag4",
-      optie1: {label:"<= 0,5 jaar",value:1},
-      optie2: {label:"0,5 - 1,5 jaar",value:2},
-      optie3: {label:"1,5 jaar",value:3},
-      antwoord:2
+      optie1: {label:"Afgelopen half jaar",value:1},
+      optie2: {label:"Afgelopen 2 jaar",value:2},
+      optie3: {label:"Langer dan 2 jaar geleden",value:3},
+      antwoord:""
     };
   },
   methods: {
