@@ -51,7 +51,7 @@ export default {
       optie1: {label:"Resultaat stijgt",value:1},
       optie2: {label:"Resultaat blijft gelijk",value:2},
       optie3: {label:"Resultaat daalt",value:3},
-      antwoord: '',
+      antwoord: this.$store.getters.getAntwoord("vraag6").waarde,
     };
   },
   methods: {

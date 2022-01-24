@@ -27,7 +27,7 @@
 export default {
   data() {
     return {
-      antwoord: 1,
+      antwoord: this.$store.getters.getAntwoord("vraag1").waarde,
       vraag: "vraag1",
     };
   },

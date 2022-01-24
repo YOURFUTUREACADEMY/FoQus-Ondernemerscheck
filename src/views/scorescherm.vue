@@ -60,7 +60,7 @@
                       class="btn btn-primary adviesBtn" 
                       :class="sendButton"
                       onSubmit="return false;" 
-                      @click="sendEmail()" 
+                      @mouseup="sendEmail()" 
                       v-if="rapportVerzonden == false"
                       
                     >
@@ -85,11 +85,11 @@
     <section v-if="testMode" class="TO DO verwijderen mt-5">
       <br />
       <!-- TO DO storetest knop verwijderen -->
-      <button class="backBtn" @click="$router.push('/')">
+      <button class="backBtn" @mouseup="$router.push('/')">
         terug naar begin
       </button>
       <!-- TO DO storetest knop verwijderen -->
-      <button class="volgendeBtn" @click="this.$router.push('/testMenu')">
+      <button class="volgendeBtn" @mouseup="this.$router.push('/testMenu')">
         REMOVE: go to test menu
       </button>
     </section>
@@ -107,7 +107,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: true,
+      testMode: false,
       rapportVerzonden: false,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
@@ -214,24 +214,10 @@ export default {
     // controle send button
     sendButton(){
       let className = 'btnFormFault';
-
-      // // check invoer naam
-      // let naamOke = false;
-      // if(this.naam !== "" && this.naam !== undefined){
-      //   naamOke = true;
-      // }
-
-      // // check invoer email
-      // let emailOke = false;
-      // if(this.emailControle !== "" && this.emailControle !== undefined){
-      //   emailOke = true;
-      // }
-
       // check if form is oke
       if(this.naamOke && this.emailOke){
         className = '';
       }
-      
       return className;
       // end send color button
     }
@@ -264,12 +250,37 @@ export default {
         data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
         // verstuur data
         
-        sendToZap(url, data);
-        // TO DO CATCH PROMISE AND CHECK FOR SUCCES
-        // fetchStatus = sendToZap(url, data);
-          this.rapportVerzonden = true;
-          this.naam = "";
-          this.emailControle = "";
+        const status = sendToZap(url, data);
+
+        let fetchOke = false;
+
+        const checkZap = function(status){
+          return new Promise(
+            function(resolve, reject){
+              resolve(status);
+              reject(status);
+          })
+          .then(function(data){
+            if(data.status == "success"){     
+              // TO DO FIX BELOW        
+              // this.rapportVerzonden = true;
+              // this.naam = "";
+              // this.emailControle = "";
+              return data;
+            } 
+          })
+          .catch(function(error){
+            alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
+            return error;
+          })
+        }
+        fetchOke = checkZap(status);
+
+        this.rapportVerzonden = true;
+        this.naam = "";
+        this.emailControle = "";
+
+        console.log(fetchOke)
       }
     }
 

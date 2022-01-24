@@ -5,11 +5,11 @@ const store = createStore({
         ANTWOORD: {
             vraag1:{label:'',waarde:1},
             vraag2:{label:'',waarde:40},
-            vraag3:{label:'',waarde:50},
-            vraag4:{label:'0,5 - 1,5 jaar',waarde:2},
-            vraag5:{label:'Blijft Gelijk',waarde:2},
-            vraag6:{label:'Blijft Gelijk',waarde:2},
-            vraag7:{label:'',waarde:6},
+            vraag3:{label:'',waarde:0},
+            vraag4:{label:'0,5 - 1,5 jaar',waarde:''},
+            vraag5:{label:'Blijft Gelijk',waarde:''},
+            vraag6:{label:'Blijft Gelijk',waarde:''},
+            vraag7:{label:'',waarde:0},
         },
 
         //============================================================================================

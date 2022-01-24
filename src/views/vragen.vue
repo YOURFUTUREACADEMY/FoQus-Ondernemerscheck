@@ -37,7 +37,7 @@
         <button
           class="btn btn-lg  ms-auto bd-highlight"
           id="volgendeBtn"
-          @click="activeStep++, goToResult(activeStep)"
+          @mouseup="nextStep()"
         >
           {{ switchLabelNxtBtn.label }}
         </button>
@@ -56,6 +56,7 @@ import vraag5 from "../components/vraag5-input";
 import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
 import berekenUitslag from "../scripts/score.js";
+import {validateInput} from "../scripts/functions.js";
 
 export default {
   name: "vragen",
@@ -79,13 +80,20 @@ export default {
   },
   // ga naar score scherm
   methods: {
-    goToResult(value) {
-      if (value > this.vragen) {
-        let uitslag = berekenUitslag(this.$store.getters.getFullAntwoord);
-        this.$store.commit("setResultaat", uitslag);
-        this.$router.push("/scorescherm");
+    nextStep(){
+      // controleer store op invoer waarde
+      let inputOke = validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde);
+      if(inputOke){
+        this.activeStep++
+        if(this.activeStep > this.vragen){
+          // bereken de uitslag en ga naar scorescherm
+          this.$store.commit("setResultaat", berekenUitslag(this.$store.getters.getFullAntwoord));
+          this.$router.push("/scorescherm");
+        }
       }
+    // einde nextStep
     },
+  // einde methods  
   },
   // wissel label op als het aantal vragen is bereikt
   computed: {

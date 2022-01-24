@@ -50,7 +50,7 @@ export default {
       optie1: {label:"Afgelopen half jaar",value:1},
       optie2: {label:"Afgelopen 2 jaar",value:2},
       optie3: {label:"Langer dan 2 jaar geleden",value:3},
-      antwoord:""
+      antwoord:this.$store.getters.getAntwoord("vraag4").waarde
     };
   },
   methods: {

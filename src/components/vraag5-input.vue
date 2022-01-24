@@ -51,7 +51,7 @@ export default {
       optie1: {label:"Omzet stijgt",value:1},
       optie2: {label:"Omzet blijft gelijk",value:2},
       optie3: {label:"Omzet daalt",value:3},
-      antwoord: ""
+      antwoord: this.$store.getters.getAntwoord("vraag5").waarde
     };
   },
   methods: {

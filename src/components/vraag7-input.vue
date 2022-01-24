@@ -29,7 +29,7 @@ export default {
       vraag: "vraag7",
       rangeMin: 0,
       rangeMax: 9,
-      value: 0,
+      value: this.$store.getters.getAntwoord("vraag7").waarde,
       rsLine: "",
       rsBullet:"",
       rsLabel:"",
