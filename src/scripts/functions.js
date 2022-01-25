@@ -68,60 +68,40 @@ export function setElementSize(elementID, height, width, unit){
   }
 }
 
-
-
-//TO DO REMOVE
-
-// export function sendToZap(
-//   url, 
-//   data, 
-//   options={
-//     headers: {
-//       'Content-Type': 'application/json' // 'Content-Type': 'application/x-www-form-urlencoded',
-//     }
-//   }
-//   ){
-
-//   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-//   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
-
-//   fetch(url, {
-//     method: 'POST', // or 'PUT'
-//     // headers: {
-//     //   'Content-Type': 'text/plain',
-//     // },
-//     body: data,
-//   })
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log('Success:', data);
-//   })
-//   .catch((error) => {
-//     console.error('Error:', error);
-//   });
-
-
-// // end endToZap function
-// }
-
-export function sendToZap(url, data, options={methode:"POST"}){
+// POST data to zap
+export async function sendToZap(url, data, options={methode:"POST"}){
 
   // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
   // https://developer.mozilla.org/en-US/docs/Web/API/fetch
-   "";
-  //  var status = "";
+
+  const response = await fetch(url + "/?" + data,{options})
+  const responseJson = await response.json();
+  if(responseJson.status === 'success'){
+    return responseJson;
+  }
+  else{
+    alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
+  }
+}
+
+// OLD POST data to zap thenable methode
+export function OLDsendToZap(url, data, options={methode:"POST"}){
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+  // https://developer.mozilla.org/en-US/docs/Web/API/fetch
+
   var promise = fetch(url + "/?" + data,{options})
     .then(response => response.json())
     .then(data => {
       return data;
     })
     .catch((error) => {
+      alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
       return error;
   });
  
    return promise;
 }
-
 
 export function validateInput(input, msg){
 

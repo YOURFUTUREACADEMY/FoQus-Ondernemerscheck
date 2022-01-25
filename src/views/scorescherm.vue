@@ -61,12 +61,9 @@
                       :class="sendButton"
                       onSubmit="return false;" 
                       @mouseup="sendEmail()" 
-                      v-if="rapportVerzonden == false"
-                      
                     >
                       Ik ontvang graag het volledige rapport per mail
                     </button>
-                    <p class="text-score" v-if="rapportVerzonden == true">Uw persoonlijk advies is verzonden</p>
                     <small class="text-danger"
                       >Ik ga akkoord met de ... voorwaarden</small
                     >
@@ -108,7 +105,6 @@ export default {
   data() {
     return {
       testMode: false,
-      rapportVerzonden: false,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
       meter: "",
@@ -227,7 +223,7 @@ export default {
     meterData(meter) {
       this.meter = meter;
     },
-    sendEmail(){
+    async sendEmail(){
       // let fetchStatus = "";
       // check invoer naam
       if(this.naamOke == false){
@@ -248,42 +244,20 @@ export default {
         const url = "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh"
         // maak diversen Querie strings met NAW gegevens
         data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
-        // verstuur data
         
-        const status = sendToZap(url, data);
+        // verstuur data
+        const response = await sendToZap(url, data);
 
-        let fetchOke = false;
-
-        const checkZap = function(status){
-          return new Promise(
-            function(resolve, reject){
-              resolve(status);
-              reject(status);
-          })
-          .then(function(data){
-            if(data.status == "success"){     
-              // TO DO FIX BELOW        
-              // this.rapportVerzonden = true;
-              // this.naam = "";
-              // this.emailControle = "";
-              return data;
-            } 
-          })
-          .catch(function(error){
-            alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
-            return error;
-          })
+        // controleer respone op succes
+        if(response.status === 'success'){
+            this.naam = "";
+            this.emailControle = "";
+            // TO DO add outro view
+            this.$router.push("/");
         }
-        fetchOke = checkZap(status);
-
-        this.rapportVerzonden = true;
-        this.naam = "";
-        this.emailControle = "";
-
-        console.log(fetchOke)
       }
+    // end sendEmail function
     }
-
   // end methods
   },
   watch:{
