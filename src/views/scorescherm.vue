@@ -122,7 +122,7 @@ export default {
       naamMissingMSG: "vul a.u.b uw naam in",
       naamOke: "",
       emailControle: "", 
-      emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijnmail.nl",
+      emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomijn.nl",
       emailOke:"",
       // status state -> conditie -> kleurCode, class, label, image
       status: {
@@ -262,19 +262,22 @@ export default {
   },
   watch:{
     naam: function(){
-      this.naamOke = validateInput(this.naam, this.naamMissingMSG)
+      const input = validateInput(this.naam,"string", this.naamMissingMSG)
+      this.naamOke = input.valid;
     },
     emailControle: function(){
-      let valueInEmail = validateInput(this.emailControle, this.emailMissingMSG);
-      let emailAdres = this.emailControle.split("@");
-      if(valueInEmail){
-        if(emailAdres.length == 2){
-          this.emailOke = true;
-        }
-      }
-      else{
-        this.emailOke = false;
-      }
+      const input =  validateInput(this.emailControle,"email", this.emailMissingMSG);
+      this.emailOke = input.valid;
+      // let valueInEmail = validateInput(this.emailControle,"email", this.emailMissingMSG);
+      // let emailAdres = this.emailControle.split("@");
+      // if(valueInEmail){
+      //   if(emailAdres.length == 2){
+      //     this.emailOke = true;
+      //   }
+      // }
+      // else{
+      //   this.emailOke = false;
+      // }
     },
   }
 }; // end export

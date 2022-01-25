@@ -82,8 +82,8 @@ export default {
   methods: {
     nextStep(){
       // controleer store op invoer waarde
-      let inputOke = validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde);
-      if(inputOke){
+      let inputOke = validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
+      if(inputOke.valid){
         this.activeStep++
         if(this.activeStep > this.vragen){
           // bereken de uitslag en ga naar scorescherm
