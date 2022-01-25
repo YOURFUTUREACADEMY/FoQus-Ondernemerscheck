@@ -21,9 +21,9 @@
 
     /* sizes */
     --width: 90%;
-    --pageHeight: 265mm;
-    --headerHeight: 10%;
-    --footerHeight: 2000px;
+    --pageHeight: 276mm;
+    --headerHeight: 80px;
+    --footerHeight: 80px;
 }
 
 
@@ -33,6 +33,10 @@
 
 .text{
     color: var(--zwart);
+}
+
+p {
+    font-size: 0.9rem;
 }
 
 .main-container{
@@ -65,8 +69,8 @@
 .footer{
     align-self: flex-end;
     background-color: var(--wit);
-    /* height: var(--footerHeight); */
-    margin: 0%;
+    height: var(--footerHeight);
+    margin: 0 100px 0 0;
     padding: 0%;
 }
 
@@ -75,10 +79,10 @@
     background-color: var(--grijs);
     color: var(--donkerTurquoise);
     margin: 0%;
-    padding: 0%;
+    padding: 2%;
     text-align: center;
     width: var(--width);
-    height: 75%;
+    height: 90%;
 }
 
 .sec-intro h1{
@@ -114,6 +118,8 @@
     align-self: center;
     background-color: var(--grijs);
     width: var(--width);
+    padding: 2%;
+   
 }
 
 .vraag-container {
@@ -128,7 +134,7 @@
     background-color: var(--grijs);
     color: var(--donkerTurquoise);
     margin: 0 auto 20px;
-    height: 175px;
+    height: 100px;
     width: var(--width);
 }
 
@@ -141,9 +147,8 @@
     margin-left: var(--marginLeftText);
 }
 
-.disclamer{
-    margin: auto;
-    margin-top: 40px;
+.disclamer {
+    margin: 40px auto 0px;
     width: var(--width); 
 }
 
@@ -152,6 +157,7 @@
 .vraag-svg-container {
     width: 30%;
 }
+
 
 /* Vragen score kleur */
 .vraag-groen{
