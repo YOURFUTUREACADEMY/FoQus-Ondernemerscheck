@@ -75,7 +75,7 @@ export default {
         manValue: 50,
         valueMax: 100,
         valueMin: 5,
-        degMax: 173,
+        degMax: 180,
         degMin: 0,
         degAdjust: 1,
         reverseDirection: true,

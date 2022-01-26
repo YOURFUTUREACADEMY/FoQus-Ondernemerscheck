@@ -83,6 +83,7 @@ export default {
     nextStep(){
       // controleer store op invoer waarde
       let inputOke = validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
+      // console.log(inputOke.reason)
       if(inputOke.valid){
         this.activeStep++
         if(this.activeStep > this.vragen){

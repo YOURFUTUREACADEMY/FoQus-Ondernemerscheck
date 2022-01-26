@@ -1,41 +1,13 @@
 // === !! DONT copy import to PDFmonkey.io template !! ===
 import opmerkingen from "../js/opmerking.js"
 
-/* example queryString: {
-    "kleurWaarde":{"groen":1,"oranje":5,"rood":20},
-    "kleurCode":5,
-    "score":21,
-    "vragen":{
-        "vr1Opm":1,
-        "vr1Sco":1,
-        "vr1Ber":"67.55",
-        "vr2Opm":1,
-        "vr2Sco":1,
-        "vr3Opm":2,
-        "vr3Sco":5,
-        "vr3Ber":"50.00",
-        "vr4Opm":2,
-        "vr4Sco":5,
-        "vr5Opm":0,
-        "vr5Sco":5,
-        "vr6Opm":5,
-        "vr6Sco":5,
-        "vr7Opm":2,
-        "vr7Sco":5
-        },
-    "conclusie":{
-        "Con1":0,
-        "Con2":2,
-        "Con3":0,
-        "Con4":0
-        }
-    }
-*/
-
 const queryString= {
   "kleurWaarde":{"groen":1,"oranje":5,"rood":20},
   "kleurCode":5,
-  "score":21,
+  "score":{
+    "waarde":25,
+    "visual":-90
+  },
   "vragen":{
       "vr1Opm":1,
       "vr1Sco":1,
@@ -81,13 +53,17 @@ function addClass(targetElementID, insertedClass){
   document.getElementById(targetElementID).className += insertedClass;
 }
 
+// meter svg graden
+document.getElementById("arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
+
+
 // calculate score limits
 const upperLimitGroen = (queryString.kleurWaarde.groen * 2) + (queryString.kleurWaarde.oranje * 2);
 const upperLimitOranje = (queryString.kleurWaarde.oranje * 2) + (queryString.kleurWaarde.rood * 3);
 
 
 
-document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Status:Score:${queryString.score}, Score ULG:${upperLimitGroen}, ULO:${upperLimitOranje}.`;
+document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Status:Score:${queryString.score.waarde}, Score ULG:${upperLimitGroen}, ULO:${upperLimitOranje}.`;
 
 // loop that gets the data from the query string and inserts the text from opmerking into vraag-n elements
 let number = 1;
@@ -132,37 +108,39 @@ number = 1;
 for(let property in queryString.conclusie){
   if(property === "Con"+number){
     if(number == 3){
-      // displaySubject('conclusie-altijd',opmerkingen.conclusies.conclusieAltijd);
-      conclusie += " "+ opmerkingen.conclusies.conclusieAltijd + "\n";
+      displaySubject('conclusie-A',opmerkingen.conclusies.conclusieAltijd);
+      // conclusie += " "+ opmerkingen.conclusies.conclusieAltijd + "\n";
     }
     if(queryString.conclusie[property] > 0){
-      conclusie += " " + opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]] + " \n \n";         
+      displaySubject('conclusie-'+number,opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]]);
+      // conclusie += " " + opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]] + " \n \n";         
     }
   number++;    
   }  
 // end for loop conclusie   
 }
 
-conclusie += opmerkingen.conclusies.conclusieOutro;
+displaySubject('conclusie-Out',opmerkingen.conclusies.conclusieOutro);
+// conclusie += opmerkingen.conclusies.conclusieOutro;
 
 //image conclusie groen
-if(queryString.score < upperLimitGroen){
+if(queryString.score.waarde < upperLimitGroen){
   document.getElementById(`conclusie-svg-gr`).style.display = "block";
 }
 
 //image conclusie oranje
-if(queryString.score >= upperLimitGroen && queryString.score < upperLimitOranje){
+if(queryString.score.waarde >= upperLimitGroen && queryString.score.waarde < upperLimitOranje){
   document.getElementById(`conclusie-svg-or`).style.display = "block";
 }
 
 //image conclusie rood
-if(queryString.score >= upperLimitOranje){
+if(queryString.score.waarde >= upperLimitOranje){
   document.getElementById(`conclusie-svg-rd`).style.display = "block";
 }
 
 
 // conclusie closure
-if(queryString.score > upperLimitGroen){
+if(queryString.score.waarde > upperLimitGroen){
   displaySubject('contact', "Neem contact op voor een Afspraak.");
   // conclusie += "\n Neem contact op voor een Afspraak.";
 }

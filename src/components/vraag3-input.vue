@@ -70,7 +70,7 @@ export default {
       this.$store.commit('setAntwoord',{
         vraag:this.vraag,
         label:label,
-        waarde:waarde
+        waarde:Number(waarde)
       });
     },
 
@@ -109,6 +109,7 @@ export default {
       // this.value = value;
       // let temp = value;
       console.log(this.value)
+     
 
       const bullet = document.getElementById("rs-bullet");
       const line = document.getElementById("rs-line");
