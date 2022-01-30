@@ -24,6 +24,12 @@
     --pageHeight: 256mm;
     --headerHeight: 10%;
     --footerHeight: 10%;
+
+    /* c-diagram */
+    --degVraag1-1: 90deg; /* komt uit js */
+    --degVraag1-2: 180deg; /* komt uit js */
+    --degVraag1-3: 270deg; /* komt uit js */
+    --degVraag6: 90deg; /* komt uit js */
 }
 
 
@@ -215,6 +221,92 @@ p {
 
 #sec-vraag-3{
     margin-bottom: 100px;
+}
+
+/* circle diagram */
+
+.c-diagram-container{
+    position: absolute;
+    left: 1200px;
+}
+
+.c-diagram{
+    /* position: absolute;
+    left: 1200px; */
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    border: 2px solid var(--wit);
+}
+
+/* circle diagram vraag 1 */
+.c-diagram-container-vraag-6{
+    top:2055px;
+}
+
+.c-diagram-vraag-1{
+    background-image: conic-gradient(
+        var(--donkerBlauw) 0 var(--degVraag1-1), 
+        var(--donkerTurquoise) 0 var(--degVraag1-2), 
+        var(--lichtTurquoise) 0 var(--degVraag1-3), 
+        var(--donkerGrijs) 0 360deg 
+    ); 
+}
+
+/* #c-diagram-vraag-1-1{
+    background-image: conic-gradient(
+        var(--donkerBlauw) 0 var(--degVraag1-1), 
+        var(--donkerTurquoise) 0 var(--degVraag1-2), 
+        var(--lichtTurquoise) 0 var(--degVraag1-3), 
+        var(--donkerGrijs) 0 360deg 
+    ); 
+} */
+
+.c-diagram-vraag-1-label-1{
+    display:none;
+    color:var(--wit);
+    position: relative;
+    top:-90px;
+    left:100px;
+}
+
+.c-diagram-vraag-1-label-2{
+    display:none;
+    color:var(--wit);
+    position: relative;
+    top:-130px;
+    left:20px;
+}
+
+.c-diagram-vraag-1-label-3{
+    display:none;
+    color:var(--wit);
+    position: relative;
+    top:-170px;
+    left:55px;
+}
+
+/* circle diagram vraag 6 */
+.c-diagram-container-vraag-6{
+    top:3255px;
+}
+
+.c-diagram-vraag-6{
+    background-image: conic-gradient(
+        var(--donkerTurquoise) var(--degVraag6), 
+        var(--donkerGrijs) 0 360deg 
+    ); 
+}
+
+.c-diagram-vraag-6-label{
+    margin: 0%;
+    position: relative;
+    top:-100px;
+}
+
+.c-diagram-vraag-6-label p{
+    color:var(--wit);
+    margin: 0%;
 }
 
 .disclamer {

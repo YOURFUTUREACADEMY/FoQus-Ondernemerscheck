@@ -10,17 +10,17 @@ const opmerkingen = {
       opmerkingen:[
           // [0]: Placeholder voor logica
           'vraag 1 waarde is 0',
-          // [1]: Opmerking resultaat vraag 1.0 | <2 | !WAARDE! wordt vervangen met een waarden
+          // [1]: Opmerking resultaat vraag 1.0 | <2 | !WAARDE! wordt vervangen met een waarden 67%
           `Jij valt onder de zelfstandigen, samen met 878.850 anderen bedrijven in Nederland.`,
-          // [2]: Opmerking resultaat vraag 1.1 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
+          // [2]: Opmerking resultaat vraag 1.1 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden 27%
           `Jouw bedrijf heeft dezelfde omvang als 354.082 anderen bedrijven in Nederland.`,
-          // [3]: Opmerking resultaat vraag 1.2 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
+          // [3]: Opmerking resultaat vraag 1.2 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden 4,5%
           `Jouw bedrijf heeft dezelfde omvang als 58.876 anderen bedrijven in Nederland.`,
-          // [4]: Opmerking resultaat vraag 1.3 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
+          // [4]: Opmerking resultaat vraag 1.3 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden 0,45%
           `Jouw bedrijf heeft dezelfde omvang als 5.890 anderen bedrijven in Nederland.`,
-          // [5]: Opmerking resultaat vraag 1.4 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden
+          // [5]: Opmerking resultaat vraag 1.4 | >=2 tot <250 | !WAARDE! wordt vervangen met een waarden 0,26%
           `Jouw bedrijf heeft dezelfde omvang als 3.420 anderen bedrijven in Nederland.`,
-          // [6]: Opmerking resultaat vraag 1.5 | >= 250
+          // [6]: Opmerking resultaat vraag 1.5 | >= 250 ???%
           `Jouw bedrijf is zo groot, dat we het statistisch niet eens meer weten. Goed bezig, denken we.`
       ]
     },

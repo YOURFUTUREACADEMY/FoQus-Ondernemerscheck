@@ -16,7 +16,7 @@ const queryString= {
       "vr2Sco":1,
       "vr3Opm":2,
       "vr3Sco":5,
-      "vr3Ber":"50.00",
+      "vr3Ber":"165.00",
       "vr4Opm":2,
       "vr4Sco":5,
       "vr5Opm":0,
@@ -160,3 +160,43 @@ else{
   }
 }
 
+
+
+
+
+// Dynamic objects
+//c-diagram vraag 1
+// diagram positions
+const vr1Dia = document.querySelector(".c-diagram-vraag-1");
+const vr1DiaDeg1 = Number(queryString.vragen.vr1Ber);
+const vr1DiaDeg2 = vr1DiaDeg1 + 27;
+const vr1DiaDeg3 = vr1DiaDeg2 + 4.5;
+vr1Dia.style.setProperty('--degVraag1-1', `${ vr1DiaDeg1 * 3.6 }deg`);
+vr1Dia.style.setProperty('--degVraag1-2', `${ vr1DiaDeg2 * 3.6 }deg`);
+vr1Dia.style.setProperty('--degVraag1-3', `${ vr1DiaDeg3 * 3.6 }deg`);
+// diagram label
+if(queryString.vragen.vr1Opm == 1){
+  document.querySelector(".c-diagram-vraag-1-label-1").style.display = "block";
+}
+if(queryString.vragen.vr1Opm == 2){
+  document.querySelector(".c-diagram-vraag-1-label-2").style.display = "block";
+}
+if(queryString.vragen.vr1Opm == 3){
+  document.querySelector(".c-diagram-vraag-1-label-3").style.display = "block";
+}
+
+
+//c-diagram vraag site 3 / PDF 6 - omzet
+const vr6Dia = document.querySelector(".c-diagram-vraag-6");
+vr6Dia.style.setProperty('--degVraag6', `${queryString.vragen.vr3Ber}deg`);
+
+// poition label
+const vr6DiaLabel = document.querySelector(".c-diagram-vraag-6-label");
+vr6DiaLabel.style.transform = `rotate(${(Number(queryString.vragen.vr3Ber) /2 )+90 }deg) translateX(-50px)`;
+
+// position text in label
+const vr6DiaText = document.querySelector(".c-diagram-vraag-6-label p");
+vr6DiaText.style.transform = `rotate(${((Number(queryString.vragen.vr3Ber) /2 )+90) *-1 }deg) translateX(75px)`;
+
+// zet graden om naar waarde label
+vr6DiaText.innerText = `${Math.round(queryString.vragen.vr3Ber / 3.6)}%`;

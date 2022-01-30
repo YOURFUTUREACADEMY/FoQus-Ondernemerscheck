@@ -161,9 +161,9 @@ function berekenUitslag(vragen){
 
 
   // statement vraag 3
+  resultaat.vraag3.totaal = 360;
+  resultaat.vraag3.berekening = (resultaat.vraag3.totaal / 100 ) * vraag3.waarde;
   
-  resultaat.vraag3.totaal = 100;
-  resultaat.vraag3.berekening = (vraag3.waarde/resultaat.vraag3.totaal) * 100;
   // vraag 3.1
   if( vraag3.waarde < 45 && vraag3.waarde !== ""){
     resultaat.vraag3.opmerking = 1;
