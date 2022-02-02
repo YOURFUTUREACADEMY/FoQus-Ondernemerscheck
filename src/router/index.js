@@ -8,6 +8,8 @@ import storetest from '../views/storetest.vue'
 import metertest from '../views/metertest.vue'
 import berekeningTest from '../views/berekeningTest.vue'
 import zaptest from '../views/zaptest.vue'
+import outro from '../views/outro.vue'
+
 const routes = [
   {
     path: "/",
@@ -49,6 +51,11 @@ const routes = [
     path:"/zaptest",
     name: "zaptest",
     component: zaptest,
+  },
+  {
+    path:"/outro",
+    name: "outro",
+    component: outro,
   }
 ]
 

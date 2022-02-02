@@ -56,7 +56,7 @@
                   </div>
                   <div class="d-flex flex-column align-items-xl-end">
                     <button 
-                      type="submit" 
+                      type="button" 
                       class="btn btn-primary adviesBtn" 
                       :class="sendButton"
                       onSubmit="return false;" 
@@ -170,7 +170,7 @@ export default {
   //     this.vr = document.getElementById("vr");
   // },
   created() {
-    if (this.score === undefined) {
+    if (this.score == undefined) {
       this.$router.push("/");
     }
   },
@@ -224,7 +224,6 @@ export default {
       this.meter = meter;
     },
     async sendEmail(){
-      // let fetchStatus = "";
       // check invoer naam
       if(this.naamOke == false){
         this.naam = this.naamMissingMSG;
@@ -253,7 +252,7 @@ export default {
             this.naam = "";
             this.emailControle = "";
             // TO DO add outro view
-            this.$router.push("/");
+            this.$router.push("/outro");
         }
       }
     // end sendEmail function
@@ -268,16 +267,6 @@ export default {
     emailControle: function(){
       const input =  validateInput(this.emailControle,"email", this.emailMissingMSG);
       this.emailOke = input.valid;
-      // let valueInEmail = validateInput(this.emailControle,"email", this.emailMissingMSG);
-      // let emailAdres = this.emailControle.split("@");
-      // if(valueInEmail){
-      //   if(emailAdres.length == 2){
-      //     this.emailOke = true;
-      //   }
-      // }
-      // else{
-      //   this.emailOke = false;
-      // }
     },
   }
 }; // end export
