@@ -6,7 +6,7 @@ const queryString= {
   "kleurCode":5,
   "score":{
     "waarde":25,
-    "visual":-90
+    "visual":50
   },
   "vragen":{
       "vr1Opm":1,
@@ -17,12 +17,12 @@ const queryString= {
       "vr3Opm":2,
       "vr3Sco":5,
       "vr3Ber":"165.00",
-      "vr4Opm":2,
-      "vr4Sco":5,
+      "vr4Opm":1,
+      "vr4Sco":1,
       "vr5Opm":0,
-      "vr5Sco":5,
-      "vr6Opm":5,
-      "vr6Sco":5,
+      "vr5Sco":20,
+      "vr6Opm":4,
+      "vr6Sco":20,
       "vr7Opm":2,
       "vr7Sco":5
       },
@@ -61,42 +61,100 @@ document.getElementById("arrow").style.transform = `rotate(${queryString.score.v
 const upperLimitGroen = (queryString.kleurWaarde.groen * 2) + (queryString.kleurWaarde.oranje * 2);
 const upperLimitOranje = (queryString.kleurWaarde.oranje * 2) + (queryString.kleurWaarde.rood * 3);
 
+// set g,o,r for svg vraag 5 & 6
+// vraag 5
+let vraag5leter = "";
+if(queryString.vragen.vr5Sco === queryString.kleurWaarde.rood){
+  vraag5leter = "r";
+};
+if(queryString.vragen.vr5Sco === queryString.kleurWaarde.oranje){
+  vraag5leter = "o";
+};
+if(queryString.vragen.vr5Sco === queryString.kleurWaarde.groen){
+  vraag5leter = "g";
+};
+
+// vraag 6
+let vraag6leter = "";
+if(queryString.vragen.vr6Sco === queryString.kleurWaarde.rood){
+  vraag6leter = "r";
+};
+if(queryString.vragen.vr6Sco === queryString.kleurWaarde.oranje){
+    vraag6leter = "o";
+};
+if(queryString.vragen.vr6Sco === queryString.kleurWaarde.groen){
+    vraag6leter = "g";
+};
 
 
 document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Status:Score:${queryString.score.waarde}, Score ULG:${upperLimitGroen}, ULO:${upperLimitOranje}.`;
 
 // loop that gets the data from the query string and inserts the text from opmerking into vraag-n elements
 let number = 1;
+let vrElementNotExist = false;
 for(let property in queryString.vragen){ 
   if(property === "vr"+number+"Opm"){
-      // check if query string vraag refers to a opmerking
-      if(queryString.vragen[property] > 0){   
-        // check if the section element exist if not skip insert
-        if(document.querySelector("#sec-vraag-"+number) === null ){
-          document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID sec-vraag-${number} not found in HTML.`;
-        }
-        // check if the p element exist if not skip insert
-        else if(document.querySelector("#vraag-"+number) === null){
-          document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID vraag-${number} not found in HTML.`;
-        }
-        // if all exist insert text and display = block
-        else{
-          displaySubject('vraag-'+number, opmerkingen.vragen['vraag'+number].opmerkingen[queryString.vragen[property]]);
-          // score - section colors & images
-          if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.rood ){
-            addClass('sec-vraag-'+number, " vraag-rood");
+    vrElementNotExist = false;
+    // check if query string vraag refers to a opmerking
+    if(queryString.vragen[property] > 0){   
+      // check if the section element exist if not skip insert
+      if(document.querySelector("#sec-vraag-"+number) === null ){
+        document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID sec-vraag-${number} not found in HTML.`;
+      }
+      // check if the p element exist if not skip insert
+      else if(document.querySelector("#vraag-"+number) === null){
+        document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID vraag-${number} not found in HTML.`;
+      }
+      // if all exist insert text and display = block
+      else{
+        displaySubject('vraag-'+number, opmerkingen.vragen['vraag'+number].opmerkingen[queryString.vragen[property]]);
+        // score - section colors & images
+        if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.rood ){
+          addClass('sec-vraag-'+number, " vraag-rood");
+          if(document.querySelector(`#vraag-${number}-svg-rd`) != null){
             document.getElementById(`vraag-${number}-svg-rd`).style.display = "block";
           }
-          else if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.oranje ){
-            addClass('sec-vraag-'+number, " vraag-oranje");
+          else{
+            vrElementNotExist = true;
+          }          
+        }
+        else if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.oranje ){
+          addClass('sec-vraag-'+number, " vraag-oranje");
+          if(document.querySelector(`#vraag-${number}-svg-or`) != null){
             document.getElementById(`vraag-${number}-svg-or`).style.display = "block";
           }
-          else {
-            addClass('sec-vraag-'+number, " vraag-groen");
-            document.getElementById(`vraag-${number}-svg-gr`).style.display = "block";
+          else{
+            vrElementNotExist = true;
           }
-        }  
-      }     
+        }
+        else {
+          addClass('sec-vraag-'+number, " vraag-groen");
+          if(document.querySelector(`#vraag-${number}-svg-gr`) != null){
+            document.getElementById(`vraag-${number}-svg-gr`).style.display = "block";
+          } 
+          else{
+            vrElementNotExist = true;
+          }
+        }
+        //vraag 5 & 6 svg en border kleur
+        if(vrElementNotExist){
+          // svg
+          if(document.querySelector(`#vraag-${number}-svg-5${vraag5leter}6${vraag6leter}`) != null){
+            document.getElementById(`vraag-${number}-svg-5${vraag5leter}6${vraag6leter}`).style.display = "block";
+            // border
+            if(queryString.vragen["vr"+number+"Opm"] === 3 || queryString.vragen["vr"+number+"Opm"] === 6 || queryString.vragen["vr"+number+"Opm"] === 9){
+              addClass('sec-vraag-'+number, " vraag-rood");
+            }
+            else if(queryString.vragen["vr"+number+"Opm"] === 2 || queryString.vragen["vr"+number+"Opm"] === 5 || queryString.vragen["vr"+number+"Opm"] === 7 || queryString.vragen["vr"+number+"Opm"] === 8){
+              addClass('sec-vraag-'+number, " vraag-oranje");
+            }
+            else{
+              addClass('sec-vraag-'+number, " vraag-groen");
+            }
+          }
+        }
+      }  
+    }     
     number++;     
   } 
 // end for loop vragen    
@@ -187,16 +245,16 @@ if(queryString.vragen.vr1Opm == 3){
 
 
 //c-diagram vraag site 3 / PDF 6 - omzet
-const vr6Dia = document.querySelector(".c-diagram-vraag-6");
-vr6Dia.style.setProperty('--degVraag6', `${queryString.vragen.vr3Ber}deg`);
+const vr3Dia = document.querySelector(".c-diagram-vraag-3");
+vr3Dia.style.setProperty('--degVraag3', `${queryString.vragen.vr3Ber}deg`);
 
 // poition label
-const vr6DiaLabel = document.querySelector(".c-diagram-vraag-6-label");
-vr6DiaLabel.style.transform = `rotate(${(Number(queryString.vragen.vr3Ber) /2 )+90 }deg) translateX(-50px)`;
+const vr3DiaLabel = document.querySelector(".c-diagram-vraag-3-label");
+vr3DiaLabel.style.transform = `rotate(${(Number(queryString.vragen.vr3Ber) /2 )+90 }deg) translateX(-50px)`;
 
 // position text in label
-const vr6DiaText = document.querySelector(".c-diagram-vraag-6-label p");
-vr6DiaText.style.transform = `rotate(${((Number(queryString.vragen.vr3Ber) /2 )+90) *-1 }deg) translateX(75px)`;
+const vr3DiaText = document.querySelector(".c-diagram-vraag-3-label p");
+vr3DiaText.style.transform = `rotate(${((Number(queryString.vragen.vr3Ber) /2 )+90) *-1 }deg) translateX(75px)`;
 
 // zet graden om naar waarde label
-vr6DiaText.innerText = `${Math.round(queryString.vragen.vr3Ber / 3.6)}%`;
+vr3DiaText.innerText = `${Math.round(queryString.vragen.vr3Ber / 3.6)}%`;

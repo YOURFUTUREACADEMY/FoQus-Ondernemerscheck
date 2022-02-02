@@ -29,7 +29,7 @@
     --degVraag1-1: 90deg; /* komt uit js */
     --degVraag1-2: 180deg; /* komt uit js */
     --degVraag1-3: 270deg; /* komt uit js */
-    --degVraag6: 90deg; /* komt uit js */
+    --degVraag3: 90deg; /* komt uit js */
 }
 
 
@@ -254,15 +254,6 @@ p {
     ); 
 }
 
-/* #c-diagram-vraag-1-1{
-    background-image: conic-gradient(
-        var(--donkerBlauw) 0 var(--degVraag1-1), 
-        var(--donkerTurquoise) 0 var(--degVraag1-2), 
-        var(--lichtTurquoise) 0 var(--degVraag1-3), 
-        var(--donkerGrijs) 0 360deg 
-    ); 
-} */
-
 .c-diagram-vraag-1-label-1{
     display:none;
     color:var(--wit);
@@ -287,25 +278,25 @@ p {
     left:55px;
 }
 
-/* circle diagram vraag 6 */
-.c-diagram-container-vraag-6{
-    top:3255px;
+/* circle diagram vraag 3 */
+.c-diagram-container-vraag-3{
+    top:2420px;
 }
 
-.c-diagram-vraag-6{
+.c-diagram-vraag-3{
     background-image: conic-gradient(
-        var(--donkerTurquoise) var(--degVraag6), 
+        var(--donkerTurquoise) var(--degVraag3), 
         var(--donkerGrijs) 0 360deg 
     ); 
 }
 
-.c-diagram-vraag-6-label{
+.c-diagram-vraag-3-label{
     margin: 0%;
     position: relative;
     top:-100px;
 }
 
-.c-diagram-vraag-6-label p{
+.c-diagram-vraag-3-label p{
     color:var(--wit);
     margin: 0%;
 }
@@ -321,6 +312,10 @@ p {
     width: 30%;
 }
 
+/* vraag 4 */
+.vraag-4-svg{
+    background-color: transparent;
+} 
 
 /* Vragen score kleur */
 .vraag-groen{

@@ -163,12 +163,6 @@ export default {
   components: {
     AnalogVolMeter,
   },
-  // update(){
-  //   this.score=this.$store.getters.getResultaat('score');
-  // },
-  // mounted(){
-  //     this.vr = document.getElementById("vr");
-  // },
   created() {
     if (this.score == undefined) {
       this.$router.push("/");
