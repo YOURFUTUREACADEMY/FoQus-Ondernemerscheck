@@ -227,13 +227,12 @@ p {
 /* circle diagram */
 
 .c-diagram-container{
+    display:block;
     position: absolute;
-    left: 1200px;
+    left: 600px;
 }
 
 .c-diagram{
-    /* position: absolute;
-    left: 1200px; */
     width: 175px;
     height: 175px;
     border-radius: 50%;
@@ -241,7 +240,7 @@ p {
 }
 
 /* circle diagram vraag 1 */
-.c-diagram-container-vraag-6{
+.c-diagram-container-vraag-1{
     top:2055px;
 }
 
@@ -314,16 +313,16 @@ p {
 
 /* vraag 4 */
 .vraag-4-svg{
-    height: 105%;
+    height: 107%;
     margin-top: -1%;
     position:relative;
-    left:115px;
+    left:65px;
 }
 
 #vraag-4-svg-or{
-    height: 95%;
+    height: 97%;
     margin-top: 0%;
-    left:120px;
+    left:70px;
 }
 
 /* vraag 6 */
@@ -331,7 +330,7 @@ p {
     height: 90%;
     margin-top: 2%;
     position:relative;
-    left:125px;
+    left:75px;
 }
 
 /* Vragen score kleur */

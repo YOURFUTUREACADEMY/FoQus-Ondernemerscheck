@@ -65,7 +65,11 @@
                       Ik ontvang graag het volledige rapport per mail
                     </button>
                     <small class="text-danger"
-                      >Ik ga akkoord met de ... voorwaarden</small
+                      >Natuurlijk wil je niet iedereen zomaar je naam en email adres geven. Dat snappen we. We zijn zelf ook ondernemers en wars<br>
+                      van alle ongevraagde spam die we ontvangen. Wij gebruiken deze gegevens alleen om je jouw ondernemers-check <br>
+                      rapportage toe te kunnen sturen en indien nodig te voorzien van extra toelichting naar aanleiding van je uitkomsten. <br>
+                      Voor verder contact laten we het initiatief aan jou, zoals wij vinden dat dat hoort. Verder gebruiken we de geanonimiseerde <br>
+                      gegevens van door jouw ingevulde ondernemers-check voor analyse en onderzoeksdoeleinden en om onze dienstverlening te verbeteren.</small
                     >
                   </div>
                 </form>
@@ -219,12 +223,30 @@ export default {
     },
     async sendEmail(){
       // check invoer naam
+
+      const borderColorFault = "#9e0000";
+      const borderWidthFault = "3px";
+      const borderColorGood = "#e7e6e6";
+      const borderWidthGood = "1px";
+
       if(this.naamOke == false){
         this.naam = this.naamMissingMSG;
+        document.getElementById('naam').style.borderColor = borderColorFault;
+        document.getElementById('naam').style.borderWidth = borderWidthFault;
+      }
+      else{
+        document.getElementById('naam').style.borderColor = borderColorGood;
+        document.getElementById('naam').style.borderWidth = borderWidthGood;
       }
       // check invoer email
       if(this.emailOke == false){
         this.emailControle = this.emailMissingMSG;
+        document.getElementById('emailControle').style.borderColor = borderColorFault;
+        document.getElementById('emailControle').style.borderWidth = borderWidthFault;
+      }
+      else{
+        document.getElementById('emailControle').style.borderColor = borderColorGood;
+        document.getElementById('emailControle').style.borderWidth = borderWidthGood;
       }
       if(this.naamOke && this.emailOke){
         let data = composeRapport(this.$store.getters.getFullResultaat);

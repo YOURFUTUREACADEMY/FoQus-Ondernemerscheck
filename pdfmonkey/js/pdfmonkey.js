@@ -20,7 +20,7 @@ const queryString= {
       "vr4Opm":1,
       "vr4Sco":20,
       "vr5Opm":0,
-      "vr5Sco":1,
+      "vr5Sco":20,
       "vr6Opm":4,
       "vr6Sco":5,
       "vr7Opm":2,
