@@ -6,23 +6,23 @@ const queryString= {
   "kleurCode":5,
   "score":{
     "waarde":25,
-    "visual":50
+    "visual":75.6
   },
   "vragen":{
       "vr1Opm":1,
       "vr1Sco":1,
-      "vr1Ber":"67.55",
+      "vr1Ber":"90",
       "vr2Opm":1,
       "vr2Sco":1,
       "vr3Opm":2,
       "vr3Sco":5,
       "vr3Ber":"165.00",
       "vr4Opm":1,
-      "vr4Sco":1,
+      "vr4Sco":20,
       "vr5Opm":0,
-      "vr5Sco":20,
+      "vr5Sco":1,
       "vr6Opm":4,
-      "vr6Sco":20,
+      "vr6Sco":5,
       "vr7Opm":2,
       "vr7Sco":5
       },
@@ -53,8 +53,6 @@ function addClass(targetElementID, insertedClass){
   document.getElementById(targetElementID).className += insertedClass;
 }
 
-// meter svg graden
-document.getElementById("arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
 
 
 // calculate score limits
@@ -223,10 +221,17 @@ else{
 
 
 // Dynamic objects
+
+// meter svg graden
+document.getElementById("arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
+
+
+
 //c-diagram vraag 1
 // diagram positions
 const vr1Dia = document.querySelector(".c-diagram-vraag-1");
-const vr1DiaDeg1 = Number(queryString.vragen.vr1Ber);
+// const vr1DiaDeg1 = Number(queryString.vragen.vr1Ber);
+const vr1DiaDeg1 = 67;
 const vr1DiaDeg2 = vr1DiaDeg1 + 27;
 const vr1DiaDeg3 = vr1DiaDeg2 + 4.5;
 vr1Dia.style.setProperty('--degVraag1-1', `${ vr1DiaDeg1 * 3.6 }deg`);

@@ -314,8 +314,25 @@ p {
 
 /* vraag 4 */
 .vraag-4-svg{
-    background-color: transparent;
-} 
+    height: 105%;
+    margin-top: -1%;
+    position:relative;
+    left:115px;
+}
+
+#vraag-4-svg-or{
+    height: 95%;
+    margin-top: 0%;
+    left:120px;
+}
+
+/* vraag 6 */
+.vraag-6-svg{
+    height: 90%;
+    margin-top: 2%;
+    position:relative;
+    left:125px;
+}
 
 /* Vragen score kleur */
 .vraag-groen{
