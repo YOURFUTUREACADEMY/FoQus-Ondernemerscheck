@@ -84,25 +84,6 @@ export async function sendToZap(url, data, options={methode:"POST"}){
   }
 }
 
-// OLD POST data to zap thenable methode
-export function OLDsendToZap(url, data, options={methode:"POST"}){
-
-  // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-  // https://developer.mozilla.org/en-US/docs/Web/API/fetch
-
-  var promise = fetch(url + "/?" + data,{options})
-    .then(response => response.json())
-    .then(data => {
-      return data;
-    })
-    .catch((error) => {
-      alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
-      return error;
-  });
- 
-   return promise;
-}
-
 export function validateInput(input, type='string', msg){
 
   const output = {valid:false,reason:''}

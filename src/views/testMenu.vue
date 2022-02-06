@@ -20,7 +20,7 @@
           Naar berekening 
         </button>
         <button class="btn" @click="$router.push('/zaptest')">
-          Naar zappier
+          Naar zapier
         </button>
       </section>
     </main>

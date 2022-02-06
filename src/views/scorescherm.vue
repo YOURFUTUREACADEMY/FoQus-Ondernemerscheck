@@ -248,6 +248,7 @@ export default {
         document.getElementById('emailControle').style.borderColor = borderColorGood;
         document.getElementById('emailControle').style.borderWidth = borderWidthGood;
       }
+      // validatie oke begin met data opbouw voor versturen
       if(this.naamOke && this.emailOke){
         let data = composeRapport(this.$store.getters.getFullResultaat);
         

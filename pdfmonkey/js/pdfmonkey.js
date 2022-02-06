@@ -223,7 +223,7 @@ else{
 // Dynamic objects
 
 // meter svg graden
-document.getElementById("arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
+document.getElementById("score-arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
 
 
 
@@ -248,6 +248,8 @@ if(queryString.vragen.vr1Opm == 3){
   document.querySelector(".c-diagram-vraag-1-label-3").style.display = "block";
 }
 
+// meter svg graden
+document.getElementById("vraag-2-arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
 
 //c-diagram vraag site 3 / PDF 6 - omzet
 const vr3Dia = document.querySelector(".c-diagram-vraag-3");
