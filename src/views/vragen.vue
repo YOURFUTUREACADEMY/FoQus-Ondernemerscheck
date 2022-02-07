@@ -58,6 +58,8 @@ import vraag7 from "../components/vraag7-input";
 import berekenUitslag from "../scripts/score.js";
 import {validateInput} from "../scripts/functions.js";
 
+require('@/styles/vragen.css')
+
 export default {
   name: "vragen",
   data() {

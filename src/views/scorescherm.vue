@@ -104,6 +104,8 @@ import { sendToZap } from "../scripts/functions.js";
 import { scoreWaardes } from "../scripts/score.js";
 import { validateInput } from "../scripts/functions.js";
 
+require('@/styles/score.css')
+
 export default {
   name: "scorescherm",
   data() {

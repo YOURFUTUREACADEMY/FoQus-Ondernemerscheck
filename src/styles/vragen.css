@@ -1,0 +1,141 @@
+@import "../styles/root.css";
+
+/*  styling for all vragen.vue objects */
+
+.container-vragen {
+    background-color: var(--wit);
+    color: var(--donkerBlauw);
+    height: 300px;
+    margin: 0%;
+    /* padding: 5% 0; */
+    font-size: 1.5rem;
+  }
+  
+  .progress {
+    height: 1.3rem;
+    font-size: 1.15em;
+  }
+  
+  .container-progBarQ {
+    background-color: var(--grijs);
+  }
+  
+  .progBarQ {
+    background-color: var(--donkerGrijs);
+    text-align: right;
+  }
+
+  .container-slider {
+    height: 30px;
+  }
+
+  /* .number-input {
+    height: 30px;
+    width: 250px;
+    border-color: var(--grijs);
+  } */
+
+  
+/* .range-input{
+ width: 500px;
+} */
+
+/* range track/line */
+.rs-line {
+    width: 500px;
+    height: 1.8rem;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  
+  .rs-line::-webkit-slider-runnable-track {
+    background-color: var(--grijs);
+  }
+  
+  .rs-line::-webkit-slider-thumb {
+    box-shadow: -55vw 0 0 55vw var(--donkerBlauw);
+    height: 0px;
+    width: 0px;
+    -webkit-appearance: none;
+    margin-top: 50px;
+  }
+  
+  .rs-line::-moz-range-track {
+    background-color: var(--grijs);
+  }
+  
+  .rs-line::-moz-range-thumb {
+    box-shadow: -55vw 0 0 55vw var(--donkerBlauw);
+    height: 0px;
+    width: 0px;
+    -webkit-appearance: none;
+    margin-top: 50px;
+  }
+  
+  /* slider bullet/thumb */
+  /* .rs-bullet{
+    width: 500px;
+    height: 30px;
+    overflow:hidden;
+    cursor:pointer;
+    -webkit-appearance: none;
+  }
+  
+  .rs-bullet::-webkit-slider-thumb{
+    height: px;
+    width: 0px;
+    -webkit-appearance: none;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid var(--donkerBlauw);
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  
+  .rs-bullet::-moz-range-thumb{
+    height: 0px;
+    width: 0px;
+    -webkit-appearance: none;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid var(--donkerBlauw);
+    margin-top: 50px;
+  } */
+  
+  .rs-bullet {
+    position: relative;
+    transform-origin: center center;
+    display: block;
+    width: 0px;
+    height: 0px;
+    box-sizing: border-box;
+      border-left: 7.5px solid transparent;
+      border-right: 7.5px solid transparent;
+      border-bottom: 15px solid var(--donkerBlauw);
+      top: -48px;
+      margin-left: -7.5px;
+  }
+  
+  .rs-label {
+    position: relative;
+    transform-origin: center center;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    font-size: 1em;
+    align-self: center;
+    user-select: none;
+    text-align: center;
+    box-sizing: border-box;
+    top: -41px;
+    margin-left: -22px;
+    color: var(--donkerBlauw);
+  }
+  
+  .smilies {
+  font-size:30px;
+  margin: 0px 5px;
+  }

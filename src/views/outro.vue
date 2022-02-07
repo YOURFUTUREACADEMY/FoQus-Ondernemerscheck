@@ -7,6 +7,8 @@
 </template>
 
 <script>
+require('@/styles/outro.css')
+
 export default {
     name: "outro",
 };

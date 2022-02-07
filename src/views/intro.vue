@@ -36,6 +36,8 @@
 </template>
 
 <script>
+require('@/styles/intro.css')
+
 export default {
   name: "intro",
 };

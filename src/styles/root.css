@@ -1,0 +1,21 @@
+/*  all root variables */
+
+:root {
+    --wit: #ffffff;
+    --lichtBlauw: #d3f1f3;
+    --donkerBlauw: #08344d;
+    --lichtTurquoise: #1dbac1;
+    --donkerTurquoise: #1e8a8c;
+    --oranje: #f6af23;
+    --grijs: #e7e6e6;
+    --donkerGrijs: #A6A6A6;
+    --zwart: #030303ec;
+    --blauw: #0B5ED7;
+    /* kleuren score bubbles */
+    --scoreSlecht: #ff0000;
+    --borderSlecht: #9e0000;
+    --scoreMatig: #ed7d31;
+    --borderMatig: #af5c23;
+    --scoreGoed: #00b050;
+    --borderGoed: #00843b;
+  }
