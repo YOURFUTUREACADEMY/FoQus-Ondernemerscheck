@@ -18,6 +18,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: 800px;
+  margin-top: 5%;
 }
 
 main {
@@ -96,7 +97,6 @@ main {
 @media only screen and (max-width: 1200px) {
   body {
     height: auto;
-    margin-top:5%;
   }
 
    #app {
@@ -149,17 +149,6 @@ main {
   }
 
   .vl {
-    display: none;
-  }
-
-  .meter {
-    background: transparent;
-    height: 85%;
-    width: 85%;
-    margin: -15% 0% -20% ;
-  }
-
-  .foqusRaport {
     display: none;
   }
 

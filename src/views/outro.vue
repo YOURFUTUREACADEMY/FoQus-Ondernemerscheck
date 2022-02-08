@@ -1,7 +1,7 @@
 <template>
      <main>
     <h1 class="header text-center" role="heading">
-      We nemen spoedig contact met u op.
+      U Krijgt spoedig uw Foqusraport.
     </h1>
   </main>
 </template>

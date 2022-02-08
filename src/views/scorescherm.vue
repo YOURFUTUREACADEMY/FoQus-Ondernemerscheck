@@ -5,9 +5,9 @@
       <div class="container-score ">
         <h3 class="header text-center-score">Jouw score</h3>
         <div class="row mt-4 ">
-          <div class="col-xl-8 ">
+          <div class="col-xxl-8 ">
             <section id="uitslag" class="row align-items-center ">
-              <div class="col-sm-6">
+              <div class="col-md-6 scoreMeterContainer">
                 <AnalogVolMeter
                   class="meter"
                   :value="score"
@@ -15,7 +15,7 @@
                   v-on:meter="meterData"
                 ></AnalogVolMeter>
               </div>
-              <div class="col-sm-6 d-flex row justify-content-center">
+              <div class="col-md-6 d-flex row justify-content-center">
                 <p class="text-score ">
                   {{ scoreCondition.visual.signaal }}.
                 </p> 
@@ -54,7 +54,7 @@
                       />
                     </div>
                   </div>
-                  <div class="d-flex flex-column align-items-xl-end">
+                  <div class="d-flex flex-column">
                     <button 
                       type="button" 
                       class="btn btn-primary adviesBtn" 

@@ -42,7 +42,7 @@
 
 /* range track/line */
 .rs-line {
-    width: 500px;
+    /* width: 500px; */
     height: 1.8rem;
     overflow: hidden;
     cursor: pointer;
