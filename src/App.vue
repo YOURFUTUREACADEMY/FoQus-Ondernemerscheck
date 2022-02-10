@@ -19,9 +19,6 @@
       }
     },
     mounted() {
-      console.log(this.test)
-      this.$OTAP = "new";
-      console.log(this.$OTAP)
     }
   }
 </script>

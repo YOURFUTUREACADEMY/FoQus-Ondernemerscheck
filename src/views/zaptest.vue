@@ -34,6 +34,7 @@
 import { sendToZap } from "../scripts/zapier.js";
 import { composeRapport } from "../scripts/score.js";
 import { composeExcel } from "../scripts/score.js";
+
 export default {
   
   name: "scorescherm",
@@ -49,18 +50,18 @@ export default {
       testData:{ 
           kleurWaarde: { groen: 1, oranje: 5, rood: 20 }, 
           kleurCode: 1, 
-          score: { waarde: 5, visual: 0 }, 
+          score: { waarde: 5, visual: 53 }, 
           vragen: { 
-            vr1Opm: 1, vr1Sco: 1, vr1Ber: "NaN", 
-            vr2Opm: 1, vr2Sco: 1, 
-            vr3Opm: 1, vr3Sco: 1, vr3Ber: "36.00", 
+            vr1Opm: 1, vr1Sco: 1, vr1Ber: 67, 
+            vr2Opm: 1, vr2Sco: 1, vr2Ber: -41, 
+            vr3Opm: 1, vr3Sco: 1, vr3Ber: 36.00, 
             vr4Opm: 1, vr4Sco: 1, 
             vr5Opm: 0, vr5Sco: 1, 
             vr6Opm: 1, vr6Sco: 1, 
             vr7Opm: 1, vr7Sco: 1 }, 
           conclusie: { Con1: 0, Con2: 0, Con3: 1, Con4: 0 } 
         },
-      insertTestData: true
+      insertTestData: false
     }; //end return
   }, //end data
   computed:{
@@ -68,6 +69,7 @@ export default {
         let data = composeRapport(this.$store.getters.getFullResultaat);
         if(this.insertTestData){
           data = this.testData;
+          console.log(this.$OTAP)
         }
       return data;
     },
@@ -80,9 +82,8 @@ export default {
     async sendPDF(){
 
         // compose rapport data
-        let data = {eb:0,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
-        // let data = composeRapport(this.dataToSend);
-
+        let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
+ 
         // ONLY FOR TEST PURPOSES
         if(this.insertTestData){
           data.project = this.testData;
@@ -92,7 +93,6 @@ export default {
         data.project.score.visual = 75;
                 
         // insert NAW data
-        // data = "?rapport=" + data + "&r="+this.naam+"&e="+this.email;
         data.naw = {r:this.name,e:this.email};
      
         // maak JSON van data

@@ -1,5 +1,5 @@
 import opmerkingenData from "../data/opmerkingen.js"
-// import { getObjectData } from "./functions.js";
+import { midPointerMeter } from "../scripts/meter.js";
   
 const $opmerkingen = opmerkingenData;
 
@@ -77,25 +77,11 @@ function berekenUitslag(vragen){
   const oranje = $oranje;
   const rood = $rood;
 
-  // TO DO remove funtion it has moved ouside main function
-  // // functie die numeral string converteerd naar een number
-  // function convertStrToNum(string){
-  //   let value = Number(string.replace(".",""));
-  //   return value;
-  // }
-
-
-  // TO DO remove funtion it has moved ouside main function
-  // // functie die numeral string invoegt in opmerking string
-  // function maakOpmerking(inputString, replaceString, newString){
-  //   let opmerking = inputString.replace(replaceString, newString);
-  //   return opmerking;
-  // }
 
   // statement vraag 1
 
   // bereken totaal
-  const totaal = opmerking.vraag1.waarden[0] + opmerking.vraag1.waarden[1] + opmerking.vraag1.waarden[2] + opmerking.vraag1.waarden[3] + opmerking.vraag1.waarden[4];
+  const totaal = Number(opmerking.vraag1.waarden[0]) + Number(opmerking.vraag1.waarden[1]) + Number(opmerking.vraag1.waarden[2]) + Number(opmerking.vraag1.waarden[3]) + Number(opmerking.vraag1.waarden[4]);
   
   if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
     resultaat.vraag1.score = Number(vraag1.waarde)}
@@ -133,8 +119,24 @@ function berekenUitslag(vragen){
     resultaat.vraag1.totaal = 0;
   }
 
- 
+  
   // statement vraag 2
+
+// parameters meter
+const meterSettings= {
+  manMode: false,
+  manValue: 50,
+  valueMax: 80,
+  valueMin: 1,
+  degMax: 180,
+  degMin: 0,
+  degAdjust: 1,
+  reverseDirection: true,
+};
+
+// vraag 2 visual meter
+resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).pointerDeg;
+
   // vraag 2.1
   if( vraag2.waarde < 55 && vraag2.waarde !== ""){
     resultaat.vraag2.opmerking = 1; 
@@ -432,7 +434,7 @@ export function composeRapport(resultData, /*querystring*/){
       rapportData.vragen["vr"+number+"Sco"] = resultData[property].score;
       if(resultData[property].berekening !== ""){
         formatedBerekening = resultData[property].berekening;
-        rapportData.vragen["vr"+number+"Ber"] = formatedBerekening.toFixed(2);
+        rapportData.vragen["vr"+number+"Ber"] = Number(formatedBerekening).toFixed(2);
       }
     number++; 
     }

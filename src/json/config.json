@@ -1,11 +1,11 @@
 {
     "settings":{
         "OTAP":{
-            "URLOnt":"Server URL Ontwikkeling",
+            "URLOnt":"https://thirsty-goldberg-0a3958.netlify.app/",
             "URLTes":"Server URL Test",
             "URLAcc":"Server URL Acceptatie",
             "URLPro":"Server URL Productie",
-            "URLLocHost":"http://localhost:8080/"
+            "URLLocHost":"http://localhost:80"
         }
     }
 }
