@@ -14,8 +14,6 @@ export function encode(object){
 // POST data to zap
 export async function sendToZap(zapcode, data, options={method:"POST",headers:{'Content-Type': 'text/plain'}}){
 
-    console.log($zapUrl + zapcode + "/?");
-
     const response = await fetch(
         $zapUrl + zapcode + "/?", 
         {

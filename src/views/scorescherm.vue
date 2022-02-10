@@ -34,23 +34,23 @@
                         class="form-control"
                         type="text"
                         id="naam"
-                        v-model="naam"
+                        v-model="name"
                       />
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label
                       class="col-sm-3 col-form-label text-score"
-                      for="emailControle"
+                      for="email"
                       >Emailadres:</label
                     >
                     <div class="col-xl-9">
                       <input
                         class="form-control"
                         type="email"
-                        name="emailControle"
-                        id="emailControle"
-                        v-model="emailControle"
+                        name="email"
+                        id="email"
+                        v-model="email"
                       />
                     </div>
                   </div>
@@ -111,7 +111,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: true,
+      testMode: false,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
       meter: "",
@@ -125,10 +125,10 @@ export default {
         degAdjust: 1,
         reverseDirection: true,
       },
-      naam: "", 
-      naamMissingMSG: "vul a.u.b uw naam in",
-      naamOke: "",
-      emailControle: "", 
+      name: "", 
+      nameMissingMSG: "vul a.u.b uw naam in",
+      nameOke: "",
+      email: "", 
       emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomijn.nl",
       emailOke:"",
       // status state -> conditie -> kleurCode, class, label, image
@@ -215,7 +215,7 @@ export default {
     sendButton(){
       let className = 'btnFormFault';
       // check if form is oke
-      if(this.naamOke && this.emailOke){
+      if(this.nameOke && this.emailOke){
         className = '';
       }
       return className;
@@ -235,8 +235,8 @@ export default {
       const borderColorGood = "#e7e6e6";
       const borderWidthGood = "1px";
 
-      if(this.naamOke == false){
-        this.naam = this.naamMissingMSG;
+      if(this.nameOke == false){
+        this.name = this.nameMissingMSG;
         document.getElementById('naam').style.borderColor = borderColorFault;
         document.getElementById('naam').style.borderWidth = borderWidthFault;
       }
@@ -246,26 +246,24 @@ export default {
       }
       // check invoer email
       if(this.emailOke == false){
-        this.emailControle = this.emailMissingMSG;
-        document.getElementById('emailControle').style.borderColor = borderColorFault;
-        document.getElementById('emailControle').style.borderWidth = borderWidthFault;
+        this.email = this.emailMissingMSG;
+        document.getElementById('email').style.borderColor = borderColorFault;
+        document.getElementById('email').style.borderWidth = borderWidthFault;
       }
       else{
-        document.getElementById('emailControle').style.borderColor = borderColorGood;
-        document.getElementById('emailControle').style.borderWidth = borderWidthGood;
+        document.getElementById('email').style.borderColor = borderColorGood;
+        document.getElementById('email').style.borderWidth = borderWidthGood;
       }
       // validatie oke begin met data opbouw voor versturen
-      if(this.naamOke && this.emailOke){
-        let data = {eb:0,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
-      // let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
+      if(this.nameOke && this.emailOke){
+        // build data
+        let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
   
         // insert odd values
         data.project.score.visual = this.meter.pointerDeg.toFixed(2);
 
         // insert NAW data
-        data.naw = {r:this.naam,e:this.emailControle};
-
-        console.log(data);
+        data.naw = {r:this.name,e:this.email};
 
         // maak JSON van data
         data = JSON.stringify(data);
@@ -275,8 +273,8 @@ export default {
 
         // controleer respone op succes
         if(response.status === 'success'){
-            this.naam = "";
-            this.emailControle = "";
+            this.name = "";
+            this.email = "";
             this.$router.push("/outro");
         }
         else{
@@ -288,12 +286,12 @@ export default {
   // end methods
   },
   watch:{
-    naam: function(){
-      const input = validateInput(this.naam,"string", this.naamMissingMSG)
-      this.naamOke = input.valid;
+    name: function(){
+      const input = validateInput(this.name,"string", this.nameMissingMSG)
+      this.nameOke = input.valid;
     },
-    emailControle: function(){
-      const input =  validateInput(this.emailControle,"email", this.emailMissingMSG);
+    email: function(){
+      const input =  validateInput(this.email,"email", this.emailMissingMSG);
       this.emailOke = input.valid;
     },
   }

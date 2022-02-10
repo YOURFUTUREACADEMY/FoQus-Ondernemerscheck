@@ -15,14 +15,8 @@ app.use(router).use(store);
 // app globals
 app.config.globalProperties.$OTAP = OTAP;
 
-// const $OTAP.config.globalProperties.$OTAP = OTAP; 
-// app.$OTAP;
-// if(app.config.globalProperties.$OTAP != OTAP){app.config.globalProperties.$OTAP = OTAP}
-
 // app global components
 
-console.log( window.location.href)
-console.log( OTAP)
 
 // mount app
 app.mount('#app')
