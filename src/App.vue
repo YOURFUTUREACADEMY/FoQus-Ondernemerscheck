@@ -12,6 +12,18 @@
 </template>
 <script>
   require('@/styles/global.css')
+  export default{
+    data(){
+      return{
+        test:this.$OTAP
+      }
+    },
+    mounted() {
+      console.log(this.test)
+      this.$OTAP = "new";
+      console.log(this.$OTAP)
+    }
+  }
 </script>
 
 <style scoped>

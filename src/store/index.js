@@ -1,6 +1,10 @@
 import { createStore } from "vuex";
+import BROWSER from "./modules/browser.js"
 
 const store = createStore({
+    modules:{
+        BROWSER
+    },
     state: {
         ANTWOORD: {
             vraag1:{label:'',waarde:1},

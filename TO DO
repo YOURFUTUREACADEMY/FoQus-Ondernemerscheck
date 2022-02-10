@@ -1,4 +1,7 @@
 LIVE:https://thirsty-goldberg-0a3958.netlify.app/
+EXCEL:https://wityourfutureacademy-my.sharepoint.com/:x:/r/personal/projecten_yourfutureacademy_nl/_layouts/15/Doc.aspx?sourcedoc=%7B8EA03E79-FD65-45D6-8C0D-21F1256F9119%7D&file=focus.xlsx&action=default&mobileredirect=true&cid=af04b075-91d3-458e-87a5-1fa5e9a09cc8
+
+
 1 - Volgende knop intro pagina en vraag 1 ( als de terug knop niet getoond is verspringt de terug knop )
 2 - Kleur variable in CSS die niet goed worden over genomen (in style App.vue) -> Jesses // done
     1 - .hl is een andere kleur // done

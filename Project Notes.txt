@@ -1,0 +1,2 @@
+Global Var
+OTAP = OTAP Value from function

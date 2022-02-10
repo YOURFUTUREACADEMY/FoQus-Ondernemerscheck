@@ -1,0 +1,11 @@
+{
+    "settings":{
+        "OTAP":{
+            "URLOnt":"Server URL Ontwikkeling",
+            "URLTes":"Server URL Test",
+            "URLAcc":"Server URL Acceptatie",
+            "URLPro":"Server URL Productie",
+            "URLLocHost":"http://localhost:8080/"
+        }
+    }
+}
