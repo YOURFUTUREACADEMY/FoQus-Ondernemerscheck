@@ -60,7 +60,7 @@
                       class="btn btn-primary adviesBtn" 
                       :class="sendButton"
                       onSubmit="return false;" 
-                      @mouseup="sendEmail()" 
+                      @mouseup="sendPDF()" 
                     >
                       Ik ontvang graag het volledige rapport per mail
                     </button>
@@ -100,9 +100,10 @@
 <script>
 import AnalogVolMeter from "../components/analog-vol-meter";
 import { composeRapport } from "../scripts/score.js";
-import { sendToZap } from "../scripts/functions.js";
+import { sendToZap } from "../scripts/zapier.js";
 import { scoreWaardes } from "../scripts/score.js";
 import { validateInput } from "../scripts/functions.js";
+import config from "@/json/config.json";
 
 require('@/styles/score.css')
 
@@ -226,7 +227,7 @@ export default {
     meterData(meter) {
       this.meter = meter;
     },
-    async sendEmail(){
+    async sendPDF(){
       // check invoer naam
 
       const borderColorFault = "#9e0000";
@@ -255,29 +256,34 @@ export default {
       }
       // validatie oke begin met data opbouw voor versturen
       if(this.naamOke && this.emailOke){
-        let data = composeRapport(this.$store.getters.getFullResultaat);
-        
-        // waarde voor objecten in pdf
-        data.score.visual = this.meter.pointerDeg.toFixed(2);
+        let data = {eb:0,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
+      // let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
+  
+        // insert odd values
+        data.project.score.visual = this.meter.pointerDeg.toFixed(2);
+
+        // insert NAW data
+        data.naw = {r:this.naam,e:this.emailControle};
+
+        console.log(data);
 
         // maak JSON van data
         data = JSON.stringify(data);
-        const url = "https://hooks.zapier.com/hooks/catch/5974604/b1bqszh"
-        // maak diversen Querie strings met NAW gegevens
-        data = "?rapport=" + data + "&recipient="+this.naam+"&email="+this.emailControle;
-        
-        // verstuur data
-        const response = await sendToZap(url, data);
+
+          // verstuur data
+        const response = await sendToZap(config.Zapier, data);
 
         // controleer respone op succes
         if(response.status === 'success'){
             this.naam = "";
             this.emailControle = "";
-            // TO DO add outro view
             this.$router.push("/outro");
         }
+        else{
+          alert("Helaas is het niet gelukt om het rapport te verzenden probeer het nogmaals.")
+        }
       }
-    // end sendEmail function
+    // end sendPDF function
     }
   // end methods
   },

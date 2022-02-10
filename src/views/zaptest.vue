@@ -34,6 +34,7 @@
 import { sendToZap } from "../scripts/zapier.js";
 import { composeRapport } from "../scripts/score.js";
 import { composeExcel } from "../scripts/score.js";
+import config from "@/json/config.json";
 
 export default {
   
@@ -61,7 +62,7 @@ export default {
             vr7Opm: 1, vr7Sco: 1 }, 
           conclusie: { Con1: 0, Con2: 0, Con3: 1, Con4: 0 } 
         },
-      insertTestData: false
+      insertTestData: true
     }; //end return
   }, //end data
   computed:{
@@ -99,8 +100,8 @@ export default {
         data = JSON.stringify(data);
 
         // verstuur data
-        const response = await sendToZap(this.zapCode, data);
-        console.log(response)
+        const response = await sendToZap(config.Zapier, data);
+
         // controleer respone op succes
         if(response.status === 'success'){
           //do stuff if success
