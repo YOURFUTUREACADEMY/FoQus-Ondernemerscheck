@@ -33,7 +33,8 @@
 <script>
 import { sendToZap } from "../scripts/zapier.js";
 import { composeRapport } from "../scripts/score.js";
-import { composeExcel } from "../scripts/score.js";
+// import { composeExcel } from "../scripts/score.js";
+import { compose } from "../scripts/score.js";
 import config from "@/json/config.json";
 
 export default {
@@ -82,7 +83,7 @@ export default {
   methods:{
     async sendPDF(){
 
-        // compose rapport data
+        // create rapport data
         let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
  
         // ONLY FOR TEST PURPOSES
@@ -127,11 +128,19 @@ export default {
         console.log(typeof(string));
         console.log(data);
         console.log(JSON.stringify(data));
-    },
-    async sendExcel(){
+    }, 
+    sendExcel(){
+
+      // voorbeeld excel
+      // https://zapier.com/app/editor/107568148/nodes/107569786/fields
+
+      // compose rapport data
+      let data = {eb:this.$OTAP,tb:4,project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}}
+      // let data = {eb:this.$OTAP,tb:4,project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}}
 
 
-      let data = composeRapport(this.resultaat, "excel");
+
+      let data = composeRapport(this.$store.getters.getFullResultaat, "excel");
       let recipient = "sean";
       let email = this.testEmail;
       this.data = '?'+this.data+"&recipient="+recipient+"&email="+email;

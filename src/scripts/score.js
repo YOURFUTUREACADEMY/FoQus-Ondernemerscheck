@@ -476,6 +476,10 @@ export function composeExcel(resultData){
 // end function composeRapport  
 }
 
+export const compose = {
+  rapport:composeRapport(),
+  excel:composeExcel()
+}
 
 //functie opbouwen opmerking vraag #1 & numeral string invoegt in opmerking string
 // function maakOpmerking(inputString, replaceString, newString){
