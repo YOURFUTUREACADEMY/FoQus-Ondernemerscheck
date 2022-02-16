@@ -56,7 +56,7 @@ import vraag5 from "../components/vraag5-input";
 import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
 import berekenUitslag from "../scripts/score.js";
-import {validateInput} from "../scripts/functions.js";
+import functions from "../scripts/functions.js";
 
 require('@/styles/vragen.css')
 
@@ -84,7 +84,7 @@ export default {
   methods: {
     nextStep(){
       // controleer store op invoer waarde
-      let inputOke = validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
+      let inputOke = functions.validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
       // console.log(inputOke.reason)
       if(inputOke.valid){
         this.activeStep++

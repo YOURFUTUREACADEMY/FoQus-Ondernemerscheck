@@ -32,9 +32,8 @@
 
 <script>
 import { sendToZap } from "../scripts/zapier.js";
-import { composeRapport } from "../scripts/score.js";
-// import { composeExcel } from "../scripts/score.js";
 import { compose } from "../scripts/score.js";
+import functions from "../scripts/functions.js";
 import config from "@/json/config.json";
 
 export default {
@@ -49,7 +48,7 @@ export default {
       zapCode: "5974604/b5ca8ti",
       inputText: "",
       resultaat:this.$store.getters.getFullResultaat,
-      testData:{ 
+      testRapport:{ 
           kleurWaarde: { groen: 1, oranje: 5, rood: 20 }, 
           kleurCode: 1, 
           score: { waarde: 5, visual: 53 }, 
@@ -63,20 +62,34 @@ export default {
             vr7Opm: 1, vr7Sco: 1 }, 
           conclusie: { Con1: 0, Con2: 0, Con3: 1, Con4: 0 } 
         },
-      insertTestData: true
+        testExcel:{ 
+          kleurWaarde: { groen: 1, oranje: 5, rood: 20 }, 
+          kleurCode: 1, 
+          score: { waarde: 5, visual: 53 }, 
+          vragen: { 
+            vr1Opm: 1, vr1Sco: 1, vr1Ber: 67, 
+            vr2Opm: 1, vr2Sco: 1, vr2Ber: -41, 
+            vr3Opm: 1, vr3Sco: 1, vr3Ber: 36.00, 
+            vr4Opm: 1, vr4Sco: 1, 
+            vr5Opm: 0, vr5Sco: 1, 
+            vr6Opm: 1, vr6Sco: 1, 
+            vr7Opm: 1, vr7Sco: 1 }, 
+          conclusie: { Con1: 0, Con2: 0, Con3: 1, Con4: 0 } 
+        },
+      insertTestData: false
     }; //end return
   }, //end data
   computed:{
     PDF(){
-        let data = composeRapport(this.$store.getters.getFullResultaat);
+        let data = compose.rapport(this.$store.getters.getFullResultaat);
         if(this.insertTestData){
-          data = this.testData;
+          data = this.testRapport;
           console.log(this.$OTAP)
         }
       return data;
     },
     excel(){
-        let data = composeExcel(this.$store.getters.getFullResultaat, 'excel');
+        let data = compose.excel(this.$store.getters.getFullResultaat, 'excel');
       return data;
     },
   },
@@ -84,12 +97,16 @@ export default {
     async sendPDF(){
 
         // create rapport data
-        let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
+        let data = {eb:this.$OTAP,tb:4,date:"",project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}};
  
         // ONLY FOR TEST PURPOSES
         if(this.insertTestData){
-          data.project = this.testData;
+          data.project = this.testRapport;
         }
+
+        // insert date
+        const date = functions.date();
+        data.date = date.full;
 
         // insert odd values
         data.project.score.visual = 75;
@@ -116,7 +133,7 @@ export default {
 
      test(){
 
-        let data = composeRapport(this.$store.getters.getFullResultaat);
+        let data = compose.rapport(this.$store.getters.getFullResultaat);
         // let recipient = "sean";
         // let email = this.testEmail;
         // data = '?'+data+"&recipient="+recipient+"&email="+email;
@@ -135,21 +152,22 @@ export default {
       // https://zapier.com/app/editor/107568148/nodes/107569786/fields
 
       // compose rapport data
-      let data = {eb:this.$OTAP,tb:4,project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}}
-      // let data = {eb:this.$OTAP,tb:4,project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}}
+      let data = {eb:this.$OTAP,tb:1,date:"",project:compose.excel(this.$store.getters.getFullResultaat),naw:{}};
 
+      // ONLY FOR TEST PURPOSES
+      if(this.insertTestData){
+        data.project = this.testExcel;
+      }
 
+      // insert date
+      const date = functions.date();
+      data.date = date.full;    
 
-      let data = composeRapport(this.$store.getters.getFullResultaat, "excel");
-      let recipient = "sean";
-      let email = this.testEmail;
-      this.data = '?'+this.data+"&recipient="+recipient+"&email="+email;
+      // maak JSON van data
+      data = JSON.stringify(data);
       
-      
-      
-      
-      sendToZap(this.zapCode, this.data);
-      console.log(`send:${data} to ${this.url}`)
+      sendToZap(this.zapCode, data);
+      console.log(`send:${data}`)
     }
   // end methods
   },

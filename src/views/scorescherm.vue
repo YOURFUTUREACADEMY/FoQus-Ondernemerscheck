@@ -99,10 +99,10 @@
 
 <script>
 import AnalogVolMeter from "../components/analog-vol-meter";
-import { composeRapport } from "../scripts/score.js";
+import { compose } from "../scripts/score.js";
 import { sendToZap } from "../scripts/zapier.js";
 import { scoreWaardes } from "../scripts/score.js";
-import { validateInput } from "../scripts/functions.js";
+import functions from "../scripts/functions.js";
 import config from "@/json/config.json";
 
 require('@/styles/score.css')
@@ -111,7 +111,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: false,
+      testMode: true,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
       meter: "",
@@ -257,8 +257,12 @@ export default {
       // validatie oke begin met data opbouw voor versturen
       if(this.nameOke && this.emailOke){
         // build data
-        let data = {eb:this.$OTAP,tb:4,project:composeRapport(this.$store.getters.getFullResultaat),naw:{}}
+        let data = {eb:this.$OTAP,tb:4,date:"",project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}}
   
+        // insert date
+        const date = functions.date();
+        data.date = date.full;
+
         // insert odd values
         data.project.score.visual = this.meter.pointerDeg.toFixed(2);
 
@@ -287,11 +291,11 @@ export default {
   },
   watch:{
     name: function(){
-      const input = validateInput(this.name,"string", this.nameMissingMSG)
+      const input = functions.validateInput(this.name,"string", this.nameMissingMSG)
       this.nameOke = input.valid;
     },
     email: function(){
-      const input =  validateInput(this.email,"email", this.emailMissingMSG);
+      const input =  functions.validateInput(this.email,"email", this.emailMissingMSG);
       this.emailOke = input.valid;
     },
   }

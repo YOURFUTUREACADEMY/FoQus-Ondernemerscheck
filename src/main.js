@@ -5,7 +5,6 @@ import router from "./router"
 import OTAP from "./scripts/otap"
 
 
-
 // create app
 const app = createApp(App);
 

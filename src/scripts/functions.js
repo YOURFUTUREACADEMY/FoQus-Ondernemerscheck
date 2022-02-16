@@ -84,7 +84,7 @@ export async function sendToZap(url, data, options={methode:"POST"}){
   }
 }
 
-export function validateInput(input, type='string', msg){
+function validateInput(input, type='string', msg){
 
   const output = {valid:false,reason:''}
 
@@ -178,3 +178,31 @@ export function getObjectData(object, property){
 // end getObjectData
 }
 
+
+function date(setDate = null){
+
+  const date = {full:null, day:null, month:null, year:null};
+
+  let rawDate = null;
+
+  if(setDate === null){
+    rawDate = new Date()
+  }
+  else(
+    rawDate = new Date(setDate)
+  )
+
+  date.day = rawDate.getDate();
+  date.month = rawDate.getMonth() + 1;
+  date.year = rawDate.getFullYear();
+  date.full = `${date.day}-${date.month}-${date.year}`
+
+  return date;
+}
+
+const functions = {
+  date,
+  validateInput
+}
+
+export default functions;

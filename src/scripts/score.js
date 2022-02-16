@@ -57,13 +57,13 @@ function berekenUitslag(vragen){
 
   // variable resultaat opbouw
   const resultaat = {
-    vraag1 : {opmerking : 0, berekening : "", totaal : "", score : ""},
-    vraag2 : {opmerking : 0, berekening : "", totaal : "", score : ""},
-    vraag3 : {opmerking : 0, berekening : "", totaal : "", score : ""},
-    vraag4 : {opmerking : 0, berekening : "", totaal : "", score : ""},
-    vraag5 : {opmerking : 0, berekening : "", totaal : "", score : ""},
-    vraag6 : {opmerking : 0, berekening : "", totaal : "", score : ""},
-    vraag7 : {opmerking : 0, berekening : "", totaal : "", score : ""},
+    vraag1 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag1.waarde},
+    vraag2 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag2.waarde},
+    vraag3 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag3.waarde},
+    vraag4 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag4.waarde},
+    vraag5 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag5.waarde},
+    vraag6 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag6.waarde},
+    vraag7 : {opmerking : 0, berekening : "", totaal : "", score : "", waarde : vragen.vraag7.waarde},
     kleur : "",
     score : 0,
     conclusie1 : {opmerking : 0, kleur:"", score : "", nr: "n.v.t"},
@@ -133,6 +133,7 @@ const meterSettings= {
   degAdjust: 1,
   reverseDirection: true,
 };
+
 
 // vraag 2 visual meter
 resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).pointerDeg;
@@ -213,6 +214,7 @@ resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).poin
     resultaat.vraag4.opmerking = "FOUT: WAARDE VRAAG 4 BUITEN BEREIK";
   }
 
+
   // statement vraag 5 & 6
   // 5 = 1 en 6 - 1 tot 3
   // vraag 6.1 | 5 stijgt AND 6 stijgt | groenvraag 6.1
@@ -287,8 +289,7 @@ resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).poin
       resultaat.vraag6.opmerking = "FOUT: WAARDE VRAAG 6 BUITEN BEREIK";
     }
   }
-
-
+ 
   // statement vraag 7
   // vraag 7.1
   if( vraag7.waarde >= 8 && vraag7.waarde !== ""){
@@ -317,19 +318,20 @@ resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).poin
   // als statusConclusie === 0 dan: toon conclusie3 
   let statusConclusie = 0;
 
+
   // overal kleur 
   // orgineel 0 & 17
-  if(resultaat.score > 0 && resultaat.score <= 7){
+  if(resultaat.score > 0 && resultaat.score <= (2 * groen) + (3 * oranje)){
     resultaat.kleur = groen;
     // statusConclusie = 1;
   }
   // orgineel 17 & 85 
-  else if(resultaat.score > 17 && resultaat.score <= 70){
+  else if(resultaat.score > (2 * groen) + (3 * oranje) && resultaat.score <= (2 * groen) + (3 * rood)){
     resultaat.kleur = oranje;
     // statusConclusie = 2;
   }
   // orgineel 85
-  else if(resultaat.score > 70){
+  else if(resultaat.score > (2 * groen) + (3 * rood)){
     resultaat.kleur = rood;
     // statusConclusie = 3;
   }
@@ -458,27 +460,46 @@ export function composeRapport(resultData, /*querystring*/){
 export function composeExcel(resultData){
 
   let excelData = "";
-  const scoreBasisWaarde = `groen=${$groen}&oranje=${$oranje}&rood=${$rood}` 
-  excelData = scoreBasisWaarde+`&kleurcode=${resultData.kleur}&score=${resultData.score}`;
+
+  const kleurWaarde = {groen:$groen,oranje:$oranje,rood:$rood};
  
+  excelData = {
+    kleurWaarde:kleurWaarde,
+    kleurCode:resultData.kleur,
+    score:resultData.score,
+    vragen:{},
+    conclusie:{}
+  };
+   
   let key = ["vraag","conclusie"]
   let number = 1;  
   
   // haal & bouw vraag data
+  // haal vraag data
   for(let property in resultData){
-    
     if(property === key[0]+number){
-      excelData += `&${key[0]+number}=${resultData[property].score}`
-    number++; 
+      excelData.vragen["vr"+number+"Sco"] = resultData[property].score;
+      excelData.vragen["vr"+number+"Val"] = resultData[property].waarde;
+      number++; 
     }
   }
+
+  number=1;
+  // haal conclusie data
+  for(let property in resultData){
+    if(property === key[1]+number){
+      excelData.conclusie["Con"+number] = resultData[property].opmerking;
+      number++;  
+    }     
+  }
+
   return excelData; 
 // end function composeRapport  
 }
 
 export const compose = {
-  rapport:composeRapport(),
-  excel:composeExcel()
+  rapport:composeRapport,
+  excel:composeExcel
 }
 
 //functie opbouwen opmerking vraag #1 & numeral string invoegt in opmerking string
