@@ -39,19 +39,18 @@ const queryString= {
 
 // === !! Switch queryString to $docPayload in PDFmonkey.io !! ===
 // const queryString = $docPayload;
-
 function displaySubject(targetElementID, insertedText){
-    // check for section and display section
-    if(document.querySelector("#sec-"+targetElementID) !== null){
-      document.getElementById("sec-"+targetElementID).style.display = "block";
-    }
-    // diplay element and add text
-    document.getElementById(targetElementID).innerText = insertedText;
-    document.getElementById(targetElementID).style.display = "block";
+  // check for section and display section
+  if(document.querySelector("#sec-"+targetElementID) !== null){
+    document.getElementById("sec-"+targetElementID).style.display = "block";
+  }
+  // diplay element and add text
+  document.getElementById(targetElementID).innerText = insertedText;
+  document.getElementById(targetElementID).style.display = "block";
 }
 
 function addClass(targetElementID, insertedClass){
-  document.getElementById(targetElementID).className += insertedClass;
+document.getElementById(targetElementID).className += insertedClass;
 }
 
 
@@ -64,25 +63,25 @@ const upperLimitOranje = (queryString.kleurWaarde.oranje * 2) + (queryString.kle
 // vraag 5
 let vraag5leter = "";
 if(queryString.vragen.vr5Sco === queryString.kleurWaarde.rood){
-  vraag5leter = "r";
+vraag5leter = "r";
 };
 if(queryString.vragen.vr5Sco === queryString.kleurWaarde.oranje){
-  vraag5leter = "o";
+vraag5leter = "o";
 };
 if(queryString.vragen.vr5Sco === queryString.kleurWaarde.groen){
-  vraag5leter = "g";
+vraag5leter = "g";
 };
 
 // vraag 6
 let vraag6leter = "";
 if(queryString.vragen.vr6Sco === queryString.kleurWaarde.rood){
-  vraag6leter = "r";
+vraag6leter = "r";
 };
 if(queryString.vragen.vr6Sco === queryString.kleurWaarde.oranje){
-    vraag6leter = "o";
+  vraag6leter = "o";
 };
 if(queryString.vragen.vr6Sco === queryString.kleurWaarde.groen){
-    vraag6leter = "g";
+  vraag6leter = "g";
 };
 
 
@@ -92,70 +91,70 @@ document.getElementById('status').appendChild(document.createElement(`p`)).inner
 let number = 1;
 let vrElementNotExist = false;
 for(let property in queryString.vragen){ 
-  if(property === "vr"+number+"Opm"){
-    vrElementNotExist = false;
-    // check if query string vraag refers to a opmerking
-    if(queryString.vragen[property] > 0){   
-      // check if the section element exist if not skip insert
-      if(document.querySelector("#sec-vraag-"+number) === null ){
-        document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID sec-vraag-${number} not found in HTML.`;
+if(property === "vr"+number+"Opm"){
+  vrElementNotExist = false;
+  // check if query string vraag refers to a opmerking
+  if(queryString.vragen[property] > 0){   
+    // check if the section element exist if not skip insert
+    if(document.querySelector("#sec-vraag-"+number) === null ){
+      document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID sec-vraag-${number} not found in HTML.`;
+    }
+    // check if the p element exist if not skip insert
+    else if(document.querySelector("#vraag-"+number) === null){
+      document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID vraag-${number} not found in HTML.`;
+    }
+    // if all exist insert text and display = block
+    else{
+      displaySubject('vraag-'+number, opmerkingen.vragen['vraag'+number].opmerkingen[queryString.vragen[property]]);
+      // score - section colors & images
+      if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.rood ){
+        addClass('sec-vraag-'+number, " vraag-rood");
+        if(document.querySelector(`#vraag-${number}-svg-rd`) != null){
+          document.getElementById(`vraag-${number}-svg-rd`).style.display = "block";
+        }
+        else{
+          vrElementNotExist = true;
+        }          
       }
-      // check if the p element exist if not skip insert
-      else if(document.querySelector("#vraag-"+number) === null){
-        document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:vraag${number}, only Element ID vraag-${number} not found in HTML.`;
+      else if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.oranje ){
+        addClass('sec-vraag-'+number, " vraag-oranje");
+        if(document.querySelector(`#vraag-${number}-svg-or`) != null){
+          document.getElementById(`vraag-${number}-svg-or`).style.display = "block";
+        }
+        else{
+          vrElementNotExist = true;
+        }
       }
-      // if all exist insert text and display = block
-      else{
-        displaySubject('vraag-'+number, opmerkingen.vragen['vraag'+number].opmerkingen[queryString.vragen[property]]);
-        // score - section colors & images
-        if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.rood ){
-          addClass('sec-vraag-'+number, " vraag-rood");
-          if(document.querySelector(`#vraag-${number}-svg-rd`) != null){
-            document.getElementById(`vraag-${number}-svg-rd`).style.display = "block";
+      else {
+        addClass('sec-vraag-'+number, " vraag-groen");
+        if(document.querySelector(`#vraag-${number}-svg-gr`) != null){
+          document.getElementById(`vraag-${number}-svg-gr`).style.display = "block";
+        } 
+        else{
+          vrElementNotExist = true;
+        }
+      }
+      //vraag 5 & 6 svg en border kleur
+      if(vrElementNotExist){
+        // svg
+        if(document.querySelector(`#vraag-${number}-svg-5${vraag5leter}6${vraag6leter}`) != null){
+          document.getElementById(`vraag-${number}-svg-5${vraag5leter}6${vraag6leter}`).style.display = "block";
+          // border
+          if(queryString.vragen["vr"+number+"Opm"] === 3 || queryString.vragen["vr"+number+"Opm"] === 6 || queryString.vragen["vr"+number+"Opm"] === 9){
+            addClass('sec-vraag-'+number, " vraag-rood");
+          }
+          else if(queryString.vragen["vr"+number+"Opm"] === 2 || queryString.vragen["vr"+number+"Opm"] === 5 || queryString.vragen["vr"+number+"Opm"] === 7 || queryString.vragen["vr"+number+"Opm"] === 8){
+            addClass('sec-vraag-'+number, " vraag-oranje");
           }
           else{
-            vrElementNotExist = true;
-          }          
-        }
-        else if(queryString.vragen["vr"+number+"Sco"] === queryString.kleurWaarde.oranje ){
-          addClass('sec-vraag-'+number, " vraag-oranje");
-          if(document.querySelector(`#vraag-${number}-svg-or`) != null){
-            document.getElementById(`vraag-${number}-svg-or`).style.display = "block";
-          }
-          else{
-            vrElementNotExist = true;
+            addClass('sec-vraag-'+number, " vraag-groen");
           }
         }
-        else {
-          addClass('sec-vraag-'+number, " vraag-groen");
-          if(document.querySelector(`#vraag-${number}-svg-gr`) != null){
-            document.getElementById(`vraag-${number}-svg-gr`).style.display = "block";
-          } 
-          else{
-            vrElementNotExist = true;
-          }
-        }
-        //vraag 5 & 6 svg en border kleur
-        if(vrElementNotExist){
-          // svg
-          if(document.querySelector(`#vraag-${number}-svg-5${vraag5leter}6${vraag6leter}`) != null){
-            document.getElementById(`vraag-${number}-svg-5${vraag5leter}6${vraag6leter}`).style.display = "block";
-            // border
-            if(queryString.vragen["vr"+number+"Opm"] === 3 || queryString.vragen["vr"+number+"Opm"] === 6 || queryString.vragen["vr"+number+"Opm"] === 9){
-              addClass('sec-vraag-'+number, " vraag-rood");
-            }
-            else if(queryString.vragen["vr"+number+"Opm"] === 2 || queryString.vragen["vr"+number+"Opm"] === 5 || queryString.vragen["vr"+number+"Opm"] === 7 || queryString.vragen["vr"+number+"Opm"] === 8){
-              addClass('sec-vraag-'+number, " vraag-oranje");
-            }
-            else{
-              addClass('sec-vraag-'+number, " vraag-groen");
-            }
-          }
-        }
-      }  
-    }     
-    number++;     
-  } 
+      }
+    }  
+  }     
+  number++;     
+} 
 // end for loop vragen    
 }
 
@@ -163,17 +162,17 @@ for(let property in queryString.vragen){
 let conclusie = "";
 number = 1;
 for(let property in queryString.conclusie){
-  if(property === "Con"+number){
-    if(number == 3){
-      displaySubject('conclusie-A',opmerkingen.conclusies.conclusieAltijd);
-      // conclusie += " "+ opmerkingen.conclusies.conclusieAltijd + "\n";
-    }
-    if(queryString.conclusie[property] > 0){
-      displaySubject('conclusie-'+number,opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]]);
-      // conclusie += " " + opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]] + " \n \n";         
-    }
-  number++;    
-  }  
+if(property === "Con"+number){
+  if(number == 3){
+    displaySubject('conclusie-A',opmerkingen.conclusies.conclusieAltijd);
+    // conclusie += " "+ opmerkingen.conclusies.conclusieAltijd + "\n";
+  }
+  if(queryString.conclusie[property] > 0){
+    displaySubject('conclusie-'+number,opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]]);
+    // conclusie += " " + opmerkingen.conclusies['conclusie'+number][queryString.conclusie[property]] + " \n \n";         
+  }
+number++;    
+}  
 // end for loop conclusie   
 }
 
@@ -182,40 +181,44 @@ displaySubject('conclusie-Out',opmerkingen.conclusies.conclusieOutro);
 
 //image conclusie groen
 if(queryString.score.waarde < upperLimitGroen){
-  document.getElementById(`conclusie-svg-gr`).style.display = "block";
+document.getElementById(`conclusie-svg-gr`).style.display = "block";
 }
 
 //image conclusie oranje
 if(queryString.score.waarde >= upperLimitGroen && queryString.score.waarde < upperLimitOranje){
-  document.getElementById(`conclusie-svg-or`).style.display = "block";
+document.getElementById(`conclusie-svg-or`).style.display = "block";
 }
 
 //image conclusie rood
 if(queryString.score.waarde >= upperLimitOranje){
-  document.getElementById(`conclusie-svg-rd`).style.display = "block";
+document.getElementById(`conclusie-svg-rd`).style.display = "block";
 }
 
 
 // conclusie closure
 if(queryString.score.waarde > upperLimitGroen){
-  displaySubject('contact', "Neem contact op voor een Afspraak.");
-  // conclusie += "\n Neem contact op voor een Afspraak.";
+displaySubject('contact', "Neem contact op voor een Afspraak.");
+// conclusie += "\n Neem contact op voor een Afspraak.";
 }
 
 // check if the section element exist if not skip insert
 if(document.querySelector("#sec-conclusie") === null ){
-  document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:conclusie, only Element ID sec-conclusie not found in HTML.`;
+document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:conclusie, only Element ID sec-conclusie not found in HTML.`;
 }
 // check if the p element exist if not skip insert
 else if(document.querySelector("#conclusie") === null){
-  document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:conclusie, only Element ID conclusie not found in HTML.`;
+document.getElementById('status').appendChild(document.createElement(`p`)).innerText = `Error: Have query for subject:conclusie, only Element ID conclusie not found in HTML.`;
 }
 else{
-  // if all exist insert and there is text to insert, insert text and display = block
-  if(conclusie !== ""){
-    displaySubject('conclusie', conclusie);
-  }
+// if all exist insert and there is text to insert, insert text and display = block
+if(conclusie !== ""){
+  displaySubject('conclusie', conclusie);
 }
+}
+
+
+
+
 
 // Dynamic objects
 
@@ -236,17 +239,17 @@ vr1Dia.style.setProperty('--degVraag1-2', `${ vr1DiaDeg2 * 3.6 }deg`);
 vr1Dia.style.setProperty('--degVraag1-3', `${ vr1DiaDeg3 * 3.6 }deg`);
 // diagram label
 if(queryString.vragen.vr1Opm == 1){
-  document.querySelector(".c-diagram-vraag-1-label-1").style.display = "block";
+document.querySelector(".c-diagram-vraag-1-label-1").style.display = "block";
 }
 if(queryString.vragen.vr1Opm == 2){
-  document.querySelector(".c-diagram-vraag-1-label-2").style.display = "block";
+document.querySelector(".c-diagram-vraag-1-label-2").style.display = "block";
 }
 if(queryString.vragen.vr1Opm == 3){
-  document.querySelector(".c-diagram-vraag-1-label-3").style.display = "block";
+document.querySelector(".c-diagram-vraag-1-label-3").style.display = "block";
 }
 
-// vraag 2 meter svg graden
-document.getElementById("vraag-2-arrow").style.transform = `rotate(${queryString.vragen.vr2Ber}deg)`;
+// meter svg graden
+document.getElementById("vraag-2-arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
 
 //c-diagram vraag site 3 / PDF 6 - omzet
 const vr3Dia = document.querySelector(".c-diagram-vraag-3");
@@ -262,3 +265,15 @@ vr3DiaText.style.transform = `rotate(${((Number(queryString.vragen.vr3Ber) /2 )+
 
 // zet graden om naar waarde label
 vr3DiaText.innerText = `${Math.round(queryString.vragen.vr3Ber / 3.6)}%`;
+
+
+// debug code
+let code = `K${queryString.kleurCode}S${queryString.score.waarde}/${queryString.score.visual}`;
+code = `${code}V${queryString.vragen.vr1Sco}${queryString.vragen.vr2Sco}${queryString.vragen.vr3Sco}${queryString.vragen.vr4Sco}${queryString.vragen.vr5Sco}${queryString.vragen.vr6Sco}${queryString.vragen.vr7Sco}`;
+code = `${code}C${queryString.vragen.Con1}${queryString.vragen.Con2}${queryString.vragen.Con3}${queryString.vragen.Con4}`;
+
+const codeNodes = document.querySelectorAll(".code")
+const nrCodeNodes = codeNodes.length;
+for(let index = 0; index < nrCodeNodes; index++){
+  codeNodes[index].innerText = code;
+}

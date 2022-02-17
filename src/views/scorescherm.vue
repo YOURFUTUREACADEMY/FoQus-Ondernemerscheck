@@ -111,7 +111,7 @@ export default {
   name: "scorescherm",
   data() {
     return {
-      testMode: true,
+      testMode: false,
       kleurCode: this.$store.getters.getResultaat("kleur"),
       score: this.$store.getters.getResultaat("score"),
       meter: "",
