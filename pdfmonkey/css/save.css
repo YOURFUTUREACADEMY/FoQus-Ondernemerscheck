@@ -21,7 +21,7 @@
 
     /* sizes */
     --width: 90%;
-    --pageHeight: 256mm;
+    --pageHeight: 297mm;
     --headerHeight: 10%;
     --footerHeight: 10%;
 
@@ -34,7 +34,7 @@
 
 
 .onload{
-    display: none;
+    display: block;
 }
 
 .text{
@@ -85,6 +85,7 @@ p {
     display: flex;
     /* background-color: red; */
     flex-direction:column;
+    justify-content: space-between;
     height: var(--footerHeight);
     width: var(--width);
     /* border: 1px solid white; */
@@ -93,16 +94,20 @@ p {
 .header{
     /* height: 100%; */
     width: 90%;
-    margin: 0%;
     padding: 0%;
     align-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #intro-header{
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: var(--grijs);
 }
 
 .footer{
+    display: inline-block;
     height: 99%;
     width: 15%;
     margin: 1px;
@@ -135,7 +140,7 @@ p {
     text-align: start;
     margin: 5% auto;
     width: 90%;
-    padding:0%;
+    padding: 0%;
 }
 
 .bekijk-resultaat{
@@ -232,8 +237,8 @@ p {
 
 .c-diagram-container{
     display:block;
-    position: absolute;
-    left: 600px;
+    position: relative;
+    // left: 600px;
 }
 
 .c-diagram{
@@ -253,8 +258,10 @@ p {
         var(--donkerBlauw) 0 var(--degVraag1-1), 
         var(--donkerTurquoise) 0 var(--degVraag1-2), 
         var(--lichtTurquoise) 0 var(--degVraag1-3), 
-        var(--donkerGrijs) 0 360deg 
-    ); 
+        var(--donkerGrijs) 0 360deg );
+        position: absolute;
+        top: -2050px;
+        
 }
 
 .c-diagram-vraag-1-label-1{
@@ -296,8 +303,9 @@ p {
 .c-diagram-vraag-3{
     background-image: conic-gradient(
         var(--donkerTurquoise) var(--degVraag3), 
-        var(--donkerGrijs) 0 360deg 
-    ); 
+        var(--donkerGrijs) 0 360deg); 
+         position: absolute;
+        top: -2420px;
 }
 
 .c-diagram-vraag-3-label{
@@ -356,17 +364,3 @@ p {
 .vraag-rood{
     border: 6px solid var(--scoreSlecht);
 }
-
-.code{
-    color: #e7e6e6;
-}
-
-/* TO REMOVE */
-.to-do{
-    color:red;
-    width: 150px;
-    height: 150px;
-    background-color:aliceblue;
-}
-
-

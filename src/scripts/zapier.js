@@ -1,4 +1,7 @@
 
+//voorbeeld zapier object 
+// let data = {eb:this.$OTAP,tb:4,date:"",project:{},naw:{}}
+
 const $zapUrl = "https://hooks.zapier.com/hooks/catch/";
 
 
@@ -32,21 +35,21 @@ export async function sendToZap(zapcode, data, options={method:"POST",headers:{'
     }
   }
   
-  // OLD POST data to zap thenable methode
-  export function OLDsendToZap(url, data, options={methode:"POST"}){
+// OLD POST data to zap thenable methode
+export function OLDsendToZap(url, data, options={methode:"POST"}){
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+  // https://developer.mozilla.org/en-US/docs/Web/API/fetch
+
+  var promise = fetch(url + "/?" + data,{options})
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    })
+    .catch((error) => {
+      alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
+      return error;
+  });
   
-    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-    // https://developer.mozilla.org/en-US/docs/Web/API/fetch
-  
-    var promise = fetch(url + "/?" + data,{options})
-      .then(response => response.json())
-      .then(data => {
-        return data;
-      })
-      .catch((error) => {
-        alert("Helaas is het niet gelukt om de aanvraag te verzenden probeer het nogmaals.");
-        return error;
-    });
-   
-     return promise;
-  }
+    return promise;
+}

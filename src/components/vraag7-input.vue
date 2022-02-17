@@ -62,8 +62,8 @@ export default {
       });
     },
     runOpslag(label, waarde){
-      waarde = Number(waarde) + 1;
-      this.opslag(label, waarde);
+      let gecorrigeerdeWaarde = Number(waarde) + 1;
+      this.opslag(label, gecorrigeerdeWaarde);
     },
   },
   

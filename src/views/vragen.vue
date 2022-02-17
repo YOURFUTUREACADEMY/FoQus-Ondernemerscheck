@@ -56,7 +56,10 @@ import vraag5 from "../components/vraag5-input";
 import vraag6 from "../components/vraag6-input";
 import vraag7 from "../components/vraag7-input";
 import berekenUitslag from "../scripts/score.js";
+import { compose } from "../scripts/score.js";
 import functions from "../scripts/functions.js";
+import config from "@/json/config.json";
+import { sendToZap } from "../scripts/zapier.js";
 
 require('@/styles/vragen.css')
 
@@ -82,20 +85,47 @@ export default {
   },
   // ga naar score scherm
   methods: {
-    nextStep(){
+    async nextStep(){
       // controleer store op invoer waarde
       let inputOke = functions.validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
       // console.log(inputOke.reason)
       if(inputOke.valid){
-        this.activeStep++
-        if(this.activeStep > this.vragen){
+        console.log(this.activeStep)
+        if(this.activeStep < this.vragen){
+          this.activeStep++
+        }
+        else{
           // bereken de uitslag en ga naar scorescherm
           this.$store.commit("setResultaat", berekenUitslag(this.$store.getters.getFullAntwoord));
-          this.$router.push("/scorescherm");
+          // this.$router.push("/scorescherm");
+          this.sendExcel();
         }
       }
     // einde nextStep
     },
+    async sendExcel(){
+      
+      // compose rapport data
+      let data = {eb:this.$OTAP,tb:1,date:"",project:compose.excel(this.$store.getters.getFullResultaat),naw:{}};
+   
+      // insert date
+      const date = functions.date();
+      data.date = date.full;    
+
+      // maak JSON van data
+      data = JSON.stringify(data);
+      
+      const response = await sendToZap(config.Zapier, data);   
+
+      // controleer respone op succes
+      if(response.status === 'success'){
+        this.$router.push("/scorescherm");
+      }
+      else{
+        console.warn("Failed to generate Excel")
+      }
+    // end sendExcel
+    }
   // einde methods  
   },
   // wissel label op als het aantal vragen is bereikt

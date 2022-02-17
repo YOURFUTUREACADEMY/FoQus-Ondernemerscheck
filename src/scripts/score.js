@@ -84,7 +84,8 @@ function berekenUitslag(vragen){
   const totaal = Number(opmerking.vraag1.waarden[0]) + Number(opmerking.vraag1.waarden[1]) + Number(opmerking.vraag1.waarden[2]) + Number(opmerking.vraag1.waarden[3]) + Number(opmerking.vraag1.waarden[4]);
   
   if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
-    resultaat.vraag1.score = Number(vraag1.waarde)}
+    // resultaat.vraag1.score = Number(vraag1.waarde)}
+    resultaat.vraag1.score = ""}
   // vraag 1.1  
   if( vraag1.waarde <2  && vraag1.waarde !== ""){   
     resultaat.vraag1.opmerking = 1;
@@ -292,7 +293,7 @@ resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).poin
  
   // statement vraag 7
   // vraag 7.1
-  if( vraag7.waarde >= 8 && vraag7.waarde !== ""){
+  if( vraag7.waarde >= 8){
     resultaat.vraag7.opmerking = 1;
     resultaat.vraag7.score = groen;
     resultaat.score = resultaat.score + groen; 
@@ -304,7 +305,7 @@ resultaat.vraag2.berekening = midPointerMeter(vraag2.waarde, meterSettings).poin
     resultaat.score = resultaat.score + oranje; 
   }
   // vraag 7.3
-  else if(vraag7.waarde < 6 && vraag7.waarde > 0){
+  else if(vraag7.waarde < 6 && vraag7.waarde >= 0){
     resultaat.vraag7.opmerking = 3;
     resultaat.vraag7.score = rood;
     resultaat.score = resultaat.score + rood; 
