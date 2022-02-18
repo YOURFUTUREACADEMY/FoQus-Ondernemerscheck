@@ -14,7 +14,7 @@ const queryString= {
       "vr1Ber":"90",
       "vr2Opm":1,
       "vr2Sco":1,
-      "vr2Ber":"45.00",
+      "vr2Ber":"20.00",
       "vr3Opm":2,
       "vr3Sco":5,
       "vr3Ber":"165.00",
@@ -248,8 +248,8 @@ if(queryString.vragen.vr1Opm == 3){
 document.querySelector(".c-diagram-vraag-1-label-3").style.display = "block";
 }
 
-// meter svg graden
-document.getElementById("vraag-2-arrow").style.transform = `rotate(${queryString.score.visual}deg)`;
+// meter vraag 2 svg graden
+document.getElementById("vraag-2-arrow").style.transform = `rotate(${queryString.vragen.vr2Ber}deg)`;
 
 //c-diagram vraag site 3 / PDF 6 - omzet
 const vr3Dia = document.querySelector(".c-diagram-vraag-3");
