@@ -178,7 +178,7 @@ export default {
       nameMissingMSG: "vul a.u.b uw naam in",
       nameOke: "",
       email: "", 
-      emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomijn.nl",
+      emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
       emailOke:"",
       // status state -> conditie -> kleurCode, class, label, image
       status: {

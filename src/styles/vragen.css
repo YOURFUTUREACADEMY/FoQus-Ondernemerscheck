@@ -42,7 +42,7 @@
 
 /* range track/line */
 .rs-line {
-    /* width: 500px; */
+    /* max-width: 500px; */
     height: 1.8rem;
     overflow: hidden;
     cursor: pointer;
@@ -139,3 +139,10 @@
   font-size:30px;
   margin: 0px 5px;
   }
+
+  /* screen size 1200px */
+@media only screen and (min-width: 1199px) {
+	.rs-line {
+		width: 500px;
+	}
+}

@@ -1,7 +1,7 @@
 <template>
      <main>
     <h1 class="header text-center" role="heading">
-      U Krijgt spoedig uw Foqusraport.
+      Je persoonlijke ondernemers-check rapport is verstuurd naar het door jouw opgegeven mailadres.
     </h1>
   </main>
 </template>

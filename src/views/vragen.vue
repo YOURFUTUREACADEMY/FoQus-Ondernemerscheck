@@ -22,7 +22,7 @@
       </div>
 
     <!-- Use showBackBtn to add / remove the back button -->
-      <div class="container-btn d-flex justify-content-between bd-highlight py-3">
+      <div class="container-btn d-flex justify-content-center bd-highlight py-3">
         <div class="bd-highlight">
           <button
             class="btn  btn-lg"

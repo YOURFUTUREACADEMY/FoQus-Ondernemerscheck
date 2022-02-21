@@ -17,8 +17,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 800px;
-  margin-top: 5%;
+  margin: 5%;
 }
 
 main {
@@ -95,10 +94,6 @@ main {
 
 /* screen size 1200px */
 @media only screen and (max-width: 1200px) {
-  body {
-    height: auto;
-  }
-
    #app {
     width: 90%;
   }
@@ -150,14 +145,6 @@ main {
 
   .vl {
     display: none;
-  }
-
-  .section-score {
-    height: 650px;
-  }
-
-  .container-score {
-    height: 700px;
   }
 
   .floatL {
@@ -213,14 +200,6 @@ main {
     width: 20px;
     top: -37px;
     margin-left: -6px;
-  }
-
-  .section-score {
-    height: 650px;
-  }
-
-   .container-score {
-    height: 675px;
   }
 
   .meterContainer {
