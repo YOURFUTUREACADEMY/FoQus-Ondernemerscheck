@@ -1,149 +1,100 @@
 <template>
-	<main class="section-score">
-		<hr class="hl py-2 mb-0" />
-		<div class="d-flex">
-			<div class="container-score">
-				<h3 class="header text-center-score">Jouw score</h3>
-				<div class="row mt-4">
-					<div class="col-xxl-8">
-						<section
-							id="uitslag"
-							class="
-								row
-								align-items-center
-								d-flex
-								flex-column
-								justify-content-center
-							"
-						>
-							<div
-								class="
-									col-md-6
-									scoreMeterContainer
-									d-flex
-									justify-content-center
-								"
-							>
-								<AnalogVolMeter
-									class="meter"
-									:value="score"
-									:settings="meterSettings"
-									v-on:meter="meterData"
-								></AnalogVolMeter>
-							</div>
-							<div class="col-md-11 d-flex row justify-content-center">
-								<p class="text-score">{{ scoreCondition.visual.signaal }}.</p>
-							</div>
-							<section id="emailForm" class="d-flex flex-column">
-								<div class="scoreFlex">
-									<form class="">
-										<div class="row mb-3">
-											<label
-												class="
-													col-sm-3 col-form-label
-													text-score
-													d-flex
-													justify-content-center
-												"
-												for="naam"
-												>Naam:</label
-											>
-											<div class="col-xl-5 d-flex justify-content-center">
-												<input
-													class="form-control"
-													type="text"
-													id="naam"
-													v-model="name"
-												/>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<label
-												class="
-													col-sm-3 col-form-label
-													text-score
-													d-flex
-													justify-content-center
-												"
-												for="email"
-												>Emailadres:</label
-											>
-											<div class="col-xl-5 d-flex justify-content-center">
-												<input
-													class="form-control"
-													type="email"
-													name="email"
-													id="email"
-													v-model="email"
-												/>
-											</div>
-										</div>
+  <main class="section-score">
+    <hr class="hl py-2 mb-0" />
+    <div class="d-flex">
+      <div class="container-score ">
+        <h3 class="header text-center-score">Jouw score</h3>
+        <div class="row mt-4 ">
+          <div class="col-xxl-8 ">
+            <section id="uitslag" class="row align-items-center ">
+              <div class="col-md-6 scoreMeterContainer">
+                <AnalogVolMeter
+                  class="meter"
+                  :value="score"
+                  :settings="meterSettings"
+                  v-on:meter="meterData"
+                ></AnalogVolMeter>
+              </div>
+              <div class="col-md-6 d-flex row justify-content-center">
+                <p class="text-score ">
+                  {{ scoreCondition.visual.signaal }}.
+                </p> 
+              </div>
+            </section>
 
-										<div class="d-flex flex-column">
-											<button
-												type="button"
-												class="btn btn-primary adviesBtn"
-												:class="sendButton"
-												onSubmit="return false;"
-												@mouseup="sendPDF()"
-											>
-												Ik ontvang graag het volledige rapport per mail
-											</button>
-										</div>
-										<div class="text-danger">
-											<ul>
-												<li>
-													Natuurlijk wil je niet iedereen zomaar je naam en
-													email adres geven. Dat snappen we. We zijn zelf ook
-													ondernemers en wars van alle ongevraagde spam die we
-													ontvangen.
-												</li>
-												<li>
-													Wij gebruiken deze gegevens alleen om je jouw
-													ondernemers-check <br />
-													rapportage toe te kunnen sturen en indien nodig te
-													voorzien van extra toelichting naar aanleiding van je
-													uitkomsten.
-												</li>
-												<li>
-													Voor verder contact laten we het initiatief aan jou,
-													zoals wij vinden dat dat hoort.
-												</li>
-												<li>
-													Verder gebruiken we de geanonimiseerde gegevens van
-													door jouw ingevulde ondernemers-check voor analyse en
-													onderzoeksdoeleinden en om onze dienstverlening te
-													verbeteren.
-												</li>
-											</ul>
-										</div>
-									</form>
-								</div>
-							</section>
-						</section>
-					</div>
-					<div class="col-sm-4 align-self-center">
-						<img
-							src="../assets/images/FoQus-Raport.png"
-							class="img-fluid foqusRaport"
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- TO DO Sectie hier onder verwijderen !! -->
-		<section v-if="testMode" class="TO DO verwijderen mt-5">
-			<br />
-			<!-- TO DO storetest knop verwijderen -->
-			<button class="backBtn" @mouseup="$router.push('/')">
-				terug naar begin
-			</button>
-			<!-- TO DO storetest knop verwijderen -->
-			<button class="volgendeBtn" @mouseup="this.$router.push('/testMenu')">
-				REMOVE: go to test menu
-			</button>
-		</section>
-	</main>
+            <section id="emailForm" class="d-flex flex-column">
+              <div class="scoreFlex">
+                <form class="">
+                  <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label text-score" for="naam"
+                      >Naam:</label
+                    >
+                    <div class="col-xl-9">
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="naam"
+                        v-model="name"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      class="col-sm-3 col-form-label text-score"
+                      for="email"
+                      >Emailadres:</label
+                    >
+                    <div class="col-xl-9">
+                      <input
+                        class="form-control"
+                        type="email"
+                        name="email"
+                        id="email"
+                        v-model="email"
+                      />
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <button 
+                      type="button" 
+                      class="btn btn-primary adviesBtn" 
+                      :class="sendButton"
+                      onSubmit="return false;" 
+                      @mouseup="sendPDF()" 
+                    >
+                      Ik ontvang graag het volledige rapport per mail
+                    </button>
+                    <small class="text-danger"
+                      >Natuurlijk wil je niet iedereen zomaar je naam en email adres geven. Dat snappen we. We zijn zelf ook ondernemers en wars<br>
+                      van alle ongevraagde spam die we ontvangen. Wij gebruiken deze gegevens alleen om je jouw ondernemers-check <br>
+                      rapportage toe te kunnen sturen en indien nodig te voorzien van extra toelichting naar aanleiding van je uitkomsten. <br>
+                      Voor verder contact laten we het initiatief aan jou, zoals wij vinden dat dat hoort. Verder gebruiken we de geanonimiseerde <br>
+                      gegevens van door jouw ingevulde ondernemers-check voor analyse en onderzoeksdoeleinden en om onze dienstverlening te verbeteren.</small
+                    >
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+          <div class="col-sm-4 align-self-center">
+            <img src="../assets/images/FoQus-Raport.png" class="img-fluid foqusRaport">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TO DO Sectie hier onder verwijderen !! -->
+    <section v-if="testMode" class="TO DO verwijderen mt-5">
+      <br />
+      <!-- TO DO storetest knop verwijderen -->
+      <button class="backBtn" @mouseup="$router.push('/')">
+        terug naar begin
+      </button>
+      <!-- TO DO storetest knop verwijderen -->
+      <button class="volgendeBtn" @mouseup="this.$router.push('/testMenu')">
+        REMOVE: go to test menu
+      </button>
+    </section>
+  </main>
 </template>
 
 <script>
