@@ -23,6 +23,10 @@
 	color: var(--oranje);
 }
 .text-score {
+	color: var(--zwart);
+	font-weight: 500;
+	font-size: 1.1rem;
+	max-width: 850px;
 	padding: 0.5rem;
 }
 
@@ -69,20 +73,28 @@
 	width: 75px;
 }
 
-.text-score {
-	color: var(--zwart);
-	font-weight: 500;
-	font-size: 1.1rem;
-}
-
 .text-start {
 	width: 50%;
 }
 .text-danger {
+	list-style-type: none;
 	color: black;
 	font-size: 12px;
 	padding: 0.5rem;
-	border: 1px dotted var(--donkerTurquoise);
+	margin-top: 40px;
+}
+
+.text-danger li {
+	padding: 0.5em;
+	list-style-type: none;
+}
+
+.text-score p {
+	padding: 0.5rem;
+}
+
+.text-center-score {
+	width: 100%;
 }
 
 .adviesBtn {
@@ -95,6 +107,7 @@
 	max-width: 400px;
 	background-color: var(--grijs);
 	color: var(--zwart);
+	padding: 0.5rem;
 }
 
 .btnFormFault:hover {
@@ -103,8 +116,34 @@
 	color: var(--zwart);
 }
 
-form {
+.btn-primary:hover {
+	color: white;
+}
+.form form {
 	height: auto;
+}
+
+.form-score {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.form-row {
+	width: 550px;
+}
+
+.col-md-6 {
+	width: 100%;
+}
+
+.foqusRaport {
+	position: absolute;
+	right: 230px;
+	top: 750px;
+	width: 15%;
 }
 
 /* screen size 1400px */
@@ -125,4 +164,3 @@ form {
 		width: 80%;
 	}
 }
-

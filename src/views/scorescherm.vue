@@ -5,7 +5,7 @@
 			<div class="container-score">
 				<h3 class="header text-center-score">Jouw score</h3>
 				<div class="row mt-4">
-					<div class="col-xxl-8">
+					<div class="col-xxl-12">
 						<section
 							id="uitslag"
 							class="
@@ -36,8 +36,8 @@
 							</div>
 							<section id="emailForm" class="d-flex flex-column">
 								<div class="scoreFlex">
-									<form class="">
-										<div class="row mb-3">
+									<form class="form-score">
+										<div class="row mb-3 form-row">
 											<label
 												class="
 													col-sm-3 col-form-label
@@ -57,7 +57,7 @@
 												/>
 											</div>
 										</div>
-										<div class="row mb-3">
+										<div class="row mb-3 form-row">
 											<label
 												class="
 													col-sm-3 col-form-label
@@ -91,31 +91,21 @@
 											</button>
 										</div>
 										<div class="text-danger">
-											<ul>
-												<li>
-													Natuurlijk wil je niet iedereen zomaar je naam en
-													email adres geven. Dat snappen we. We zijn zelf ook
-													ondernemers en wars van alle ongevraagde spam die we
-													ontvangen.
-												</li>
-												<li>
-													Wij gebruiken deze gegevens alleen om je jouw
-													ondernemers-check <br />
-													rapportage toe te kunnen sturen en indien nodig te
-													voorzien van extra toelichting naar aanleiding van je
-													uitkomsten.
-												</li>
-												<li>
-													Voor verder contact laten we het initiatief aan jou,
-													zoals wij vinden dat dat hoort.
-												</li>
-												<li>
-													Verder gebruiken we de geanonimiseerde gegevens van
-													door jouw ingevulde ondernemers-check voor analyse en
-													onderzoeksdoeleinden en om onze dienstverlening te
-													verbeteren.
-												</li>
-											</ul>
+											<p>
+												Natuurlijk wil je niet iedereen zomaar je naam en email
+												adres geven. Dat snappen we. We zijn zelf ook
+												ondernemers en wars van alle ongevraagde spam die we
+												ontvangen. Wij gebruiken deze gegevens alleen om je jouw
+												ondernemers-check <br />
+												rapportage toe te kunnen sturen en indien nodig te
+												voorzien van extra toelichting naar aanleiding van je
+												uitkomsten. Voor verder contact laten we het initiatief
+												aan jou, zoals wij vinden dat dat hoort. Verder
+												gebruiken we de geanonimiseerde gegevens van door jouw
+												ingevulde ondernemers-check voor analyse en
+												onderzoeksdoeleinden en om onze dienstverlening te
+												verbeteren.
+											</p>
 										</div>
 									</form>
 								</div>
@@ -125,7 +115,7 @@
 					<div class="col-sm-4 align-self-center">
 						<img
 							src="../assets/images/FoQus-Raport.png"
-							class="img-fluid foqusRaport"
+							class="img-fluid img-score foqusRaport"
 						/>
 					</div>
 				</div>
@@ -154,199 +144,212 @@ import { scoreWaardes } from "../scripts/score.js";
 import functions from "../scripts/functions.js";
 import config from "@/json/config.json";
 
-require('@/styles/score.css')
+require("@/styles/score.css");
 
 export default {
-  name: "scorescherm",
-  data() {
-    return {
-      testMode: false,
-      kleurCode: this.$store.getters.getResultaat("kleur"),
-      score: this.$store.getters.getResultaat("score"),
-      meter: "",
-      meterSettings: {
-        manMode: false,
-        manValue: 50,
-        valueMax: 100,
-        valueMin: 5,
-        degMax: 180,
-        degMin: 0,
-        degAdjust: 1,
-        reverseDirection: true,
-      },
-      name: "", 
-      nameMissingMSG: "vul a.u.b uw naam in",
-      nameOke: "",
-      email: "", 
-      emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
-      emailOke:"",
-      // status state -> conditie -> kleurCode, class, label, image
-      status: {
-        slecht: {
-          kleurCode: scoreWaardes.rood,
-          class: "score-slecht",
-          label: "Stop",
-          signaal: `
+	name: "scorescherm",
+	data() {
+		return {
+			testMode: false,
+			kleurCode: this.$store.getters.getResultaat("kleur"),
+			score: this.$store.getters.getResultaat("score"),
+			meter: "",
+			meterSettings: {
+				manMode: false,
+				manValue: 50,
+				valueMax: 100,
+				valueMin: 5,
+				degMax: 180,
+				degMin: 0,
+				degAdjust: 1,
+				reverseDirection: true,
+			},
+			name: "",
+			nameMissingMSG: "vul a.u.b uw naam in",
+			nameOke: "",
+			email: "",
+			emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
+			emailOke: "",
+			// status state -> conditie -> kleurCode, class, label, image
+			status: {
+				slecht: {
+					kleurCode: scoreWaardes.rood,
+					class: "score-slecht",
+					label: "Stop",
+					signaal: `
           HET LIJKT HELAAS NIET ZO GOED TE GAAN \n \n
           Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In combinatie hebben ze wel een signaalfunctie. 
           Voor jou is dat signaal dat het noodzakelijk is om bij te sturen en gericht te verbeteren. En vooral heldere keuzes te maken om weer met plezier en succesvol te gaan ondernemen. 
           Op deze manier doorgaan lijkt riskant.`,
-          image: "Bubble-rood.png",
-        },
-        gemiddeld: {
-          kleurCode: scoreWaardes.oranje,
-          class: "score-matig",
-          label: "Let op",
-          signaal: `
+					image: "Bubble-rood.png",
+				},
+				gemiddeld: {
+					kleurCode: scoreWaardes.oranje,
+					class: "score-matig",
+					label: "Let op",
+					signaal: `
           ER IS AANDACHT NODIG \n \n
           Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout In combinatie hebben ze een signaalfunctie. 
           Voor jou is dat signaal dat er aandacht nodig is.`,
-          image: "Bubble-oranje.png",
-        },
-        goed: {
-          kleurCode: scoreWaardes.groen,
-          class: "score-goed",
-          label: "Ga zo door",
-          signaal: `
+					image: "Bubble-oranje.png",
+				},
+				goed: {
+					kleurCode: scoreWaardes.groen,
+					class: "score-goed",
+					label: "Ga zo door",
+					signaal: `
           DAT ZIET ER GOED UIT \n \n
           Je hebt 7 vragen beantwoord die iets zeggen over hoe je ervoor staat als ondernemer. De antwoorden zijn niet goed of fout. In combinatie hebben ze wel een signaalfunctie. \n 
           Bij jou ziet het er ogenschijnlijk goed uit. Door te blijven focussen op de zaken die je succes en plezier brengen blijft het ondernemen leuk. Voorkom dat je verblind raakt door succes en blijf regelmatig kritisch kijken naar jezelf en je onderneming. Laat bijv. anderen eens meekijken om je te inspireren, zij zien vaak andere aspecten van je bedrijf.`,
-          image: "Bubble-groen.png",
-        },
-      },
-    }; //end return
-  }, //end data
-  components: {
-    AnalogVolMeter,
-  },
-  created() {
-    if (this.score == undefined) {
-      this.$router.push("/");
-    }
-    if(this.$OTAP !== 3){
-      this.testMode = false;
-    }
-  },
-  computed: {
-    scoreCondition() {
-      let visual = {
-        image: "",
-        class: "",
-        signaal: "",
-        label: "",
-      };
-      // zet conditie slecht
-      if (this.kleurCode === this.status.slecht.kleurCode) {
-        visual.image = this.status.slecht.image;
-        visual.class = this.status.slecht.class;
-        visual.label = this.status.slecht.label;
-        visual.signaal = this.status.slecht.signaal;
-      }
-      // zet conditie gemiddeld
-      else if (this.kleurCode === this.status.gemiddeld.kleurCode) {
-        visual.image = this.status.gemiddeld.image;
-        visual.class = this.status.gemiddeld.class;
-        visual.label = this.status.gemiddeld.label;
-        visual.signaal = this.status.gemiddeld.signaal;
-      }
-      // zet conditie gemiddelde
-      else if (this.kleurCode === this.status.goed.kleurCode) {
-        visual.image = this.status.goed.image;
-        visual.class = this.status.goed.class;
-        visual.label = this.status.goed.label;
-        visual.signaal = this.status.goed.signaal;
-      } else {
-        visual.image = this.status.slecht.image;
-      }
-      return { visual };
-    },
-    // controle send button
-    sendButton(){
-      let className = 'btnFormFault';
-      // check if form is oke
-      if(this.nameOke && this.emailOke){
-        className = '';
-      }
-      return className;
-      // end send color button
-    }
-    // end computed
-  },
-  methods: {
-    meterData(meter) {
-      this.meter = meter;
-    },
-    async sendPDF(){
-      // check invoer naam
+					image: "Bubble-groen.png",
+				},
+			},
+		}; //end return
+	}, //end data
+	components: {
+		AnalogVolMeter,
+	},
+	created() {
+		if (this.score == undefined) {
+			this.$router.push("/");
+		}
+		if (this.$OTAP !== 3) {
+			this.testMode = false;
+		}
+	},
+	computed: {
+		scoreCondition() {
+			let visual = {
+				image: "",
+				class: "",
+				signaal: "",
+				label: "",
+			};
+			// zet conditie slecht
+			if (this.kleurCode === this.status.slecht.kleurCode) {
+				visual.image = this.status.slecht.image;
+				visual.class = this.status.slecht.class;
+				visual.label = this.status.slecht.label;
+				visual.signaal = this.status.slecht.signaal;
+			}
+			// zet conditie gemiddeld
+			else if (this.kleurCode === this.status.gemiddeld.kleurCode) {
+				visual.image = this.status.gemiddeld.image;
+				visual.class = this.status.gemiddeld.class;
+				visual.label = this.status.gemiddeld.label;
+				visual.signaal = this.status.gemiddeld.signaal;
+			}
+			// zet conditie gemiddelde
+			else if (this.kleurCode === this.status.goed.kleurCode) {
+				visual.image = this.status.goed.image;
+				visual.class = this.status.goed.class;
+				visual.label = this.status.goed.label;
+				visual.signaal = this.status.goed.signaal;
+			} else {
+				visual.image = this.status.slecht.image;
+			}
+			return { visual };
+		},
+		// controle send button
+		sendButton() {
+			let className = "btnFormFault";
+			// check if form is oke
+			if (this.nameOke && this.emailOke) {
+				className = "";
+			}
+			return className;
+			// end send color button
+		},
+		// end computed
+	},
+	methods: {
+		meterData(meter) {
+			this.meter = meter;
+		},
+		async sendPDF() {
+			// check invoer naam
 
-      const borderColorFault = "#9e0000";
-      const borderWidthFault = "3px";
-      const borderColorGood = "#e7e6e6";
-      const borderWidthGood = "1px";
+			const borderColorFault = "#9e0000";
+			const borderWidthFault = "3px";
+			const borderColorGood = "#e7e6e6";
+			const borderWidthGood = "1px";
 
-      if(this.nameOke == false){
-        this.name = this.nameMissingMSG;
-        document.getElementById('naam').style.borderColor = borderColorFault;
-        document.getElementById('naam').style.borderWidth = borderWidthFault;
-      }
-      else{
-        document.getElementById('naam').style.borderColor = borderColorGood;
-        document.getElementById('naam').style.borderWidth = borderWidthGood;
-      }
-      // check invoer email
-      if(this.emailOke == false){
-        this.email = this.emailMissingMSG;
-        document.getElementById('email').style.borderColor = borderColorFault;
-        document.getElementById('email').style.borderWidth = borderWidthFault;
-      }
-      else{
-        document.getElementById('email').style.borderColor = borderColorGood;
-        document.getElementById('email').style.borderWidth = borderWidthGood;
-      }
-      // validatie oke begin met data opbouw voor versturen
-      if(this.nameOke && this.emailOke){
-        // build data
-        let data = {eb:this.$OTAP,tb:4,date:"",project:compose.rapport(this.$store.getters.getFullResultaat),naw:{}}
-  
-        // insert date
-        const date = functions.date();
-        data.date = date.full;
+			if (this.nameOke == false) {
+				this.name = this.nameMissingMSG;
+				document.getElementById("naam").style.borderColor = borderColorFault;
+				document.getElementById("naam").style.borderWidth = borderWidthFault;
+			} else {
+				document.getElementById("naam").style.borderColor = borderColorGood;
+				document.getElementById("naam").style.borderWidth = borderWidthGood;
+			}
+			// check invoer email
+			if (this.emailOke == false) {
+				this.email = this.emailMissingMSG;
+				document.getElementById("email").style.borderColor = borderColorFault;
+				document.getElementById("email").style.borderWidth = borderWidthFault;
+			} else {
+				document.getElementById("email").style.borderColor = borderColorGood;
+				document.getElementById("email").style.borderWidth = borderWidthGood;
+			}
+			// validatie oke begin met data opbouw voor versturen
+			if (this.nameOke && this.emailOke) {
+				// build data
+				let data = {
+					eb: this.$OTAP,
+					tb: 4,
+					date: "",
+					project: compose.rapport(this.$store.getters.getFullResultaat),
+					naw: {},
+				};
 
-        // insert odd values
-        data.project.score.visual = this.meter.pointerDeg.toFixed(2);
+				// insert date
+				const date = functions.date();
+				data.date = date.full;
 
-        // insert NAW data
-        data.naw = {r:this.name,e:this.email};
+				// insert odd values
+				data.project.score.visual = this.meter.pointerDeg.toFixed(2);
 
-        // maak JSON van data
-        data = JSON.stringify(data);
+				// insert NAW data
+				data.naw = { r: this.name, e: this.email };
 
-          // verstuur data
-        const response = await sendToZap(config.Zapier, data);
+				// maak JSON van data
+				data = JSON.stringify(data);
 
-        // controleer respone op succes
-        if(response.status === 'success'){
-            this.name = "";
-            this.email = "";
-            this.$router.push("/outro");
-        }
-        else{
-          alert("Helaas is het niet gelukt om het rapport te verzenden probeer het nogmaals.")
-        }
-      }
-    // end sendPDF function
-    }
-  // end methods
-  },
-  watch:{
-    name: function(){
-      const input = functions.validateInput(this.name,"string", this.nameMissingMSG)
-      this.nameOke = input.valid;
-    },
-    email: function(){
-      const input =  functions.validateInput(this.email,"email", this.emailMissingMSG);
-      this.emailOke = input.valid;
-    },
-  }
+				// verstuur data
+				const response = await sendToZap(config.Zapier, data);
+
+				// controleer respone op succes
+				if (response.status === "success") {
+					this.name = "";
+					this.email = "";
+					this.$router.push("/outro");
+				} else {
+					alert(
+						"Helaas is het niet gelukt om het rapport te verzenden probeer het nogmaals."
+					);
+				}
+			}
+			// end sendPDF function
+		},
+		// end methods
+	},
+	watch: {
+		name: function () {
+			const input = functions.validateInput(
+				this.name,
+				"string",
+				this.nameMissingMSG
+			);
+			this.nameOke = input.valid;
+		},
+		email: function () {
+			const input = functions.validateInput(
+				this.email,
+				"email",
+				this.emailMissingMSG
+			);
+			this.emailOke = input.valid;
+		},
+	},
 }; // end export
 </script>
