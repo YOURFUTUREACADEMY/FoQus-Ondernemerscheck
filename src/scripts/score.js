@@ -128,7 +128,7 @@ const meterSettings= {
   manMode: false,
   manValue: 50,
   valueMax: 80,
-  valueMin: 15,
+  valueMin: 10,
   degMax: 180,
   degMin: 0,
   degAdjust: 1,

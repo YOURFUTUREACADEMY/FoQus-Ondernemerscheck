@@ -1,43 +1,45 @@
 :root {
-	--wit: #ffffff;
-	--lichtBlauw: #d3f1f3;
-	--donkerBlauw: #08344d;
-	--lichtTurquoise: #1dbac1;
-	--donkerTurquoise: #1e8a8c;
-	--oranje: #f6af23;
-	--grijs: #e7e6e6;
-	--donkerGrijs: #a6a6a6;
-	--zwart: #030303ec;
-	/* kleuren score bubbles */
-	--scoreSlecht: #ff0000;
-	--borderSlecht: #9e0000;
-	--scoreMatig: #ed7d31;
-	--borderMatig: #af5c23;
-	--scoreGoed: #00b050;
-	--borderGoed: #00843b;
+    --wit: #ffffff;
+    --lichtBlauw: #d3f1f3;
+    --donkerBlauw: #08344d;
+    --lichtTurquoise: #1dbac1;
+    --donkerTurquoise: #1e8a8c;
+    --oranje: #f6af23;
+    --grijs: #e7e6e6;
+    --donkerGrijs: #A6A6A6;
+    --zwart: #030303ec;
+    /* kleuren score bubbles */
+    --scoreSlecht: #ff0000;
+    --borderSlecht: #9e0000;
+    --scoreMatig: #ed7d31;
+    --borderMatig: #af5c23;
+    --scoreGoed: #00b050;
+    --borderGoed: #00843b;
+    
+    /* margins */
+    --marginLeftText: 5%;
 
-	/* margins */
-	--marginLeftText: 5%;
-
-	/* sizes */
-	--width: 90%;
-	--pageHeight: 297mm;
-	--headerHeight: 10%;
-	--footerHeight: 10%;
-
-	/* c-diagram */
-	--degVraag1-1: 90deg; /* komt uit js */
-	--degVraag1-2: 180deg; /* komt uit js */
-	--degVraag1-3: 270deg; /* komt uit js */
-	--degVraag3: 90deg; /* komt uit js */
+    /* sizes */
+    --width: 90%;
+    --pageHeight: 297mm;
+    --headerHeight: 10%;
+    --footerHeight: 10%; 
+    --sectionHeight: calc(100% - var(--headerHeight) - var(--footerHeight) - 2%); 
+    --sectionPaddingBottom: 215px;
+    /* c-diagram */
+    --degVraag1-1: 90deg; /* komt uit js */
+    --degVraag1-2: 180deg; /* komt uit js */
+    --degVraag1-3: 270deg; /* komt uit js */
+    --degVraag3: 90deg; /* komt uit js */
 }
 
-.onload {
-	display: none;
+
+.onload{
+    display: none;
 }
 
-.text {
-	color: var(--zwart);
+.text{
+    color: var(--zwart);
 }
 
 p {
@@ -64,62 +66,56 @@ p {
 	page-break-after: always;
 }
 
-.page-break {
-	display: block;
-	padding: 0px;
-	margin: 0px;
-	height: 0mm;
-	width: 100%;
+.header-container{
+    align-self: center;
+    display: flex;
+    flex-direction:row;
+    margin: 0%;
+    height: var(--headerHeight);
+    width: var(--width);
+    padding: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
-.header-container {
-	display: flex;
-	flex-direction: row;
-	height: var(--footerHeight);
+
+.header{
+    align-self: center;
+    margin: auto;
+    width: 90%;
 }
 
-.header-container,
-.footer-container {
-	align-self: center;
-	display: flex;
-	/* background-color: red; */
-	flex-direction: column;
-	height: var(--footerHeight);
-	width: var(--width);
-	/* border: 1px solid white; */
+.footer-container{
+    align-self: center;
+    display: flex;
+    flex-direction:row;
+    height: var(--footerHeight);
+    width: var(--width);
+    margin-top: 10px;
 }
 
-.header {
-	/* height: 100%; */
-	width: 90%;
-	margin: 0%;
-	margin-top: 5%;
-	padding: 0%;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	align-self: center;
+.footer{
+    height: 99%;
+    width: 15%;
+    margin: 1px;
+    padding: 0%;
+    align-self: flex-end;
+    margin-left: auto;
 }
 
-#intro-header {
-	background-color: var(--grijs);
+#intro-header{
+    background-color: var(--grijs);
 }
 
-.footer {
-	height: 99%;
-	width: 15%;
-	margin: 1px;
-	padding: 0%;
-	align-self: flex-end;
-}
-
-.sec-intro {
-	align-self: center;
-	background-color: var(--grijs);
-	color: var(--donkerTurquoise);
-	margin: 0%;
-	text-align: center;
-	width: var(--width);
-	height: 100%;
+.sec-intro{
+    align-self: center;
+    background-color: var(--grijs);
+    color: var(--donkerTurquoise);
+    margin: 0%;
+    text-align: center;
+    width: var(--width);
+    height: var(--sectionHeight);
+    padding-bottom: 515px;
 }
 
 .sec-intro h1 {
@@ -165,13 +161,15 @@ p {
 }
 
 /* pagina conclusie */
-.sec-conlusie {
-	align-self: center;
-	background-color: var(--grijs);
-	margin: 0%;
-	height: 90%;
-	width: var(--width);
-	/* padding: 2%; */
+.sec-conlusie{
+    align-self: center;
+    background-color: var(--grijs);
+    margin: 0%;
+    height: var(--sectionHeight);
+    width: var(--width);
+    padding-bottom: var(--sectionPaddingBottom);
+    /* padding: 2%; */
+   
 }
 
 .sec-conlusie p,
@@ -179,16 +177,23 @@ h2 {
 	margin: 1%;
 }
 
-.conclusie-svg-container {
-	float: left;
-	shape-outside: circle(50%);
-	shape-image-threshold: 0.9;
-	height: 30%;
-	width: 30%;
+.conclusie-svg-container{
+    float: left;
+    shape-outside: circle(50%);
+    shape-image-threshold: 0;
+    height: 30%;
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 25px;
 }
 
-#contact {
-	margin-top: 2.5%;
+#conclusie-Out{
+   margin-left: 10px;
+}
+
+#contact{
+  margin-left: 10px;
+  margin-top:2.5%;
 }
 
 /* pagina 3 */
@@ -202,12 +207,14 @@ h2 {
 	width: 70%;
 }
 
-.section-vragen-p3 {
-	height: 90%;
+.section-vragen-p3{
+  height: var(--sectionHeight);
+  padding-bottom: var(--sectionPaddingBottom);
 }
 
-.section-vragen-p4 {
-	height: 79%;
+.section-vragen-p4{
+  height:var(--sectionHeight);
+  padding-bottom: var(--sectionPaddingBottom);
 }
 
 .sec-vragen {
@@ -237,12 +244,16 @@ h2 {
 	margin-bottom: 100px;
 }
 
+#sec-vraag-7{
+    margin-bottom: 100px;
+}
+
 /* circle diagram */
 
-.c-diagram-container {
-	display: block;
-	position: absolute;
-	left: 568px;
+.c-diagram-container{
+    display:block;
+    position: absolute;
+    left: 652px;
 }
 
 .c-diagram {
@@ -253,8 +264,8 @@ h2 {
 }
 
 /* circle diagram vraag 1 */
-.c-diagram-container-vraag-1 {
-	top: 2610x;
+.c-diagram-container-vraag-1{
+    top:2605x;
 }
 
 .c-diagram-vraag-1 {
@@ -291,9 +302,11 @@ h2 {
 }
 
 /* vraag 2 meter */
-#vraag-2-meter {
-	height: 100%;
-	width: 80%;
+#vraag-2-meter{
+    height: 100%;
+    width: 80%;
+    position: relative;
+    left:13px;
 }
 
 /* circle diagram vraag 3 */
@@ -334,24 +347,25 @@ h2 {
 }
 
 /* vraag 6 */
-.vraag-6-svg {
-	height: 90%;
-	margin-top: 2%;
-	position: relative;
-	left: 10px;
+.vraag-6-svg{
+    height: 90%;
+    margin-top: 2%;
+    position:relative;
+    left:15px;
 }
 
 /* vraag 7 */
-.vraag-7-svg {
-	height: 90%;
-	margin-top: 3.5%;
-	position: relative;
-	left: -12px;
+.vraag-7-svg{
+    height: 90%;
+    margin-top: 3.5%;
+    position:relative;
+    left:-29px;
 }
 
 .disclamer {
-	margin: 10px auto 0px;
-	width: var(--width);
+    align-self:flex-end;
+    margin: 225px auto 0px;
+    width: var(--width); 
 }
 
 /* Vragen score kleur */
@@ -367,10 +381,6 @@ h2 {
 	border: 6px solid var(--scoreSlecht);
 }
 
-.code {
-	color: #e7e6e6;
-}
-
 /* TO REMOVE */
 .to-do {
 	color: red;
@@ -379,27 +389,17 @@ h2 {
 	background-color: aliceblue;
 }
 
+
 .code {
-	align-self: flex-start;
-	display: none;
-	width: 25%;
-	color: #e7e6e6;
-	font-size: 0.5rem;
+  align-self: flex-start;
+  width: 25%;
+  color: var(--wit);
+  font-size: 0.4rem;
 }
 
-/* TO REMOVE */
-.to-do {
-	color: red;
-	width: 150px;
-	height: 150px;
-	background-color: aliceblue;
-}
-
-.container-score {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+/* .hidden{
+   display:none;
+}  */
 
 .img-score {
 	position: relative;

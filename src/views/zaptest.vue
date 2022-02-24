@@ -60,7 +60,7 @@ export default {
             vr5Opm: 0, vr5Sco: 1, 
             vr6Opm: 1, vr6Sco: 1, 
             vr7Opm: 1, vr7Sco: 1 }, 
-          conclusie: { Con1: 0, Con2: 0, Con3: 1, Con4: 0 } 
+          conclusie: { Con1: 1, Con2: 1, Con3: 1, Con4: 1 } 
         },
         testExcel:{ 
           kleurWaarde: { 
@@ -85,10 +85,10 @@ export default {
           vr7Sco: 20, 
           vr7Val: 5 }, 
         conclusie: { 
-          Con1: 0, 
-          Con2: 0, 
+          Con1: 1, 
+          Con2: 1, 
           Con3: 1, 
-          Con4: 0 }
+          Con4: 1 }
         },
       insertTestData: true
     }; //end return
