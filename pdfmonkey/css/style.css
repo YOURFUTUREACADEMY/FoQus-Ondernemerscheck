@@ -22,10 +22,10 @@
     /* sizes */
     --width: 90%;
     --pageHeight: 297mm;
-    --headerHeight: 10%;
+    --headerHeight: 10%; 
     --footerHeight: 10%; 
     --sectionHeight: calc(100% - var(--headerHeight) - var(--footerHeight) - 2%); 
-    --sectionPaddingBottom: 215px;
+    --sectionPaddingBottom: 220px;
     /* c-diagram */
     --degVraag1-1: 90deg; /* komt uit js */
     --degVraag1-2: 180deg; /* komt uit js */
@@ -43,27 +43,27 @@
 }
 
 p {
-	font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
-.main-container {
-	color: var(--donkerTurquoise);
-	display: block;
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	font-size: 16px;
-	font-weight: 500;
-	margin: 0 auto;
-	text-align: start;
+.main-container{
+    color: var(--donkerTurquoise);
+    display:block;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: start;
 }
 
 .page {
-	display: flex;
-	flex-direction: column;
-	background-color: var(--wit);
-	height: var(--pageHeight);
-	padding: 0%;
-	margin: 0%;
-	page-break-after: always;
+    display: flex;
+    flex-direction:column;
+    background-color: var(--wit);
+    height: var(--pageHeight);
+    padding: 0%;
+    margin: 0%;
+    page-break-after: always;
 }
 
 .header-container{
@@ -115,49 +115,49 @@ p {
     text-align: center;
     width: var(--width);
     height: var(--sectionHeight);
-    padding-bottom: 515px;
+    padding-bottom:calc(var(--sectionPaddingBottom) + 290px);
 }
 
-.sec-intro h1 {
-	color: var(--donkerBlauw);
-	font-size: 2.25rem;
-	font-weight: 950;
-	margin-bottom: 5%;
+.sec-intro h1{
+    color: var(--donkerBlauw);
+    font-size: 2.25rem;
+    font-weight: 950;
+    margin-bottom: 5%;
 }
 
 .sec-intro h2 {
-	margin-bottom: 0%;
+    margin-bottom: 0%;
 }
 
-.p-intro {
-	text-align: start;
-	margin: 5% auto;
-	width: 90%;
-	padding: 0%;
+.p-intro{
+    text-align: start;
+    margin: 5% auto;
+    width: 90%;
+    padding: 0%;
 }
 
-.bekijk-resultaat {
-	color: var(--wit);
-	background-color: var(--lichtTurquoise);
-	border: 1px solid var(--donkerTurquoise);
-	border-radius: 15% / 100%;
-	margin: 0% auto;
-	height: 25px;
-	width: 200px;
-	padding-top: 10px;
-	text-align: center;
+.bekijk-resultaat{
+    color: var(--wit);
+    background-color: var(--lichtTurquoise);
+    border: 1px solid var(--donkerTurquoise);
+    border-radius: 15% / 100%;
+    margin: 0% auto;
+    height: 25px;
+    width: 200px;
+    padding-top: 10px;
+    text-align: center;
 }
 
 /* meter svg */
-.meter {
-	height: 50%;
-	width: 50%;
-	margin: 0%;
+.meter{
+    height: 50%;
+    width: 50%;
+    margin: 0%;
 }
 
-.meter-arrow {
-	transition: 0s ease-out;
-	transform-origin: 59.6% 106.5%;
+.meter-arrow{
+    transition: 0s ease-out;
+    transform-origin: 59.6% 106.5%;
 }
 
 /* pagina conclusie */
@@ -167,14 +167,13 @@ p {
     margin: 0%;
     height: var(--sectionHeight);
     width: var(--width);
-    padding-bottom: var(--sectionPaddingBottom);
+    padding-bottom:calc(var(--sectionPaddingBottom) + 125px);
     /* padding: 2%; */
    
 }
 
-.sec-conlusie p,
-h2 {
-	margin: 1%;
+.sec-conlusie p , h2{
+    margin: 1%;
 }
 
 .conclusie-svg-container{
@@ -191,25 +190,27 @@ h2 {
    margin-left: 10px;
 }
 
+
 #contact{
   margin-left: 10px;
   margin-top:2.5%;
 }
 
+
 /* pagina 3 */
 
 .vraag-container {
-	display: flex;
-	height: 200px;
+    display:flex;
+    height: 200px;
 }
 
 .vraag-text-container {
-	width: 70%;
+    width: 70%;
 }
 
 .section-vragen-p3{
   height: var(--sectionHeight);
-  padding-bottom: var(--sectionPaddingBottom);
+  padding-bottom:calc(var(--sectionPaddingBottom) + 10px)
 }
 
 .section-vragen-p4{
@@ -217,31 +218,31 @@ h2 {
   padding-bottom: var(--sectionPaddingBottom);
 }
 
-.sec-vragen {
-	background-color: var(--grijs);
-	color: var(--donkerTurquoise);
-	margin: 0 auto 20px;
-	margin-top: 40px;
-	width: var(--width);
+.sec-vragen{
+    background-color: var(--grijs);
+    color: var(--donkerTurquoise);
+    margin: 0 auto 20px;
+    margin-top: 40px;
+    width: var(--width);
 }
 
-.sec-vragen h2 {
-	font-size: 1.25rem;
-	margin-left: var(--marginLeftText);
+.sec-vragen h2{
+    font-size: 1.25rem;
+    margin-left: var(--marginLeftText);
 }
 
-.sec-vragen p {
-	margin-left: var(--marginLeftText);
+.sec-vragen p{
+    margin-left: var(--marginLeftText);
 }
 
-.vraag-svg-container {
-	height: 90%;
-	margin: auto;
-	/* width: 75%; */
+.vraag-svg-container{
+    height: 90%;
+    margin: auto;
+    /* width: 75%; */
 }
 
-#sec-vraag-3 {
-	margin-bottom: 100px;
+#sec-vraag-3{
+    margin-bottom: 100px;
 }
 
 #sec-vraag-7{
@@ -256,11 +257,11 @@ h2 {
     left: 652px;
 }
 
-.c-diagram {
-	width: 175px;
-	height: 175px;
-	border-radius: 50%;
-	border: 2px solid var(--wit);
+.c-diagram{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    border: 2px solid var(--wit);
 }
 
 /* circle diagram vraag 1 */
@@ -268,37 +269,37 @@ h2 {
     top:2605x;
 }
 
-.c-diagram-vraag-1 {
-	background-image: conic-gradient(
-		var(--donkerBlauw) 0 var(--degVraag1-1),
-		var(--donkerTurquoise) 0 var(--degVraag1-2),
-		var(--lichtTurquoise) 0 var(--degVraag1-3),
-		var(--donkerGrijs) 0 360deg
-	);
+.c-diagram-vraag-1{
+    background-image: conic-gradient(
+        var(--donkerBlauw) 0 var(--degVraag1-1), 
+        var(--donkerTurquoise) 0 var(--degVraag1-2), 
+        var(--lichtTurquoise) 0 var(--degVraag1-3), 
+        var(--donkerGrijs) 0 360deg 
+    ); 
 }
 
-.c-diagram-vraag-1-label-1 {
-	display: none;
-	color: var(--wit);
-	position: relative;
-	top: -90px;
-	left: 100px;
+.c-diagram-vraag-1-label-1{
+    display:none;
+    color:var(--wit);
+    position: relative;
+    top:-90px;
+    left:100px;
 }
 
-.c-diagram-vraag-1-label-2 {
-	display: none;
-	color: var(--wit);
-	position: relative;
-	top: -130px;
-	left: 20px;
+.c-diagram-vraag-1-label-2{
+    display:none;
+    color:var(--wit);
+    position: relative;
+    top:-130px;
+    left:20px;
 }
 
-.c-diagram-vraag-1-label-3 {
-	display: none;
-	color: var(--wit);
-	position: relative;
-	top: -170px;
-	left: 55px;
+.c-diagram-vraag-1-label-3{
+    display:none;
+    color:var(--wit);
+    position: relative;
+    top:-170px;
+    left:55px;
 }
 
 /* vraag 2 meter */
@@ -309,42 +310,46 @@ h2 {
     left:13px;
 }
 
+
 /* circle diagram vraag 3 */
-.c-diagram-container-vraag-3 {
-	top: 3114x;
+.c-diagram-container-vraag-3{
+    top:3114x;
 }
 
-.c-diagram-vraag-3 {
-	background-image: conic-gradient(
-		var(--donkerTurquoise) var(--degVraag3),
-		var(--donkerGrijs) 0 360deg
-	);
+.c-diagram-vraag-3{
+    background-image: conic-gradient(
+        var(--donkerTurquoise) var(--degVraag3), 
+        var(--donkerGrijs) 0 360deg 
+    ); 
 }
 
-.c-diagram-vraag-3-label {
-	margin: 0%;
-	position: relative;
-	top: -100px;
+.c-diagram-vraag-3-label{
+    margin: 0%;
+    position: relative;
+    top:-100px;
 }
 
-.c-diagram-vraag-3-label p {
-	color: var(--wit);
-	margin: 0%;
+.c-diagram-vraag-3-label p{
+    color:var(--wit);
+    margin: 0%;
 }
+
+
 
 /* SVG  */
 
 .vraag-svg-container {
-	width: 30%;
+    width: 30%;
 }
 
 /* vraag 4 */
-.vraag-4-svg {
-	height: 107%;
-	margin-top: -2%;
-	position: relative;
-	left: 0px;
+.vraag-4-svg{
+    height: 107%;
+    margin-top: -2%;
+    position:relative;
+    left:0px;
 }
+
 
 /* vraag 6 */
 .vraag-6-svg{
@@ -369,24 +374,24 @@ h2 {
 }
 
 /* Vragen score kleur */
-.vraag-groen {
-	border: 6px solid var(--scoreGoed);
+.vraag-groen{
+    border: 6px solid var(--scoreGoed);
 }
 
-.vraag-oranje {
-	border: 6px solid var(--scoreMatig);
+.vraag-oranje{
+    border: 6px solid var(--scoreMatig);
 }
 
-.vraag-rood {
-	border: 6px solid var(--scoreSlecht);
+.vraag-rood{
+    border: 6px solid var(--scoreSlecht);
 }
 
 /* TO REMOVE */
-.to-do {
-	color: red;
-	width: 150px;
-	height: 150px;
-	background-color: aliceblue;
+.to-do{
+    color:red;
+    width: 150px;
+    height: 150px;
+    background-color:aliceblue;
 }
 
 
@@ -397,12 +402,6 @@ h2 {
   font-size: 0.4rem;
 }
 
-/* .hidden{
-   display:none;
-}  */
 
-.img-score {
-	position: relative;
-	top: 0;
-	right: 0;
-}
+
+
