@@ -98,11 +98,11 @@ main {
 		height: auto;
 	}
 
-	.introTekst,
+	/* .introTekst,
 	.text-score {
 		font-size: 1.2rem;
 		width: 95%;
-	}
+	} */
 
 	.header {
 		font-size: 1.4rem;

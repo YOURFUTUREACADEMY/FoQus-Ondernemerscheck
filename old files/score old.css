@@ -2,149 +2,149 @@
 
 /*  styling for all score.vue objects */
 
-    .hl {
-        background-color: var(--donkerBlauw);
-        opacity: 1;
-    }
+.hl {
+	background-color: var(--donkerBlauw);
+	opacity: 1;
+}
 
-    /* verticale lijn tussen score bubble en block quote */
-    .vl {
-        background-color: var(--donkerGrijs);
-        height: 250px;
-        display: none;
-        width: 2px;
-    }
+/* verticale lijn tussen score bubble en block quote */
+.vl {
+	background-color: var(--donkerGrijs);
+	height: 250px;
+	display: none;
+	width: 2px;
+}
 
-    .section-score {
-        background-color: var(--wit);
-        height: 600px;
-    }
+.section-score {
+	background-color: var(--wit);
+	height: 600px;
+}
 
-    .container-score {
-        height: 550px;
-    }
+.container-score {
+	height: 550px;
+}
 
-    .header-score {
-        color: var(--oranje);
-    }
+.header-score {
+	color: var(--oranje);
+}
 
-    .score-bubble {
-        border: 1px solid;
-        height: 100px;
-        width: 100px;
-    }
+.score-bubble {
+	border: 1px solid;
+	height: 100px;
+	width: 100px;
+}
 
-    .score-slecht {
-        background-color: var(--scoreSlecht);
-        border-color: var(--borderSlecht);
-    }
+.score-slecht {
+	background-color: var(--scoreSlecht);
+	border-color: var(--borderSlecht);
+}
 
-    .score-matig {
-        background-color: var(--scoreMatig);
-        border-color: var(--borderMatig);
-    }
+.score-matig {
+	background-color: var(--scoreMatig);
+	border-color: var(--borderMatig);
+}
 
-    .score-goed {
-        background-color: var(--scoreGoed);
-        border-color: var(--borderGoed);
-    }
+.score-goed {
+	background-color: var(--scoreGoed);
+	border-color: var(--borderGoed);
+}
 
-    .legenda-bubble {
-        border: 1px solid;
-        height: 25px;
-        width: 25px;
-    }
+.legenda-bubble {
+	border: 1px solid;
+	height: 25px;
+	width: 25px;
+}
 
-    .meter {
-        background: transparent;
-        /* margin-top: -25px; */
-        height: 35%;
-        width: 35%;
-    }
+.meter {
+	background: transparent;
+	/* margin-top: -25px; */
+	height: 35%;
+	width: 35%;
+}
 
-    .label-naw {
-        margin-top: 12px;
-        text-align: left;
-        width: 75px;
-    }
+.label-naw {
+	margin-top: 12px;
+	text-align: left;
+	width: 75px;
+}
 
-    .text-score {
-        color: var(--zwart);
-        font-weight: 500;
-        font-size: 1.1rem;
-    }
+.text-score {
+	color: var(--zwart);
+	font-weight: 500;
+	font-size: 1.1rem;
+}
 
-    .text-start {
-        width: 50%;
-    }
+.text-start {
+	width: 50%;
+}
 
-    .adviesBtn {
-        width: 100%;
-        border-color: transparent;
-    }
+.adviesBtn {
+	width: 100%;
+	border-color: transparent;
+}
 
-    .btnFormFault{
-        background-color: var(--grijs);
-        color: var(--zwart)
-    }
+.btnFormFault {
+	background-color: var(--grijs);
+	color: var(--zwart);
+}
 
-    .btnFormFault:hover{
-        background-color: var(--borderSlecht);
-        border-color: var(--zwart);
-        color: var(--zwart);
-    }
+.btnFormFault:hover {
+	background-color: var(--borderSlecht);
+	border-color: var(--zwart);
+	color: var(--zwart);
+}
 
-    .section-score {
-        height: 700px;
-    }
+.section-score {
+	height: 700px;
+}
 
-    /* screen size 1400px */
+/* screen size 1400px */
 @media only screen and (max-width: 1399px) {
-    .foqusRaport {
-      display: none;
-    }
+	.foqusRaport {
+		display: none;
+	}
 
-    .scoreMeterContainer {
-        display: flex;
-        justify-content: center;
-    }
-    .meter {
-      padding: 5%;
-    }
-    /* svg van meter */
-    svg[data-v-125eeefc] {
-        width: 80%;
-    }
+	.scoreMeterContainer {
+		display: flex;
+		justify-content: center;
+	}
+	.meter {
+		padding: 5%;
+	}
+	/* svg van meter */
+	svg[data-v-125eeefc] {
+		width: 80%;
+	}
 
-    .section-score {
-        height: 625px;
-    }
-  }
+	.section-score {
+		height: 625px;
+	}
+}
 
-  /* screen size 1200px */
+/* screen size 1200px */
 @media only screen and (max-width: 1200px) {
-    .section-score {
-        height: 675px;
-    }
+	.section-score {
+		height: 675px;
+	}
 }
 
-    /* screen size 1100px */
+/* screen size 1100px */
 @media only screen and (max-width: 1100px) {
-    .section-score {
-        height: 800px;
-    }
+	.section-score {
+		height: 800px;
+	}
 }
 
-    /* screen size 950px */
-    @media only screen and (max-width: 950px) {
-        .section-score {
-            height: 945px;
-        }
-    }
+/* screen size 950px */
+@media only screen and (max-width: 950px) {
+	.section-score {
+		height: 945px;
+	}
+}
 
 /* screen size 765px */
 @media only screen and (max-width: 765px) {
-    .section-score {
-        height: 1225px;
-    }
+	.section-score {
+		height: 1225px;
+	}
 }
