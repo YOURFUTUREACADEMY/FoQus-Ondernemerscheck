@@ -39,6 +39,9 @@ const queryString= {
 
 // === !! Switch queryString to $docPayload in PDFmonkey.io !! ===
 // const queryString = $docPayload;
+
+const OTAP = "O"; // Welke Template is dit 
+
 function displaySubject(targetElementID, insertedText){
   // check for section and display section
   if(document.querySelector("#sec-"+targetElementID) !== null){
@@ -267,10 +270,12 @@ vr3DiaText.style.transform = `rotate(${((Number(queryString.vragen.vr3Ber) /2 )+
 vr3DiaText.innerText = `${Math.round(queryString.vragen.vr3Ber / 3.6)}%`;
 
 
+
+
 // debug code
-let code = `K${queryString.kleurCode}S${queryString.score.waarde}/${queryString.score.visual}`;
-code = `${code}V${queryString.vragen.vr1Sco}${queryString.vragen.vr2Sco}${queryString.vragen.vr3Sco}${queryString.vragen.vr4Sco}${queryString.vragen.vr5Sco}${queryString.vragen.vr6Sco}${queryString.vragen.vr7Sco}`;
-code = `${code}C${queryString.vragen.Con1}${queryString.vragen.Con2}${queryString.vragen.Con3}${queryString.vragen.Con4}`;
+let code = `${OTAP}-K${queryString.kleurCode}S${queryString.score.waarde}/${queryString.score.visual}`;
+code += `V${queryString.vragen.vr1Sco}${queryString.vragen.vr2Sco}${queryString.vragen.vr3Sco}${queryString.vragen.vr4Sco}${queryString.vragen.vr5Sco}${queryString.vragen.vr6Sco}${queryString.vragen.vr7Sco}`;
+code += `C${queryString.conclusie.Con1}${queryString.conclusie.Con2}${queryString.conclusie.Con3}${queryString.conclusie.Con4}`;
 
 const codeNodes = document.querySelectorAll(".code")
 const nrCodeNodes = codeNodes.length;

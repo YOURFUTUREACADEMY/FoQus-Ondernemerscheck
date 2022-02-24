@@ -23,8 +23,9 @@
     --width: 90%;
     --pageHeight: 297mm;
     --headerHeight: 10%;
-    --footerHeight: 10%;
-
+    --footerHeight: 10%; 
+    --sectionHeight: calc(100% - var(--headerHeight) - var(--footerHeight) - 2%); 
+    --sectionPaddingBottom: 215px;
     /* c-diagram */
     --degVraag1-1: 90deg; /* komt uit js */
     --degVraag1-2: 180deg; /* komt uit js */
@@ -65,44 +66,32 @@ p {
     page-break-after: always;
 }
 
-.page-break{
-    display:block;
-    padding: 0px;
-    margin: 0px;
-    height: 0mm;
-    width: 100%;
-}
-
 .header-container{
+    align-self: center;
     display: flex;
     flex-direction:row;
-    height: var(--footerHeight);
+    margin: 0%;
+    height: var(--headerHeight);
+    width: var(--width);
+    padding: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
-.header-container,
+
+.header{
+    align-self: center;
+    margin: auto;
+    width: 90%;
+}
+
 .footer-container{
     align-self: center;
     display: flex;
-    /* background-color: red; */
-    flex-direction:column;
+    flex-direction:row;
     height: var(--footerHeight);
     width: var(--width);
-    /* border: 1px solid white; */
-}
-
-.header{
-    /* height: 100%; */
-    width: 90%;
-    margin: 0%;
-    margin-top: 5%;
-    padding: 0%;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    align-self: center;
-}
-
-#intro-header{
-    background-color: var(--grijs);
+    margin-top: 10px;
 }
 
 .footer{
@@ -111,6 +100,11 @@ p {
     margin: 1px;
     padding: 0%;
     align-self: flex-end;
+    margin-left: auto;
+}
+
+#intro-header{
+    background-color: var(--grijs);
 }
 
 .sec-intro{
@@ -120,7 +114,8 @@ p {
     margin: 0%;
     text-align: center;
     width: var(--width);
-    height: 100%;
+    height: var(--sectionHeight);
+    padding-bottom: 515px;
 }
 
 .sec-intro h1{
@@ -170,8 +165,9 @@ p {
     align-self: center;
     background-color: var(--grijs);
     margin: 0%;
-    height: 90%;
+    height: var(--sectionHeight);
     width: var(--width);
+    padding-bottom: var(--sectionPaddingBottom);
     /* padding: 2%; */
    
 }
@@ -183,13 +179,20 @@ p {
 .conclusie-svg-container{
     float: left;
     shape-outside: circle(50%);
-    shape-image-threshold: 0.9;
+    shape-image-threshold: 0;
     height: 30%;
     width: 30%;
+    margin-left: 2%;
+    margin-right: 25px;
+}
+
+#conclusie-Out{
+   margin-left: 10px;
 }
 
 #contact{
-    margin-top:2.5%;
+  margin-left: 10px;
+  margin-top:2.5%;
 }
 
 
@@ -205,11 +208,13 @@ p {
 }
 
 .section-vragen-p3{
-  height: 90%;
+  height: var(--sectionHeight);
+  padding-bottom: var(--sectionPaddingBottom);
 }
 
 .section-vragen-p4{
-  height: 79%;
+  height:var(--sectionHeight);
+  padding-bottom: var(--sectionPaddingBottom);
 }
 
 .sec-vragen{
@@ -239,12 +244,16 @@ p {
     margin-bottom: 100px;
 }
 
+#sec-vraag-7{
+    margin-bottom: 100px;
+}
+
 /* circle diagram */
 
 .c-diagram-container{
     display:block;
     position: absolute;
-    left: 568px;
+    left: 652px;
 }
 
 .c-diagram{
@@ -256,7 +265,7 @@ p {
 
 /* circle diagram vraag 1 */
 .c-diagram-container-vraag-1{
-    top:2610x;
+    top:2605x;
 }
 
 .c-diagram-vraag-1{
@@ -296,6 +305,8 @@ p {
 #vraag-2-meter{
     height: 100%;
     width: 80%;
+    position: relative;
+    left:13px;
 }
 
 
@@ -344,7 +355,7 @@ p {
     height: 90%;
     margin-top: 2%;
     position:relative;
-    left:10px;
+    left:15px;
 }
 
 /* vraag 7 */
@@ -352,11 +363,12 @@ p {
     height: 90%;
     margin-top: 3.5%;
     position:relative;
-    left:-12px;
+    left:-29px;
 }
 
 .disclamer {
-    margin: 10px auto 0px;
+    align-self:flex-end;
+    margin: 225px auto 0px;
     width: var(--width); 
 }
 
@@ -373,10 +385,6 @@ p {
     border: 6px solid var(--scoreSlecht);
 }
 
-.code{
-    color: #e7e6e6;
-}
-
 /* TO REMOVE */
 .to-do{
     color:red;
@@ -384,28 +392,18 @@ p {
     height: 150px;
     background-color:aliceblue;
 }
-
-
-
 
 
 .code {
   align-self: flex-start;
-  display: none;
   width: 25%;
-  color: #e7e6e6;
-  font-size: 0.5rem;
+  color: var(--wit);
+  font-size: 0.4rem;
 }
 
-
-/* TO REMOVE */
-.to-do{
-    color:red;
-    width: 150px;
-    height: 150px;
-    background-color:aliceblue;
-}
-
+/* .hidden{
+   display:none;
+}  */
 
 
 
