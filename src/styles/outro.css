@@ -1,3 +1,33 @@
 @import "../styles/root.css";
 
 /*  styling for all outro.vue objects */
+
+.header-outro{
+    color: var(--donkerTurquoise);
+    font-size: 1.6rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    width: 90%;
+}
+
+
+
+
+
+/* screen size 375px */
+@media only screen and (max-width: 375px) {
+    .header-outro{
+        font-size: 1.3rem;
+        width: 85%;
+        margin-bottom: 13rem;
+    }
+}
+
+/* screen size 800px */
+@media only screen and (min-width: 800px) {
+    .header-outro{
+        font-size: 1.6rem;
+        width: 85%;
+        margin-bottom: 13rem;
+    }
+}

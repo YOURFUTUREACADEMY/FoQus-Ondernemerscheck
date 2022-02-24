@@ -1,9 +1,9 @@
 <template>
-     <main>
-    <h1 class="header text-center" role="heading">
+     <div class="d-flex justify-content-center">
+    <h1 class="header-outro text-center" role="heading">
       Je persoonlijke ondernemers-check rapport is verstuurd naar het door jouw opgegeven mailadres.
     </h1>
-  </main>
+  </div>
 </template>
 
 <script>
