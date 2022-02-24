@@ -98,11 +98,10 @@ main {
 		height: auto;
 	}
 
-	/* .introTekst,
+	.introTekst,
 	.text-score {
 		font-size: 1.2rem;
-		width: 95%;
-	} */
+	}
 
 	.header {
 		font-size: 1.4rem;
@@ -114,6 +113,14 @@ main {
 	.form-control-range,
 	.form-check-label {
 		font-size: 1.2rem;
+	}
+
+	.form-control {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		width: 50%;
 	}
 
 	.btn {

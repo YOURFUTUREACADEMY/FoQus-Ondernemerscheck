@@ -48,7 +48,7 @@
 												for="naam"
 												>Naam:</label
 											>
-											<div class="col-xl-5 d-flex justify-content-center">
+											<div class="col-5 d-flex justify-content-center">
 												<input
 													class="form-control"
 													type="text"
@@ -68,7 +68,7 @@
 												for="email"
 												>Emailadres:</label
 											>
-											<div class="col-xl-5 d-flex justify-content-center">
+											<div class="col-5 d-flex justify-content-center">
 												<input
 													class="form-control"
 													type="email"
