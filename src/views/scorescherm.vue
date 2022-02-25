@@ -44,6 +44,9 @@
 													text-score
 													d-flex
 													justify-content-center
+													justify-content-sm-center
+													justify-content-lg-start
+													justify-content-xl-start
 												"
 												for="naam"
 												>Naam:</label
@@ -64,6 +67,9 @@
 													text-score
 													d-flex
 													justify-content-center
+													justify-content-sm-center
+													justify-content-lg-start
+													justify-content-xl-start
 												"
 												for="email"
 												>Emailadres:</label

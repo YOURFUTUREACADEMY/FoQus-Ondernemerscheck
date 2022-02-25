@@ -25,9 +25,10 @@
 .text-score {
 	color: var(--zwart);
 	font-weight: 500;
-	font-size: 1.1rem;
+	font-size: clamp(16px, 2.5vw, 22px);
+	/* font-size: 1.1rem; */
 	max-width: 850px;
-	padding: 0.5rem;
+	padding: 1rem;
 }
 
 .score-bubble {
@@ -123,17 +124,18 @@
 	height: auto;
 }
 
-/* .form-score {
+.form-score {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 1rem;
-} */
+}
 
 /* .form-row {
 	display: flex;
-	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	width: 550px;
 } */
 
@@ -143,8 +145,8 @@
 
 .foqusRaport {
 	position: absolute;
-	right: 230px;
-	top: 750px;
+	right: 210px;
+	top: 730px;
 	width: 15%;
 }
 
