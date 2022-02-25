@@ -20,7 +20,7 @@ function setOTAP(){
     else if(window.location.href.startsWith(config.OTAP.URLAcc) && !window.location.href.startsWith(config.OTAP.URLPro)){
         OTAP = 1;
     }
-    
+
     config.OTAP.Value = OTAP;
     return OTAP;
 }
