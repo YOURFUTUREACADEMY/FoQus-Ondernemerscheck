@@ -150,6 +150,10 @@
 	width: 15%;
 }
 
+.disclaimer {
+	max-width: 800px;
+}
+
 /* screen size 1400px */
 @media only screen and (max-width: 1399px) {
 	.foqusRaport {

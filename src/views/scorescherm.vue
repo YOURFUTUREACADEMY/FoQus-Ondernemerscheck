@@ -97,7 +97,7 @@
 											</button>
 										</div>
 										<div class="text-danger">
-											<p>
+											<p class="disclaimer">
 												Natuurlijk wil je niet iedereen zomaar je naam en email
 												adres geven. Dat snappen we. We zijn zelf ook
 												ondernemers en wars van alle ongevraagde spam die we
