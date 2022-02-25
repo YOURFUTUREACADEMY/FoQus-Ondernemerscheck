@@ -142,7 +142,6 @@ import { compose } from "../scripts/score.js";
 import { sendToZap } from "../scripts/zapier.js";
 import { scoreWaardes } from "../scripts/score.js";
 import functions from "../scripts/functions.js";
-import config from "@/json/config.json";
 
 require("@/styles/score.css");
 
@@ -316,7 +315,7 @@ export default {
 				data = JSON.stringify(data);
 
 				// verstuur data
-				const response = await sendToZap(config.Zapier, data);
+				const response = await sendToZap(data);
 
 				// controleer respone op succes
 				if (response.status === "success") {

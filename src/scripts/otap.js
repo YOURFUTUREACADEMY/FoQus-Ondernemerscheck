@@ -21,6 +21,7 @@ function setOTAP(){
         OTAP = 1;
     }
     
+    config.OTAP.Value = OTAP;
     return OTAP;
 }
 

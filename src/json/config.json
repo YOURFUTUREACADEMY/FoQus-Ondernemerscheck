@@ -1,10 +1,17 @@
 {
+    "ID":"5974604",
     "OTAP":{
+        "Value":0,
         "URLOnt":"https://thirsty-goldberg-0a3958.netlify.app/",
         "URLTes":"Server URL Test",
         "URLAcc":"Server URL Acceptatie",
         "URLPro":"Server URL Productie",
         "URLLocHost":"http://localhost:80"
     },
-    "Zapier":"5974604/b5ca8ti"
+    "Zapier":{
+        "Ont":"bi3eowz",
+        "Tes":"1",
+        "Acc":"2",
+        "Pro":"b5ca8ti"
+    }
 }

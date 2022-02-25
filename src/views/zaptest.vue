@@ -134,15 +134,16 @@ export default {
         data = JSON.stringify(data);
 
         // verstuur data
-        const response = await sendToZap(config.Zapier, data);
+        const response = await sendToZap(data);
+        // const response = await sendToZap("bi3eowz", data);
 
         // controleer respone op succes
         if(response.status === 'success'){
           //do stuff if success
-          console.log(`Send:${data},\nto zapier:${this.zapCode},\n Response:${response}.`);
+          console.log(`Send:${data}. To zapier:${config.OTAP.Value}. Response:${response}.`);
         }
         else{
-          console.log(`Failed to send:${data},\nto zapier:${this.zapCode},\n Response:${response}.`);
+          console.warn(`Failed to send:${data}. To zapier:${config.OTAP.Value}. Response:${response}.`);
         }
       },
     sendExcel(){
@@ -162,7 +163,7 @@ export default {
       // maak JSON van data
       data = JSON.stringify(data);
       
-      sendToZap(this.zapCode, data);
+      sendToZap(data);
       console.log(`send:${data}`)
     }
   // end methods

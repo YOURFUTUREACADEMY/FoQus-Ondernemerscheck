@@ -58,7 +58,6 @@ import vraag7 from "../components/vraag7-input";
 import berekenUitslag from "../scripts/score.js";
 import { compose } from "../scripts/score.js";
 import functions from "../scripts/functions.js";
-import config from "@/json/config.json";
 import { sendToZap } from "../scripts/zapier.js";
 
 require('@/styles/vragen.css')
@@ -90,7 +89,6 @@ export default {
       let inputOke = functions.validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
       // console.log(inputOke.reason)
       if(inputOke.valid){
-        console.log(this.activeStep)
         if(this.activeStep < this.vragen){
           this.activeStep++
         }
@@ -115,7 +113,7 @@ export default {
       // maak JSON van data
       data = JSON.stringify(data);
       
-      const response = await sendToZap(config.Zapier, data);   
+      const response = await sendToZap(data);   
 
       // controleer respone op succes
       if(response.status === 'success'){

@@ -2,7 +2,9 @@
 //voorbeeld zapier object 
 // let data = {eb:this.$OTAP,tb:4,date:"",project:{},naw:{}}
 
-const $zapUrl = "https://hooks.zapier.com/hooks/catch/";
+import config from "@/json/config.json";
+
+const zapUrl = "https://hooks.zapier.com/hooks/catch";
 
 
 export function encode(object){
@@ -15,10 +17,27 @@ export function encode(object){
 }
 
 // POST data to zap
-export async function sendToZap(zapcode, data, options={method:"POST",headers:{'Content-Type': 'text/plain'}}){
+export async function sendToZap(data, options={method:"POST",headers:{'Content-Type': 'text/plain'}},zapcode=undefined){
+
+    let zap = zapcode;
+    // get zap
+    if(zapcode === undefined){
+      if(config.OTAP.Value === 0){
+        zap = config.Zapier.Pro;
+      }
+      else if(config.OTAP.Value === 1){
+        zap = config.Zapier.Acc;
+      }
+      else if(config.OTAP.Value === 2){
+        zap = config.Zapier.Tes;
+      }
+      else if(config.OTAP.Value === 3){
+        zap = config.Zapier.Ont;
+      }
+    }
 
     const response = await fetch(
-        $zapUrl + zapcode + "/?", 
+        `${zapUrl}/${config.ID}/${zap}/?`, 
         {
             method:options.method,
             headers:options.headers,
