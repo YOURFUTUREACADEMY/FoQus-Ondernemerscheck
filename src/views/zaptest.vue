@@ -45,7 +45,7 @@ export default {
       // URL OUTLOOK TO GMAIL https://hooks.zapier.com/hooks/catch/5974604/b1b8nyb
       name: "sean",
       email:"sean@yourfutureacademy.nl",
-      zapCode: "5974604/b5ca8ti",
+      zapCode: "bi4a0nr",
       inputText: "",
       resultaat:this.$store.getters.getFullResultaat,
       testRapport:{ 
@@ -61,35 +61,39 @@ export default {
             vr6Opm: 1, vr6Sco: 1, 
             vr7Opm: 1, vr7Sco: 1 }, 
           conclusie: { Con1: 1, Con2: 1, Con3: 1, Con4: 1 } 
-        },
-        testExcel:{ 
-          kleurWaarde: { 
-            groen: 1, 
-            oranje: 5, 
-            rood: 20 }, 
-        kleurCode: 5, 
-        score: 43, 
-        vragen: {
-          vr1Sco: "", 
-          vr1Val: 1, 
-          vr2Sco: 1, 
-          vr2Val: 40, 
-          vr3Sco: 1, 
-          vr3Val: 0, 
-          vr4Sco: 20, 
-          vr4Val: 3, 
-          vr5Sco: 5, 
-          vr5Val: 2, 
-          vr6Sco: 1, 
-          vr6Val: 1, 
-          vr7Sco: 20, 
-          vr7Val: 5 }, 
-        conclusie: { 
-          Con1: 1, 
-          Con2: 1, 
-          Con3: 1, 
-          Con4: 1 }
-        },
+      },
+      testExcel:{ 
+        kleurWaarde: { 
+          groen: 1, 
+          oranje: 5, 
+          rood: 20 }, 
+      kleurCode: 5, 
+      score: 43, 
+      vragen: {
+        vr1Sco: "", 
+        vr1Val: 1, 
+        vr2Sco: 1, 
+        vr2Val: 40, 
+        vr3Sco: 1, 
+        vr3Val: 0, 
+        vr4Sco: 20, 
+        vr4Val: 3, 
+        vr5Sco: 5, 
+        vr5Val: 2, 
+        vr6Sco: 1, 
+        vr6Val: 1, 
+        vr7Sco: 20, 
+        vr7Val: 5 }, 
+      conclusie: { 
+        Con1: 1, 
+        Con2: 1, 
+        Con3: 1, 
+        Con4: 1 }
+      },
+      options:{
+        method:"POST",
+        headers:{'Content-Type': 'text/plain'}
+      },
       insertTestData: true
     }; //end return
   }, //end data
@@ -134,7 +138,7 @@ export default {
         data = JSON.stringify(data);
 
         // verstuur data
-        const response = await sendToZap(data);
+        const response = await sendToZap(data, this.options, this.zapCode);
         // const response = await sendToZap("bi3eowz", data);
 
         // controleer respone op succes
@@ -163,7 +167,7 @@ export default {
       // maak JSON van data
       data = JSON.stringify(data);
       
-      sendToZap(data);
+      sendToZap(data, this.options, this.zapCode);
       console.log(`send:${data}`)
     }
   // end methods
