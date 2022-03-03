@@ -18,34 +18,29 @@ function setOTAP() {
 
     // URL LocHost
     if (locURL != undefined && locURL != ""){
-        console.log("Loc");
         if(locStatus){
             OTAP = 3;
         }
     }
     // URL Ontwikkeling
     if (ontURL != undefined && ontURL != ""){
-        console.log("Ont");
         if(ontStatus){
             OTAP = 3;
         }
     }
     // URL Test
     if (tesURL !== undefined && tesURL !== ""){
-        console.log("Tes");
         if(tesStatus){
             OTAP = 2;
         }   
     }
     // URL Acceptatie
     if (accURL && accURL !== ""){
-        console.log("Acc");
         if(accStatus){
             OTAP = 1;
         }   
     }
     if (proURL && proURL !== ""){
-        console.log("Acc");
         if(proStatus){
             OTAP = 0;
         }   
