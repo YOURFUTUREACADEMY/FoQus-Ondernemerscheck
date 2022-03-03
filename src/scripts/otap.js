@@ -1,10 +1,9 @@
 import config from '@/json/config.json';
 
 function setOTAP() {
-    
     // Default Productie
     let OTAP = 0;
-    
+
     const locURL = config.OTAP.URLLocHost;
     const ontURL = config.OTAP.URLOnt;
     const tesURL = config.OTAP.URLTes;
@@ -16,7 +15,7 @@ function setOTAP() {
     const tesStatus = window.location.href.startsWith(tesURL);
     const accStatus = window.location.href.startsWith(accURL);
     const proStatus = window.location.href.startsWith(proURL);
-  
+
     // URL LocHost
     if (locURL != undefined && locURL != ""){
         console.log("Loc");
@@ -25,33 +24,34 @@ function setOTAP() {
         }
     }
     // URL Ontwikkeling
-    else if (ontURL != undefined && ontURL != ""){
+    if (ontURL != undefined && ontURL != ""){
         console.log("Ont");
         if(ontStatus){
             OTAP = 3;
         }
     }
     // URL Test
-    else if (tesURL !== undefined && tesURL !== ""){
+    if (tesURL !== undefined && tesURL !== ""){
         console.log("Tes");
         if(tesStatus){
             OTAP = 2;
         }   
     }
     // URL Acceptatie
-    else if (accURL && accURL !== ""){
+    if (accURL && accURL !== ""){
         console.log("Acc");
         if(accStatus){
             OTAP = 1;
         }   
     }
-    else if (proURL && proURL !== ""){
+    if (proURL && proURL !== ""){
         console.log("Acc");
         if(proStatus){
             OTAP = 0;
         }   
     }
 
+    config.OTAP.Value = OTAP;
     return OTAP;
 }
 
