@@ -1,7 +1,7 @@
 <template>
 	<main class="section-score">
 		<hr class="hl py-2 mb-0" />
-		<div class="d-flex">
+		<div class="d-flex justify-content-center">
 			<div class="container-score">
 				<h3 class="header text-center-score">Jouw score</h3>
 				<div class="row mt-4">
@@ -57,6 +57,7 @@
 													type="text"
 													id="naam"
 													v-model="name"
+													placeholder="naam"
 												/>
 											</div>
 										</div>
@@ -80,12 +81,13 @@
 													type="email"
 													name="email"
 													id="email"
+													placeholder="email"
 													v-model="email"
 												/>
 											</div>
 										</div>
 
-										<div class="d-flex flex-column">
+										<div class="d-flex flex-column p-1">
 											<button
 												type="button"
 												class="btn btn-primary adviesBtn"
