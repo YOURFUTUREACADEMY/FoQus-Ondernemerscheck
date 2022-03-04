@@ -18,6 +18,9 @@
       }
     },
     mounted() {
+      if(this.$OTAP === 3){
+        alert("Zap - Ontwikkeling is uitgeschakeld, als het nodig zet deze aan. Vergeet deze niet uit te zetten na testen van wijzigingen!");
+      }
     }
   }
 </script>
