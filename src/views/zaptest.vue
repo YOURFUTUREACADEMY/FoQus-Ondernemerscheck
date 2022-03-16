@@ -45,7 +45,7 @@ export default {
       // URL OUTLOOK TO GMAIL https://hooks.zapier.com/hooks/catch/5974604/b1b8nyb
       name: "sean",
       email:"sean@yourfutureacademy.nl",
-      zapCode: "bi4a0nr",
+      zapCode: config.Zapier.Ont,
       inputText: "",
       resultaat:this.$store.getters.getFullResultaat,
       testRapport:{ 

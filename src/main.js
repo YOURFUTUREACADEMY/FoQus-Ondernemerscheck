@@ -16,7 +16,6 @@ app.config.globalProperties.$OTAP = OTAP;
 
 // app global components
 
-
 // mount app
 app.mount('#app')
 
