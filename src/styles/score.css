@@ -27,7 +27,7 @@
 	color: var(--zwart);
 	font-weight: 500;
 	font-size: clamp(16px, 2.5vw, 22px);
-	/* font-size: 1.1rem; */
+	font-size: 1.1rem;
 	max-width: 850px;
 	padding: 1rem;
 }

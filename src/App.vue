@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow p-md-5 p-2">
+  <div class="shadow p-md-5">
     <header role="banner">
       <img
         class="foqusLogo img-fluid mx-auto d-block"
