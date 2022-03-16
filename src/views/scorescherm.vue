@@ -1,7 +1,7 @@
 <template>
 	<main class="section-score">
 		<hr class="hl py-2 mb-0" />
-		<div class="d-flex">
+		<div class="">
 			<div class="container-score">
 				<h3 class="header text-center-score">Jouw score</h3>
 				<div class="row mt-4">
@@ -34,10 +34,10 @@
 							<div class="col-md-11 d-flex row justify-content-center">
 								<p class="text-score">{{ scoreCondition.visual.signaal }}.</p>
 							</div>
-							<section id="emailForm" class="d-flex flex-column">
+							<section id="emailForm" class="d-flex justify-content-center flex-column">
 								<div class="scoreFlex">
 									<form class="form-score">
-										<div class="row mb-3 form-row">
+										<div class="row mb-3 form-row w-75">
 											<label
 												class="
 													col-sm-3 col-form-label
@@ -51,16 +51,17 @@
 												for="naam"
 												>Naam:</label
 											>
-											<div class="col-5 d-flex justify-content-center">
+											<div class="col-sm-5 d-flex justify-content-center">
 												<input
 													class="form-control"
 													type="text"
 													id="naam"
 													v-model="name"
+													placeholder="naam"
 												/>
 											</div>
 										</div>
-										<div class="row mb-3 form-row">
+										<div class="row mb-3 form-row w-75">
 											<label
 												class="
 													col-sm-3 col-form-label
@@ -74,12 +75,13 @@
 												for="email"
 												>Emailadres:</label
 											>
-											<div class="col-5 d-flex justify-content-center">
+											<div class="col-sm-5 d-flex justify-content-center">
 												<input
 													class="form-control"
 													type="email"
 													name="email"
 													id="email"
+													placeholder="email"
 													v-model="email"
 												/>
 											</div>
