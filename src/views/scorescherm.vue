@@ -85,7 +85,7 @@
 											</div>
 										</div>
 
-										<div class="d-flex flex-column m-2">
+										<div class="d-flex flex-column p-1">
 											<button
 												type="button"
 												class="btn btn-primary adviesBtn"
@@ -97,7 +97,7 @@
 											</button>
 										</div>
 										<div class="text-danger">
-											<p class="p-1 m-1">
+											<p class="disclaimer">
 												Natuurlijk wil je niet iedereen zomaar je naam en email
 												adres geven. Dat snappen we. We zijn zelf ook
 												ondernemers en wars van alle ongevraagde spam die we
