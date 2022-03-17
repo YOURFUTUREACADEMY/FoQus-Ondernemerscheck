@@ -34,7 +34,10 @@
 							<div class="col-md-11 d-flex row justify-content-center">
 								<p class="text-score">{{ scoreCondition.visual.signaal }}.</p>
 							</div>
-							<section id="emailForm" class="d-flex justify-content-center flex-column">
+							<section
+								id="emailForm"
+								class="d-flex justify-content-center flex-column"
+							>
 								<div class="scoreFlex">
 									<form class="form-score">
 										<div class="row mb-3 form-row w-75">
@@ -129,18 +132,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- TO DO Sectie hier onder verwijderen !! -->
-		<section v-if="testMode" class="TO DO verwijderen mt-5">
-			<br />
-			<!-- TO DO storetest knop verwijderen -->
-			<button class="backBtn" @mouseup="$router.push('/')">
-				terug naar begin
-			</button>
-			<!-- TO DO storetest knop verwijderen -->
-			<button class="volgendeBtn" @mouseup="this.$router.push('/testMenu')">
-				REMOVE: go to test menu
-			</button>
-		</section>
 	</main>
 </template>
 
@@ -171,12 +162,13 @@ export default {
 				degAdjust: 1,
 				reverseDirection: true,
 			},
-			name: "",
-			nameMissingMSG: "vul a.u.b uw naam in",
-			nameOke: "",
-			email: "",
-			emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
-			emailOke: "",
+			// Deze zorgen evoor dat placeholder zichtbaar wordt als de input veld leeg is
+			// name: "",
+			// nameMissingMSG: "vul a.u.b uw naam in",
+			// nameOke: "",
+			// email: "",
+			// emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
+			// emailOke: "",
 			// status state -> conditie -> kleurCode, class, label, image
 			status: {
 				slecht: {
