@@ -87,7 +87,7 @@ export default {
     async nextStep(){
       // controleer store op invoer waarde
       let inputOke = functions.validateInput(this.$store.getters.getAntwoord(`vraag`+this.activeStep).waarde,"number");
-      // console.log(inputOke.reason)
+
       if(inputOke.valid){
         if(this.activeStep < this.vragen){
           this.activeStep++
@@ -95,7 +95,7 @@ export default {
         else{
           // bereken de uitslag en ga naar scorescherm
           this.$store.commit("setResultaat", berekenUitslag(this.$store.getters.getFullAntwoord));
-          // this.$router.push("/scorescherm");
+
           this.sendExcel();
         }
       }
