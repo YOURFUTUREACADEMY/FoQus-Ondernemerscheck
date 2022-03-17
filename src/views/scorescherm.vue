@@ -129,18 +129,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- TO DO Sectie hier onder verwijderen !! -->
-		<section v-if="testMode" class="TO DO verwijderen mt-5">
-			<br />
-			<!-- TO DO storetest knop verwijderen -->
-			<button class="backBtn" @mouseup="$router.push('/')">
-				terug naar begin
-			</button>
-			<!-- TO DO storetest knop verwijderen -->
-			<button class="volgendeBtn" @mouseup="this.$router.push('/testMenu')">
-				REMOVE: go to test menu
-			</button>
-		</section>
 	</main>
 </template>
 
