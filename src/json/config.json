@@ -3,7 +3,7 @@
     "OTAP":{
         "Value":0,
         "URLOnt":"http://192.168.1.",
-        "URLTes":"fqoc-testen.netlify.app",
+        "URLTes":"https://fqoc-testen.netlify.app",
         "URLAcc":"https://relaxed-nightingale-ddf9d1.netlify.app",
         "URLPro":"https://www.ondernemers-check.nl/",
         "URLLocHost":"http://localhost:80"
