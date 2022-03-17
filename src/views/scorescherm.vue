@@ -163,12 +163,12 @@ export default {
 				reverseDirection: true,
 			},
 			// Deze zorgen evoor dat placeholder zichtbaar wordt als de input veld leeg is
-			// name: "",
-			// nameMissingMSG: "vul a.u.b uw naam in",
-			// nameOke: "",
-			// email: "",
-			// emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
-			// emailOke: "",
+			name: "",
+			nameMissingMSG: "vul a.u.b uw naam in",
+			nameOke: "",
+			email: "",
+			emailMissingMSG: "vul a.u.b uw email adres in, voorbeeld@mijndomein.nl",
+			emailOke: "",
 			// status state -> conditie -> kleurCode, class, label, image
 			status: {
 				slecht: {
