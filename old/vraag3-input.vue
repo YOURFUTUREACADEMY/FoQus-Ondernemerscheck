@@ -2,13 +2,30 @@
   <h1 class="header text-center" role="heading">Welk percentage van de omzet draai jij bij je 3 belangrijkste klanten?</h1>
 <div class="container-vragen d-flex justify-content-center align-items-center">
      
-     <slider 
-       :min='rangeMin'
-       :max='rangeMax'
-       :step='step'
-       :label='rsLabel'
-       @sliderChange='setValue'
-     />
+     <div class="range-slider mt-5">
+      <input
+        class="rs-line" 
+        type="range"
+        :min='rangeMin'
+        :max='rangeMax'
+        :step='step'
+        v-model="value"
+        id="rs-line"
+        @change='opslag("",value)'
+      />
+      <p id="rs-label" class="rs-label" draggable="false" :style="labelPos">{{value}}%</p> 
+            <!-- <input
+        class="rs-bullet" 
+        type="range"
+        :min='rangeMin'
+        :max='rangeMax'
+        step=5
+        v-model="value"
+        id="rs-bullet"
+        @change='opslag("",value)'
+      /> -->
+      <span id="rs-bullet" class="rs-bullet" :style="{left:sliderPos}" @mousedown='bulletPos()' ></span>         
+    </div>
 
 </div>
 
@@ -16,7 +33,7 @@
 </template>
 
 <script>
-import slider from '@/components/slider.vue'
+
 
 export default {
   data() {
@@ -48,9 +65,6 @@ export default {
       this.rsBullet = document.getElementById("rs-bullet");
       this.rsLabel = document.getElementById("rs-label");
   },
-  components: {
-    slider
-  },
   methods: {
     opslag(label, waarde) {
       this.$store.commit('setAntwoord',{
@@ -59,9 +73,7 @@ export default {
         waarde:Number(waarde)
       });
     },
-    setValue(v) {
-      this.value = v;
-    },
+
     test(){
 
       const bullet = document.getElementById("rs-bullet");
