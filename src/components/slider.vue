@@ -12,7 +12,8 @@
       :step="step"
       :style="style"
       @change="emitValue" 
-    >    
+    >
+    <div class="inner"><div class="bar"></div></div>    
   </div> 
 </template>
 <script>
@@ -55,16 +56,33 @@ export default {
   height:50px;
   width:100%;
 }
+.inner {
+  position: absolute;
+  top:0;right:0;bottom:0;left:0;
+  height:25px;
+  background-color: aqua;
+  display: block;
+}
+
+.bar {
+  background-color: beige;
+  position: absolute;
+  top:0;right:0;bottom:0;left:0;
+  width:50%;
+  display: block;
+}
 
 
 input[type=range] {
   position:absolute;
+  top:0;right:0;bottom:0;left:0;
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  height: 50px;
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
   border-color: transparent;
   color: transparent;
-  opacity: 0;
+  opacity: 0.5;
 }
 
 
@@ -88,7 +106,7 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   opacity: 1;
   border: 1px solid #000000;
-  height: 36px;
+  height: 50px;
   width: 16px;
   border-radius: 3px;
   background: #ffffff;
