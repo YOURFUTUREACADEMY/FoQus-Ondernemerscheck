@@ -17,6 +17,7 @@
     >    
   </div> 
 </template>
+
 <script>
 export default {
   data() {
@@ -75,18 +76,17 @@ export default {
   emits: ['sliderChange'],   
 }
 </script>
-<style scoped>
 
+<style scoped>
 .outer {
   position:relative;  
   height:35px;
-  margin: 0;
+  margin:0;
   padding:0;
-  border: 0;
+  border:0;
 }
-
 .innerTop {
-  position: absolute;
+  position:absolute;
   top:0;right:0;bottom:0;left:0;
   height:25px;
   background-color:white; 
@@ -103,33 +103,29 @@ export default {
   border:0;
 }
 .thumb {  
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  border-left: 10px solid white;
-  border-right: 10px solid white;
-  border-bottom: 10px solid green;
+  position:absolute;
+  width:0px;
+  height:0px;
+  border-left:10px solid white;
+  border-right:10px solid white;
+  border-bottom:10px solid green;
 }
-
 .slider {
   position:absolute;
   top:0;right:0;bottom:0;left:0;
   -webkit-appearance: none;
-  height: 35px;
-  width: 100%;
-  opacity: 0;
+  height:35px;
+  width:100%;
+  opacity:0;
 }
-
 input[type=range]:focus {
   outline: none;
 }
-
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 35px;
-  width: 25px;
-  cursor: pointer;
-  margin-top: 0;
+  -webkit-appearance:none;
+  height:35px;
+  width:25px;
+  cursor:pointer;
+  margin-top:0;
 }
-
 </style>
