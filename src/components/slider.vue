@@ -146,7 +146,7 @@ export default {
   height:0px;
   border-left:10px solid white;
   border-right:10px solid white;
-  border-bottom:15px solid green;
+  border-bottom:20px solid green;
 }
 .slider {
   position:absolute;
@@ -164,6 +164,6 @@ export default {
   width:20px;
   cursor:pointer;
   margin-top:0;
-  margin-bottom: -20px;
+  margin-bottom: -25px;
 }
 </style>
