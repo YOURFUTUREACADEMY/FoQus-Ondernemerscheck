@@ -6,6 +6,7 @@
        :min='rangeMin'
        :max='rangeMax'
        :step='step'
+       :width='sliderWidth'
        :label='rsLabel'
        @sliderChange='setValue'
      />
@@ -22,13 +23,14 @@ export default {
   data() {
     return {
       vraag: "vraag3",
-      rangeMin:0,
-      rangeMax: 100,
-      step: 5,
+      rangeMin: 1,
+      rangeMax: 12,
+      step: 2,
       value: this.$store.getters.getAntwoord("vraag3").waarde,
+      sliderWidth: 123,
       rsLine: "",
       rsBullet:"",
-      rsLabel:"",
+      rsLabel:"Dit is een label.",
       // Label color in Min position
       rsLabelColorMin:"#08344D",
       // Label color in Max position
@@ -61,6 +63,7 @@ export default {
     },
     setValue(v) {
       this.value = v;
+      console.log(this.value)
     },
     test(){
 

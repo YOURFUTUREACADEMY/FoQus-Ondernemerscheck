@@ -1,7 +1,9 @@
 
 <template>
   <label for="slider">{{ label }}</label>
-  <div class="outer">
+  <div class="outer" :style="containerStyle">    
+    <div class="innerTop"><div class="bar" :style="barStyle"></div></div>
+    <div class="thumb" :style="thumbStyle"></div>
     <input
       v-model.number="value"
       type="range"
@@ -10,110 +12,124 @@
       :min="min"
       :max="max"
       :step="step"
-      :style="style"
+      @input="changePos"
       @change="emitValue" 
-    >
-    <div class="inner"><div class="bar"></div></div>    
+    >    
   </div> 
 </template>
 <script>
 export default {
   data() {
     return {
-        value: 0,
-        style: {
-          
-        }     
+      value: 0,
+      steps: 100,
+      stepWidth: 25,
+      containerStyle: {
+        width: "500px"
+      },        
+      barStyle: {
+        width: "0%"
+      }, 
+      thumbStyle: {          
+        top: "25px",
+        right: "0px",
+        bottom: "0px",
+        left: "-10px"
+      }    
     }
   },
   updated() {
-    let sliderElement = document.querySelector(".slider::-webkit-slider-thumb")
-    console.log(sliderElement)
-    // let sliderStyle = window.getComputedStyle(sliderElement);
-    // console.log(sliderStyle);
-    // console.log(sliderElement.style)
-    console.log(this.min, this.max, this.step, this.label)
+  },
+  created() {
+    this.steps = (this.max - this.min) / this.step;
+    this.stepWidth = this.width / this.steps;
+    this.containerStyle.width = this.widthString;
+    console.log(`steps: ${this.steps}\nstepWidth: ${this.stepWidth}`);
   },
   props: { 
     min: Number, 
     max: Number, 
     step: Number,
+    width: Number,
     label: String,    
   },
+  computed: {
+    widthString() {
+      return `${this.width}px`;
+    },
+    currentStep() {
+      return (this.value - this.min) / this.step;
+    }
+  },
   methods: {
-    emitValue() {
-      console.log(this.value)
-      this.$emit('sliderChange', this.value)
+    emitValue() {      
+      this.$emit('sliderChange', this.value);
+    },
+    changePos() {
+      this.thumbStyle.left = `${this.currentStep * this.stepWidth - 10}px`;
+      this.barStyle.width = `${(this.currentStep / this.steps) * 100}%`;
+      console.log(this.barStyle.width);
+      console.log(this.value);
     }
   },
   emits: ['sliderChange'],   
 }
 </script>
 <style scoped>
+
 .outer {
-  position:relative;
-  background-color: #000000;
-  height:50px;
-  width:100%;
+  position:relative;  
+  height:35px;
+  margin: 0;
+  padding:0;
+  border: 0;
 }
-.inner {
+
+.innerTop {
   position: absolute;
   top:0;right:0;bottom:0;left:0;
   height:25px;
-  background-color: aqua;
-  display: block;
+  background-color:white; 
+  border:2px solid green;
+  margin:0;
+  padding:0; 
 }
-
 .bar {
-  background-color: beige;
+  background-color: green;
   position: absolute;
   top:0;right:0;bottom:0;left:0;
-  width:50%;
-  display: block;
+  margin:0;
+  border:0;
+  border:0;
+}
+.thumb {  
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-left: 10px solid white;
+  border-right: 10px solid white;
+  border-bottom: 10px solid green;
 }
 
-
-input[type=range] {
+.slider {
   position:absolute;
   top:0;right:0;bottom:0;left:0;
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  height: 50px;
-  width: 100%; /* Specific width is required for Firefox. */
-  background: transparent; /* Otherwise white in Chrome */
-  border-color: transparent;
-  color: transparent;
-  opacity: 0.5;
+  -webkit-appearance: none;
+  height: 35px;
+  width: 100%;
+  opacity: 0;
 }
-
 
 input[type=range]:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  outline: none;
 }
 
-input[type=range]::-ms-track {
-  width: 100%;
-  cursor: pointer;
-
-  /* Hides the slider so custom styles can be added */
-  background: transparent; 
-  border-color: transparent;
-  color: transparent;
-}
-
-
-
-input[type=range]::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  opacity: 1;
-  border: 1px solid #000000;
-  height: 50px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
+  height: 35px;
+  width: 25px;
   cursor: pointer;
-  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+  margin-top: 0;
 }
-
 
 </style>
