@@ -6,7 +6,8 @@
       :max='rangeMax'
       :step='step'
       :width='sliderWidth'
-      :label='rsLabel'
+      :label='sliderLabel'
+      :startValue='value'
       @sliderChange='commitValue'
     />
   </div> 
@@ -23,8 +24,8 @@ export default {
       rangeMax: 100,
       step: 5,
       value: this.$store.getters.getAntwoord("vraag3").waarde,
-      sliderWidth: 399,
-      rsLabel:"Dit is een label.",
+      sliderWidth: 400,
+      sliderLabel: "",
     };
   },
   components: {
