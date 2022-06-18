@@ -93,7 +93,7 @@ export default {
       this.$emit('sliderChange', this.value);
     },
     changePos() {
-      this.thumbStyle.left = `${this.currentStep * this.stepWidth - 10}px`;
+      this.thumbStyle.left = `${this.currentStep * this.stepWidth - 8}px`;
       this.barStyle.width = `${(this.currentStep / this.steps) * 100}%`;
       console.log(this.barStyle.width);
       console.log(this.value);
@@ -144,9 +144,9 @@ export default {
   position:absolute;
   width:0px;
   height:0px;
-  border-left:10px solid white;
-  border-right:10px solid white;
-  border-bottom:20px solid green;
+  border-left:8px solid white;
+  border-right:8px solid white;
+  border-bottom:16px solid green;
 }
 .slider {
   position:absolute;
@@ -161,9 +161,9 @@ export default {
 .slider::-webkit-slider-thumb {
   -webkit-appearance:none;
   height:40px;
-  width:20px;
+  width:16px;
   cursor:pointer;
   margin-top:0;
-  margin-bottom: -25px;
+  margin-bottom: -20px;
 }
 </style>
