@@ -4,11 +4,13 @@
     <slider 
       :min='rangeMin'
       :max='rangeMax'
-      :step='step'
-      :width='sliderWidth'
+      :step='step'     
       :label='sliderLabel'
       :startValue='value'
+      :color='sliderColor'
       @sliderChange='commitValue'
+      class="procentSlider"
+      showPercentage
     />
   </div> 
 </template>
@@ -22,10 +24,15 @@ export default {
       vraag: "vraag3",
       rangeMin: 0,
       rangeMax: 100,
-      step: 1,
+      step: 5,
       value: this.$store.getters.getAntwoord("vraag3").waarde,
-      sliderWidth: 400,
+      sliderWidth: 500,
       sliderLabel: "",
+      sliderColor: {
+        primaryColor: "#08344d",
+        secondaryColor: "#A6A6A6",
+        labelInBarColor: "#FFFFFF" 
+      }
     };
   },
   components: {

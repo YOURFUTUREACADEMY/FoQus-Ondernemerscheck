@@ -1,12 +1,11 @@
 
-<template>
-  <label for="slider">{{ label }}</label>
-  <div class="outer" :style="containerStyle">    
+<template>  
+  <div class="outer">    
     <div class="innerTop" :style="innerStyle">      
-      <div class="bar" :style="barStyle">
-        <div id="labelOverFifty" class="valueLabel" v-if="halfWay">{{ valueLabel }}</div>
+      <div class="bar" id="bar" :style="barStyle">
+        <div id="labelOverFifty" class="valueLabel" :style="overStyle" v-if="halfway">{{ valueLabel }}</div>
       </div>
-      <div id="labelUnderFifty" class="valueLabel" :style="underStyle" v-if="!halfWay">{{ valueLabel }}</div>
+      <div id="labelUnderFifty" class="valueLabel" :style="underStyle" v-if="!halfway">{{ valueLabel }}</div>
     </div>
     <div class="thumb" :style="thumbStyle"></div>
     <input
@@ -18,7 +17,6 @@
       :max="max"
       :step="step"
       :style="sliderStyle"
-      @input="changePos"
       @change="emitValue" 
     >
     <div class="sideCover" id="leftCover"></div>
@@ -33,9 +31,7 @@ export default {
       value: 0,
       steps: 100,
       stepWidth: 25,
-      containerStyle: {
-        width: "500px"
-      },
+      width: "400px",
       innerStyle: {
         backgroundColor: "#A6A6A6"        
       },        
@@ -52,7 +48,11 @@ export default {
       },
       underStyle: {
         top: "0px",
-        left: "0px"
+        left: "0px",
+        color: ""
+      },
+      overStyle: {
+        color: ""
       },
       sliderStyle: {
         width: "520px"
@@ -61,11 +61,18 @@ export default {
   },
 
   updated() {
+    console.log("updated")
+    this.changePos();
+  },
+
+  mounted() {  
+    console.log("mounted")
+    this.buildSlider();  
+    this.changePos();
   },
 
   created() {
-    this.buildSlider();
-    this.changePos();
+    // this.buildSlider();
     console.log(`steps: ${this.steps}\nstepWidth: ${this.stepWidth}`);
   },
 
@@ -82,10 +89,6 @@ export default {
       type: Number,
       default: 1
     },
-    width: {
-      type: Number,
-      default: 500
-    },
     startValue: {
       type: Number,
       default: 0
@@ -96,14 +99,13 @@ export default {
     },
     showPercentage: {
       type: Boolean,
-      default: true
+      default: false
     },
-    color: {
-      
+    color: {       
       default: {
         primaryColor: "#08344d",
         secondaryColor: "#A6A6A6",
-        textOnForegroundColor: "#FFFFFF" 
+        labelInBarColor: "#FFFFFF" 
       }
     },
     label: String,    
@@ -119,15 +121,18 @@ export default {
     sliderWidthString() {
       return `${this.width + 20}px`
     },
+    percentage() {
+      return 100 * this.currentStep / this.steps;
+    },
     valueLabel() {
       if (this.showPercentage) {
-        return `${((this.currentStep / this.steps) * 100).toFixed(0)}%`; 
+        return `${this.percentage.toFixed(0)}%`; 
       } else {
         return this.value;
       }
     },
-    halfWay() {
-      return (this.value - this.min) > ((this.max -this.min )/ 2 ) 
+    halfway() {
+      return this.value - this.min > (this.max -this.min ) / 2;  
     }
   },
 
@@ -136,18 +141,33 @@ export default {
       this.$emit('sliderChange', this.value);
     },
     changePos() {
-      this.underStyle.left = `${this.currentStep * this.stepWidth + 2}px`;
-      this.thumbStyle.left = `${this.currentStep * this.stepWidth - 8}px`;
-      this.barStyle.width = `${(this.currentStep / this.steps) * 100}%`;      
-      console.log(this.barStyle.width);
-      console.log(this.value);
+      const valueBar = document.querySelector("#bar");
+      
+      this.barStyle.width = `${this.percentage}%`;
+      
+      const computedBarStyle = window.getComputedStyle(valueBar);
+      const pos = Number.parseInt(computedBarStyle.width);
+
+      this.underStyle.left = `${pos + 2}px`;
+      this.thumbStyle.left = `${pos - 8}px`;
+      console.log(pos);
     },
     buildSlider() {
+      this.setWidth();      
+      this.value = this.startValue;      
+      this.barStyle.backgroundColor = this.color.primaryColor;
+      this.thumbStyle.borderBottomColor = this.color.primaryColor;
+      this.innerStyle.backgroundColor = this.color.secondaryColor;
+      this.overStyle.color = this.color.labelInBarColor;
+      this.underStyle.color = this.color.primaryColor;
+    },
+    setWidth() {
+      const container = document.querySelector(".outer");
+      const containerStyles = window.getComputedStyle(container);
+      this.width = Number.parseInt(containerStyles.width);
       this.steps = (this.max - this.min) / this.step;
       this.stepWidth = this.width / this.steps;
-      this.containerStyle.width = this.widthString;
       this.sliderStyle.width = this.sliderWidthString;
-      this.value = this.startValue;
     }
   },
 
@@ -164,7 +184,6 @@ export default {
   position:absolute;
   top:0;right:0;bottom:0;left:0;
   height:25px;
-  background-color:white; 
   border: none; 
 }
 .sideCover {
@@ -181,7 +200,6 @@ export default {
   top:0;right:-10px;
 }
 .bar {
-  background-color: green;
   position: absolute;
   top:0;right:0;bottom:0;left:0;
 }
@@ -189,20 +207,19 @@ export default {
   position:absolute;
   width:0px;
   height:0px;
-  border-left:8px solid white;
-  border-right:8px solid white;
-  border-bottom:16px solid green;
+  border-left:8px solid #FFFFFF;
+  border-right:8px solid #FFFFFF;
+  border-bottom:16px solid;
 }
 .valueLabel {
   background: transparent;
-  font-size: 16px;
+  font-size: 18px;
 }
 #labelUnderFifty {
   position: absolute;
   color: #08344d;
 }
 #labelOverFifty {
-  color: #e7e6e6;
   display: flex;
   flex-direction: row-reverse;
   padding-right: 2px; 

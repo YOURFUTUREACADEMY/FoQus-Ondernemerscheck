@@ -141,6 +141,13 @@
   margin: 0px 5px;
   }
 
+.procentSlider {
+  width: 500px;
+}
+.cijferSlider {
+  width: 500px;
+}
+
   /* screen size 1200px */
 @media only screen and (min-width: 1199px) {
 	.rs-line {
