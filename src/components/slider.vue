@@ -3,9 +3,9 @@
   <div class="outer">    
     <div class="innerTop" :style="innerStyle">      
       <div class="bar" id="bar" :style="barStyle">
-        <div id="labelOverFifty" class="valueLabel" :style="overStyle" v-if="halfway">{{ valueLabel }}</div>
+        <div id="labelOverFifty" class="valueLabel" :style="overStyle">{{ valueLabel }}</div>
       </div>
-      <div id="labelUnderFifty" class="valueLabel" :style="underStyle" v-if="!halfway">{{ valueLabel }}</div>
+      <div id="labelUnderFifty" class="valueLabel" :style="underStyle">{{ valueLabel }}</div>
     </div>
     <div class="thumb" :style="thumbStyle"></div>
     <input
@@ -30,8 +30,8 @@ export default {
     return {
       value: 0,
       steps: 100,
-      stepWidth: 25,
       width: "400px",
+      togglePoint: 0,
       innerStyle: {
         backgroundColor: "#A6A6A6"        
       },        
@@ -49,10 +49,12 @@ export default {
       underStyle: {
         top: "0px",
         left: "0px",
-        color: ""
+        color: "",
+        opacity: 1
       },
       overStyle: {
-        color: ""
+        color: "",
+        opacity: 0
       },
       sliderStyle: {
         width: "520px"
@@ -61,19 +63,19 @@ export default {
   },
 
   updated() {
-    console.log("updated")
     this.changePos();
+    this.setTogglePoint();
   },
 
   mounted() {  
     console.log("mounted")
+    window.addEventListener('resize', this.setWidth);
     this.buildSlider();  
     this.changePos();
   },
-
-  created() {
-    // this.buildSlider();
-    console.log(`steps: ${this.steps}\nstepWidth: ${this.stepWidth}`);
+  
+  unmounted() {
+    window.removeEventListener('resize', this.setWidth);
   },
 
   props: { 
@@ -101,6 +103,10 @@ export default {
       type: Boolean,
       default: false
     },
+    toggleHalfway: {
+      type: Boolean,
+      default: false
+    },
     color: {       
       default: {
         primaryColor: "#08344d",
@@ -121,6 +127,9 @@ export default {
     sliderWidthString() {
       return `${this.width + 20}px`
     },
+    stepWidth() {
+      return this.width / this.steps;
+    },
     percentage() {
       return 100 * this.currentStep / this.steps;
     },
@@ -131,26 +140,27 @@ export default {
         return this.value;
       }
     },
-    halfway() {
-      return this.value - this.min > (this.max -this.min ) / 2;  
-    }
+    position() {
+      return this.currentStep * this.stepWidth;
+    },    
   },
 
   methods: {
     emitValue() {      
       this.$emit('sliderChange', this.value);
     },
-    changePos() {
-      const valueBar = document.querySelector("#bar");
-      
-      this.barStyle.width = `${this.percentage}%`;
-      
-      const computedBarStyle = window.getComputedStyle(valueBar);
-      const pos = Number.parseInt(computedBarStyle.width);
-
-      this.underStyle.left = `${pos + 2}px`;
-      this.thumbStyle.left = `${pos - 8}px`;
-      console.log(pos);
+    changePos() {      
+      this.barStyle.width = `${this.position}px`;
+      this.underStyle.left = `${this.position + 2}px`;
+      this.thumbStyle.left = `${this.position - 8}px`;
+      console.log(this.togglePoint)
+      if (Number.parseInt(this.barStyle.width) > this.togglePoint) {
+        this.overStyle.opacity = 1;
+        this.underStyle.opacity = 0;
+      } else {
+        this.overStyle.opacity = 0;
+        this.underStyle.opacity = 1;
+      }
     },
     buildSlider() {
       this.setWidth();      
@@ -166,8 +176,22 @@ export default {
       const containerStyles = window.getComputedStyle(container);
       this.width = Number.parseInt(containerStyles.width);
       this.steps = (this.max - this.min) / this.step;
-      this.stepWidth = this.width / this.steps;
       this.sliderStyle.width = this.sliderWidthString;
+      this.setTogglePoint();       
+    },
+    setTogglePoint() {
+      if (this.toggleHalfway) {
+        this.togglePoint = Number.parseInt(this.width / 2);
+      } else {
+        const label = document.querySelector("#labelUnderFifty");
+        if (label) {
+          console.log("label bestaat")
+          const labelStyle = window.getComputedStyle(label);
+          this.togglePoint = Number.parseInt(labelStyle.width);
+        } else {
+          this.togglePoint = 0;
+        } 
+      }
     }
   },
 
@@ -237,9 +261,16 @@ export default {
 .slider::-webkit-slider-thumb {
   -webkit-appearance:none;
   height:40px;
-  width:16px;
+  width:20px;
   cursor:pointer;
   margin-top:0;
-  margin-bottom: -20px;
+  margin-bottom: -25px;
+}
+.slider::-moz-range-thumb {
+  height:40px;
+  width:20px;
+  cursor:pointer;
+  margin-top:0;
+  margin-bottom: -25px;
 }
 </style>

@@ -24,7 +24,7 @@ export default {
       vraag: "vraag3",
       rangeMin: 0,
       rangeMax: 100,
-      step: 5,
+      step: 1,
       value: this.$store.getters.getAntwoord("vraag3").waarde,
       sliderWidth: 500,
       sliderLabel: "",
