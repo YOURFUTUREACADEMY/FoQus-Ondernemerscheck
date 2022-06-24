@@ -3,9 +3,9 @@
   <div class="outer">    
     <div class="innerTop" :style="innerStyle">      
       <div class="bar" id="bar" :style="barStyle">
-        <div id="labelOverFifty" class="valueLabel" :style="overStyle">{{ valueLabel }}</div>
+        <div id="labelOver" class="valueLabel" :style="overStyle">{{ valueLabel }}</div>
       </div>
-      <div id="labelUnderFifty" class="valueLabel" :style="underStyle">{{ valueLabel }}</div>
+      <div id="labelUnder" class="valueLabel" :style="underStyle">{{ valueLabel }}</div>
     </div>
     <div class="thumb" :style="thumbStyle"></div>
     <input
@@ -17,7 +17,7 @@
       :max="max"
       :step="step"
       :style="sliderStyle"
-      @change="emitValue" 
+      @change="emitValue"
     >
     <div class="sideCover" id="leftCover"></div>
     <div class="sideCover" id="rightCover"></div>    
@@ -176,7 +176,7 @@ export default {
       if (this.toggleHalfway) {
         this.togglePoint = Number.parseInt(this.width / 2);
       } else {
-        const label = document.querySelector("#labelUnderFifty");
+        const label = document.querySelector("#labelUnder");
         if (label) {
           const labelStyle = window.getComputedStyle(label);
           this.togglePoint = Number.parseInt(labelStyle.width);
@@ -234,11 +234,11 @@ export default {
   line-height: 24px;
   vertical-align: middle;
 }
-#labelUnderFifty {
+#labelUnder {
   position: absolute;
   color: #08344d;
 }
-#labelOverFifty {
+#labelOver {
   display: flex;
   flex-direction: row-reverse;
 }
