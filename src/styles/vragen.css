@@ -154,3 +154,21 @@
 		width: 500px;
 	}
 }
+
+@media only screen and (max-width: 500px) {
+  .procentSlider {
+    width: 200px;
+  }
+  .cijferSlider {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .procentSlider {
+    width: 300px;
+  }
+  .cijferSlider {
+    width: 300px;
+  }
+}
