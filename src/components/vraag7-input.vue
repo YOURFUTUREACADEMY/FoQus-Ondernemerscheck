@@ -51,7 +51,6 @@ export default {
         label:"",
         waarde:Number(this.value)
       });
-      console.log(this.$store.getters.getAntwoord("vraag7"));
     },
   }  
 };

@@ -67,8 +67,7 @@ export default {
     this.setTogglePoint();
   },
 
-  mounted() {  
-    console.log("mounted")
+  mounted() {
     window.addEventListener('resize', this.setWidth);
     this.buildSlider();  
     this.changePos();
@@ -153,7 +152,6 @@ export default {
       this.barStyle.width = `${this.position}px`;
       this.underStyle.left = `${this.position + 2}px`;
       this.thumbStyle.left = `${this.position - 8}px`;
-      console.log(this.togglePoint)
       if (Number.parseInt(this.barStyle.width) > this.togglePoint) {
         this.overStyle.opacity = 1;
         this.underStyle.opacity = 0;
@@ -164,8 +162,7 @@ export default {
     },
     buildSlider() {
       this.setWidth();      
-      this.value = this.startValue < this.min ? this.min : (this.startValue > this.max ? this.max : this.startValue);
-      console.log(this.value)      
+      this.value = this.startValue < this.min ? this.min : (this.startValue > this.max ? this.max : this.startValue);    
       this.barStyle.backgroundColor = this.color.primaryColor;
       this.thumbStyle.borderBottomColor = this.color.primaryColor;
       this.innerStyle.backgroundColor = this.color.secondaryColor;
@@ -203,26 +200,25 @@ export default {
 <style scoped>
 .outer {
   position:relative;  
-  height:35px;
+  height:40px;
 }
 .innerTop {
   position:absolute;
   top:0;right:0;bottom:0;left:0;
-  height:25px;
+  height:24px;
   border: none; 
 }
 .sideCover {
-  height: 25px;
-  width: 10px;
+  height: 24px;
+  width: 8px;
+  position: absolute;
   background-color: transparent;
 }
 #leftCover {
-  position: absolute;
-  top:0;left:-10px;
+  top:0;left:-8px;
 }
 #rightCover {
-  position: absolute;
-  top:0;right:-10px;
+  top:0;right:-8px;
 }
 .bar {
   position: absolute;
@@ -238,7 +234,10 @@ export default {
 }
 .valueLabel {
   background: transparent;
-  font-size: 18px;
+  font-size: 17px;
+  padding: 0px 3px;
+  line-height: 24px;
+  vertical-align: middle;
 }
 #labelUnderFifty {
   position: absolute;
@@ -247,13 +246,12 @@ export default {
 #labelOverFifty {
   display: flex;
   flex-direction: row-reverse;
-  padding-right: 2px; 
 }
 .slider {
   position:absolute;
   top:0;right:0;bottom:0;left:-10px;
   -webkit-appearance: none;
-  height:25px;
+  height:24px;
   opacity:0;
 }
 .slider:focus {
@@ -261,17 +259,17 @@ export default {
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance:none;
-  height:41px;
-  width:20px;
+  height:40px;
+  width:16px;
   cursor:pointer;
   margin-top:0;
-  transform: translateY(10px);
+  transform: translateY(8px);
 }
 .slider::-moz-range-thumb {
-  height:41px;
-  width:20px;
+  height:40px;
+  width:16px;
   cursor:pointer;
   margin-top:0;
-  transform: translateY(10px)
+  transform: translateY(8px)
 }
 </style>
