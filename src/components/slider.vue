@@ -261,17 +261,17 @@ export default {
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance:none;
-  height:40px;
+  height:41px;
   width:20px;
   cursor:pointer;
   margin-top:0;
-  margin-bottom: -25px;
+  transform: translateY(10px);
 }
 .slider::-moz-range-thumb {
-  height:40px;
+  height:41px;
   width:20px;
   cursor:pointer;
   margin-top:0;
-  margin-bottom: -25px;
+  transform: translateY(10px)
 }
 </style>
