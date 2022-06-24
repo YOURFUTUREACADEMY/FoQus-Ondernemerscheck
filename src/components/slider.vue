@@ -94,10 +94,6 @@ export default {
       type: Number,
       default: 0
     },
-    border: {
-      type: Boolean,
-      default: false
-    },
     showPercentage: {
       type: Boolean,
       default: false
@@ -112,8 +108,7 @@ export default {
         secondaryColor: "#A6A6A6",
         labelInBarColor: "#FFFFFF" 
       }
-    },
-    label: String,    
+    },    
   },
 
   computed: {
@@ -183,11 +178,10 @@ export default {
       } else {
         const label = document.querySelector("#labelUnderFifty");
         if (label) {
-          console.log("label bestaat")
           const labelStyle = window.getComputedStyle(label);
           this.togglePoint = Number.parseInt(labelStyle.width);
         } else {
-          this.togglePoint = 0;
+          console.log("label bestaat niet")
         } 
       }
     }
@@ -201,6 +195,7 @@ export default {
 .outer {
   position:relative;  
   height:40px;
+  margin: none;
 }
 .innerTop {
   position:absolute;

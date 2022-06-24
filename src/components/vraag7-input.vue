@@ -12,7 +12,7 @@
         :label='sliderLabel'
         :startValue='value'
         :color='sliderColor'
-        @sliderChange='commitValue' 
+        @sliderChange='commitValue'
       />
       <i class="fa fa-smile-o smilies " aria-hidden="true"></i> 
     </div>
