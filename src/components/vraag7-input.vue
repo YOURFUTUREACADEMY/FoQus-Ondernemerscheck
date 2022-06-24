@@ -27,8 +27,8 @@ export default {
   data() {
     return {
       vraag: "vraag7",
-      rangeMin: 0,
-      rangeMax: 9,
+      rangeMin: 1,
+      rangeMax: 10,
       step: 1,
       sliderWidth: 500,
       value: this.$store.getters.getAntwoord("vraag7").waarde,

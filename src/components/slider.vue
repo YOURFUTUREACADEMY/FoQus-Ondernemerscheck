@@ -164,7 +164,9 @@ export default {
     },
     buildSlider() {
       this.setWidth();      
-      this.value = this.startValue;      
+      this.value = this.startValue < this.min ? this.min : this.startValue;
+      this.value = this.value > this.max ? this.max : this.value;
+      console.log(this.value)      
       this.barStyle.backgroundColor = this.color.primaryColor;
       this.thumbStyle.borderBottomColor = this.color.primaryColor;
       this.innerStyle.backgroundColor = this.color.secondaryColor;
