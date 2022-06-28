@@ -80,15 +80,15 @@ export default {
   props: { 
     min: {
       type: Number,
-      default: 0
+      required: true
     }, 
     max: {
       type: Number,
-      default: 100
+      required: true
     }, 
     step: {
       type: Number,
-      default: 1
+      step: 1
     },
     startValue: {
       type: Number,

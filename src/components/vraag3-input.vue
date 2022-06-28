@@ -4,8 +4,7 @@
     <slider 
       :min='rangeMin'
       :max='rangeMax'
-      :step='step'     
-      :label='sliderLabel'
+      :step='step'
       :startValue='value'
       :color='sliderColor'
       @sliderChange='commitValue'
