@@ -205,15 +205,15 @@ export default {
 }
 .sideCover {
   height: 24px;
-  width: 8px;
+  width: 10px;
   position: absolute;
   background-color: transparent;
 }
 #leftCover {
-  top:0;left:-8px;
+  top:0;left:-10px;
 }
 #rightCover {
-  top:0;right:-8px;
+  top:0;right:-10px;
 }
 .bar {
   position: absolute;
@@ -233,6 +233,10 @@ export default {
   padding: 0px 3px;
   line-height: 24px;
   vertical-align: middle;
+  -webkit-user-select: none;        
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #labelUnder {
   position: absolute;
