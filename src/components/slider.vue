@@ -40,7 +40,7 @@ export default {
         backgroundColor: "#08344d"
       }, 
       thumbStyle: {          
-        top: "25px",
+        top: "24px",
         right: "0px",
         bottom: "0px",
         left: "-10px",
