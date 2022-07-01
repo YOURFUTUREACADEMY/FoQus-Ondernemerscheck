@@ -30,10 +30,11 @@ export default {
     return {
       value: 0,
       steps: 100,
-      width: "400px",
+      width: 400,
       togglePoint: 0,
       innerStyle: {
-        backgroundColor: "#A6A6A6"        
+        backgroundColor: "#A6A6A6",
+        width: "284px"        
       },        
       barStyle: {
         width: "0%",
@@ -43,7 +44,7 @@ export default {
         top: "24px",
         right: "0px",
         bottom: "0px",
-        left: "-10px",
+        left: "-8px",
         borderBottomColor: "#08344d"
       },
       underStyle: {
@@ -57,7 +58,7 @@ export default {
         opacity: 0
       },
       sliderStyle: {
-        width: "520px"
+        width: "400px"
       }    
     }
   },
@@ -112,17 +113,20 @@ export default {
   },
 
   computed: {
-    widthString() {
-      return `${this.width}px`;
+    barWidth() {
+      return this.width - 16;
+    },
+    barWidthString() {
+      return `${this.barWidth}px`;
     },
     currentStep() {
       return (this.value - this.min) / this.step;
     },
     sliderWidthString() {
-      return `${this.width + 20}px`
+      return `${this.width}px`
     },
     stepWidth() {
-      return this.width / this.steps;
+      return this.barWidth / this.steps;
     },
     percentage() {
       return 100 * this.currentStep / this.steps;
@@ -146,7 +150,7 @@ export default {
     changePos() {      
       this.barStyle.width = `${this.position}px`;
       this.underStyle.left = `${this.position + 2}px`;
-      this.thumbStyle.left = `${this.position - 8}px`;
+      this.thumbStyle.left = `${this.position}px`;
       if (Number.parseInt(this.barStyle.width) > this.togglePoint) {
         this.overStyle.opacity = 1;
         this.underStyle.opacity = 0;
@@ -166,8 +170,9 @@ export default {
     },
     setWidth() {
       const container = document.querySelector(".outer");
-      const containerStyles = window.getComputedStyle(container);
+      const containerStyles = window.getComputedStyle(container);      
       this.width = Number.parseInt(containerStyles.width);
+      this.innerStyle.width = this.barWidthString;
       this.steps = (this.max - this.min) / this.step;
       this.sliderStyle.width = this.sliderWidthString;
       this.setTogglePoint();       
@@ -199,7 +204,7 @@ export default {
 }
 .innerTop {
   position:absolute;
-  top:0;right:0;bottom:0;left:0;
+  top:0;right:0;bottom:0;left:8px;
   height:24px;
   border: none; 
 }
@@ -210,10 +215,10 @@ export default {
   background-color: transparent;
 }
 #leftCover {
-  top:0;left:-10px;
+  top:0;left:0;
 }
 #rightCover {
-  top:0;right:-10px;
+  top:0;right:0;
 }
 .bar {
   position: absolute;
@@ -248,7 +253,7 @@ export default {
 }
 .slider {
   position:absolute;
-  top:0;right:0;bottom:0;left:-10px;
+  top:0;right:0;bottom:0;left:0;
   -webkit-appearance: none;
   height:24px;
   opacity:0;
