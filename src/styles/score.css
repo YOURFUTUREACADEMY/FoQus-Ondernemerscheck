@@ -5,6 +5,7 @@
 .hl {
 	background-color: var(--donkerBlauw);
 	opacity: 1;
+	width: 100%;
 }
 
 /* verticale lijn tussen score bubble en block quote */
@@ -26,7 +27,7 @@
 	color: var(--zwart);
 	font-weight: 500;
 	font-size: clamp(16px, 2.5vw, 22px);
-	/* font-size: 1.1rem; */
+	font-size: 1.1rem;
 	max-width: 850px;
 	padding: 1rem;
 }
@@ -105,7 +106,7 @@
 
 .btnFormFault {
 	margin: 10px auto;
-	max-width: 400px;
+	min-width: 200px;
 	background-color: var(--grijs);
 	color: var(--zwart);
 	padding: 0.5rem;
@@ -145,9 +146,13 @@
 
 .foqusRaport {
 	position: absolute;
-	right: 210px;
-	top: 730px;
-	width: 15%;
+	right: 280px;
+	top: 690px;
+	width: 12%;
+}
+
+.disclaimer {
+	max-width: 800px;
 }
 
 /* screen size 1400px */

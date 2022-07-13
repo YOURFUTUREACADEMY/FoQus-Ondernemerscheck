@@ -502,39 +502,3 @@ export const compose = {
   rapport:composeRapport,
   excel:composeExcel
 }
-
-//functie opbouwen opmerking vraag #1 & numeral string invoegt in opmerking string
-// function maakOpmerking(inputString, replaceString, newString){
-//   let opmerking = inputString.replace(replaceString, newString);
-//   return opmerking;
-// }
-
-// voorbeeld vraag 1 uit funtie
-  // // statement vraag 1
-
-  // // bereken totaal
-  // const totaal = convertStrToNum(opmerking.vraag1.waarden[0]) + convertStrToNum(opmerking.vraag1.waarden[1]) + convertStrToNum(opmerking.vraag1.waarden[2]) + convertStrToNum(opmerking.vraag1.waarden[3]) + convertStrToNum(opmerking.vraag1.waarden[4]);
-  
-  // if(vraag1.waarde !== "" && vraag1.waarde !== undefined){ 
-  //   resultaat.vraag1.score = Number(vraag1.waarde)}
-
-  // if( vraag1.waarde <2  && vraag1.waarde !== ""){
-    
-  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.zelfstandig,"!WAARDE!",opmerking.vraag1.waarden[0]);
-  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[0]) / totaal) * 100;
-  // }
-  // else if(vraag1.waarde >=2 && vraag1.waarde < 10 ){
-  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[1]); 
-  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[1]) / totaal) * 100;
-  // }
-  // else if(vraag1.waarde >=10 && vraag1.waarde < 50 ){
-  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[2]); 
-  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[2]) / totaal) * 100;
-  // }
-  // else if(vraag1.waarde >=50 && vraag1.waarde < 100 ){
-  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[3])
-  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[3]) / totaal) * 100;
-  // }
-  // else if(vraag1.waarde >=100 && vraag1.waarde < 250 ){
-  //   resultaat.vraag1.opmerking = maakOpmerking(opmerking.vraag1.omvang,"!WAARDE!",opmerking.vraag1.waarden[4]) 
-  //   resultaat.vraag1.berekening = (convertStrToNum(opmerking.vraag1.waarden[4]) / totaal) * 100;

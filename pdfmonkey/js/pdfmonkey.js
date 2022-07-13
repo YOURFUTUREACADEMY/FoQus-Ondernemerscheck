@@ -35,7 +35,7 @@ const queryString= {
       }
   }
 
-//======================== This data can be found in <script> below the HTML in PDFmonkey.io Template XXXXX ========================================
+//======================== This data can be found in <script> below the HTML in PDFmonkey.io Template ******* ========================================
 
 // === !! Switch queryString to $docPayload in PDFmonkey.io !! ===
 // const queryString = $docPayload;
