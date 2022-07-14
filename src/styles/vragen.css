@@ -141,9 +141,34 @@
   margin: 0px 5px;
   }
 
+.procentSlider {
+  width: 500px;
+}
+.cijferSlider {
+  width: 500px;
+}
+
   /* screen size 1200px */
 @media only screen and (min-width: 1199px) {
 	.rs-line {
 		width: 500px;
 	}
+}
+
+@media only screen and (max-width: 499px) {
+  .procentSlider {
+    width: 200px;
+  }
+  .cijferSlider {
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 900px) {
+  .procentSlider {
+    width: 300px;
+  }
+  .cijferSlider {
+    width: 300px;
+  }
 }
